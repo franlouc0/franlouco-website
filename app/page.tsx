@@ -15,7 +15,7 @@ export default function Home() {
             <div>FRANCISCO</div>
             <div className="flex items-center gap-0 pl-12 sm:pl-16">
               <span>LOURENÇ</span>
-              <Circle weight="fill" className="h-[2.4em] w-[2.4em] text-green-400" />
+              <Circle weight="fill" className="h-[0.85em] w-[0.85em] text-green-400" />
             </div>
           </h1>
 
