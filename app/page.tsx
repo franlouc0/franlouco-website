@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Info } from "lucide-react";
-import { Strategy } from "@phosphor-icons/react/dist/ssr";
+import { Swap } from "@phosphor-icons/react/dist/ssr";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { ExperienceCard } from "@/components/experience-card";
 
@@ -12,8 +12,8 @@ export default function Home() {
         {/* Profile section */}
         <div className="mb-8">
           <div className="flex items-center gap-3">
-            <Strategy 
-              size={64} 
+            <Swap 
+              size={80} 
               weight="duotone"
               className="text-zinc-900 dark:text-zinc-50" 
             />
