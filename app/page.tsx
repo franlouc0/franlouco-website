@@ -58,6 +58,74 @@ export default function Home() {
               A crossover of product, growth, and tech. Building and shipping ideas. I build products, test ideas, and document what I learn.
             </p>
           </div>
+
+          {/* Experience & Achievements */}
+          <div className="mt-8 border-t border-zinc-200 pt-6 dark:border-zinc-800">
+            <h2 className="mb-3 text-xs font-semibold text-zinc-900 dark:text-zinc-50">
+              Experience & Achievements
+            </h2>
+            <div className="space-y-4">
+              <div>
+                <h3 className="text-[10px] font-medium text-zinc-900 dark:text-zinc-50">
+                  Web3 Marketing Growth Manager
+                </h3>
+                <p className="text-[9px] text-zinc-600 dark:text-zinc-400">
+                  IBC Group
+                </p>
+                <p className="text-[9px] text-zinc-500 dark:text-zinc-500">
+                  2025 - Present
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-[10px] font-medium text-zinc-900 dark:text-zinc-50">
+                  CMO & Co-Founder
+                </h3>
+                <p className="text-[9px] text-zinc-600 dark:text-zinc-400">
+                  Coompass
+                </p>
+                <p className="text-[9px] text-zinc-500 dark:text-zinc-500">
+                  2023 - Present
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-[10px] font-medium text-zinc-900 dark:text-zinc-50">
+                  CMO & Co-Founder
+                </h3>
+                <p className="text-[9px] text-zinc-600 dark:text-zinc-400">
+                  Polkamarkets
+                </p>
+                <p className="text-[9px] text-zinc-500 dark:text-zinc-500">
+                  2021 - 2023
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-[10px] font-medium text-zinc-900 dark:text-zinc-50">
+                  Web3 Marketing & BD Consultant
+                </h3>
+                <p className="text-[9px] text-zinc-600 dark:text-zinc-400">
+                  Polkastarter, Lympid
+                </p>
+                <p className="text-[9px] text-zinc-500 dark:text-zinc-500">
+                  2020 - Present
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-[10px] font-medium text-zinc-900 dark:text-zinc-50">
+                  Head of Sales & Partnerships
+                </h3>
+                <p className="text-[9px] text-zinc-600 dark:text-zinc-400">
+                  BEPRO Network
+                </p>
+                <p className="text-[9px] text-zinc-500 dark:text-zinc-500">
+                  2020 - 2021
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Navigation Links */}
