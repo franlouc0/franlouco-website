@@ -13,10 +13,10 @@ export default function Home() {
         <div className="mb-8">
           <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
             <div>FRANCISCO</div>
-            <div className="flex items-center gap-0 pl-12 sm:pl-16">
-              <span>LOURENÇ</span>
-              <Circle weight="fill" className="h-[22px] w-[22px] text-green-400 sm:h-[27px] sm:w-[27px]" />
-            </div>
+              <div className="flex items-center gap-0 pl-12 sm:pl-16">
+                <span>LOURENÇ</span>
+                <Circle weight="fill" className="h-[60px] w-[60px] text-green-400 sm:h-[70px] sm:w-[70px]" />
+              </div>
           </h1>
 
           {/* About me */}
