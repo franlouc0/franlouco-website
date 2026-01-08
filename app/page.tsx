@@ -21,11 +21,11 @@ export default function Home() {
 
           {/* About me */}
           <div className="mt-8">
-            <p className="text-[10px] leading-relaxed text-zinc-600 dark:text-zinc-400">
-              A crossover of product, growth, and tech. Building and shipping ideas. I build products, test ideas, and document what I learn.{" "}
+            <p className="text-[14px] leading-relaxed text-zinc-600 dark:text-zinc-400">
+              A crossover of product, growth, and tech. Building and shipping ideas{" "}
               <span className="group relative inline-block">
                 <Info className="inline h-3 w-3 cursor-help text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300" />
-                <div className="pointer-events-none absolute left-full top-0 z-50 ml-2 w-72 rounded-lg border border-zinc-200 bg-white p-3 text-[10px] leading-relaxed text-zinc-600 opacity-0 shadow-lg transition-opacity group-hover:pointer-events-auto group-hover:opacity-100 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-400">
+                <div className="pointer-events-none absolute left-full top-0 z-50 ml-2 w-72 rounded-lg border border-zinc-200 bg-white p-3 text-[12px] leading-relaxed text-zinc-600 opacity-0 shadow-lg transition-opacity group-hover:pointer-events-auto group-hover:opacity-100 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-400">
                   Data-driven marketing leader with 10+ years of experience in Web3, blockchain, and digital marketing including hands-on leadership of multiple IDO token launches.<br/><br/>I&apos;ve built and executed GTM plans that align tokenomics, messaging, and timing. Developed strong partnerships with KOLs and influencers.<br/><br/>Grown vibrant communities that fueled pre-sale fundraising and drove smooth token sales.<br/><br/>I&apos;m good at brand positioning, user acquisition, viral campaigns, and performance marketing to power business expansion.
                 </div>
               </span>
@@ -33,7 +33,7 @@ export default function Home() {
           </div>
 
           {/* Experience & Achievements */}
-          <div className="mt-8 pt-6">
+          <div className="mt-6">
             <h2 className="mb-3 text-xs font-semibold text-zinc-900 dark:text-zinc-50">
               Experience & Achievements
             </h2>
