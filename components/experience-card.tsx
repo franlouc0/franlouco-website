@@ -17,7 +17,7 @@ export const ExperienceCard = React.memo(function ExperienceCard({
   emoji = "💼",
 }: ExperienceCardProps) {
   return (
-    <Card className="group border-zinc-300/50 bg-zinc-100/80 backdrop-blur-sm transition-all hover:border-zinc-400/50 hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.1),inset_0_1px_0_0_rgba(0,0,0,0.05)] dark:border-zinc-800/50 dark:bg-zinc-900/40 dark:hover:border-zinc-700/50 dark:hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.05)]">
+    <Card className="group border border-zinc-300 bg-zinc-100 transition-colors hover:bg-zinc-200 dark:border-zinc-700/50 dark:bg-zinc-800/50 dark:hover:bg-zinc-700/50">
       <CardHeader className="flex flex-row items-center gap-2 p-2">
         <div className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded bg-zinc-200/60 dark:bg-zinc-800/60">
           <span className="text-lg">{emoji}</span>
