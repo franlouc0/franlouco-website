@@ -65,36 +65,31 @@ export default function Home() {
             <h2 className="mb-3 text-xs font-semibold text-zinc-900 dark:text-zinc-50">
               Experience & Achievements
             </h2>
-            <div className="space-y-2">
+            <div className="space-y-3">
               <ExperienceCard
                 role="Web3 Marketing Growth Manager"
                 company="IBC Group"
                 years="2025 - Present"
-                emoji="🚀"
               />
               <ExperienceCard
                 role="CMO & Co-Founder"
                 company="Coompass"
                 years="2023 - Present"
-                emoji="🎯"
               />
               <ExperienceCard
                 role="CMO & Co-Founder"
                 company="Polkamarkets"
                 years="2021 - 2023"
-                emoji="📈"
               />
               <ExperienceCard
                 role="Web3 Marketing & BD Consultant"
                 company="Polkastarter, Lympid"
                 years="2020 - Present"
-                emoji="💡"
               />
               <ExperienceCard
                 role="Head of Sales & Partnerships"
                 company="BEPRO Network"
                 years="2020 - 2021"
-                emoji="🤝"
               />
             </div>
           </div>
