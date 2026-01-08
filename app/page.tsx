@@ -22,7 +22,7 @@ export default function Home() {
           {/* About me */}
           <div className="mt-8">
             <p className="text-[14px] leading-relaxed text-zinc-600 dark:text-zinc-400">
-              A crossover of product, growth, and tech. Building and shipping ideas{" "}
+              A crossover of <span className="inline-flex h-5 items-center rounded-md border border-zinc-300 bg-zinc-100 px-1.5 text-[9px] dark:border-zinc-700/50 dark:bg-zinc-800/50">product</span>, <span className="inline-flex h-5 items-center rounded-md border border-zinc-300 bg-zinc-100 px-1.5 text-[9px] dark:border-zinc-700/50 dark:bg-zinc-800/50">growth</span>, and <span className="inline-flex h-5 items-center rounded-md border border-zinc-300 bg-zinc-100 px-1.5 text-[9px] dark:border-zinc-700/50 dark:bg-zinc-800/50">tech</span>. Building and shipping ideas{" "}
               <span className="group relative inline-block">
                 <Info className="inline h-3 w-3 cursor-help text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300" />
                 <div className="pointer-events-none absolute left-full top-0 z-50 ml-2 w-72 rounded-lg border border-zinc-200 bg-white p-3 text-[12px] leading-relaxed text-zinc-600 opacity-0 shadow-lg transition-opacity group-hover:pointer-events-auto group-hover:opacity-100 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-400">
