@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Info } from "lucide-react";
 import { Circle } from "@phosphor-icons/react/dist/ssr";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { ExperienceCard } from "@/components/experience-card";
+import { ExperienceSection } from "@/components/experience-section";
 
 export default function Home() {
   return (
@@ -33,49 +33,7 @@ export default function Home() {
           </div>
 
           {/* Experience & Achievements */}
-          <div className="mt-6">
-            <h2 className="mb-3 text-xs font-semibold text-zinc-900 dark:text-zinc-50">
-              Experience & Achievements
-            </h2>
-            <div className="space-y-3">
-              <ExperienceCard
-                role="Web3 Marketing Growth Manager"
-                company="IBC Group"
-                years="2025 - Present"
-                logo="/ibcgroup.png"
-              />
-              <ExperienceCard
-                role="CMO & Co-Founder"
-                company="Coompass"
-                years="2023 - Present"
-                logo="/coompass.jpg"
-              />
-              <ExperienceCard
-                role="CMO & Co-Founder"
-                company="Polkamarkets"
-                years="2021 - 2023"
-                logo="/polkamarkets.jpg"
-              />
-              <ExperienceCard
-                role="Web3 Marketing & BD Consultant"
-                company="Polkastarter, Lympid"
-                years="2020 - Present"
-                logo="/polkastarter.jpg"
-              />
-              <ExperienceCard
-                role="Head of Sales & Partnerships"
-                company="BEPRO Network"
-                years="2020 - 2021"
-                logo="/bepronetwork.jpg"
-              />
-              <ExperienceCard
-                role="And much more..."
-                company="Würth, AKI, HomeHunting, Havas Media"
-                years="2012 - 2020"
-                emoji="➕"
-              />
-            </div>
-          </div>
+          <ExperienceSection />
         </div>
 
         {/* Navigation Links */}
