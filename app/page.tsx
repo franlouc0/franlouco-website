@@ -13,11 +13,11 @@ export default function Home() {
         <div className="mb-8">
           <div className="flex items-center gap-3">
             <Fingerprint 
-              size={48} 
+              size={64} 
               weight="duotone"
               className="text-zinc-900 dark:text-zinc-50" 
             />
-            <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+            <h1 className="text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-3xl">
               Francisco Lourenço
             </h1>
           </div>
