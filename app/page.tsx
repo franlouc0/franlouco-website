@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Info } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { ExperienceCard } from "@/components/experience-card";
@@ -11,39 +10,12 @@ export default function Home() {
       <aside className="flex w-full flex-col border-r border-zinc-200 p-6 dark:border-zinc-800 lg:w-80 lg:p-8">
         {/* Profile section */}
         <div className="mb-8">
-          <div className="mb-4 flex items-center gap-4">
-            <div className="relative h-16 w-16 flex-shrink-0">
-              <Image
-                src="/profile.jpg"
-                alt="Francisco Lourenço"
-                fill
-                className="rounded-[22%] object-cover"
-                priority
-              />
-            </div>
-            <div>
-              <h1 className="mb-1.5 text-lg font-bold text-zinc-900 dark:text-zinc-50">
-                Francisco Lourenço
-              </h1>
-              <div className="flex flex-wrap gap-1">
-                <span className="flex h-5 items-center rounded-md border border-zinc-300 bg-zinc-100 px-1.5 text-[9px] dark:border-zinc-700/50 dark:bg-zinc-800/50">
-                  Product
-                </span>
-                <span className="flex h-5 items-center rounded-md border border-zinc-300 bg-zinc-100 px-1.5 text-[9px] dark:border-zinc-700/50 dark:bg-zinc-800/50">
-                  Growth
-                </span>
-                <span className="flex h-5 items-center rounded-md border border-zinc-300 bg-zinc-100 px-1.5 text-[9px] dark:border-zinc-700/50 dark:bg-zinc-800/50">
-                  Marketing
-                </span>
-                <span className="flex h-5 items-center rounded-md border border-zinc-300 bg-zinc-100 px-1.5 text-[9px] dark:border-zinc-700/50 dark:bg-zinc-800/50">
-                  Operations
-                </span>
-              </div>
-            </div>
-          </div>
+          <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+            Francisco Lourenço
+          </h1>
 
           {/* About me */}
-          <div>
+          <div className="mt-8">
             <div className="mb-2 flex items-center gap-1.5">
               <h2 className="text-xs font-semibold text-zinc-900 dark:text-zinc-50">
                 About me
