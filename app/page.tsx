@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Info, Github, Linkedin, Mail, Send } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { ExperienceCard } from "@/components/experience-card";
 
 export default function Home() {
   return (
@@ -64,66 +65,37 @@ export default function Home() {
             <h2 className="mb-3 text-xs font-semibold text-zinc-900 dark:text-zinc-50">
               Experience & Achievements
             </h2>
-            <div className="space-y-4">
-              <div>
-                <h3 className="text-[10px] font-medium text-zinc-900 dark:text-zinc-50">
-                  Web3 Marketing Growth Manager
-                </h3>
-                <p className="text-[9px] text-zinc-600 dark:text-zinc-400">
-                  IBC Group
-                </p>
-                <p className="text-[9px] text-zinc-500 dark:text-zinc-500">
-                  2025 - Present
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-[10px] font-medium text-zinc-900 dark:text-zinc-50">
-                  CMO & Co-Founder
-                </h3>
-                <p className="text-[9px] text-zinc-600 dark:text-zinc-400">
-                  Coompass
-                </p>
-                <p className="text-[9px] text-zinc-500 dark:text-zinc-500">
-                  2023 - Present
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-[10px] font-medium text-zinc-900 dark:text-zinc-50">
-                  CMO & Co-Founder
-                </h3>
-                <p className="text-[9px] text-zinc-600 dark:text-zinc-400">
-                  Polkamarkets
-                </p>
-                <p className="text-[9px] text-zinc-500 dark:text-zinc-500">
-                  2021 - 2023
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-[10px] font-medium text-zinc-900 dark:text-zinc-50">
-                  Web3 Marketing & BD Consultant
-                </h3>
-                <p className="text-[9px] text-zinc-600 dark:text-zinc-400">
-                  Polkastarter, Lympid
-                </p>
-                <p className="text-[9px] text-zinc-500 dark:text-zinc-500">
-                  2020 - Present
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-[10px] font-medium text-zinc-900 dark:text-zinc-50">
-                  Head of Sales & Partnerships
-                </h3>
-                <p className="text-[9px] text-zinc-600 dark:text-zinc-400">
-                  BEPRO Network
-                </p>
-                <p className="text-[9px] text-zinc-500 dark:text-zinc-500">
-                  2020 - 2021
-                </p>
-              </div>
+            <div className="space-y-2">
+              <ExperienceCard
+                role="Web3 Marketing Growth Manager"
+                company="IBC Group"
+                years="2025 - Present"
+                emoji="🚀"
+              />
+              <ExperienceCard
+                role="CMO & Co-Founder"
+                company="Coompass"
+                years="2023 - Present"
+                emoji="🎯"
+              />
+              <ExperienceCard
+                role="CMO & Co-Founder"
+                company="Polkamarkets"
+                years="2021 - 2023"
+                emoji="📈"
+              />
+              <ExperienceCard
+                role="Web3 Marketing & BD Consultant"
+                company="Polkastarter, Lympid"
+                years="2020 - Present"
+                emoji="💡"
+              />
+              <ExperienceCard
+                role="Head of Sales & Partnerships"
+                company="BEPRO Network"
+                years="2020 - 2021"
+                emoji="🤝"
+              />
             </div>
           </div>
         </div>
