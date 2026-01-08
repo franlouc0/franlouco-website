@@ -12,7 +12,7 @@ export default function Home() {
         <div className="mb-8">
           <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
             <div>FRANCISCO</div>
-            <div className="pl-12 sm:pl-16">LOURENÇ<span className="text-green-400">O</span></div>
+            <div className="pl-12 sm:pl-16">LOURENÇ<span className="bg-green-400 text-zinc-900 px-1 rounded-full">O</span></div>
           </h1>
 
           {/* About me */}
