@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Info } from "lucide-react";
+import { Fingerprint } from "@phosphor-icons/react/dist/ssr";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { ExperienceCard } from "@/components/experience-card";
 
@@ -10,9 +11,16 @@ export default function Home() {
       <aside className="flex w-full flex-col border-r border-zinc-200 p-6 dark:border-zinc-800 lg:w-80 lg:p-8">
         {/* Profile section */}
         <div className="mb-8">
-          <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
-            Francisco Lourenço
-          </h1>
+          <div className="flex items-center gap-3">
+            <Fingerprint 
+              size={48} 
+              weight="duotone"
+              className="text-zinc-900 dark:text-zinc-50" 
+            />
+            <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+              Francisco Lourenço
+            </h1>
+          </div>
 
           {/* About me */}
           <div className="mt-8">
