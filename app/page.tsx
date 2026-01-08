@@ -32,45 +32,6 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Currently contributing as */}
-          <div className="mt-6">
-            <h2 className="mb-3 text-xs font-semibold text-zinc-900 dark:text-zinc-50">
-              Currently contributing as
-            </h2>
-            <div className="space-y-3">
-              <ExperienceCard
-                role="Web3 Marketing Growth Manager"
-                company="IBC Group"
-                years="2025 - Present"
-                logo="/ibcgroup.png"
-              />
-              <ExperienceCard
-                role="CMO & Co-Founder"
-                company="Coompass"
-                years="2023 - Present"
-                logo="/coompass.jpg"
-              />
-              <ExperienceCard
-                role="CMO & Co-Founder"
-                company="Polkamarkets"
-                years="2021 - 2023"
-                logo="/polkamarkets.jpg"
-              />
-              <ExperienceCard
-                role="Web3 Marketing & BD Consultant"
-                company="Polkastarter, Lympid"
-                years="2020 - Present"
-                logo="/polkastarter.jpg"
-              />
-              <ExperienceCard
-                role="Head of Sales & Partnerships"
-                company="BEPRO Network"
-                years="2020 - 2021"
-                logo="/bepronetwork.jpg"
-              />
-            </div>
-          </div>
-
           {/* Experience & Achievements */}
           <div className="mt-6">
             <h2 className="mb-3 text-xs font-semibold text-zinc-900 dark:text-zinc-50">
@@ -106,6 +67,12 @@ export default function Home() {
                 company="BEPRO Network"
                 years="2020 - 2021"
                 logo="/bepronetwork.jpg"
+              />
+              <ExperienceCard
+                role="And much more..."
+                company="Würth, AKI, HomeHunting, Havas Media"
+                years="2012 - 2020"
+                emoji="➕"
               />
             </div>
           </div>
