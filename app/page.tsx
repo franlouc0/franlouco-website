@@ -13,7 +13,7 @@ export default function Home() {
         <div className="mb-8">
           <div className="flex items-center gap-3">
             <Swap 
-              size={80} 
+              size={36} 
               weight="regular"
               className="text-zinc-900 dark:text-zinc-50" 
             />
