@@ -20,17 +20,17 @@ export const ExperienceCard = React.memo(function ExperienceCard({
 }: ExperienceCardProps) {
   return (
     <div className="flex items-start gap-2">
-      <div className="relative h-8 w-8 shrink-0 overflow-hidden rounded bg-zinc-200/60 dark:bg-zinc-800/60 flex items-center justify-center">
+      <div className="relative h-6 w-6 shrink-0 overflow-hidden rounded bg-zinc-200/60 dark:bg-zinc-800/60 flex items-center justify-center">
         {logo ? (
           <Image
             src={logo}
             alt={company}
-            width={32}
-            height={32}
+            width={24}
+            height={24}
             className="object-cover"
           />
         ) : (
-          <span className="text-sm">{emoji}</span>
+          <span className="text-xs">{emoji}</span>
         )}
       </div>
       <div className="flex-1 min-w-0">
