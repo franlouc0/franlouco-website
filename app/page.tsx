@@ -110,7 +110,7 @@ export default function Home() {
           >
             GitHub
           </Link>
-          <span className="text-zinc-400 dark:text-zinc-700">|</span>
+          <span className="text-[8px] text-zinc-300 dark:text-zinc-800">|</span>
           <Link
             href="https://www.linkedin.com/in/franlouco/"
             className="text-[10px] text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
@@ -119,7 +119,7 @@ export default function Home() {
           >
             LinkedIn
           </Link>
-          <span className="text-zinc-400 dark:text-zinc-700">|</span>
+          <span className="text-[8px] text-zinc-300 dark:text-zinc-800">|</span>
           <a
             href="mailto:hello@franlou.co"
             className="text-[10px] text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
