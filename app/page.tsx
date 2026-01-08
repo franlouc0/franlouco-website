@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Info } from "lucide-react";
+import { Circle } from "@phosphor-icons/react/dist/ssr";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { ExperienceCard } from "@/components/experience-card";
 
@@ -12,7 +13,10 @@ export default function Home() {
         <div className="mb-8">
           <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
             <div>FRANCISCO</div>
-            <div className="pl-12 sm:pl-16">LOURENÇ<span className="bg-green-400 text-zinc-900 px-1 rounded-full">O</span></div>
+            <div className="flex items-center gap-0 pl-12 sm:pl-16">
+              <span>LOURENÇ</span>
+              <Circle size={24} weight="fill" className="text-green-400 sm:size-[28px]" />
+            </div>
           </h1>
 
           {/* About me */}
