@@ -61,7 +61,7 @@ export default function Home() {
           </div>
 
           {/* Experience & Achievements */}
-          <div className="mt-8 border-t border-zinc-200 pt-6 dark:border-zinc-800">
+          <div className="mt-8 pt-6">
             <h2 className="mb-3 text-xs font-semibold text-zinc-900 dark:text-zinc-50">
               Experience & Achievements
             </h2>
