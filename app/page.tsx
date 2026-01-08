@@ -15,7 +15,7 @@ export default function Home() {
             <Swap 
               size={80} 
               weight="duotone"
-              className="text-zinc-900 dark:text-zinc-50" 
+              className="text-blue-600 dark:text-blue-400" 
             />
             <h1 className="text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-3xl">
               Francisco Lourenço
