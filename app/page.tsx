@@ -14,8 +14,8 @@ export default function Home() {
           <div className="flex items-center gap-3">
             <Swap 
               size={80} 
-              weight="duotone"
-              className="text-blue-600 dark:text-blue-400" 
+              weight="regular"
+              className="text-zinc-900 dark:text-zinc-50" 
             />
             <h1 className="text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-3xl">
               Francisco Lourenço
