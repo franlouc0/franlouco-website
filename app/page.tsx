@@ -11,11 +11,11 @@ export default function Home() {
       <aside className="flex w-full flex-col border-r border-zinc-200 p-6 dark:border-zinc-800 lg:w-80 lg:p-8">
         {/* Profile section */}
         <div className="mb-8">
-          <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+          <h1 className="text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-3xl">
             <div>FRANCISCO</div>
              <div className="flex items-center gap-0 pl-12 sm:pl-16">
                <span>LOURENÇ</span>
-               <Circle weight="fill" className="h-[60px] w-[60px] text-green-400 sm:h-[70px] sm:w-[70px]" />
+               <Circle weight="fill" className="h-[50px] w-[50px] text-green-400 sm:h-[50px] sm:w-[50px]" />
              </div>
           </h1>
 
