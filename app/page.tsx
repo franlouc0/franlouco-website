@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Info, Github, Linkedin, Mail, Send } from "lucide-react";
+import { Info } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { ExperienceCard } from "@/components/experience-card";
 
@@ -102,60 +102,30 @@ export default function Home() {
 
         {/* Navigation Links */}
         <nav className="mt-auto flex items-center gap-2 border-t border-zinc-200 pt-6 dark:border-zinc-800">
-          <div className="group relative">
-            <Link
-              href="https://github.com/franlouc0"
-              className="flex h-6 w-6 items-center justify-center rounded-md border border-zinc-300 bg-zinc-100 transition-colors hover:bg-zinc-200 dark:border-zinc-700/50 dark:bg-zinc-800/50 dark:hover:bg-zinc-700/50"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-            >
-              <Github className="h-3 w-3" />
-            </Link>
-            <div className="pointer-events-none absolute bottom-full left-1/2 mb-1 -translate-x-1/2 whitespace-nowrap rounded bg-zinc-900 px-2 py-1 text-[10px] text-white opacity-0 transition-opacity group-hover:opacity-100 dark:bg-zinc-700">
-              GitHub
-            </div>
-          </div>
-          <div className="group relative">
-            <Link
-              href="https://www.linkedin.com/in/franlouco/"
-              className="flex h-6 w-6 items-center justify-center rounded-md border border-zinc-300 bg-zinc-100 transition-colors hover:bg-zinc-200 dark:border-zinc-700/50 dark:bg-zinc-800/50 dark:hover:bg-zinc-700/50"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="h-3 w-3" />
-            </Link>
-            <div className="pointer-events-none absolute bottom-full left-1/2 mb-1 -translate-x-1/2 whitespace-nowrap rounded bg-zinc-900 px-2 py-1 text-[10px] text-white opacity-0 transition-opacity group-hover:opacity-100 dark:bg-zinc-700">
-              LinkedIn
-            </div>
-          </div>
-          <div className="group relative">
-            <a
-              href="mailto:hello@franlou.co"
-              className="flex h-6 w-6 items-center justify-center rounded-md border border-zinc-300 bg-zinc-100 transition-colors hover:bg-zinc-200 dark:border-zinc-700/50 dark:bg-zinc-800/50 dark:hover:bg-zinc-700/50"
-              aria-label="Email"
-            >
-              <Mail className="h-3 w-3" />
-            </a>
-            <div className="pointer-events-none absolute bottom-full left-1/2 mb-1 -translate-x-1/2 whitespace-nowrap rounded bg-zinc-900 px-2 py-1 text-[10px] text-white opacity-0 transition-opacity group-hover:opacity-100 dark:bg-zinc-700">
-              Email
-            </div>
-          </div>
-          <div className="group relative">
-            <Link
-              href="https://t.me/franlouco"
-              className="flex h-6 w-6 items-center justify-center rounded-md border border-zinc-300 bg-zinc-100 transition-colors hover:bg-zinc-200 dark:border-zinc-700/50 dark:bg-zinc-800/50 dark:hover:bg-zinc-700/50"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Telegram"
-            >
-              <Send className="h-3 w-3" />
-            </Link>
-            <div className="pointer-events-none absolute bottom-full left-1/2 mb-1 -translate-x-1/2 whitespace-nowrap rounded bg-zinc-900 px-2 py-1 text-[10px] text-white opacity-0 transition-opacity group-hover:opacity-100 dark:bg-zinc-700">
-              Telegram
-            </div>
-          </div>
+          <Link
+            href="https://github.com/franlouc0"
+            className="text-[10px] text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </Link>
+          <span className="text-zinc-400 dark:text-zinc-700">|</span>
+          <Link
+            href="https://www.linkedin.com/in/franlouco/"
+            className="text-[10px] text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </Link>
+          <span className="text-zinc-400 dark:text-zinc-700">|</span>
+          <a
+            href="mailto:hello@franlou.co"
+            className="text-[10px] text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
+          >
+            Email
+          </a>
           <div className="ml-auto">
             <ThemeToggle />
           </div>
