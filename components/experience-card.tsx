@@ -24,13 +24,6 @@ export const ExperienceCard = React.memo(function ExperienceCard({
   return (
     <div className="flex items-start gap-2">
       <div className="relative h-6 w-6 shrink-0 overflow-hidden rounded bg-zinc-200/60 dark:bg-zinc-800/60 flex items-center justify-center">
-        {/* Status indicator */}
-        <div className={`absolute -right-0.5 -top-0.5 h-1.5 w-1.5 rounded-full ${
-          isActive 
-            ? 'bg-green-400 shadow-[0_0_4px_rgba(74,222,128,0.6)]' 
-            : 'bg-red-400 shadow-[0_0_4px_rgba(248,113,113,0.6)]'
-        }`} />
-        
         {logo ? (
           <Image
             src={logo}
@@ -45,6 +38,14 @@ export const ExperienceCard = React.memo(function ExperienceCard({
           <SuitcaseSimple size={14} weight="regular" className="text-zinc-500 dark:text-zinc-400" />
         )}
       </div>
+      
+      {/* Status indicator bullet - inline with text */}
+      <div className={`mt-1 h-1.5 w-1.5 shrink-0 rounded-full ${
+        isActive 
+          ? 'bg-green-400 shadow-[0_0_4px_rgba(74,222,128,0.6)]' 
+          : 'bg-red-400 shadow-[0_0_4px_rgba(248,113,113,0.6)]'
+      }`} />
+      
       <div className="flex-1 min-w-0">
         <h3 className="text-[10px] font-semibold leading-tight text-zinc-900 truncate dark:text-zinc-50">
           {role}
