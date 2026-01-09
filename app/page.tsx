@@ -145,7 +145,7 @@ export default function Home() {
       <div className="relative flex flex-1 flex-col overflow-hidden">
         <main className="flex-1 overflow-y-auto p-6 lg:p-8" role="main">
           {/* Projects Gallery - Masonry Grid */}
-          <div className="grid auto-rows-[200px] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid auto-rows-[200px] grid-cols-1 gap-4 pb-16 sm:grid-cols-2 lg:grid-cols-3 lg:pb-20">
               {projects.map((project) => (
                 <div
                   key={project.id}
