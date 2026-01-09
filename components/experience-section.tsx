@@ -47,26 +47,31 @@ const experiences: Experience[] = [
     role: "Digital Marketing & E-Business Manager",
     company: "Würth Portugal",
     years: "2016 - 2020",
+    logo: "/wuerth.jpg",
   },
   {
     role: "Digital Marketing Analyst",
     company: "AKI Portugal",
     years: "2015 - 2016",
+    logo: "/aki.jpeg",
   },
   {
     role: "Digital Marketing Manager",
-    company: "Digital Marketing Manager",
+    company: "Home Hunting",
     years: "2014 - 2015",
+    logo: "/hh.jpg",
   },
   {
     role: "SEM & Performance Assistant",
     company: "Havas Media Portugal",
     years: "2014 - 2014",
+    logo: "/havas.jpeg",
   },
   {
     role: "Content Manager",
     company: "ZON Optimus",
     years: "2012 - 2014",
+    logo: "/zon.jpeg",
   },
 ];
 
