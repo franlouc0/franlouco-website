@@ -178,12 +178,12 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 right-0 flex justify-center p-6">
           <button
             onClick={() => setIsContactOpen(true)}
-            className="flex h-8 items-center gap-2 rounded-md border border-green-400/30 bg-green-400/10 px-4 text-[11px] font-medium text-green-400 transition-all hover:border-green-400/50 hover:bg-green-400/20 dark:border-green-400/30 dark:bg-green-400/10 dark:hover:border-green-400/40 dark:hover:bg-green-400/15"
+            className="flex h-8 items-center gap-2 rounded-md border border-green-400 bg-green-400 px-4 text-[11px] font-semibold text-zinc-900 transition-all hover:border-green-500 hover:bg-green-500 dark:border-green-400 dark:bg-green-400 dark:text-zinc-900 dark:hover:border-green-500 dark:hover:bg-green-500"
             aria-label="Open contact form"
           >
             <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-green-400"></span>
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-zinc-900 opacity-75"></span>
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-zinc-900"></span>
             </span>
             Let&apos;s work together
           </button>

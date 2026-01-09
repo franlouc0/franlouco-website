@@ -62,7 +62,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 : "-translate-y-4 opacity-0"
             }`}
           >
-            <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-50">
+            <h2 className="text-base font-bold text-zinc-900 dark:text-zinc-50">
               Let&apos;s work together
             </h2>
             <button
@@ -87,7 +87,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
               <div>
                 <label
                   htmlFor="to"
-                  className="mb-1.5 block text-xs font-medium text-zinc-700 dark:text-zinc-300"
+                  className="mb-1.5 block text-[10px] font-medium text-zinc-700 dark:text-zinc-300"
                 >
                   To:
                 </label>
@@ -96,7 +96,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   id="to"
                   value="Francisco Lourenço - Product, Growth, AI, Software & Web3"
                   disabled
-                  className="w-full rounded-lg border border-zinc-200 bg-zinc-50 px-3 py-2 text-sm text-zinc-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400"
+                  className="w-full rounded-md border border-zinc-200 bg-zinc-50 px-2.5 py-1.5 text-[11px] text-zinc-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400"
                 />
               </div>
 
@@ -104,7 +104,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
               <div>
                 <label
                   htmlFor="email"
-                  className="mb-1.5 block text-xs font-medium text-zinc-700 dark:text-zinc-300"
+                  className="mb-1.5 block text-[10px] font-medium text-zinc-700 dark:text-zinc-300"
                 >
                   From:
                 </label>
@@ -113,7 +113,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   id="email"
                   placeholder="Enter Your Email Address"
                   required
-                  className="w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-400 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-50 dark:placeholder:text-zinc-500 dark:focus:border-zinc-600 dark:focus:ring-zinc-600"
+                  className="w-full rounded-md border border-zinc-300 bg-white px-2.5 py-1.5 text-[11px] text-zinc-900 placeholder:text-zinc-400 focus:border-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-400 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-50 dark:placeholder:text-zinc-500 dark:focus:border-zinc-600 dark:focus:ring-zinc-600"
                 />
               </div>
 
@@ -121,7 +121,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
               <div>
                 <label
                   htmlFor="message"
-                  className="mb-1.5 block text-xs font-medium text-zinc-700 dark:text-zinc-300"
+                  className="mb-1.5 block text-[10px] font-medium text-zinc-700 dark:text-zinc-300"
                 >
                   Message:
                 </label>
@@ -130,22 +130,22 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   rows={8}
                   placeholder="Tell me about your project..."
                   required
-                  className="w-full resize-none rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-400 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-50 dark:placeholder:text-zinc-500 dark:focus:border-zinc-600 dark:focus:ring-zinc-600"
+                  className="w-full resize-none rounded-md border border-zinc-300 bg-white px-2.5 py-1.5 text-[11px] text-zinc-900 placeholder:text-zinc-400 focus:border-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-400 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-50 dark:placeholder:text-zinc-500 dark:focus:border-zinc-600 dark:focus:ring-zinc-600"
                 />
               </div>
 
               {/* Submit Button */}
-              <div className="flex gap-3 pt-2">
+              <div className="flex gap-2 pt-2">
                 <button
                   type="submit"
-                  className="flex-1 rounded-lg bg-zinc-900 px-4 py-2.5 text-sm font-medium text-white transition-all hover:scale-105 hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200"
+                  className="flex h-7 flex-1 items-center justify-center rounded-md border border-zinc-300 bg-zinc-100 px-3 text-[10px] font-medium transition-colors hover:bg-zinc-200 dark:border-zinc-700/50 dark:bg-zinc-800/50 dark:hover:bg-zinc-700/50"
                 >
                   Send Email
                 </button>
                 <button
                   type="button"
                   onClick={onClose}
-                  className="rounded-lg border border-zinc-300 px-4 py-2.5 text-sm font-medium text-zinc-700 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                  className="flex h-7 items-center justify-center rounded-md border border-zinc-300 bg-zinc-100 px-3 text-[10px] font-medium transition-colors hover:bg-zinc-200 dark:border-zinc-700/50 dark:bg-zinc-800/50 dark:hover:bg-zinc-700/50"
                 >
                   Cancel
                 </button>
