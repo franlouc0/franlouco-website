@@ -105,6 +105,33 @@ export default function Home() {
             </div>
           </div>
 
+          {/* Featured Work */}
+          <div className="mt-6">
+            <h2 className="mb-3 text-xs font-semibold text-zinc-900 dark:text-zinc-50">
+              Featured Work
+            </h2>
+            <div className="space-y-2">
+              <Link
+                href="#"
+                className="block text-[10px] text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
+              >
+                How We Scaled Our IDO to $2M in 48 Hours →
+              </Link>
+              <Link
+                href="#"
+                className="block text-[10px] text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
+              >
+                Building in Public: Lessons from Web3 →
+              </Link>
+              <Link
+                href="#"
+                className="block text-[10px] text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
+              >
+                The Future of Decentralized Marketing →
+              </Link>
+            </div>
+          </div>
+
           {/* Experience & Achievements */}
           <ExperienceSection />
         </div>
