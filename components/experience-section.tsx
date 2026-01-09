@@ -10,6 +10,7 @@ interface Experience {
   years: string;
   logo?: string;
   emoji?: string;
+  isActive?: boolean;
 }
 
 const experiences: Experience[] = [
@@ -18,30 +19,35 @@ const experiences: Experience[] = [
     company: "IBC Group",
     years: "2025 - Present",
     logo: "/ibcgroup.png",
+    isActive: true,
   },
   {
     role: "CMO & Co-Founder",
     company: "Coompass",
     years: "2023 - Present",
     logo: "/coompass.jpg",
+    isActive: true,
   },
   {
     role: "Partner",
     company: "Broadpath",
     years: "2025 - Present",
     logo: "/broadpath.png",
+    isActive: true,
   },
   {
     role: "Founding Mentor",
     company: "Builders Camp",
     years: "2025 - Present",
     logo: "/builders.jpeg",
+    isActive: true,
   },
   {
     role: "Advisor",
     company: "Predik",
     years: "2025 - Present",
     logo: "/predik.jpg",
+    isActive: true,
   },
   {
     role: "Web3 Marketing Consultant",
@@ -164,6 +170,7 @@ export function ExperienceSection() {
             company={exp.company}
             years={exp.years}
             logo={exp.logo}
+            isActive={exp.isActive}
             {...(exp.emoji && { emoji: exp.emoji })}
           />
         ))}

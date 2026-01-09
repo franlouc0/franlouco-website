@@ -10,6 +10,7 @@ interface ExperienceCardProps {
   years: string;
   logo?: string;
   emoji?: string;
+  isActive?: boolean;
 }
 
 export const ExperienceCard = React.memo(function ExperienceCard({
@@ -18,10 +19,18 @@ export const ExperienceCard = React.memo(function ExperienceCard({
   years,
   logo,
   emoji,
+  isActive = false,
 }: ExperienceCardProps) {
   return (
     <div className="flex items-start gap-2">
       <div className="relative h-6 w-6 shrink-0 overflow-hidden rounded bg-zinc-200/60 dark:bg-zinc-800/60 flex items-center justify-center">
+        {/* Status indicator */}
+        <div className={`absolute -right-0.5 -top-0.5 h-1.5 w-1.5 rounded-full ${
+          isActive 
+            ? 'bg-green-400 shadow-[0_0_4px_rgba(74,222,128,0.6)]' 
+            : 'bg-red-400 shadow-[0_0_4px_rgba(248,113,113,0.6)]'
+        }`} />
+        
         {logo ? (
           <Image
             src={logo}
