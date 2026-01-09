@@ -144,9 +144,8 @@ export default function Home() {
       {/* Main Content Area */}
       <div className="relative flex flex-1 flex-col overflow-hidden">
         <main className="flex-1 overflow-y-auto p-6 lg:p-8" role="main">
-          <div className="mx-auto max-w-6xl">
-            {/* Projects Gallery - Masonry Grid */}
-            <div className="grid auto-rows-[200px] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {/* Projects Gallery - Masonry Grid */}
+          <div className="grid auto-rows-[200px] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {projects.map((project) => (
                 <div
                   key={project.id}
@@ -170,25 +169,22 @@ export default function Home() {
                   </div>
                 </div>
               ))}
-            </div>
           </div>
         </main>
 
-        {/* Fixed CTA Button - with backdrop for spacing */}
-        <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-zinc-50 via-zinc-50 to-transparent dark:from-zinc-950 dark:via-zinc-950">
-          <div className="pointer-events-auto flex h-full items-center justify-center">
-            <button
-              onClick={() => setIsContactOpen(true)}
-              className="flex h-8 items-center gap-2 rounded-md border border-green-400 bg-green-400 px-4 text-[11px] font-semibold text-zinc-900 transition-all hover:border-green-500 hover:bg-green-500 dark:border-green-400 dark:bg-green-400 dark:text-zinc-900 dark:hover:border-green-500 dark:hover:bg-green-500"
-              aria-label="Open contact form"
-            >
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-zinc-900 opacity-75"></span>
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-zinc-900"></span>
-              </span>
-              Let&apos;s work together
-            </button>
-          </div>
+        {/* Fixed CTA Button */}
+        <div className="absolute bottom-6 left-0 right-0 flex justify-center lg:bottom-8">
+          <button
+            onClick={() => setIsContactOpen(true)}
+            className="flex h-8 items-center gap-2 rounded-md border border-green-400 bg-green-400 px-4 text-[11px] font-semibold text-zinc-900 transition-all hover:border-green-500 hover:bg-green-500 dark:border-green-400 dark:bg-green-400 dark:text-zinc-900 dark:hover:border-green-500 dark:hover:bg-green-500"
+            aria-label="Open contact form"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-zinc-900 opacity-75"></span>
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-zinc-900"></span>
+            </span>
+            Let&apos;s work together
+          </button>
         </div>
       </div>
 
