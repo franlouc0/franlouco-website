@@ -26,6 +26,24 @@ const experiences: Experience[] = [
     logo: "/coompass.jpg",
   },
   {
+    role: "Partner",
+    company: "Broadpath",
+    years: "2025 - Present",
+    logo: "/broadpath.png",
+  },
+  {
+    role: "Founding Mentor",
+    company: "Builders Camp",
+    years: "2025 - Present",
+    logo: "/builders.jpeg",
+  },
+  {
+    role: "Advisor",
+    company: "Predik",
+    years: "2025 - Present",
+    logo: "/predik.jpg",
+  },
+  {
     role: "CMO & Co-Founder",
     company: "Polkamarkets",
     years: "2021 - 2023",
