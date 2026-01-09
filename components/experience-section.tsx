@@ -44,6 +44,12 @@ const experiences: Experience[] = [
     logo: "/predik.jpg",
   },
   {
+    role: "Web3 Marketing Consultant",
+    company: "Lympid",
+    years: "2024 - 2024",
+    logo: "/lympid.png",
+  },
+  {
     role: "CMO & Co-Founder",
     company: "Polkamarkets",
     years: "2021 - 2023",
