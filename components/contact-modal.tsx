@@ -16,15 +16,15 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
     if (isOpen) {
       setShouldRender(true);
       document.body.style.overflow = "hidden";
-      // Trigger animation after render
-      setTimeout(() => setIsAnimating(true), 10);
+      // Trigger animation after render - increased delay for smoother entrance
+      setTimeout(() => setIsAnimating(true), 50);
     } else {
       setIsAnimating(false);
       // Wait for animation to complete before unmounting
       const timer = setTimeout(() => {
         setShouldRender(false);
         document.body.style.overflow = "unset";
-      }, 400); // Match this to transition duration
+      }, 700); // Match this to transition duration
       return () => clearTimeout(timer);
     }
   }, [isOpen]);
@@ -41,7 +41,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
     <>
       {/* Backdrop */}
       <div
-        className={`fixed inset-0 z-40 bg-black/50 backdrop-blur-sm transition-opacity duration-500 ease-out ${
+        className={`fixed inset-0 z-40 bg-black/50 backdrop-blur-sm transition-opacity duration-700 ease-out ${
           isAnimating ? "opacity-100" : "opacity-0"
         }`}
         onClick={onClose}
@@ -49,14 +49,14 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
       {/* Modal */}
       <div
-        className={`fixed inset-y-0 right-0 z-50 w-full max-w-md bg-white shadow-2xl transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] dark:bg-zinc-900 sm:max-w-lg ${
+        className={`fixed inset-y-0 right-0 z-50 w-full max-w-md bg-white shadow-2xl transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] dark:bg-zinc-900 sm:max-w-lg ${
           isAnimating ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <div className="flex h-full flex-col">
           {/* Header */}
           <div
-            className={`flex items-center justify-between border-b border-zinc-200 p-6 transition-all delay-150 duration-500 dark:border-zinc-800 ${
+            className={`flex items-center justify-between border-b border-zinc-200 p-6 transition-all delay-200 duration-700 dark:border-zinc-800 ${
               isAnimating
                 ? "translate-y-0 opacity-100"
                 : "-translate-y-4 opacity-0"
@@ -76,7 +76,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
           {/* Form */}
           <div
-            className={`flex-1 overflow-y-auto p-6 transition-all delay-200 duration-500 ${
+            className={`flex-1 overflow-y-auto p-6 transition-all delay-300 duration-700 ${
               isAnimating
                 ? "translate-y-0 opacity-100"
                 : "translate-y-4 opacity-0"
