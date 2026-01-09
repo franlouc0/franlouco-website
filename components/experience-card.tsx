@@ -39,14 +39,15 @@ export const ExperienceCard = React.memo(function ExperienceCard({
         )}
       </div>
       
-      {/* Status indicator bullet - inline with text */}
-      <div className={`mt-1 h-1.5 w-1.5 shrink-0 rounded-full ${
-        isActive 
-          ? 'bg-green-400 shadow-[0_0_4px_rgba(74,222,128,0.6)]' 
-          : 'bg-red-400 shadow-[0_0_4px_rgba(248,113,113,0.6)]'
-      }`} />
-      
-      <div className="flex-1 min-w-0">
+      <div className="flex flex-1 min-w-0 items-center gap-2">
+        {/* Status indicator bullet - vertically centered */}
+        <div className={`h-1.5 w-1.5 shrink-0 rounded-full ${
+          isActive 
+            ? 'bg-green-400 shadow-[0_0_4px_rgba(74,222,128,0.6)]' 
+            : 'bg-red-400 shadow-[0_0_4px_rgba(248,113,113,0.6)]'
+        }`} />
+        
+        <div className="flex-1 min-w-0">
         <h3 className="text-[10px] font-semibold leading-tight text-zinc-900 truncate dark:text-zinc-50">
           {role}
         </h3>
@@ -59,6 +60,7 @@ export const ExperienceCard = React.memo(function ExperienceCard({
             {years}
           </p>
         </div>
+      </div>
       </div>
     </div>
   );
