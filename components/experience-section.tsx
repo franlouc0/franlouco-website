@@ -100,9 +100,14 @@ export function ExperienceSection() {
   return (
     <div className="mt-6">
       <div className="mb-3 flex items-center justify-between">
-        <h2 className="text-xs font-semibold text-zinc-900 dark:text-zinc-50">
-          Experience & Achievements
-        </h2>
+        <div className="flex items-center gap-2">
+          <h2 className="text-xs font-semibold text-zinc-900 dark:text-zinc-50">
+            Experience & Achievements
+          </h2>
+          <span className="inline-flex h-4 items-center rounded-md border border-zinc-300 bg-zinc-100 px-1.5 text-[9px] text-zinc-600 dark:border-zinc-700/50 dark:bg-zinc-800/50 dark:text-zinc-400">
+            {experiences.length}
+          </span>
+        </div>
         <div className="flex items-center gap-1">
           <button
             onClick={handleUp}
