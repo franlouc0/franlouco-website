@@ -4,7 +4,15 @@ import * as React from "react";
 import { ChevronUp, ChevronDown } from "lucide-react";
 import { ExperienceCard } from "./experience-card";
 
-const experiences = [
+interface Experience {
+  role: string;
+  company: string;
+  years: string;
+  logo?: string;
+  emoji?: string;
+}
+
+const experiences: Experience[] = [
   {
     role: "Web3 Marketing Growth Manager",
     company: "IBC Group",
@@ -36,10 +44,29 @@ const experiences = [
     logo: "/bepronetwork.jpg",
   },
   {
-    role: "Digital Marketing, SEM & Performance",
-    company: "Würth, AKI, Havas Media ...",
-    years: "2012 - 2020",
-    emoji: "➕",
+    role: "Digital Marketing & E-Business Manager",
+    company: "Würth Portugal",
+    years: "2016 - 2020",
+  },
+  {
+    role: "Digital Marketing Analyst",
+    company: "AKI Portugal",
+    years: "2015 - 2016",
+  },
+  {
+    role: "Digital Marketing Manager",
+    company: "Digital Marketing Manager",
+    years: "2014 - 2015",
+  },
+  {
+    role: "SEM & Performance Assistant",
+    company: "Havas Media Portugal",
+    years: "2014 - 2014",
+  },
+  {
+    role: "Content Manager",
+    company: "ZON Optimus",
+    years: "2012 - 2014",
   },
 ];
 
@@ -103,7 +130,7 @@ export function ExperienceSection() {
             company={exp.company}
             years={exp.years}
             logo={exp.logo}
-            emoji={exp.emoji}
+            {...(exp.emoji && { emoji: exp.emoji })}
           />
         ))}
       </div>

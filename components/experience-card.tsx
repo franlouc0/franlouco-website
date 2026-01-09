@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Image from "next/image";
+import { SuitcaseSimple } from "@phosphor-icons/react";
 
 interface ExperienceCardProps {
   role: string;
@@ -16,7 +17,7 @@ export const ExperienceCard = React.memo(function ExperienceCard({
   company,
   years,
   logo,
-  emoji = "💼",
+  emoji,
 }: ExperienceCardProps) {
   return (
     <div className="flex items-start gap-2">
@@ -29,8 +30,10 @@ export const ExperienceCard = React.memo(function ExperienceCard({
             height={24}
             className="object-cover"
           />
-        ) : (
+        ) : emoji ? (
           <span className="text-xs">{emoji}</span>
+        ) : (
+          <SuitcaseSimple size={14} weight="regular" className="text-zinc-500 dark:text-zinc-400" />
         )}
       </div>
       <div className="flex-1 min-w-0">
