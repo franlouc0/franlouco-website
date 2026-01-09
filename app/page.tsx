@@ -145,7 +145,7 @@ export default function Home() {
       <div className="relative flex flex-1 flex-col overflow-hidden">
         <main className="flex-1 overflow-y-auto p-6 lg:p-8" role="main">
           {/* Projects Gallery - Masonry Grid */}
-          <div className="grid auto-rows-[200px] grid-cols-1 gap-4 pb-16 sm:grid-cols-2 lg:grid-cols-3 lg:pb-20">
+          <div className="grid auto-rows-[200px] grid-cols-1 gap-4 pb-12 sm:grid-cols-2 lg:grid-cols-3">
               {projects.map((project) => (
                 <div
                   key={project.id}
@@ -172,11 +172,11 @@ export default function Home() {
           </div>
         </main>
 
-        {/* Fixed CTA Button */}
-        <div className="absolute bottom-6 left-0 right-0 flex justify-center lg:bottom-8">
+        {/* Fixed CTA Button - positioned inside main padding area */}
+        <div className="pointer-events-none absolute inset-x-6 bottom-6 flex justify-center lg:inset-x-8 lg:bottom-8">
           <button
             onClick={() => setIsContactOpen(true)}
-            className="flex h-8 items-center gap-2 rounded-md border border-green-400 bg-green-400 px-4 text-[11px] font-semibold text-zinc-900 transition-all hover:border-green-500 hover:bg-green-500 dark:border-green-400 dark:bg-green-400 dark:text-zinc-900 dark:hover:border-green-500 dark:hover:bg-green-500"
+            className="pointer-events-auto flex h-8 items-center gap-2 rounded-md border border-green-400 bg-green-400 px-4 text-[11px] font-semibold text-zinc-900 transition-all hover:border-green-500 hover:bg-green-500 dark:border-green-400 dark:bg-green-400 dark:text-zinc-900 dark:hover:border-green-500 dark:hover:bg-green-500"
             aria-label="Open contact form"
           >
             <span className="relative flex h-2 w-2">
