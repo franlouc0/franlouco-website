@@ -1,10 +1,29 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Info } from "lucide-react";
-import { Circle } from "@phosphor-icons/react/dist/ssr";
+import { Circle } from "@phosphor-icons/react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { ExperienceSection } from "@/components/experience-section";
+import { ContactModal } from "@/components/contact-modal";
+
+// Sample projects data - replace with your actual projects
+const projects = [
+  { id: 1, title: "Polkamarkets", description: "Decentralized prediction market", image: "/polkamarkets.jpg", span: "row-span-2" },
+  { id: 2, title: "Coompass", description: "Web3 platform", image: "/coompass.jpg", span: "row-span-1" },
+  { id: 3, title: "IBC Group", description: "Web3 marketing", image: "/ibcgroup.png", span: "row-span-1" },
+  { id: 4, title: "BEPRO Network", description: "DeFi protocol", image: "/bepronetwork.jpg", span: "row-span-2" },
+  { id: 5, title: "Polkastarter", description: "IDO platform", image: "/polkastarter.jpg", span: "row-span-1" },
+  { id: 6, title: "Broadpath", description: "Partnership venture", image: "/broadpath.png", span: "row-span-1" },
+  { id: 7, title: "Builders Camp", description: "Mentorship program", image: "/builders.jpeg", span: "row-span-2" },
+  { id: 8, title: "Predik", description: "Advisory project", image: "/predik.jpg", span: "row-span-1" },
+  { id: 9, title: "Lympid", description: "Web3 consulting", image: "/lympid.png", span: "row-span-1" },
+];
 
 export default function Home() {
+  const [isContactOpen, setIsContactOpen] = useState(false);
   return (
     <main className="flex h-screen overflow-hidden bg-zinc-50 dark:bg-zinc-950 text-zinc-950 dark:text-zinc-50">
       {/* Sidebar */}
@@ -69,18 +88,54 @@ export default function Home() {
       </aside>
 
       {/* Main Content Area */}
-      <div className="flex flex-1 flex-col overflow-hidden">
+      <div className="relative flex flex-1 flex-col overflow-hidden">
         <main className="flex-1 overflow-y-auto p-6 lg:p-8" role="main">
-          <div className="mx-auto max-w-6xl">
-            {/* Projects will go here */}
-            <div className="flex min-h-[400px] items-center justify-center rounded-lg border-2 border-dashed border-zinc-300 dark:border-zinc-700">
-              <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                Projects gallery coming soon
-              </p>
+          <div className="mx-auto max-w-6xl pb-24">
+            {/* Projects Gallery - Masonry Grid */}
+            <div className="grid auto-rows-[200px] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {projects.map((project) => (
+                <div
+                  key={project.id}
+                  className={`group relative overflow-hidden rounded-lg bg-zinc-200 dark:bg-zinc-800 ${project.span}`}
+                >
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <div className="absolute bottom-0 left-0 right-0 p-4">
+                      <h3 className="text-sm font-semibold text-white">
+                        {project.title}
+                      </h3>
+                      <p className="mt-1 text-xs text-white/80">
+                        {project.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </main>
+
+        {/* Fixed CTA Button */}
+        <div className="absolute bottom-0 left-0 right-0 flex justify-center p-6">
+          <button
+            onClick={() => setIsContactOpen(true)}
+            className="rounded-full bg-zinc-900 px-8 py-3 text-sm font-medium text-white shadow-lg transition-all hover:scale-105 hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200"
+          >
+            Let&apos;s work together
+          </button>
+        </div>
       </div>
+
+      {/* Contact Modal */}
+      <ContactModal
+        isOpen={isContactOpen}
+        onClose={() => setIsContactOpen(false)}
+      />
     </main>
   );
 }
