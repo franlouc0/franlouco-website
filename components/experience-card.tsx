@@ -48,10 +48,10 @@ export const ExperienceCard = React.memo(function ExperienceCard({
         }`} />
         
         <div className="flex-1 min-w-0">
-        <h3 className="text-[10px] font-semibold leading-tight text-zinc-900 truncate dark:text-zinc-50">
+        <h3 className="text-[11px] font-semibold leading-tight text-zinc-900 truncate dark:text-zinc-50">
           {role}
         </h3>
-        <div className="mt-0.5 flex items-center gap-1.5 text-[9px] leading-tight">
+        <div className="mt-0.5 flex items-center gap-1.5 text-[10px] leading-tight">
           <p className="text-zinc-600 truncate dark:text-zinc-400">
             {company}
           </p>
