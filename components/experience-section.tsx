@@ -137,7 +137,7 @@ export function ExperienceSection() {
       <div className="mb-3 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <h2 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
-            Experience & Achievements
+            Experience
           </h2>
           <span className="inline-flex h-4 items-center rounded-md border border-zinc-300 bg-zinc-100 px-1.5 text-[10px] text-zinc-600 dark:border-zinc-700/50 dark:bg-zinc-800/50 dark:text-zinc-400">
             {experiences.length}
@@ -147,7 +147,7 @@ export function ExperienceSection() {
           <button
             onClick={handleUp}
             disabled={!canGoUp}
-            className="flex h-5 w-5 items-center justify-center rounded text-zinc-400 transition-colors hover:text-zinc-600 disabled:opacity-30 disabled:hover:text-zinc-400 dark:hover:text-zinc-300 dark:disabled:hover:text-zinc-400"
+            className="flex h-6 items-center justify-center rounded-md border border-zinc-300 bg-zinc-100 px-1.5 transition-colors hover:bg-zinc-200 disabled:opacity-40 disabled:cursor-not-allowed dark:border-zinc-700/50 dark:bg-zinc-800/50 dark:hover:bg-zinc-700/50"
             aria-label="Previous experience"
           >
             <ChevronUp className="h-3 w-3" />
@@ -155,7 +155,7 @@ export function ExperienceSection() {
           <button
             onClick={handleDown}
             disabled={!canGoDown}
-            className="flex h-5 w-5 items-center justify-center rounded text-zinc-400 transition-colors hover:text-zinc-600 disabled:opacity-30 disabled:hover:text-zinc-400 dark:hover:text-zinc-300 dark:disabled:hover:text-zinc-400"
+            className="flex h-6 items-center justify-center rounded-md border border-zinc-300 bg-zinc-100 px-1.5 transition-colors hover:bg-zinc-200 disabled:opacity-40 disabled:cursor-not-allowed dark:border-zinc-700/50 dark:bg-zinc-800/50 dark:hover:bg-zinc-700/50"
             aria-label="Next experience"
           >
             <ChevronDown className="h-3 w-3" />
