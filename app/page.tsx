@@ -11,15 +11,69 @@ import { ContactModal } from "@/components/contact-modal";
 
 // Sample projects data - replace with your actual projects
 const projects = [
-  { id: 1, title: "Polkamarkets", description: "Decentralized prediction market", image: "/polkamarkets.jpg", span: "row-span-2" },
-  { id: 2, title: "Coompass", description: "Web3 platform", image: "/coompass.jpg", span: "row-span-1" },
-  { id: 3, title: "IBC Group", description: "Web3 marketing", image: "/ibcgroup.png", span: "row-span-1" },
-  { id: 4, title: "BEPRO Network", description: "DeFi protocol", image: "/bepronetwork.jpg", span: "row-span-2" },
-  { id: 5, title: "Polkastarter", description: "IDO platform", image: "/polkastarter.jpg", span: "row-span-1" },
-  { id: 6, title: "Broadpath", description: "Partnership venture", image: "/broadpath.png", span: "row-span-1" },
-  { id: 7, title: "Builders Camp", description: "Mentorship program", image: "/builders.jpeg", span: "row-span-2" },
-  { id: 8, title: "Predik", description: "Advisory project", image: "/predik.jpg", span: "row-span-1" },
-  { id: 9, title: "Lympid", description: "Web3 consulting", image: "/lympid.png", span: "row-span-1" },
+  { 
+    id: 1, 
+    title: "AI Platform", 
+    description: "Machine learning solutions", 
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80", 
+    span: "row-span-2" 
+  },
+  { 
+    id: 2, 
+    title: "Mobile App", 
+    description: "iOS & Android experience", 
+    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80", 
+    span: "row-span-1" 
+  },
+  { 
+    id: 3, 
+    title: "Web3 Platform", 
+    description: "Blockchain integration", 
+    image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=800&q=80", 
+    span: "row-span-1" 
+  },
+  { 
+    id: 4, 
+    title: "SaaS Dashboard", 
+    description: "Analytics & insights", 
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80", 
+    span: "row-span-2" 
+  },
+  { 
+    id: 5, 
+    title: "E-commerce", 
+    description: "Digital marketplace", 
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80", 
+    span: "row-span-1" 
+  },
+  { 
+    id: 6, 
+    title: "Design System", 
+    description: "Component library", 
+    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=800&q=80", 
+    span: "row-span-1" 
+  },
+  { 
+    id: 7, 
+    title: "Space Tech", 
+    description: "Aerospace innovation", 
+    image: "https://images.unsplash.com/photo-1446776877081-d282a0f896e2?auto=format&fit=crop&w=800&q=80", 
+    span: "row-span-2" 
+  },
+  { 
+    id: 8, 
+    title: "Fintech App", 
+    description: "Financial services", 
+    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80", 
+    span: "row-span-1" 
+  },
+  { 
+    id: 9, 
+    title: "IoT Platform", 
+    description: "Connected devices", 
+    image: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&w=800&q=80", 
+    span: "row-span-1" 
+  },
 ];
 
 export default function Home() {
