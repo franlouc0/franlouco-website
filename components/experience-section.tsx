@@ -147,18 +147,18 @@ export function ExperienceSection() {
           <button
             onClick={handleUp}
             disabled={!canGoUp}
-            className="flex h-6 items-center justify-center rounded-md border border-zinc-300 bg-zinc-100 px-1.5 transition-colors hover:bg-zinc-200 disabled:opacity-40 disabled:cursor-not-allowed dark:border-zinc-700/50 dark:bg-zinc-800/50 dark:hover:bg-zinc-700/50"
+            className="flex h-4 items-center justify-center rounded-md border border-zinc-300 bg-zinc-100 px-1 transition-colors hover:bg-zinc-200 disabled:opacity-40 disabled:cursor-not-allowed dark:border-zinc-700/50 dark:bg-zinc-800/50 dark:hover:bg-zinc-700/50"
             aria-label="Previous experience"
           >
-            <ChevronUp className="h-3 w-3" />
+            <ChevronUp className="h-2.5 w-2.5" />
           </button>
           <button
             onClick={handleDown}
             disabled={!canGoDown}
-            className="flex h-6 items-center justify-center rounded-md border border-zinc-300 bg-zinc-100 px-1.5 transition-colors hover:bg-zinc-200 disabled:opacity-40 disabled:cursor-not-allowed dark:border-zinc-700/50 dark:bg-zinc-800/50 dark:hover:bg-zinc-700/50"
+            className="flex h-4 items-center justify-center rounded-md border border-zinc-300 bg-zinc-100 px-1 transition-colors hover:bg-zinc-200 disabled:opacity-40 disabled:cursor-not-allowed dark:border-zinc-700/50 dark:bg-zinc-800/50 dark:hover:bg-zinc-700/50"
             aria-label="Next experience"
           >
-            <ChevronDown className="h-3 w-3" />
+            <ChevronDown className="h-2.5 w-2.5" />
           </button>
         </div>
       </div>
