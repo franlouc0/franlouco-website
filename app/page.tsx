@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Info } from "lucide-react";
+import { Circle } from "@phosphor-icons/react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { ExperienceSection } from "@/components/experience-section";
 import { FeaturedWorkSection } from "@/components/featured-work-section";
@@ -89,17 +90,42 @@ export default function Home() {
         <header className="mb-8">
           <h1 className="text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-3xl">
             <div>FRANCISCO</div>
-            <div className="flex items-center gap-0 pl-12 sm:pl-16">
+            <div className="flex items-center gap-0 pl-12 sm:pl-16 relative">
               <span>LOURENÇ</span>
-              <div
-                className="h-[1em] w-[1em] animate-blob animate-hue rounded-full"
-                style={{
-                  backgroundColor: 'rgb(74, 222, 128)', // green-400
-                  boxShadow: 'rgba(74, 222, 128, 0.333) 0px 0px 40px inset',
-                  transform: 'scale(1)',
-                }}
-                aria-hidden="true"
-              />
+              <div className="relative z-10 inline-flex items-center justify-center h-[1em] w-[1em] ml-0 pointer-events-none">
+                {/* Blur effect background - creates glow with pulse */}
+                <span
+                  className="absolute inset-0 pointer-events-none rounded-full bg-green-400"
+                  style={{
+                    filter: "blur(10px)",
+                    transform: "scale(1.8)",
+                    opacity: 0.32,
+                    animation: "pulse-glow 4s ease-in-out infinite",
+                    willChange: "transform, opacity",
+                  }}
+                  aria-hidden="true"
+                />
+                {/* Animated border - fluid morphing shape */}
+                <span
+                  className="absolute inset-0 pointer-events-none border border-green-400/33"
+                  style={{
+                    animation: "border-morph 30s ease-in-out infinite",
+                    willChange: "border-radius, transform, opacity",
+                  }}
+                  aria-hidden="true"
+                />
+                {/* Main animated circle with pulse and glow */}
+                <Circle
+                  weight="fill"
+                  className="relative z-10 h-[1em] w-[1em] text-green-400"
+                  style={{
+                    filter: "drop-shadow(0 0 8px rgba(74, 222, 128, 0.6))",
+                    animation: "circle-pulse 3s ease-in-out infinite",
+                    willChange: "transform, filter",
+                  }}
+                  aria-hidden="true"
+                />
+              </div>
             </div>
           </h1>
 

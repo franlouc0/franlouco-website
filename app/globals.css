@@ -68,29 +68,64 @@
 }
 
 @layer utilities {
+  /* Animated circle morphing effect - smooth fluid motion */
   @keyframes morph {
     0%, 100% {
       border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
     }
-    50% {
+    25% {
       border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
     }
-  }
-
-  @keyframes hue-rotate {
-    0% {
-      filter: hue-rotate(0deg);
+    50% {
+      border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
     }
-    100% {
-      filter: hue-rotate(360deg);
+    75% {
+      border-radius: 70% 30% 50% 50% / 30% 50% 70% 50%;
     }
   }
 
-  .animate-blob {
-    animation: morph 16s ease-in-out infinite;
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 0.32;
+      transform: scale(0.65);
+    }
+    50% {
+      opacity: 0.45;
+      transform: scale(0.7);
+    }
   }
 
-  .animate-hue {
-    animation: hue-rotate 20s linear infinite;
+  @keyframes border-morph {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1.08);
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+    25% {
+      opacity: 0.4;
+      transform: scale(1.1);
+      border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    }
+    50% {
+      opacity: 0.35;
+      transform: scale(1.08);
+      border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+    }
+    75% {
+      opacity: 0.4;
+      transform: scale(1.1);
+      border-radius: 70% 30% 50% 50% / 30% 50% 70% 50%;
+    }
+  }
+
+  @keyframes circle-pulse {
+    0%, 100% {
+      transform: scale(1);
+      filter: drop-shadow(0 0 6px rgba(74, 222, 128, 0.5));
+    }
+    50% {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 10px rgba(74, 222, 128, 0.8));
+    }
   }
 }
