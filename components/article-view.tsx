@@ -85,6 +85,10 @@ export function ArticleView({ article, onBack }: ArticleViewProps) {
 
   // Enhanced markdown-like content parser with visual enhancements
   const formatContent = (content: string) => {
+    if (!content || typeof content !== 'string') {
+      return [];
+    }
+    
     const lines = content.split('\n');
     const elements: React.ReactNode[] = [];
     let listItems: React.ReactNode[] = [];
@@ -112,6 +116,10 @@ export function ArticleView({ article, onBack }: ArticleViewProps) {
 
     // Helper to process inline formatting
     const processInlineFormatting = (text: string): React.ReactNode[] => {
+      if (!text || text.trim() === '') {
+        return [];
+      }
+      
       const parts: React.ReactNode[] = [];
       // Handle bold first
       const boldRegex = /\*\*([^*]+)\*\*/g;
@@ -120,14 +128,20 @@ export function ArticleView({ article, onBack }: ArticleViewProps) {
 
       while ((match = boldRegex.exec(text)) !== null) {
         if (match.index > lastIndex) {
-          parts.push(text.substring(lastIndex, match.index));
+          const beforeText = text.substring(lastIndex, match.index);
+          if (beforeText) {
+            parts.push(beforeText);
+          }
         }
         parts.push(<strong key={`bold-${match.index}`} className="font-semibold text-zinc-900 dark:text-zinc-50">{match[1]}</strong>);
         lastIndex = match.index + match[0].length;
       }
 
       if (lastIndex < text.length) {
-        parts.push(text.substring(lastIndex));
+        const remainingText = text.substring(lastIndex);
+        if (remainingText) {
+          parts.push(remainingText);
+        }
       }
 
       return parts.length > 0 ? parts : [text];
@@ -341,10 +355,11 @@ export function ArticleView({ article, onBack }: ArticleViewProps) {
         listItems = [];
       }
 
-      // Close IDO Results metrics section if we encounter a paragraph (not a metric)
+      // Close IDO Results metrics section if we encounter a paragraph (not a metric) AFTER we have metrics
       if (isInIDOResults && metricsItems.length > 0) {
-        // Check if this line is NOT a metric (is a regular paragraph)
-        const isNotAMetric = !trimmedLine.startsWith('- ') && 
+        // Check if this line is NOT a metric and NOT empty (is a regular paragraph)
+        const isNotAMetric = trimmedLine !== '' && 
+                            !trimmedLine.startsWith('- ') && 
                             !trimmedLine.startsWith('* ') && 
                             !trimmedLine.startsWith('~') &&
                             !trimmedLine.match(/^\s+/);
@@ -536,7 +551,14 @@ export function ArticleView({ article, onBack }: ArticleViewProps) {
       {/* Article Content */}
       <div className="prose prose-zinc dark:prose-invert max-w-none flex-1 overflow-y-auto pb-8">
         <div className="text-[15px] leading-relaxed">
-          {formatContent(article.content)}
+          {(() => {
+            try {
+              return formatContent(article.content);
+            } catch (error) {
+              console.error('Error formatting article content:', error);
+              return <p className="text-red-500">Error loading article content. Please refresh the page.</p>;
+            }
+          })()}
         </div>
       </div>
     </article>
