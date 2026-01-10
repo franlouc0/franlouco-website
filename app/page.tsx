@@ -282,8 +282,8 @@ export default function Home() {
       </aside>
 
       {/* Mobile Scroll Indicator - between experience and grid */}
-      <div className="flex justify-center py-6 lg:hidden">
-        <div className="flex flex-col items-center gap-2">
+      <div className="flex justify-center items-center py-6 lg:hidden">
+        <div className="flex items-center gap-2">
           <ChevronDown 
             className="h-6 w-6 text-green-400 animate-bounce" 
             aria-hidden="true"
