@@ -83,7 +83,7 @@ export default function Home() {
     <main className="flex flex-col h-auto min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-950 dark:text-zinc-50 lg:flex-row lg:h-screen lg:overflow-hidden">
       {/* Sidebar */}
       <aside
-        className="flex w-full flex-col p-6 dark:border-zinc-800 lg:w-80 lg:border-r lg:p-8"
+        className="flex w-full flex-col p-6 pb-0 dark:border-zinc-800 lg:w-80 lg:border-r lg:p-8 lg:pb-8"
         aria-label="Profile and experience"
       >
         {/* Profile section */}
