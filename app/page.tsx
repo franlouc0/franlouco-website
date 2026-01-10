@@ -123,7 +123,7 @@ export default function Home() {
               <span className="underline decoration-green-400 decoration-2">
                 tech
               </span>
-              . Building and shipping ideas{" "}
+              . Building & shipping <sup>i</sup>deas{" "}
               <span className="group relative inline-block">
                 <Info
                   className="inline h-3 w-3 cursor-help text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300"
