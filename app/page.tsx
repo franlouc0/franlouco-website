@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Info } from "lucide-react";
+import { Circle } from "@phosphor-icons/react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { ExperienceSection } from "@/components/experience-section";
 import { FeaturedWorkSection } from "@/components/featured-work-section";
@@ -99,6 +100,12 @@ export default function Home() {
                     animation: "border-morph 30s ease-in-out infinite",
                     willChange: "border-radius, transform",
                   }}
+                  aria-hidden="true"
+                />
+                {/* Static circle - neon green */}
+                <Circle
+                  weight="fill"
+                  className="relative z-10 h-[1em] w-[1em] text-green-400"
                   aria-hidden="true"
                 />
               </div>
