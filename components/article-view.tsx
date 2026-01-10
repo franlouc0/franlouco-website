@@ -12,6 +12,25 @@ interface ArticleViewProps {
 
 export function ArticleView({ article, onBack }: ArticleViewProps) {
   const [copied, setCopied] = React.useState(false);
+  const [scrollProgress, setScrollProgress] = React.useState(0);
+  const contentRef = React.useRef<HTMLDivElement>(null);
+
+  // Reading progress tracking
+  React.useEffect(() => {
+    const handleScroll = () => {
+      const container = contentRef.current;
+      if (!container) return;
+      
+      const scrollTop = container.scrollTop;
+      const scrollHeight = container.scrollHeight - container.clientHeight;
+      const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+      setScrollProgress(Math.min(100, Math.max(0, progress)));
+    };
+
+    const container = contentRef.current;
+    container?.addEventListener('scroll', handleScroll);
+    return () => container?.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Share handler with Web Share API and clipboard fallback
   const handleShare = async () => {
@@ -83,69 +102,55 @@ export function ArticleView({ article, onBack }: ArticleViewProps) {
     return matches ? matches.length : 0;
   };
 
-  // Enhanced markdown-like content parser with visual enhancements
-  const formatContent = (content: string) => {
-    if (!content || typeof content !== 'string') {
-      return [];
+  // Helper function to highlight metrics and numbers (e.g., $715K, 100K+, 120x, $80M+)
+  const highlightMetrics = (text: string): React.ReactNode[] => {
+    if (!text) return [text];
+    
+    // Match metrics: $ amounts (with K/M suffix), large numbers with K/M/+, multipliers (x), percentages
+    const metricRegex = /(\$[\d,.]+[KMkm]?\s*\+?|[\d,]+[KMkm]\s*\+?|[\d,.]+x\b|[\d.]+%)/g;
+    const parts: React.ReactNode[] = [];
+    let lastIndex = 0;
+    let matchIndex = 0;
+    let match;
+    
+    while ((match = metricRegex.exec(text)) !== null) {
+      // Add text before the match
+      if (match.index > lastIndex) {
+        parts.push(text.substring(lastIndex, match.index));
+      }
+      // Add highlighted metric
+      parts.push(
+        <span 
+          key={`metric-${matchIndex++}`} 
+          className="font-bold text-green-400 dark:text-green-400"
+        >
+          {match[0]}
+        </span>
+      );
+      lastIndex = match.index + match[0].length;
     }
     
+    // Add remaining text
+    if (lastIndex < text.length) {
+      parts.push(text.substring(lastIndex));
+    }
+    
+    return parts.length > 0 ? parts : [text];
+  };
+
+  // Helper function to process text with metrics highlighting and formatting
+  const processTextWithMetrics = (text: string): React.ReactNode => {
+    const parts = highlightMetrics(text);
+    return <>{parts}</>;
+  };
+
+  // Simple markdown-like content parser (basic implementation)
+  // You might want to use a proper markdown library like 'react-markdown' in the future
+  const formatContent = (content: string) => {
     const lines = content.split('\n');
     const elements: React.ReactNode[] = [];
     let listItems: React.ReactNode[] = [];
     let listKey = 0;
-    let isFirstParagraph = true;
-    let isInQuickContext = false;
-    let isInIDOResults = false;
-    let contextItems: Array<{key: string, value: string}> = [];
-    let metricsItems: Array<{key: string, value?: string, subItems?: string[]}> = [];
-    let previousWasHeader = false;
-
-    // Helper to add section divider
-    const addSectionDivider = () => {
-      if (previousWasHeader) {
-        elements.push(
-          <div key={`divider-${listKey++}`} className="my-6 flex items-center gap-2">
-            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-green-400/30 to-transparent"></div>
-            <div className="h-1 w-1 rounded-full bg-green-400"></div>
-            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-green-400/30 to-transparent"></div>
-          </div>
-        );
-        previousWasHeader = false;
-      }
-    };
-
-    // Helper to process inline formatting
-    const processInlineFormatting = (text: string): React.ReactNode[] => {
-      if (!text || text.trim() === '') {
-        return [];
-      }
-      
-      const parts: React.ReactNode[] = [];
-      // Handle bold first
-      const boldRegex = /\*\*([^*]+)\*\*/g;
-      let lastIndex = 0;
-      let match;
-
-      while ((match = boldRegex.exec(text)) !== null) {
-        if (match.index > lastIndex) {
-          const beforeText = text.substring(lastIndex, match.index);
-          if (beforeText) {
-            parts.push(beforeText);
-          }
-        }
-        parts.push(<strong key={`bold-${match.index}`} className="font-semibold text-zinc-900 dark:text-zinc-50">{match[1]}</strong>);
-        lastIndex = match.index + match[0].length;
-      }
-
-      if (lastIndex < text.length) {
-        const remainingText = text.substring(lastIndex);
-        if (remainingText) {
-          parts.push(remainingText);
-        }
-      }
-
-      return parts.length > 0 ? parts : [text];
-    };
 
     lines.forEach((line, index) => {
       const trimmedLine = line.trim();
@@ -154,193 +159,96 @@ export function ArticleView({ article, onBack }: ArticleViewProps) {
       if (trimmedLine.startsWith('# ')) {
         if (listItems.length > 0) {
           elements.push(
-            <ul key={`list-${listKey++}`} className="space-y-3 my-6">
+            <ul key={`list-${listKey++}`} className="list-none mb-6 space-y-2.5 text-zinc-600 dark:text-zinc-400 my-4">
               {listItems}
             </ul>
           );
           listItems = [];
         }
-        elements.push(<h1 key={index} className="text-2xl font-bold text-zinc-900 dark:text-zinc-50 mt-8 mb-4 first:mt-0">{trimmedLine.substring(2)}</h1>);
+        const h1Text = trimmedLine.substring(2);
+        const processedH1Text = highlightMetrics(h1Text);
+        elements.push(<h1 key={index} className="text-2xl font-bold text-zinc-900 dark:text-zinc-50 mt-8 mb-4 first:mt-0">{processedH1Text}</h1>);
         return;
       }
-      
       if (trimmedLine.startsWith('## ')) {
-        // Close any open sections
-        if (isInQuickContext && contextItems.length > 0) {
-          elements.push(
-            <div key={`context-${listKey++}`} className="my-8 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 p-6">
-              <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50 mb-4 uppercase tracking-wider">Quick context</h3>
-              <div className="space-y-2 text-[14px]">
-                {contextItems.map((item, i) => (
-                  <div key={i} className="flex gap-2">
-                    <span className="font-medium text-zinc-900 dark:text-zinc-50">{item.key}:</span>
-                    <span className="text-zinc-600 dark:text-zinc-400">{item.value}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          );
-          contextItems = [];
-          isInQuickContext = false;
-        }
-
-        if (isInIDOResults && metricsItems.length > 0) {
-          elements.push(
-            <div key={`metrics-${listKey++}`} className="my-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-              {metricsItems.map((item, i) => (
-                <div key={i} className="rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 p-4">
-                  <div className="text-xl font-bold text-green-400">{item.key}</div>
-                  {item.value && (
-                    <div className="text-xs text-zinc-600 dark:text-zinc-400 mt-1">{item.value}</div>
-                  )}
-                  {item.subItems && item.subItems.length > 0 && (
-                    <div className="mt-2 space-y-1">
-                      {item.subItems.map((sub, j) => (
-                        <div key={j} className="text-[10px] text-zinc-500 dark:text-zinc-500">{sub}</div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          );
-          metricsItems = [];
-          isInIDOResults = false;
-        }
-
         if (listItems.length > 0) {
           elements.push(
-            <ul key={`list-${listKey++}`} className="space-y-3 my-6">
+            <ul key={`list-${listKey++}`} className="list-none mb-6 space-y-2.5 text-zinc-600 dark:text-zinc-400 my-4">
               {listItems}
             </ul>
           );
           listItems = [];
         }
-
-        addSectionDivider();
-
-        const sectionTitle = trimmedLine.substring(3);
-        
-        // Special handling for "Quick context" section
-        if (sectionTitle === "Quick context") {
-          isInQuickContext = true;
-          previousWasHeader = true;
-          return;
-        }
-
-        // Special handling for "The IDO results" section
-        if (sectionTitle === "The IDO results") {
-          isInIDOResults = true;
-        }
-
+        // H2 with green accent line
+        const headerText = trimmedLine.substring(3);
+        const processedHeaderText = highlightMetrics(headerText);
         elements.push(
-          <h2 key={index} className="text-xl font-semibold text-zinc-900 dark:text-zinc-50 mt-8 mb-4 flex items-center gap-3">
-            <span className="h-0.5 flex-1 bg-gradient-to-r from-green-400/50 to-transparent"></span>
-            <span>{sectionTitle}</span>
-            <span className="h-0.5 flex-1 bg-gradient-to-r from-transparent to-green-400/50"></span>
-          </h2>
+          <div key={`h2-wrapper-${index}`} className="relative mt-8 mb-4 group">
+            <div className="absolute left-0 top-0 bottom-0 w-1 bg-green-400 rounded-full opacity-80 group-hover:opacity-100 transition-opacity" />
+            <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50 pl-4">
+              {processedHeaderText}
+            </h2>
+          </div>
         );
-        previousWasHeader = true;
         return;
       }
-
       if (trimmedLine.startsWith('### ')) {
         if (listItems.length > 0) {
           elements.push(
-            <ul key={`list-${listKey++}`} className="space-y-3 my-6">
+            <ul key={`list-${listKey++}`} className="list-none mb-6 space-y-2.5 text-zinc-600 dark:text-zinc-400 my-4">
               {listItems}
             </ul>
           );
           listItems = [];
         }
-        addSectionDivider();
-        elements.push(<h3 key={index} className="text-lg font-semibold text-zinc-900 dark:text-zinc-50 mt-6 mb-3">{trimmedLine.substring(4)}</h3>);
-        previousWasHeader = true;
+        const h3Text = trimmedLine.substring(4);
+        const processedH3Text = highlightMetrics(h3Text);
+        elements.push(<h3 key={index} className="text-lg font-semibold text-zinc-900 dark:text-zinc-50 mt-4 mb-2">{processedH3Text}</h3>);
         return;
       }
 
-      // Handle Quick Context section items
-      if (isInQuickContext && trimmedLine.includes(':')) {
-        const [key, ...valueParts] = trimmedLine.split(':');
-        const value = valueParts.join(':').trim();
-        contextItems.push({ key: key.trim(), value });
-        return;
-      }
-
-      // Handle IDO Results metrics (only list items that look like metrics)
-      if (isInIDOResults) {
-        // Check if it's a nested item (starts with ~, or indented without -/*)
-        if (trimmedLine.startsWith('~') || (trimmedLine.startsWith(' ') && !trimmedLine.match(/^\s+[-*]/))) {
-          const lastMetric = metricsItems[metricsItems.length - 1];
-          if (lastMetric) {
-            if (!lastMetric.subItems) lastMetric.subItems = [];
-            lastMetric.subItems.push(trimmedLine.trim().replace(/^[-~]\s*/, ''));
-          }
-          return;
-        }
-        
-        // Main metric item - must be a list item (- or *) AND contain metric indicators
-        if ((trimmedLine.startsWith('- ') || trimmedLine.startsWith('* ')) && 
-            (trimmedLine.includes('$') || trimmedLine.match(/\d+/) || trimmedLine.startsWith('Top') || trimmedLine.match(/\d+x/))) {
-          const metricText = trimmedLine.substring(2).trim();
-          metricsItems.push({ key: metricText });
-          return;
-        }
-        
-        // If it's a list item but not a metric, fall through to normal list processing
-        // If it's a regular paragraph, fall through to paragraph processing
-      }
-
-      // List items with enhanced styling
+      // List items with green accent marker
       if (trimmedLine.startsWith('- ') || trimmedLine.startsWith('* ')) {
-        const content = trimmedLine.substring(2);
-        const formattedContent = processInlineFormatting(content);
+        const itemText = trimmedLine.substring(2);
+        const processedItemText = highlightMetrics(itemText);
         listItems.push(
-          <li key={`item-${index}`} className="flex items-start gap-2">
-            <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-green-400 flex-shrink-0"></span>
-            <span className="text-zinc-600 dark:text-zinc-400">{formattedContent}</span>
+          <li 
+            key={`item-${index}`} 
+            className="flex items-start gap-2"
+          >
+            <span className="mt-1.5 shrink-0 w-1.5 h-1.5 bg-green-400 rounded-full" />
+            <span className="flex-1">{processedItemText}</span>
           </li>
         );
         return;
       }
 
-      // Numbered lists
+      // Numbered lists with green accent
       const numberedMatch = trimmedLine.match(/^(\d+)\.\s(.+)$/);
       if (numberedMatch) {
-        const formattedContent = processInlineFormatting(numberedMatch[2]);
+        const itemText = numberedMatch[2];
+        const processedItemText = highlightMetrics(itemText);
         listItems.push(
-          <li key={`item-${index}`} className="flex items-start gap-2">
-            <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-green-400 flex-shrink-0"></span>
-            <span className="text-zinc-600 dark:text-zinc-400">{formattedContent}</span>
+          <li 
+            key={`item-${index}`}
+            className="flex items-start gap-2"
+          >
+            <span className="mt-1.5 shrink-0 w-1.5 h-1.5 bg-green-400 rounded-full" />
+            <span className="flex-1">{processedItemText}</span>
           </li>
         );
         return;
       }
 
-      // Empty line - close list if open, close sections if needed
+      // Empty line - close list if open
       if (trimmedLine === '') {
         if (listItems.length > 0) {
           elements.push(
-            <ul key={`list-${listKey++}`} className="space-y-3 my-6">
+            <ul key={`list-${listKey++}`} className="list-none mb-6 space-y-2.5 text-zinc-600 dark:text-zinc-400 my-4">
               {listItems}
             </ul>
           );
           listItems = [];
-        }
-        // Check if we should close Quick Context or IDO Results
-        if (isInQuickContext && contextItems.length > 0 && index > 0) {
-          const nextNonEmptyLine = lines.slice(index + 1).find(l => l.trim());
-          if (nextNonEmptyLine && nextNonEmptyLine.trim().startsWith('##')) {
-            // Next line is a header, so close the context box
-            isInQuickContext = false;
-          }
-        }
-        if (isInIDOResults && metricsItems.length > 0 && index > 0) {
-          const nextNonEmptyLine = lines.slice(index + 1).find(l => l.trim());
-          if (nextNonEmptyLine && nextNonEmptyLine.trim().startsWith('##')) {
-            // Next line is a header, so close the metrics
-            isInIDOResults = false;
-          }
         }
         return;
       }
@@ -348,125 +256,96 @@ export function ArticleView({ article, onBack }: ArticleViewProps) {
       // Close list if open before adding paragraph
       if (listItems.length > 0) {
         elements.push(
-          <ul key={`list-${listKey++}`} className="space-y-3 my-6">
+          <ul key={`list-${listKey++}`} className="list-none mb-4 space-y-2 text-zinc-600 dark:text-zinc-400 pl-4">
             {listItems}
           </ul>
         );
         listItems = [];
       }
 
-      // Close IDO Results metrics section if we encounter a paragraph (not a metric) AFTER we have metrics
-      if (isInIDOResults && metricsItems.length > 0) {
-        // Check if this line is NOT a metric and NOT empty (is a regular paragraph)
-        const isNotAMetric = trimmedLine !== '' && 
-                            !trimmedLine.startsWith('- ') && 
-                            !trimmedLine.startsWith('* ') && 
-                            !trimmedLine.startsWith('~') &&
-                            !trimmedLine.match(/^\s+/);
-        
-        if (isNotAMetric) {
-          elements.push(
-            <div key={`metrics-para-${listKey++}`} className="my-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-              {metricsItems.map((item, i) => (
-                <div key={i} className="rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 p-4">
-                  <div className="text-xl font-bold text-green-400">{item.key}</div>
-                  {item.value && (
-                    <div className="text-xs text-zinc-600 dark:text-zinc-400 mt-1">{item.value}</div>
-                  )}
-                  {item.subItems && item.subItems.length > 0 && (
-                    <div className="mt-2 space-y-1">
-                      {item.subItems.map((sub, j) => (
-                        <div key={j} className="text-[10px] text-zinc-500 dark:text-zinc-500">{sub}</div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          );
-          metricsItems = [];
-          isInIDOResults = false;
-        }
-      }
-
-      // Process paragraphs
-      const formattedParts = processInlineFormatting(trimmedLine);
+      // Simple inline formatting - handle bold, italic, and metrics
+      // Split by bold first, then process italic and metrics in each part
+      const boldParts = trimmedLine.split(/(\*\*[^*]+\*\*)/);
+      const formattedParts: React.ReactNode[] = [];
       
-      // Check if this is a bold-only line (quote/pullquote)
-      // Match lines that are entirely bold (no other text outside bold markers)
-      const allBoldMatch = trimmedLine.match(/^\*\*([^*]+)\*\*$/);
-      if (allBoldMatch) {
-        const quoteText = allBoldMatch[1];
-        elements.push(
-          <div key={index} className="my-8 pl-4 border-l-4 border-green-400 bg-zinc-50 dark:bg-zinc-900/50 py-4 rounded-r-lg">
-            <p className="text-lg font-semibold text-zinc-900 dark:text-zinc-50 italic leading-relaxed">
-              "{quoteText}"
-            </p>
-          </div>
-        );
-        previousWasHeader = false;
-      } else if (isFirstParagraph) {
-        // First paragraph gets special larger styling
-        elements.push(
-          <p key={index} className="text-lg sm:text-xl text-zinc-700 dark:text-zinc-300 font-medium leading-relaxed mb-6 mt-2">
-            {formattedParts}
-          </p>
-        );
-        isFirstParagraph = false;
-      } else {
-        // Regular paragraphs
-        elements.push(
-          <p key={index} className="text-zinc-600 dark:text-zinc-400 mt-4 leading-relaxed text-[15px]">
-            {formattedParts}
-          </p>
-        );
+      boldParts.forEach((part, partIndex) => {
+        if (part.startsWith('**') && part.endsWith('**')) {
+          // Enhanced bold statement with background card
+          const boldText = part.slice(2, -2);
+          const processedBoldText = highlightMetrics(boldText);
+          formattedParts.push(
+            <span 
+              key={`bold-${partIndex}`} 
+              className="inline-block font-semibold bg-green-400/10 dark:bg-green-400/15 px-1.5 py-0.5 rounded border-l-2 border-green-400/50 my-1 mx-0.5"
+            >
+              {processedBoldText}
+            </span>
+          );
+        } else if (part) {
+          // Process italic in non-bold parts
+          const italicRegex = /(?<!\*)\*([^*]+)\*(?!\*)/g;
+          const textParts: React.ReactNode[] = [];
+          let lastIndex = 0;
+          let italicMatch;
+          let italicKey = 0;
+          
+          while ((italicMatch = italicRegex.exec(part)) !== null) {
+            // Add text before italic
+            if (italicMatch.index > lastIndex) {
+              const beforeText = part.substring(lastIndex, italicMatch.index);
+              const beforeParts = highlightMetrics(beforeText);
+              textParts.push(...beforeParts);
+            }
+            // Add italic text (with metrics highlighting)
+            const italicText = italicMatch[1];
+            const italicParts = highlightMetrics(italicText);
+            textParts.push(
+              <em key={`italic-${partIndex}-${italicKey++}`} className="italic">
+                {italicParts.length > 0 ? italicParts : italicitalicText}
+              </em>
+            );
+            lastIndex = italicMatch.index + italicMatch[0].length;
+          }
+          
+          // Add remaining text after italic
+          if (lastIndex < part.length) {
+            const afterText = part.substring(lastIndex);
+            const afterParts = highlightMetrics(afterText);
+            textParts.push(...afterParts);
+          }
+          
+          // If no italic found, just process metrics
+          if (textParts.length === 0) {
+            const metricParts = highlightMetrics(part);
+            textParts.push(...metricParts);
+          }
+          
+          // Add all text parts with a key
+          formattedParts.push(
+            <React.Fragment key={`text-${partIndex}`}>
+              {textParts}
+            </React.Fragment>
+          );
+        }
+      });
+      
+      // If no formatting found, just highlight metrics
+      if (formattedParts.length === 0) {
+        const metricParts = highlightMetrics(trimmedLine);
+        formattedParts.push(...metricParts);
       }
-      previousWasHeader = false;
+      
+      elements.push(
+        <p key={index} className="text-zinc-600 dark:text-zinc-400 mt-4 leading-relaxed">
+          {formattedParts}
+        </p>
+      );
     });
-
-    // Close any remaining sections
-    if (isInQuickContext && contextItems.length > 0) {
-      elements.push(
-        <div key={`context-final-${listKey++}`} className="my-8 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 p-6">
-          <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50 mb-4 uppercase tracking-wider">Quick context</h3>
-          <div className="space-y-2 text-[14px]">
-            {contextItems.map((item, i) => (
-              <div key={i} className="flex gap-2">
-                <span className="font-medium text-zinc-900 dark:text-zinc-50">{item.key}:</span>
-                <span className="text-zinc-600 dark:text-zinc-400">{item.value}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      );
-    }
-
-    if (isInIDOResults && metricsItems.length > 0) {
-      elements.push(
-        <div key={`metrics-final-${listKey++}`} className="my-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-          {metricsItems.map((item, i) => (
-            <div key={i} className="rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 p-4">
-              <div className="text-xl font-bold text-green-400">{item.key}</div>
-              {item.value && (
-                <div className="text-xs text-zinc-600 dark:text-zinc-400 mt-1">{item.value}</div>
-              )}
-              {item.subItems && item.subItems.length > 0 && (
-                <div className="mt-2 space-y-1">
-                  {item.subItems.map((sub, j) => (
-                    <div key={j} className="text-[10px] text-zinc-500 dark:text-zinc-500">{sub}</div>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      );
-    }
 
     // Close any remaining list
     if (listItems.length > 0) {
       elements.push(
-        <ul key={`list-final-${listKey}`} className="space-y-3 my-6">
+        <ul key={`list-${listKey}`} className="list-none mb-6 space-y-2.5 text-zinc-600 dark:text-zinc-400 my-4">
           {listItems}
         </ul>
       );
@@ -476,9 +355,9 @@ export function ArticleView({ article, onBack }: ArticleViewProps) {
   };
 
   return (
-    <article className="flex flex-col h-full">
+    <article className="flex flex-col h-full relative">
       {/* Breadcrumb */}
-      <div className="mb-6 pb-4 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+      <div className="mb-6 pb-4 flex items-center justify-between">
         <Breadcrumb
           items={[
             { label: "Home", onClick: onBack },
@@ -495,6 +374,14 @@ export function ArticleView({ article, onBack }: ArticleViewProps) {
           <Share2 className="h-3 w-3" />
           <span>{copied ? "Copied!" : "Share"}</span>
         </button>
+      </div>
+
+      {/* Reading Progress Indicator */}
+      <div className="h-0.5 bg-zinc-200 dark:bg-zinc-800 mb-6">
+        <div 
+          className="h-full bg-green-400 transition-all duration-150 ease-out"
+          style={{ width: `${scrollProgress}%` }}
+        />
       </div>
 
       {/* Article Header */}
@@ -549,16 +436,12 @@ export function ArticleView({ article, onBack }: ArticleViewProps) {
       </header>
 
       {/* Article Content */}
-      <div className="prose prose-zinc dark:prose-invert max-w-none flex-1 overflow-y-auto pb-8">
-        <div className="text-[15px] leading-relaxed">
-          {(() => {
-            try {
-              return formatContent(article.content);
-            } catch (error) {
-              console.error('Error formatting article content:', error);
-              return <p className="text-red-500">Error loading article content. Please refresh the page.</p>;
-            }
-          })()}
+      <div 
+        ref={contentRef}
+        className="prose prose-zinc dark:prose-invert max-w-none flex-1 overflow-y-auto pb-8"
+      >
+        <div className="text-[15px] leading-relaxed max-w-4xl">
+          {formatContent(article.content)}
         </div>
       </div>
     </article>
