@@ -175,7 +175,7 @@ export default function Home() {
             aria-label="Francisco Lourenço on GitHub"
           >
             GitHub
-            <span className="absolute -top-0.5 left-[calc(100%+2px)] inline-flex h-3 items-center rounded-md border border-green-400 bg-green-400 px-1 text-[8px] font-medium text-zinc-900 leading-none">
+            <span className="absolute -top-0.5 left-[calc(100%+2px)] text-[8px] font-bold text-green-400 leading-none">
               6
             </span>
           </Link>
