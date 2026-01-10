@@ -7,6 +7,7 @@ import { Info } from "lucide-react";
 import { Circle } from "@phosphor-icons/react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { ExperienceSection } from "@/components/experience-section";
+import { FeaturedWorkSection } from "@/components/featured-work-section";
 import { ContactModal } from "@/components/contact-modal";
 
 // Sample projects data - replace with your actual projects
@@ -81,84 +82,120 @@ export default function Home() {
   return (
     <main className="flex h-screen overflow-hidden bg-zinc-50 dark:bg-zinc-950 text-zinc-950 dark:text-zinc-50">
       {/* Sidebar */}
-      <aside className="flex w-full flex-col border-r border-zinc-200 p-6 dark:border-zinc-800 lg:w-80 lg:p-8">
+      <aside
+        className="flex w-full flex-col border-r border-zinc-200 p-6 dark:border-zinc-800 lg:w-80 lg:p-8"
+        aria-label="Profile and experience"
+      >
         {/* Profile section */}
-        <div className="mb-8">
+        <header className="mb-8">
           <h1 className="text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-3xl">
             <div>FRANCISCO</div>
-             <div className="flex items-center gap-0 pl-12 sm:pl-16">
-               <span>LOURENÇ</span>
-               <Circle weight="fill" className="h-[1em] w-[1em] text-green-400" />
-             </div>
+            <div className="flex items-center gap-0 pl-12 sm:pl-16">
+              <span>LOURENÇ</span>
+              <Circle
+                weight="fill"
+                className="h-[1em] w-[1em] text-green-400"
+                aria-hidden="true"
+              />
+            </div>
           </h1>
 
           {/* About me */}
-          <div className="mt-8">
+          <section className="mt-8" aria-labelledby="about-heading">
+            <h2 id="about-heading" className="sr-only">
+              About Francisco Lourenço
+            </h2>
             <div className="text-[14px] leading-relaxed text-zinc-600 dark:text-zinc-400">
-              A crossover of <span className="underline decoration-green-400 decoration-2">product</span>, <span className="underline decoration-green-400 decoration-2">growth</span>, and <span className="underline decoration-green-400 decoration-2">tech</span>. Building and shipping ideas{" "}
+              A crossover of{" "}
+              <span className="underline decoration-green-400 decoration-2">
+                product
+              </span>
+              ,{" "}
+              <span className="underline decoration-green-400 decoration-2">
+                growth
+              </span>
+              , and{" "}
+              <span className="underline decoration-green-400 decoration-2">
+                tech
+              </span>
+              . Building and shipping ideas{" "}
               <span className="group relative inline-block">
-                <Info className="inline h-3 w-3 cursor-help text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300" />
-                <div className="pointer-events-none absolute left-full top-0 z-50 ml-2 w-72 rounded-lg border border-zinc-200 bg-white p-3 text-[12px] leading-relaxed text-zinc-600 opacity-0 shadow-lg transition-opacity group-hover:pointer-events-auto group-hover:opacity-100 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-400">
-                  Data-driven marketing leader with 10+ years of experience in Web3, blockchain, and digital marketing including hands-on leadership of multiple IDO token launches.<br/><br/>I&apos;ve built and executed GTM plans that align tokenomics, messaging, and timing. Developed strong partnerships with KOLs and influencers.<br/><br/>Grown vibrant communities that fueled pre-sale fundraising and drove smooth token sales.<br/><br/>I&apos;m good at brand positioning, user acquisition, viral campaigns, and performance marketing to power business expansion.
+                <Info
+                  className="inline h-3 w-3 cursor-help text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300"
+                  aria-label="More about Francisco Lourenço's experience"
+                />
+                <div
+                  className="pointer-events-none absolute left-full top-0 z-50 ml-2 w-72 rounded-lg border border-zinc-200 bg-white p-3 text-[12px] leading-relaxed text-zinc-600 opacity-0 shadow-lg transition-opacity group-hover:pointer-events-auto group-hover:opacity-100 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-400"
+                  role="tooltip"
+                >
+                  Data-driven marketing leader with 10+ years of experience in
+                  Web3, blockchain, and digital marketing including hands-on
+                  leadership of multiple IDO token launches.
+                  <br />
+                  <br />
+                  I&apos;ve built and executed GTM plans that align tokenomics,
+                  messaging, and timing. Developed strong partnerships with KOLs
+                  and influencers.
+                  <br />
+                  <br />
+                  Grown vibrant communities that fueled pre-sale fundraising and
+                  drove smooth token sales.
+                  <br />
+                  <br />
+                  I&apos;m good at brand positioning, user acquisition, viral
+                  campaigns, and performance marketing to power business
+                  expansion.
                 </div>
               </span>
             </div>
-          </div>
+          </section>
 
           {/* Featured Work */}
-          <div className="mt-6">
-            <h2 className="mb-3 text-sm font-semibold text-zinc-900 dark:text-zinc-50">
-              Featured Work
-            </h2>
-            <div className="space-y-2">
-              <Link
-                href="#"
-                className="block text-[11px] text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
-              >
-                How We Scaled Our IDO to $2M in 48 Hours →
-              </Link>
-              <Link
-                href="#"
-                className="block text-[11px] text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
-              >
-                Building in Public: Lessons from Web3 →
-              </Link>
-              <Link
-                href="#"
-                className="block text-[11px] text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
-              >
-                The Future of Decentralized Marketing →
-              </Link>
-            </div>
-          </div>
+          <FeaturedWorkSection />
 
           {/* Experience & Achievements */}
           <ExperienceSection />
-        </div>
+        </header>
 
         {/* Navigation Links */}
-        <nav className="mt-auto flex items-center gap-2 border-t border-zinc-200 pt-6 dark:border-zinc-800">
+        <nav
+          className="mt-auto flex items-center gap-2 border-t border-zinc-200 pt-6 dark:border-zinc-800"
+          aria-label="Social links and navigation"
+        >
           <Link
             href="https://github.com/franlouc0"
             className="text-[10px] text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Francisco Lourenço on GitHub"
           >
             GitHub
           </Link>
-          <span className="text-[8px] text-zinc-300 dark:text-zinc-800">|</span>
+          <span
+            className="text-[8px] text-zinc-300 dark:text-zinc-800"
+            aria-hidden="true"
+          >
+            |
+          </span>
           <Link
             href="https://www.linkedin.com/in/franlouco/"
             className="text-[10px] text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Francisco Lourenço on LinkedIn"
           >
             LinkedIn
           </Link>
-          <span className="text-[8px] text-zinc-300 dark:text-zinc-800">|</span>
+          <span
+            className="text-[8px] text-zinc-300 dark:text-zinc-800"
+            aria-hidden="true"
+          >
+            |
+          </span>
           <a
             href="mailto:hello@franlou.co"
             className="text-[10px] text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
+            aria-label="Email Francisco Lourenço"
           >
             Email
           </a>
@@ -170,45 +207,50 @@ export default function Home() {
 
       {/* Main Content Area */}
       <div className="relative flex flex-1 flex-col overflow-hidden">
-        <main className="flex-1 overflow-y-auto p-6 lg:p-8" role="main">
+        <section
+          className="flex-1 overflow-y-auto p-6 lg:p-8"
+          aria-label="Projects gallery"
+        >
           {/* Projects Gallery - Masonry Grid */}
           <div className="grid auto-rows-[200px] grid-cols-1 gap-4 pb-20 sm:grid-cols-2 lg:grid-cols-3 lg:pb-24">
-              {projects.map((project) => (
-                <div
-                  key={project.id}
-                  className={`group relative overflow-hidden rounded-lg bg-zinc-200 dark:bg-zinc-800 ${project.span}`}
-                >
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    <div className="absolute bottom-0 left-0 right-0 p-4">
-                      <h3 className="text-sm font-semibold text-white">
-                        {project.title}
-                      </h3>
-                      <p className="mt-1 text-xs text-white/80">
-                        {project.description}
-                      </p>
-                    </div>
+            {projects.map((project) => (
+              <article
+                key={project.id}
+                className={`group relative overflow-hidden rounded-lg bg-zinc-200 dark:bg-zinc-800 ${project.span}`}
+              >
+                <Image
+                  src={project.image}
+                  alt={`${project.title} - ${project.description}`}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <h3 className="text-sm font-semibold text-white">
+                      {project.title}
+                    </h3>
+                    <p className="mt-1 text-xs text-white/80">
+                      {project.description}
+                    </p>
                   </div>
                 </div>
-              ))}
+              </article>
+            ))}
           </div>
-        </main>
+        </section>
 
         {/* Fixed CTA Button - positioned inside main padding area */}
         <div className="pointer-events-none absolute inset-x-6 bottom-6 flex justify-center lg:inset-x-8 lg:bottom-8">
           <button
             onClick={() => setIsContactOpen(true)}
-            className="pointer-events-auto flex h-8 items-center gap-2 rounded-md border border-green-400 bg-green-400 px-4 text-[11px] font-semibold text-zinc-900 transition-all hover:border-green-500 hover:bg-green-500 dark:border-green-400 dark:bg-green-400 dark:text-zinc-900 dark:hover:border-green-500 dark:hover:bg-green-500"
-            aria-label="Open contact form"
+            className="pointer-events-auto flex h-12 items-center gap-2 rounded-md border border-green-400 bg-green-400 px-6 text-sm font-semibold text-zinc-900 transition-all hover:border-green-500 hover:bg-green-500 dark:border-green-400 dark:bg-green-400 dark:text-zinc-900 dark:hover:border-green-500 dark:hover:bg-green-500"
+            aria-label="Open contact form to work together"
           >
-            <span className="relative flex h-2 w-2">
+            <span className="relative flex h-2.5 w-2.5" aria-hidden="true">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-zinc-900 opacity-75"></span>
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-zinc-900"></span>
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-zinc-900"></span>
             </span>
             Let&apos;s work together
           </button>

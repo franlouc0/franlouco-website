@@ -27,15 +27,23 @@ export const ExperienceCard = React.memo(function ExperienceCard({
         {logo ? (
           <Image
             src={logo}
-            alt={company}
+            alt={`${company} logo - ${role} at ${company}`}
             width={24}
             height={24}
             className="object-cover"
+            loading="lazy"
           />
         ) : emoji ? (
-          <span className="text-xs">{emoji}</span>
+          <span className="text-xs" aria-label={`${company} icon`}>
+            {emoji}
+          </span>
         ) : (
-          <SuitcaseSimple size={14} weight="regular" className="text-zinc-500 dark:text-zinc-400" />
+          <SuitcaseSimple
+            size={14}
+            weight="regular"
+            className="text-zinc-500 dark:text-zinc-400"
+            aria-label={`${company} - ${role}`}
+          />
         )}
       </div>
       
