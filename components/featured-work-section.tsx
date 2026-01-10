@@ -11,6 +11,31 @@ interface FeaturedWork {
 
 const featuredWorks: FeaturedWork[] = [
   {
+    title: "How we raised $715K in an IDO without relying on hype",
+    url: "#",
+  },
+  {
+    title: "How I decide if an idea is worth building",
+    url: "#",
+  },
+  {
+    title: "When Web3 makes sense, and when it does not",
+    url: "#",
+  },
+  {
+    title: "How we achieved 166% MoM NGO growth in an ESG marketplace",
+    url: "#",
+  },
+  {
+    title: "From mentor to advisor. How trust is built",
+    url: "#",
+  },
+  {
+    title: "Building GTM when your product is still evolving",
+    url: "#",
+  },
+  // Existing articles below (not redundant with new ones above)
+  {
     title: "How We Scaled Our IDO to $2M in 48 Hours",
     url: "#",
   },
