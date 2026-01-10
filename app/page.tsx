@@ -282,7 +282,7 @@ export default function Home() {
       </aside>
 
       {/* Mobile Scroll Indicator - between experience and grid */}
-      <div className="flex justify-center mt-10 mb-0 lg:hidden">
+      <div className="flex justify-center mt-4 mb-0 lg:hidden">
         <div className="flex flex-col items-center gap-2">
           <ChevronDown 
             className="h-6 w-6 text-green-400 animate-bounce" 
