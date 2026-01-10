@@ -96,7 +96,7 @@ export default function Home() {
                 <span
                   className="absolute inset-0 pointer-events-none bg-green-400"
                   style={{
-                    animation: "border-morph 30s ease-in-out infinite",
+                    animation: "border-morph 18s ease-in-out infinite",
                     willChange: "border-radius, transform",
                   }}
                   aria-hidden="true"
