@@ -129,9 +129,9 @@ They felt included.
 Here is what the launch delivered:
 
 - $715K raised
-  - ~$600K from VCs and angels
-  - ~$100K from the community
-- $80M+ in total open interest in the first week
+  ~$600K from VCs and angels
+  ~$100K from the community
+- $80M+ total open interest (first week)
 - $73M market cap
 - $6.3M 24h trading peak
 - Top 10 protocol on Moonbeam & Moonriver
