@@ -79,10 +79,10 @@ const projects = [
 export default function Home() {
   const [isContactOpen, setIsContactOpen] = useState(false);
   return (
-    <main className="flex h-screen overflow-hidden bg-zinc-50 dark:bg-zinc-950 text-zinc-950 dark:text-zinc-50">
+    <main className="flex flex-col h-auto min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-950 dark:text-zinc-50 lg:flex-row lg:h-screen lg:overflow-hidden">
       {/* Sidebar */}
       <aside
-        className="flex w-full flex-col border-r border-zinc-200 p-6 dark:border-zinc-800 lg:w-80 lg:p-8"
+        className="flex w-full flex-col border-b border-zinc-200 p-6 dark:border-zinc-800 lg:w-80 lg:border-b-0 lg:border-r lg:p-8"
         aria-label="Profile and experience"
       >
         {/* Profile section */}
@@ -214,7 +214,7 @@ export default function Home() {
       </aside>
 
       {/* Main Content Area */}
-      <div className="relative flex flex-1 flex-col overflow-hidden">
+      <div className="relative flex flex-1 flex-col overflow-hidden w-full">
         <section
           className="flex-1 overflow-y-auto p-6 lg:p-8"
           aria-label="Projects gallery"
