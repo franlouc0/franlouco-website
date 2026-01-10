@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Info } from "lucide-react";
+import { Info, X } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { ExperienceSection } from "@/components/experience-section";
 import { FeaturedWorkSection } from "@/components/featured-work-section";
@@ -78,6 +78,7 @@ const projects = [
 
 export default function Home() {
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const [isInfoOpen, setIsInfoOpen] = useState(false);
   return (
     <main className="flex flex-col h-auto min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-950 dark:text-zinc-50 lg:flex-row lg:h-screen lg:overflow-hidden">
       {/* Sidebar */}
@@ -125,12 +126,21 @@ export default function Home() {
               </span>
               . Building and shipping ideas{" "}
               <span className="group relative inline-block">
-                <Info
-                  className="inline h-3 w-3 cursor-help text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300"
+                <button
+                  type="button"
+                  onClick={() => setIsInfoOpen(!isInfoOpen)}
+                  className="lg:cursor-help"
                   aria-label="More about Francisco Lourenço's experience"
-                />
+                >
+                  <Info
+                    className="inline h-3 w-3 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300"
+                    aria-hidden="true"
+                  />
+                </button>
+                
+                {/* Desktop tooltip - hover only */}
                 <div
-                  className="pointer-events-none absolute left-full top-0 z-50 ml-2 w-72 rounded-lg border border-zinc-200 bg-white p-3 text-[12px] leading-relaxed text-zinc-600 opacity-0 shadow-lg transition-opacity group-hover:pointer-events-auto group-hover:opacity-100 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-400"
+                  className="pointer-events-none absolute left-full top-0 z-50 ml-2 hidden w-72 rounded-lg border border-zinc-200 bg-white p-3 text-[12px] leading-relaxed text-zinc-600 opacity-0 shadow-lg transition-opacity group-hover:pointer-events-auto group-hover:opacity-100 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-400 lg:block"
                   role="tooltip"
                 >
                   Data-driven marketing leader with 10+ years of experience in
@@ -151,6 +161,49 @@ export default function Home() {
                   campaigns, and performance marketing to power business
                   expansion.
                 </div>
+
+                {/* Mobile modal - click to open, centered */}
+                {isInfoOpen && (
+                  <>
+                    <div
+                      className="fixed inset-0 z-40 bg-black/50 lg:hidden"
+                      onClick={() => setIsInfoOpen(false)}
+                      aria-hidden="true"
+                    />
+                    <div
+                      className="fixed left-1/2 top-1/2 z-50 w-[calc(100%-2rem)] max-w-sm -translate-x-1/2 -translate-y-1/2 rounded-lg border border-zinc-200 bg-white p-4 text-[12px] leading-relaxed text-zinc-600 shadow-lg dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-400 lg:hidden"
+                      role="dialog"
+                      aria-modal="true"
+                      aria-label="More about Francisco Lourenço's experience"
+                    >
+                      <button
+                        type="button"
+                        onClick={() => setIsInfoOpen(false)}
+                        className="absolute right-2 top-2 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300"
+                        aria-label="Close"
+                      >
+                        <X className="h-4 w-4" />
+                      </button>
+                      Data-driven marketing leader with 10+ years of experience in
+                      Web3, blockchain, and digital marketing including hands-on
+                      leadership of multiple IDO token launches.
+                      <br />
+                      <br />
+                      I&apos;ve built and executed GTM plans that align tokenomics,
+                      messaging, and timing. Developed strong partnerships with KOLs
+                      and influencers.
+                      <br />
+                      <br />
+                      Grown vibrant communities that fueled pre-sale fundraising and
+                      drove smooth token sales.
+                      <br />
+                      <br />
+                      I&apos;m good at brand positioning, user acquisition, viral
+                      campaigns, and performance marketing to power business
+                      expansion.
+                    </div>
+                  </>
+                )}
               </span>
             </div>
           </section>
