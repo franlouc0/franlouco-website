@@ -282,7 +282,7 @@ export default function Home() {
       </aside>
 
       {/* Mobile Scroll Indicator - between experience and grid */}
-      <div className="flex justify-center pt-6 pb-0 lg:hidden">
+      <div className="flex justify-center mt-10 mb-0 lg:hidden">
         <div className="flex flex-col items-center gap-2">
           <ChevronDown 
             className="h-6 w-6 text-green-400 animate-bounce" 
@@ -297,7 +297,7 @@ export default function Home() {
       {/* Main Content Area */}
       <div className="relative flex flex-1 flex-col overflow-hidden w-full">
         <section
-          className="flex-1 overflow-y-auto p-6 lg:p-8"
+          className="flex-1 overflow-y-auto px-6 pt-10 pb-6 lg:p-8"
           aria-label="Projects gallery"
         >
           {/* Projects Gallery - Masonry Grid */}
