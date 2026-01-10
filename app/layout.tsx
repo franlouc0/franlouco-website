@@ -104,7 +104,13 @@ const jsonLd = {
   description:
     "Product and Growth expert specializing in AI, Software, and Web3. CMO & Co-Founder at Coompass.",
   url: siteUrl,
-  image: `${siteUrl}/profile.jpg`,
+  image: {
+    "@type": "ImageObject",
+    url: `${siteUrl}/profile.jpg`,
+    width: 1200,
+    height: 630,
+    caption: "Francisco Lourenço - Product, Growth, AI & Web3 Expert",
+  },
   email: "hello@franlou.co",
   sameAs: [
     "https://www.linkedin.com/in/franlouco/",
@@ -175,31 +181,6 @@ const jsonLd = {
   },
 };
 
-const organizationJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "Francisco Lourenço - Product & Growth Consulting",
-  description:
-    "Product and Growth consulting services specializing in AI, Software, and Web3. Expert in IDO launches, token sales, community building, and digital marketing strategy.",
-  url: siteUrl,
-  provider: {
-    "@type": "Person",
-    name: "Francisco Lourenço",
-    email: "hello@franlou.co",
-  },
-  areaServed: "Worldwide",
-  serviceType: [
-    "Product Strategy",
-    "Growth Marketing",
-    "Web3 Marketing",
-    "IDO Launch Consultation",
-    "Token Sales Strategy",
-    "Community Building",
-    "Digital Marketing Strategy",
-    "AI Marketing",
-  ],
-};
-
 export default function RootLayout({
   children,
 }: {
@@ -208,16 +189,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        {/* JSON-LD Structured Data - must be in body, not head in Next.js App Router */}
+        {/* JSON-LD Structured Data - Person schema only (removed ProfessionalService to avoid LocalBusiness detection) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(organizationJsonLd),
-          }}
         />
         <ThemeProvider
           attribute="class"
