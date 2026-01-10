@@ -83,28 +83,43 @@ export default function Home() {
     <main className="flex flex-col h-auto min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-950 dark:text-zinc-50 lg:flex-row lg:h-screen lg:overflow-hidden">
       {/* Sidebar */}
       <aside
-        className="flex w-full flex-col border-b border-zinc-200 p-6 dark:border-zinc-800 lg:w-80 lg:border-b-0 lg:border-r lg:p-8"
+        className="flex w-full flex-col p-6 dark:border-zinc-800 lg:w-80 lg:border-r lg:p-8"
         aria-label="Profile and experience"
       >
         {/* Profile section */}
         <header className="mb-8">
-          <h1 className="text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-3xl">
-            <div>FRANCISCO</div>
-            <div className="flex items-center gap-0 pl-12 sm:pl-16 relative">
-              <span>LOURENÇ</span>
-              <div className="relative z-10 inline-flex items-center justify-center h-[1em] w-[1em] ml-0 pointer-events-none">
-                {/* Animated morphing shape - filled with neon green */}
-                <span
-                  className="absolute inset-0 pointer-events-none bg-green-400"
-                  style={{
-                    animation: "border-morph 6s ease-in-out infinite",
-                    willChange: "border-radius, transform",
-                  }}
-                  aria-hidden="true"
-                />
+          <div className="flex items-start justify-between gap-4 mb-8">
+            <h1 className="text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-3xl">
+              <div>FRANCISCO</div>
+              <div className="flex items-center gap-0 pl-12 sm:pl-16 relative">
+                <span>LOURENÇ</span>
+                <div className="relative z-10 inline-flex items-center justify-center h-[1em] w-[1em] ml-0 pointer-events-none">
+                  {/* Animated morphing shape - filled with neon green */}
+                  <span
+                    className="absolute inset-0 pointer-events-none bg-green-400"
+                    style={{
+                      animation: "border-morph 6s ease-in-out infinite",
+                      willChange: "border-radius, transform",
+                    }}
+                    aria-hidden="true"
+                  />
+                </div>
               </div>
-            </div>
-          </h1>
+            </h1>
+            
+            {/* Mobile button - top right, aligned with title */}
+            <button
+              onClick={() => setIsContactOpen(true)}
+              className="pointer-events-auto flex h-10 items-center gap-2 rounded-md border border-green-400 bg-green-400 px-4 text-xs font-semibold text-zinc-900 transition-all hover:border-green-500 hover:bg-green-500 dark:border-green-400 dark:bg-green-400 dark:text-zinc-900 dark:hover:border-green-500 dark:hover:bg-green-500 lg:hidden shrink-0"
+              aria-label="Open contact form to work together"
+            >
+              <span className="relative flex h-2 w-2" aria-hidden="true">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-zinc-900 opacity-75"></span>
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-zinc-900"></span>
+              </span>
+              Let&apos;s work together
+            </button>
+          </div>
 
           {/* About me */}
           <section className="mt-8" aria-labelledby="about-heading">
@@ -302,8 +317,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Fixed CTA Button - positioned inside main padding area */}
-        <div className="pointer-events-none absolute inset-x-6 bottom-6 flex justify-center lg:inset-x-8 lg:bottom-8">
+        {/* Fixed CTA Button - positioned inside main padding area, desktop only */}
+        <div className="pointer-events-none absolute inset-x-6 bottom-6 hidden justify-center lg:flex lg:inset-x-8 lg:bottom-8">
           <button
             onClick={() => setIsContactOpen(true)}
             className="pointer-events-auto flex h-12 items-center gap-2 rounded-md border border-green-400 bg-green-400 px-6 text-sm font-semibold text-zinc-900 transition-all hover:border-green-500 hover:bg-green-500 dark:border-green-400 dark:bg-green-400 dark:text-zinc-900 dark:hover:border-green-500 dark:hover:bg-green-500"
