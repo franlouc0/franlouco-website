@@ -4,6 +4,7 @@ export interface Article {
   content: string;
   date: string;
   author: string;
+  tags: string[];
 }
 
 export const articles: Record<string, Article> = {
@@ -12,6 +13,7 @@ export const articles: Record<string, Article> = {
     title: "How we raised $715K in an IDO without relying on hype",
     date: "2024-01-15",
     author: "Francisco Lourenço",
+    tags: ["Growth", "Polkamarkets", "Launch Judgement", "Founders", "Web3 Teams"],
     content: `
 # How we raised $715K in an IDO without relying on hype
 

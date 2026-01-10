@@ -156,6 +156,19 @@ export function ArticleView({ article, onBack }: ArticleViewProps) {
             <h1 className="text-2xl font-extrabold text-zinc-900 dark:text-zinc-50 sm:text-3xl">
               {article.title}
             </h1>
+            {/* Tags - Below title */}
+            {article.tags && article.tags.length > 0 && (
+              <div className="flex flex-wrap items-center gap-1.5 mt-3">
+                {article.tags.map((tag, index) => (
+                  <span
+                    key={index}
+                    className="inline-flex h-4 items-center rounded-md border border-zinc-300 bg-zinc-100 px-1.5 text-[10px] text-zinc-600 dark:border-zinc-700/50 dark:bg-zinc-800/50 dark:text-zinc-400"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
           
           {/* Author & Date Container - Green box, 1/4 width */}
