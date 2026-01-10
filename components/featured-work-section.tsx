@@ -65,7 +65,7 @@ const featuredWorks: FeaturedWork[] = [
   },
 ];
 
-const ITEMS_PER_PAGE = 10;
+const ITEMS_PER_PAGE = 7;
 
 export function FeaturedWorkSection() {
   const [startIndex, setStartIndex] = React.useState(0);
