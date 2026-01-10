@@ -4,7 +4,6 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Info } from "lucide-react";
-import { Circle } from "@phosphor-icons/react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { ExperienceSection } from "@/components/experience-section";
 import { FeaturedWorkSection } from "@/components/featured-work-section";
@@ -93,59 +92,12 @@ export default function Home() {
             <div className="flex items-center gap-0 pl-12 sm:pl-16 relative">
               <span>LOURENÇ</span>
               <div className="relative z-10 inline-flex items-center justify-center h-[1em] w-[1em] ml-0 pointer-events-none">
-                {/* Morphing container wrapper - unified neon green particle with movement */}
-                <div
-                  className="absolute inset-0 pointer-events-none"
+                {/* Animated morphing shape - filled with neon green */}
+                <span
+                  className="absolute inset-0 pointer-events-none bg-green-400"
                   style={{
-                    animation: "particle-morph 16s ease-in-out infinite",
+                    animation: "border-morph 30s ease-in-out infinite",
                     willChange: "border-radius, transform",
-                  }}
-                  aria-hidden="true"
-                >
-                  {/* Blur effect background - neon green particle glow */}
-                  <span
-                    className="absolute inset-0 bg-green-400"
-                    style={{
-                      filter: "blur(12px)",
-                      transform: "scale(1.8)",
-                      opacity: 0.45,
-                      animation: "pulse-glow 4s ease-in-out infinite",
-                      willChange: "transform, opacity",
-                      backgroundColor: "rgb(74, 222, 128)",
-                    }}
-                    aria-hidden="true"
-                  />
-                  {/* Morphing particle body - neon green with morphing shape */}
-                  <span
-                    className="absolute inset-0 bg-green-400"
-                    style={{
-                      backgroundColor: "rgb(74, 222, 128)",
-                      opacity: 0.75,
-                      transform: "scale(1.15)",
-                      boxShadow: "0 0 25px rgba(74, 222, 128, 0.7) inset, 0 0 15px rgba(74, 222, 128, 0.5)",
-                    }}
-                    aria-hidden="true"
-                  />
-                  {/* Animated border - neon green particle outline */}
-                  <span
-                    className="absolute inset-0 border-2 border-green-400"
-                    style={{
-                      borderColor: "rgb(74, 222, 128)",
-                      opacity: 0.95,
-                      boxShadow: "0 0 12px rgba(74, 222, 128, 0.9), 0 0 6px rgba(74, 222, 128, 0.6) inset",
-                    }}
-                    aria-hidden="true"
-                  />
-                </div>
-                {/* Main animated circle - neon green particle core */}
-                <Circle
-                  weight="fill"
-                  className="relative z-10 h-[1em] w-[1em] text-green-400"
-                  style={{
-                    filter: "drop-shadow(0 0 12px rgba(74, 222, 128, 1)) brightness(1.3) saturate(1.2)",
-                    animation: "circle-pulse 3s ease-in-out infinite",
-                    willChange: "transform, filter",
-                    color: "rgb(74, 222, 128)",
                   }}
                   aria-hidden="true"
                 />
