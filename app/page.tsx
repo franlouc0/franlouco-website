@@ -169,12 +169,15 @@ export default function Home() {
         >
           <Link
             href="https://github.com/franlouc0"
-            className="text-[10px] text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
+            className="flex items-center gap-1.5 text-[10px] text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Francisco Lourenço on GitHub"
           >
             GitHub
+            <span className="inline-flex h-3 items-center rounded-md border border-green-400 bg-green-400 px-1 text-[8px] font-medium text-zinc-900">
+              6
+            </span>
           </Link>
           <span
             className="text-[8px] text-zinc-300 dark:text-zinc-800"
