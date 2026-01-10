@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Info, X } from "lucide-react";
+import { Info, X, ChevronDown } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { ExperienceSection } from "@/components/experience-section";
 import { FeaturedWorkSection } from "@/components/featured-work-section";
@@ -280,6 +280,19 @@ export default function Home() {
           </div>
         </nav>
       </aside>
+
+      {/* Mobile Scroll Indicator - between experience and grid */}
+      <div className="flex justify-center py-6 lg:hidden">
+        <div className="flex flex-col items-center gap-2">
+          <ChevronDown 
+            className="h-6 w-6 text-green-400 animate-bounce" 
+            aria-hidden="true"
+          />
+          <span className="text-[10px] text-zinc-400 dark:text-zinc-600">
+            Scroll to view work
+          </span>
+        </div>
+      </div>
 
       {/* Main Content Area */}
       <div className="relative flex flex-1 flex-col overflow-hidden w-full">
