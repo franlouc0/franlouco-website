@@ -44,6 +44,19 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
+  icons: {
+    icon: [
+      { url: "/icon.png", sizes: "512x512", type: "image/png" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+  },
+  manifest: "/manifest.json",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -54,7 +67,7 @@ export const metadata: Metadata = {
       "Product and Growth expert specializing in AI, Software, and Web3. CMO & Co-Founder at Coompass. 10+ years of experience in digital marketing, IDO launches, token sales, and community building.",
     images: [
       {
-        url: `${siteUrl}/profile.jpg`,
+        url: `${siteUrl}/opengraph-image.png`,
         width: 1200,
         height: 630,
         alt: "Francisco Lourenço - Product, Growth, AI & Web3 Expert",
@@ -66,7 +79,7 @@ export const metadata: Metadata = {
     title: "Francisco Lourenço | Product, Growth, AI & Web3 Expert",
     description:
       "Product and Growth expert specializing in AI, Software, and Web3. CMO & Co-Founder at Coompass. 10+ years of experience.",
-    images: [`${siteUrl}/profile.jpg`],
+    images: [`${siteUrl}/opengraph-image.png`],
   },
   robots: {
     index: true,
@@ -106,7 +119,7 @@ const jsonLd = {
   url: siteUrl,
   image: {
     "@type": "ImageObject",
-    url: `${siteUrl}/profile.jpg`,
+    url: `${siteUrl}/opengraph-image.png`,
     width: 1200,
     height: 630,
     caption: "Francisco Lourenço - Product, Growth, AI & Web3 Expert",
