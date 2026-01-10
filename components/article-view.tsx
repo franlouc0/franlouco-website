@@ -10,6 +10,13 @@ interface ArticleViewProps {
 }
 
 export function ArticleView({ article, onBack }: ArticleViewProps) {
+  // Helper function to calculate reading time (average 200 words per minute)
+  const calculateReadingTime = (content: string): number => {
+    const words = content.trim().split(/\s+/).length;
+    const readingTime = Math.ceil(words / 200); // 200 words per minute
+    return Math.max(1, readingTime); // At least 1 minute
+  };
+
   // Simple markdown-like content parser (basic implementation)
   // You might want to use a proper markdown library like 'react-markdown' in the future
   const formatContent = (content: string) => {
@@ -171,22 +178,26 @@ export function ArticleView({ article, onBack }: ArticleViewProps) {
             )}
           </div>
           
-          {/* Author & Date Container - Green box, 1/4 width */}
-          <div className="flex-1 flex items-center gap-4 rounded-md border border-green-400 bg-green-400 px-4 py-3 sm:px-6 whitespace-nowrap">
-            <span className="text-sm font-semibold text-zinc-900 dark:text-zinc-900">
+          {/* Author, Date & Reading Time Container - Grey badge style, 1/4 width */}
+          <div className="flex-1 flex items-center gap-1.5 rounded-md border border-zinc-300 bg-zinc-100 px-2 py-1.5 sm:px-3 sm:py-2 whitespace-nowrap dark:border-zinc-700/50 dark:bg-zinc-800/50">
+            <span className="text-[10px] font-medium text-zinc-600 dark:text-zinc-400">
               {article.author}
             </span>
-            <span className="text-zinc-900 dark:text-zinc-900">•</span>
+            <span className="text-[10px] text-zinc-400 dark:text-zinc-600">•</span>
             <time 
               dateTime={article.date}
-              className="text-sm font-semibold text-zinc-900 dark:text-zinc-900"
+              className="text-[10px] font-medium text-zinc-600 dark:text-zinc-400"
             >
               {new Date(article.date).toLocaleDateString('en-US', {
                 year: 'numeric',
-                month: 'long',
+                month: 'short',
                 day: 'numeric',
               })}
             </time>
+            <span className="text-[10px] text-zinc-400 dark:text-zinc-600">•</span>
+            <span className="text-[10px] font-medium text-zinc-600 dark:text-zinc-400">
+              {calculateReadingTime(article.content)} min read
+            </span>
           </div>
         </div>
       </header>
