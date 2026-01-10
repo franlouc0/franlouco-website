@@ -68,9 +68,17 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@type": "Person",
   jobTitle: "Update with current role(s)",
-  worksFor: [
-    // ADD: New organizations
-    // REMOVE: Past organizations (move to alumniOf if relevant)
+  hasOccupation: [
+    {
+      "@type": "Occupation",
+      name: "Role Title",
+      occupationLocation: {
+        "@type": "Organization",
+        name: "Company Name",
+      },
+    },
+    // ADD: New occupations/roles
+    // REMOVE: Past roles (move to alumniOf if relevant)
   ],
   alumniOf: [
     // ADD: Past organizations if relevant for SEO
@@ -81,7 +89,10 @@ const jsonLd = {
 }
 ```
 
-**⚠️ IMPORTANT:** Keep `worksFor` current (only active roles). Move past roles to `alumniOf` if relevant.
+**⚠️ IMPORTANT:** 
+- Use `hasOccupation` (not `worksFor`) to properly represent roles at different organizations
+- `jobTitle` should NOT be on Organization objects - use `hasOccupation` with `Occupation` type instead
+- Keep `hasOccupation` current (only active roles). Move past roles to `alumniOf` if relevant
 
 ---
 

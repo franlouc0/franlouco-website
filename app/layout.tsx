@@ -147,31 +147,46 @@ const jsonLd = {
       name: "ZON Optimus",
     },
   ],
-  worksFor: [
+  hasOccupation: [
     {
-      "@type": "Organization",
-      name: "IBC Group",
-      jobTitle: "Web3 Marketing Growth Manager",
+      "@type": "Occupation",
+      name: "Web3 Marketing Growth Manager",
+      occupationLocation: {
+        "@type": "Organization",
+        name: "IBC Group",
+      },
     },
     {
-      "@type": "Organization",
-      name: "Coompass",
-      jobTitle: "CMO & Co-Founder",
+      "@type": "Occupation",
+      name: "CMO & Co-Founder",
+      occupationLocation: {
+        "@type": "Organization",
+        name: "Coompass",
+      },
     },
     {
-      "@type": "Organization",
-      name: "Broadpath",
-      jobTitle: "Partner",
+      "@type": "Occupation",
+      name: "Partner",
+      occupationLocation: {
+        "@type": "Organization",
+        name: "Broadpath",
+      },
     },
     {
-      "@type": "Organization",
-      name: "Builders Camp",
-      jobTitle: "Founding Mentor",
+      "@type": "Occupation",
+      name: "Founding Mentor",
+      occupationLocation: {
+        "@type": "Organization",
+        name: "Builders Camp",
+      },
     },
     {
-      "@type": "Organization",
-      name: "Predik",
-      jobTitle: "Advisor",
+      "@type": "Occupation",
+      name: "Advisor",
+      occupationLocation: {
+        "@type": "Organization",
+        name: "Predik",
+      },
     },
   ],
   knowsAbout: [
