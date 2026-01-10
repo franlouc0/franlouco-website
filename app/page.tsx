@@ -92,7 +92,9 @@ export default function Home() {
             <h1 className="text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-3xl">
               <div>FRANCISCO</div>
               <div className="flex items-center gap-0 pl-12 sm:pl-16 relative">
-                <span>LOURENÇ</span>
+                <span>
+                  <span className="inline-block scale-x-[-1]">L</span>OURENÇ
+                </span>
                 <div className="relative z-10 inline-flex items-center justify-center h-[1em] w-[1em] ml-0 pointer-events-none">
                   {/* Animated morphing shape - filled with neon green */}
                   <span
