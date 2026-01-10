@@ -215,9 +215,9 @@ export default function Home() {
           <ExperienceSection />
         </header>
 
-        {/* Navigation Links */}
+        {/* Navigation Links - Desktop only */}
         <nav
-          className="mt-auto flex items-center gap-2 border-t border-zinc-200 pt-6 dark:border-zinc-800"
+          className="hidden mt-auto items-center gap-2 border-t border-zinc-200 pt-6 dark:border-zinc-800 lg:flex"
           aria-label="Social links and navigation"
         >
           <Link
@@ -317,6 +317,56 @@ export default function Home() {
           </button>
         </div>
       </div>
+
+      {/* Mobile Footer - visible only on mobile, after grid */}
+      <nav
+        className="flex items-center gap-2 border-t border-zinc-200 bg-zinc-50 p-6 dark:border-zinc-800 dark:bg-zinc-950 lg:hidden"
+        aria-label="Social links and navigation"
+      >
+        <Link
+          href="https://github.com/franlouc0"
+          className="relative inline-block text-[10px] text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Francisco Lourenço on GitHub"
+        >
+          GitHub
+          <span className="absolute -top-0.5 left-[calc(100%-1px)] text-[8px] font-bold text-green-400 leading-none">
+            6
+          </span>
+        </Link>
+        <span
+          className="text-[8px] text-zinc-300 dark:text-zinc-800"
+          aria-hidden="true"
+        >
+          |
+        </span>
+        <Link
+          href="https://www.linkedin.com/in/franlouco/"
+          className="text-[10px] text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Francisco Lourenço on LinkedIn"
+        >
+          LinkedIn
+        </Link>
+        <span
+          className="text-[8px] text-zinc-300 dark:text-zinc-800"
+          aria-hidden="true"
+        >
+          |
+        </span>
+        <a
+          href="mailto:hello@franlou.co"
+          className="text-[10px] text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
+          aria-label="Email Francisco Lourenço"
+        >
+          Email
+        </a>
+        <div className="ml-auto">
+          <ThemeToggle />
+        </div>
+      </nav>
 
       {/* Contact Modal */}
       <ContactModal
