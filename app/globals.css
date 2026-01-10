@@ -66,3 +66,31 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  @keyframes morph {
+    0%, 100% {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+    50% {
+      border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    }
+  }
+
+  @keyframes hue-rotate {
+    0% {
+      filter: hue-rotate(0deg);
+    }
+    100% {
+      filter: hue-rotate(360deg);
+    }
+  }
+
+  .animate-blob {
+    animation: morph 16s ease-in-out infinite;
+  }
+
+  .animate-hue {
+    animation: hue-rotate 20s linear infinite;
+  }
+}

@@ -4,7 +4,6 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Info } from "lucide-react";
-import { Circle } from "@phosphor-icons/react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { ExperienceSection } from "@/components/experience-section";
 import { FeaturedWorkSection } from "@/components/featured-work-section";
@@ -92,9 +91,13 @@ export default function Home() {
             <div>FRANCISCO</div>
             <div className="flex items-center gap-0 pl-12 sm:pl-16">
               <span>LOURENÇ</span>
-              <Circle
-                weight="fill"
-                className="h-[1em] w-[1em] text-green-400"
+              <div
+                className="h-[1em] w-[1em] animate-blob animate-hue rounded-full"
+                style={{
+                  backgroundColor: 'rgb(74, 222, 128)', // green-400
+                  boxShadow: 'rgba(74, 222, 128, 0.333) 0px 0px 40px inset',
+                  transform: 'scale(1)',
+                }}
                 aria-hidden="true"
               />
             </div>
