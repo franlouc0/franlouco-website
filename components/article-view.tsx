@@ -151,15 +151,15 @@ export function ArticleView({ article, onBack }: ArticleViewProps) {
       {/* Article Header */}
       <header className="mb-8">
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
-          {/* Title Container */}
-          <div className="flex-1 rounded-md border border-green-400 bg-green-400 px-4 py-3 sm:px-6">
-            <h1 className="text-2xl font-extrabold text-zinc-900 dark:text-zinc-900 sm:text-3xl">
+          {/* Title Container - No box, 3/4 width */}
+          <div className="flex-[3]">
+            <h1 className="text-2xl font-extrabold text-zinc-900 dark:text-zinc-50 sm:text-3xl">
               {article.title}
             </h1>
           </div>
           
-          {/* Author & Date Container */}
-          <div className="flex items-center gap-4 rounded-md border border-green-400 bg-green-400 px-4 py-3 sm:px-6 whitespace-nowrap">
+          {/* Author & Date Container - Green box, 1/4 width */}
+          <div className="flex-1 flex items-center gap-4 rounded-md border border-green-400 bg-green-400 px-4 py-3 sm:px-6 whitespace-nowrap">
             <span className="text-sm font-semibold text-zinc-900 dark:text-zinc-900">
               {article.author}
             </span>
