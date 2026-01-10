@@ -4,7 +4,6 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Info } from "lucide-react";
-import { Circle } from "@phosphor-icons/react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { ExperienceSection } from "@/components/experience-section";
 import { FeaturedWorkSection } from "@/components/featured-work-section";
@@ -114,14 +113,16 @@ export default function Home() {
                   }}
                   aria-hidden="true"
                 />
-                {/* Main animated circle with pulse and glow */}
-                <Circle
-                  weight="fill"
-                  className="relative z-10 h-[1em] w-[1em] text-green-400"
+                {/* Main animated circle with pulse and glow - fully neon green */}
+                <div
+                  className="relative z-10 rounded-full bg-green-400"
                   style={{
+                    width: "1em",
+                    height: "1em",
                     filter: "drop-shadow(0 0 8px rgba(74, 222, 128, 0.6))",
                     animation: "circle-pulse 3s ease-in-out infinite",
                     willChange: "transform, filter",
+                    backgroundColor: "rgb(74, 222, 128)",
                   }}
                   aria-hidden="true"
                 />
