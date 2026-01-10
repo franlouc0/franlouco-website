@@ -3,6 +3,7 @@
 import * as React from "react";
 import { Article } from "@/lib/articles";
 import { Breadcrumb } from "./breadcrumb";
+import { Share2 } from "lucide-react";
 
 interface ArticleViewProps {
   article: Article;
@@ -10,6 +11,49 @@ interface ArticleViewProps {
 }
 
 export function ArticleView({ article, onBack }: ArticleViewProps) {
+  const [copied, setCopied] = React.useState(false);
+
+  // Share handler with Web Share API and clipboard fallback
+  const handleShare = async () => {
+    const url = window.location.href;
+    const title = article.title;
+
+    // Try Web Share API first (mobile/native)
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: title,
+          url: url,
+        });
+        return;
+      } catch (err) {
+        // User cancelled or error occurred, fallback to copy
+        if ((err as Error).name !== 'AbortError') {
+          console.error('Error sharing:', err);
+        }
+      }
+    }
+
+    // Fallback: Copy link to clipboard
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea');
+      textArea.value = url;
+      textArea.style.position = 'fixed';
+      textArea.style.opacity = '0';
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
+
   // Helper function to calculate reading time (average 200 words per minute)
   const calculateReadingTime = (content: string): number => {
     const words = content.trim().split(/\s+/).length;
@@ -168,13 +212,23 @@ export function ArticleView({ article, onBack }: ArticleViewProps) {
   return (
     <article className="flex flex-col h-full">
       {/* Breadcrumb */}
-      <div className="mb-6 pb-4 border-b border-zinc-200 dark:border-zinc-800">
+      <div className="mb-6 pb-4 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
         <Breadcrumb
           items={[
             { label: "Home", onClick: onBack },
             { label: article.title },
           ]}
         />
+        
+        {/* Share Button */}
+        <button
+          onClick={handleShare}
+          className="flex items-center gap-1.5 rounded-md border border-zinc-300 bg-zinc-100 px-2 py-1.5 text-[10px] font-medium text-zinc-600 transition-colors hover:bg-zinc-200 dark:border-zinc-700/50 dark:bg-zinc-800/50 dark:text-zinc-400 dark:hover:bg-zinc-700/50"
+          aria-label="Share article"
+        >
+          <Share2 className="h-3 w-3" />
+          <span>{copied ? "Copied!" : "Share"}</span>
+        </button>
       </div>
 
       {/* Article Header */}
