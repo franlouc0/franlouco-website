@@ -68,7 +68,7 @@ export function FeaturedWorkSection() {
   };
 
   return (
-    <div className="mt-6">
+    <div className="mt-10">
       <div className="mb-3 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <h2 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">

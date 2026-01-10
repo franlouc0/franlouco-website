@@ -96,7 +96,7 @@ export default function Home() {
                 <span
                   className="absolute inset-0 pointer-events-none bg-green-400"
                   style={{
-                    animation: "border-morph 18s ease-in-out infinite",
+                    animation: "border-morph 6s ease-in-out infinite",
                     willChange: "border-radius, transform",
                   }}
                   aria-hidden="true"
@@ -110,7 +110,7 @@ export default function Home() {
             <h2 id="about-heading" className="sr-only">
               About Francisco Lourenço
             </h2>
-            <div className="text-[14px] leading-relaxed text-zinc-600 dark:text-zinc-400">
+            <div className="text-[15px] font-medium leading-relaxed text-zinc-600 dark:text-zinc-400">
               A crossover of{" "}
               <span className="underline decoration-green-400 decoration-2">
                 product
