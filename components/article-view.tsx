@@ -297,11 +297,11 @@ export function ArticleView({ article, onBack }: ArticleViewProps) {
               textParts.push(...beforeParts);
             }
             // Add italic text (with metrics highlighting)
-            const italicText = italicMatch[1];
-            const italicParts = highlightMetrics(italicText);
+            const matchedItalicText = italicMatch[1];
+            const italicParts = highlightMetrics(matchedItalicText);
             textParts.push(
               <em key={`italic-${partIndex}-${italicKey++}`} className="italic">
-                {italicParts.length > 0 ? italicParts : italicitalicText}
+                {italicParts.length > 0 ? italicParts : matchedItalicText}
               </em>
             );
             lastIndex = italicMatch.index + italicMatch[0].length;
