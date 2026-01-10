@@ -150,19 +150,31 @@ export function ArticleView({ article, onBack }: ArticleViewProps) {
 
       {/* Article Header */}
       <header className="mb-8">
-        <h1 className="text-3xl font-extrabold text-zinc-900 dark:text-zinc-50 mb-4 sm:text-4xl">
-          {article.title}
-        </h1>
-        <div className="flex items-center gap-4 text-sm text-zinc-600 dark:text-zinc-400">
-          <span>{article.author}</span>
-          <span>•</span>
-          <time dateTime={article.date}>
-            {new Date(article.date).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            })}
-          </time>
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
+          {/* Title Container */}
+          <div className="flex-1 rounded-md border border-green-400 bg-green-400 px-4 py-3 sm:px-6">
+            <h1 className="text-2xl font-extrabold text-zinc-900 dark:text-zinc-900 sm:text-3xl">
+              {article.title}
+            </h1>
+          </div>
+          
+          {/* Author & Date Container */}
+          <div className="flex items-center gap-4 rounded-md border border-green-400 bg-green-400 px-4 py-3 sm:px-6 whitespace-nowrap">
+            <span className="text-sm font-semibold text-zinc-900 dark:text-zinc-900">
+              {article.author}
+            </span>
+            <span className="text-zinc-900 dark:text-zinc-900">•</span>
+            <time 
+              dateTime={article.date}
+              className="text-sm font-semibold text-zinc-900 dark:text-zinc-900"
+            >
+              {new Date(article.date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}
+            </time>
+          </div>
         </div>
       </header>
 

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ChevronRight, Home } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 interface BreadcrumbProps {
   items: Array<{
@@ -24,7 +24,7 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
             >
               {index === 0 ? (
                 <span className="flex items-center gap-1">
-                  <Home className="h-3 w-3" />
+                  <span className="h-3 w-3 rounded-full bg-green-400" />
                   {item.label}
                 </span>
               ) : (
@@ -38,7 +38,7 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
             >
               {index === 0 ? (
                 <span className="flex items-center gap-1">
-                  <Home className="h-3 w-3" />
+                  <span className="h-3 w-3 rounded-full bg-green-400" />
                   {item.label}
                 </span>
               ) : (
