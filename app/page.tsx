@@ -88,7 +88,7 @@ export default function Home() {
       >
         {/* Profile section */}
         <header className="mb-8">
-          <div className="flex items-start justify-between gap-4 mb-8">
+          <div className="flex items-center justify-between gap-4 mb-8">
             <h1 className="text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-3xl">
               <div>FRANCISCO</div>
               <div className="flex items-center gap-0 pl-12 sm:pl-16 relative">
