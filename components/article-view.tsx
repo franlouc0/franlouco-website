@@ -17,6 +17,28 @@ export function ArticleView({ article, onBack }: ArticleViewProps) {
     return Math.max(1, readingTime); // At least 1 minute
   };
 
+  // Helper function to count characters (excluding markdown syntax)
+  const countCharacters = (content: string): number => {
+    // Remove markdown headers, bold, italic, list markers
+    const cleanContent = content
+      .replace(/^#+\s+/gm, '') // Remove headers
+      .replace(/\*\*([^*]+)\*\*/g, '$1') // Remove bold
+      .replace(/\*([^*]+)\*/g, '$1') // Remove italic (but not in bold)
+      .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '') // Remove image markdown
+      .replace(/^[-*]\s+/gm, '') // Remove list markers
+      .replace(/^\d+\.\s+/gm, '') // Remove numbered list markers
+      .replace(/\n+/g, ' ') // Replace newlines with spaces
+      .trim();
+    return cleanContent.length;
+  };
+
+  // Helper function to count images (markdown format: ![alt](url))
+  const countImages = (content: string): number => {
+    const imageRegex = /!\[([^\]]*)\]\(([^)]+)\)/g;
+    const matches = content.match(imageRegex);
+    return matches ? matches.length : 0;
+  };
+
   // Simple markdown-like content parser (basic implementation)
   // You might want to use a proper markdown library like 'react-markdown' in the future
   const formatContent = (content: string) => {
@@ -178,12 +200,8 @@ export function ArticleView({ article, onBack }: ArticleViewProps) {
             )}
           </div>
           
-          {/* Author, Date & Reading Time Container - Grey badge style, 1/4 width */}
+          {/* Date, Reading Time, Characters & Images Container - Grey badge style, 1/4 width */}
           <div className="flex-1 flex items-center gap-1.5 rounded-md border border-zinc-300 bg-zinc-100 px-2 py-1.5 sm:px-3 sm:py-2 whitespace-nowrap dark:border-zinc-700/50 dark:bg-zinc-800/50">
-            <span className="text-[10px] font-medium text-zinc-600 dark:text-zinc-400">
-              {article.author}
-            </span>
-            <span className="text-[10px] text-zinc-400 dark:text-zinc-600">•</span>
             <time 
               dateTime={article.date}
               className="text-[10px] font-medium text-zinc-600 dark:text-zinc-400"
@@ -197,6 +215,14 @@ export function ArticleView({ article, onBack }: ArticleViewProps) {
             <span className="text-[10px] text-zinc-400 dark:text-zinc-600">•</span>
             <span className="text-[10px] font-medium text-zinc-600 dark:text-zinc-400">
               {calculateReadingTime(article.content)} min read
+            </span>
+            <span className="text-[10px] text-zinc-400 dark:text-zinc-600">•</span>
+            <span className="text-[10px] font-medium text-zinc-600 dark:text-zinc-400">
+              {countCharacters(article.content).toLocaleString()} chars
+            </span>
+            <span className="text-[10px] text-zinc-400 dark:text-zinc-600">•</span>
+            <span className="text-[10px] font-medium text-zinc-600 dark:text-zinc-400">
+              {countImages(article.content)} images
             </span>
           </div>
         </div>
