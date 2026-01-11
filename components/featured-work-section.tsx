@@ -2,8 +2,9 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { ChevronUp, ChevronDown } from "lucide-react";
-import { getArticleIdByTitle } from "@/lib/articles";
+import { ChevronUp, ChevronDown, Clock } from "lucide-react";
+import { getArticleIdByTitle, getArticleById } from "@/lib/articles";
+import { calculateReadingTime } from "@/lib/article-utils";
 
 interface FeaturedWork {
   title: string;
