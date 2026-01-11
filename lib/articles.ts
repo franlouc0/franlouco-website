@@ -194,17 +194,15 @@ That is the work I enjoy. And that is the work I am open to collaborating on.
     author: "Francisco Lourenço",
     tags: ["Product", "Cross roles", "Judgment", "Builders"],
     content: `
-I see a lot of smart people burn time on ideas that should have died early.
-
-Not because the ideas were stupid. But because nobody slowed down enough to ask the right questions.
+I see a lot of smart people burn time on ideas that should have died early. Not because the ideas were stupid. But because nobody slowed down enough to ask the right questions.
 
 After years working across product, growth, Web3 launches, prediction markets, and mentoring founders, I follow one simple rule:
 
 Kill ideas fast, or commit hard.
 
-This article explains how I decide if an idea deserves two weeks of my life. Or zero.
+THere is how I decide if an idea deserves two weeks of my life. Or zero.
 
-It is the same process I use when working with founders, teams, or collaborators.
+It is the same process I use with founders, teams, and collaborators.
 
 ## The mindset that saves time
 
@@ -218,9 +216,7 @@ Three things I assume to be true:
 - Most problems are not painful enough to pay for.
 - Even a "simple" MVP is expensive in time and energy.
 
-So the bar is not "interesting idea".
-
-The bar is "this is worth building now, and I can ship it fast".
+So the bar is not "interesting idea". The bar is "this is worth building now, and I can ship it fast".
 
 ## My 10-minute filter
 
@@ -460,6 +456,258 @@ This is how I approach product and growth:
 I enjoy working with founders and teams who want to test ideas properly, ship quickly, and learn fast.
 
 Prediction markets are a passion. But I am curious by nature and open to almost any digital experiment if the problem is real.
+    `.trim(),
+  },
+  "when-web3-makes-sense-and-when-it-does-not": {
+    id: "when-web3-makes-sense-and-when-it-does-not",
+    title: "When Web3 makes sense, and when it does not",
+    date: "2025-01-16",
+    author: "Francisco Lourenço",
+    tags: ["Web3", "Cross roles", "Strategic maturity", "General audience"],
+    content: `
+Web3 is not a silver bullet.
+It is also not a scam by default.
+
+It is a tool.
+
+After years building and launching products in Web3, working with founders, investors, and teams, I have learned one thing the hard way:
+
+Web3 only makes sense when it removes a problem that cannot be removed otherwise.
+
+This article is my practical filter. No ideology. No hype. Just experience.
+
+## Start with the problem, not the chain
+
+Most teams get this wrong.
+
+They start with:
+
+- the chain
+- the token
+- the architecture
+
+Then they go hunting for a problem.
+
+That order almost always fails.
+
+The order that works is:
+
+- Real problem
+- Real constraint
+- System design
+- Technology choice
+
+Web3 should appear last. Not first.
+
+If your pitch starts with "we are building on blockchain", you are already losing half the room.
+
+## When Web3 clearly makes sense
+
+There are cases where Web3 is not just useful, it is the right call.
+
+### 1) When trust is low by default
+
+Web3 shines when participants do not trust each other and cannot rely on a central referee.
+
+This is exactly why it worked for prediction markets.
+
+In systems like Polkamarkets:
+
+- users do not know each other
+- value is directly at stake
+- rules must be enforced consistently
+- outcomes must be verifiable
+
+Removing the blockchain here breaks the system.
+
+That is the signal you are looking for.
+
+### 2) When incentives and ownership matter
+
+Web3 works when users are not just consumers, but participants.
+
+Protocols, networks, and marketplaces benefit from shared ownership because:
+
+- participation creates value
+- incentives are aligned
+- governance is part of the system
+
+At Polkamarkets, the token was not decoration. It was part of how the protocol functioned and scaled.
+
+When ownership matters, Web3 can unlock growth that Web2 cannot.
+
+### 3) When transparency is a feature, not a risk
+
+Some systems need to be inspectable.
+
+Not trusted. Inspectable.
+
+Examples:
+
+- settlement logic
+- value flows
+- market outcomes
+- rule enforcement
+
+In these cases, transparency reduces friction instead of adding it.
+
+Web3 is useful when visibility builds confidence, not when it scares users away.
+
+### 4) When composability is strategic
+
+Web3 allows systems to plug into each other in ways that are hard to replicate in Web2.
+
+This matters when:
+
+- others can build on top of you
+- integrations are core to growth
+- ecosystems beat standalone apps
+
+If your product benefits from being part of a broader system, Web3 can be a real advantage.
+
+## When Web3 does not make sense
+
+This part is just as important.
+
+### 1) When it adds friction to simple workflows
+
+If users want:
+
+- speed
+- simplicity
+- zero setup
+
+Web3 often makes things worse.
+
+Wallets, gas fees, signatures, bridges. These are real costs.
+
+If the upside is not obvious to the user, they will not tolerate the friction.
+
+### 2) When the user does not care
+
+Most users do not care about decentralization.
+
+They care about outcomes.
+
+If Web3 is the main thing users need to understand, adoption will be slow.
+
+The best Web3 products hide the complexity. If you cannot do that yet, think twice.
+
+### 3) When the industry is not ready
+
+This is where experience matters.
+
+At Coompass, we started with a blockchain-first approach in corporate volunteering and ESG.
+
+On paper, it made sense:
+
+- traceability
+- proof of impact
+- transparency
+
+In reality, the industry was not ready.
+
+The audience was:
+
+- non-technical
+- risk-averse
+- unfamiliar with wallets or tokens
+
+Web3 became a blocker, not an enabler.
+
+So we made the right call and shifted to Web2.
+
+That decision unlocked adoption.
+
+Knowing when to remove Web3 is just as important as knowing when to use it.
+
+### 4) When the token has no real job
+
+A token needs a reason to exist.
+
+Good reasons:
+
+- security
+- coordination
+- governance
+- access to scarce resources
+
+Weak reasons:
+
+- fundraising
+- marketing
+- copying other projects
+
+If you cannot explain the token in one calm paragraph, it probably should not exist.
+
+## The question I always ask
+
+Before committing to Web3, I ask one question:
+
+What breaks if we remove the blockchain?
+
+If the answer is "not much", Web3 is likely unnecessary.
+
+If the answer is "the system collapses", Web3 might be the right choice.
+
+This single question has saved me months of wasted work.
+
+## How I decide in practice
+
+I lean toward Web3 when:
+
+- trust is low
+- coordination is hard
+- ownership matters
+- transparency is required
+- ecosystems matter more than features
+
+I avoid Web3 when:
+
+- workflows must be fast and simple
+- users are non-technical
+- regulation dominates the product
+- a database solves the problem just fine
+
+This is not ideology. It is product judgment.
+
+## What Web3 taught me beyond crypto
+
+Even when Web3 is not the final solution, it teaches valuable lessons:
+
+- design incentives, not just interfaces
+- assume adversarial behavior
+- think in systems, not features
+- default to transparency where possible
+
+I apply these lessons everywhere, even in Web2 products.
+
+## Why this matters for founders and investors
+
+If you work with me, this is what you get:
+
+- no blind Web3 evangelism
+- no knee-jerk rejection either
+- honest tradeoff discussions
+- product-first decisions
+
+Polkamarkets worked because Web3 was essential.
+
+Coompass improved when Web3 was removed.
+
+Both decisions were correct.
+
+## The short version
+
+Web3 is not the goal.
+
+Solving the right problem is.
+
+When Web3 helps you do that better than anything else, use it.
+
+When it does not, walk away.
+
+That judgment is what I bring to the table.
     `.trim(),
   },
 };
