@@ -1,9 +1,11 @@
 export interface Work {
   id: string;
+  title: string; // Engaging title for featured work section
   company: string;
   role: string;
   period: string;
   logo: string;
+  headerImage?: string; // Header image that fills the container
   metrics: {
     label: string;
     value: string;
@@ -16,6 +18,7 @@ export interface Work {
 export const works: Record<string, Work> = {
   "polkamarkets": {
     id: "polkamarkets",
+    title: "How we raised $715K in an IDO without relying on hype",
     company: "Polkamarkets",
     role: "CMO & Co-Founder",
     period: "2021 - 2023",
@@ -29,6 +32,7 @@ export const works: Record<string, Work> = {
   },
   "coompass": {
     id: "coompass",
+    title: "How we achieved 166% MoM NGO growth in an ESG marketplace",
     company: "Coompass",
     role: "CMO & Co-Founder",
     period: "2023 - Present",
@@ -41,6 +45,7 @@ export const works: Record<string, Work> = {
   },
   "polkastarter": {
     id: "polkastarter",
+    title: "Building Web3 marketing strategies for token launches",
     company: "Polkastarter",
     role: "Web3 Marketing & BD Consultant",
     period: "2020 - Present",
@@ -53,6 +58,7 @@ export const works: Record<string, Work> = {
   },
   "bepro-network": {
     id: "bepro-network",
+    title: "Scaling sales and partnerships for blockchain infrastructure",
     company: "BEPRO Network",
     role: "Head of Sales & Partnerships",
     period: "2020 - 2021",
@@ -65,6 +71,7 @@ export const works: Record<string, Work> = {
   },
   "ibc-group": {
     id: "ibc-group",
+    title: "Driving growth for Web3 projects and blockchain initiatives",
     company: "IBC Group",
     role: "Web3 Marketing Growth Manager",
     period: "2025 - Present",
@@ -77,6 +84,7 @@ export const works: Record<string, Work> = {
   },
   "broadpath": {
     id: "broadpath",
+    title: "Strategic partnerships in Web3 and digital marketing",
     company: "Broadpath",
     role: "Partner",
     period: "2025 - Present",

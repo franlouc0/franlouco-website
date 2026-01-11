@@ -76,7 +76,7 @@ export function FeaturedWorkSection({}: FeaturedWorkSectionProps = {}) {
               href={`/work/${work.id}`}
               className="flex items-center gap-1 text-xs text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200 w-full text-left"
             >
-              <span className="truncate">{work.company}</span>
+              <span className="truncate">{work.title}</span>
               <span className="shrink-0">→</span>
             </Link>
           );

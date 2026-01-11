@@ -230,69 +230,98 @@ export default function WorkPage({ params }: WorkPageProps) {
 
       {/* Main Content Area - Visual Showcase */}
       <div className="relative flex flex-1 flex-col overflow-hidden w-full">
-        <section
-          className="flex-1 overflow-y-auto px-6 pt-10 pb-6 lg:p-8"
-          aria-label="Work showcase"
-        >
-          {/* Back Button */}
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 mb-8 text-xs text-zinc-600 hover:text-zinc-900 transition-colors dark:text-zinc-400 dark:hover:text-zinc-200"
-          >
-            <ArrowLeft className="h-3 w-3" />
-            Back to home
-          </Link>
-
-          {/* Work Header */}
-          <div className="mb-8">
-            <div className="flex items-start gap-4 mb-6">
-              <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-lg border border-zinc-200 dark:border-zinc-800">
-                <Image
-                  src={work.logo}
-                  alt={work.company}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="flex-1">
-                <h1 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50 mb-1">
-                  {work.company}
-                </h1>
-                <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-2">
-                  {work.role}
-                </p>
-                <p className="text-xs text-zinc-500 dark:text-zinc-500">
-                  {work.period}
-                </p>
-              </div>
-            </div>
-
-            {/* Metrics Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6">
-              {work.metrics.map((metric, idx) => (
-                <div
-                  key={idx}
-                  className="rounded-lg border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900/50"
-                >
-                  <div className="text-2xl font-bold text-green-400 dark:text-green-400 mb-1">
-                    {metric.value}
-                  </div>
-                  <div className="text-[10px] text-zinc-500 dark:text-zinc-500 uppercase tracking-wide">
-                    {metric.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Impact Statement */}
-            <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
-              {work.impact}
-            </p>
+        {/* Header Image with Title Overlay */}
+        <div className="relative w-full h-[60vh] min-h-[400px] lg:h-[70vh] overflow-hidden">
+          {/* Header Image - Full width */}
+          {work.headerImage ? (
+            <Image
+              src={work.headerImage}
+              alt={work.company}
+              fill
+              className="object-cover"
+              priority
+            />
+          ) : (
+            <div className="w-full h-full bg-gradient-to-br from-zinc-200 to-zinc-400 dark:from-zinc-800 dark:to-zinc-900" />
+          )}
+          
+          {/* Dark overlay for text readability */}
+          <div className="absolute inset-0 bg-black/40 dark:bg-black/60" />
+          
+          {/* Centered Title - Modern, Impactful, Big */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight text-center px-6 drop-shadow-2xl">
+              {work.company}
+            </h1>
           </div>
 
+          {/* Small Info Card - Top Right */}
+          <div className="absolute top-6 right-6 lg:top-8 lg:right-8 z-10">
+            <div className="relative rounded-lg border border-white/20 bg-white/90 backdrop-blur-sm p-4 shadow-xl dark:border-zinc-700/50 dark:bg-zinc-900/90 max-w-[280px]">
+              {/* Company Logo */}
+              <div className="flex items-start gap-3 mb-3">
+                <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-md border border-zinc-200 dark:border-zinc-800">
+                  <Image
+                    src={work.logo}
+                    alt={work.company}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-baseline gap-2 mb-0.5">
+                    <h3 className="text-xs font-semibold text-zinc-900 dark:text-zinc-50 truncate">
+                      {work.company}
+                    </h3>
+                    <span className="text-[10px] text-zinc-500 dark:text-zinc-500 shrink-0">
+                      {work.period}
+                    </span>
+                  </div>
+                  <p className="text-[10px] text-zinc-600 dark:text-zinc-400">
+                    {work.role}
+                  </p>
+                </div>
+              </div>
+
+              {/* Metrics - Visual Numbers */}
+              <div className="flex items-center gap-3 mb-3 pb-3 border-b border-zinc-100 dark:border-zinc-800">
+                {work.metrics.map((metric, idx) => (
+                  <div key={idx} className="flex flex-col">
+                    <span className="text-xs font-bold text-green-400 dark:text-green-400">
+                      {metric.value}
+                    </span>
+                    <span className="text-[9px] text-zinc-500 dark:text-zinc-500 uppercase tracking-wide">
+                      {metric.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Impact Statement */}
+              <p className="text-[10px] leading-relaxed text-zinc-600 dark:text-zinc-400">
+                {work.impact}
+              </p>
+            </div>
+          </div>
+
+          {/* Back Button - Top Left */}
+          <Link
+            href="/"
+            className="absolute top-6 left-6 lg:top-8 lg:left-8 z-10 inline-flex items-center gap-2 rounded-md bg-white/90 backdrop-blur-sm px-3 py-2 text-xs text-zinc-900 transition-all hover:bg-white dark:bg-zinc-900/90 dark:text-zinc-50 dark:hover:bg-zinc-900 shadow-lg"
+          >
+            <ArrowLeft className="h-3 w-3" />
+            Back
+          </Link>
+        </div>
+
+        {/* Content Section Below Header */}
+        <section
+          className="flex-1 overflow-y-auto px-6 pt-8 pb-6 lg:p-8"
+          aria-label="Work details"
+        >
           {/* Optional: Image Gallery */}
           {work.images && work.images.length > 0 && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
               {work.images.map((image, idx) => (
                 <div
                   key={idx}
