@@ -120,7 +120,6 @@ function CustomDropdown({
         className="w-full cursor-pointer rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 pr-8 text-left text-sm transition-colors hover:bg-zinc-200 focus:border-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-400 dark:border-zinc-700/50 dark:bg-zinc-800/50 dark:hover:bg-zinc-700/50 dark:focus:border-zinc-600 dark:focus:ring-zinc-600"
         aria-haspopup="listbox"
         aria-expanded={isOpen}
-        aria-required={required}
       >
         <span
           className={`block truncate ${
@@ -297,8 +296,6 @@ function MultiselectDropdown({
         className="w-full cursor-pointer rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2 pr-8 text-left text-sm transition-colors hover:bg-zinc-200 focus:border-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-400 dark:border-zinc-700/50 dark:bg-zinc-800/50 dark:hover:bg-zinc-700/50 dark:focus:border-zinc-600 dark:focus:ring-zinc-600"
         aria-haspopup="listbox"
         aria-expanded={isOpen}
-        aria-required={required}
-        aria-multiselectable="true"
       >
         <span
           className={`block truncate ${
