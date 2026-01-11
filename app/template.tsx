@@ -7,6 +7,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [isAnimating, setIsAnimating] = useState(true);
   const [isSlidingOut, setIsSlidingOut] = useState(false);
+  const [displayChildren, setDisplayChildren] = useState(children);
   const previousPathname = useRef(pathname);
 
   useEffect(() => {
@@ -21,12 +22,14 @@ export default function Template({ children }: { children: React.ReactNode }) {
         setIsSlidingOut(true);
         setIsAnimating(false);
         
-        // After slide-out animation, start entrance animation
+        // Wait for full slide-out animation (700ms), then update children and slide in
         const timer = setTimeout(() => {
+          setDisplayChildren(children);
           setIsSlidingOut(false);
-          setIsAnimating(true);
+          // Small delay before starting entrance animation, like contact modal
+          setTimeout(() => setIsAnimating(true), 50);
           previousPathname.current = pathname;
-        }, 350); // Half of 700ms for smoother transition
+        }, 700); // Full 700ms duration like contact modal
 
         return () => clearTimeout(timer);
       } else {
@@ -34,21 +37,24 @@ export default function Template({ children }: { children: React.ReactNode }) {
         setIsSlidingOut(false);
         setIsAnimating(false);
         
-        // After exit animation, start entrance animation
+        // Wait for full fade-out animation (700ms), then update children and fade in
         const timer = setTimeout(() => {
-          setIsAnimating(true);
+          setDisplayChildren(children);
+          // Small delay before starting entrance animation, like contact modal
+          setTimeout(() => setIsAnimating(true), 50);
           previousPathname.current = pathname;
-        }, 350); // Half of 700ms for smoother transition
+        }, 700); // Full 700ms duration like contact modal
 
         return () => clearTimeout(timer);
       }
     } else {
       // Initial render - ensure it's visible
+      setDisplayChildren(children);
       setIsAnimating(true);
       setIsSlidingOut(false);
       previousPathname.current = pathname;
     }
-  }, [pathname]);
+  }, [pathname, children]);
 
   return (
     <div
@@ -60,7 +66,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
             : "opacity-0 translate-x-0"
       }`}
     >
-      {children}
+      {displayChildren}
     </div>
   );
 }
