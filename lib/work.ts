@@ -1,3 +1,14 @@
+// Helper function to create URL-friendly slug from title
+function createSlug(title: string): string {
+  return title
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '') // Remove special characters
+    .replace(/\$/g, '') // Remove dollar signs
+    .replace(/\s+/g, '-') // Replace spaces with hyphens
+    .replace(/-+/g, '-') // Replace multiple hyphens with single
+    .trim();
+}
+
 export interface Work {
   id: string;
   title: string; // Engaging title for featured work section
@@ -16,8 +27,8 @@ export interface Work {
 }
 
 export const works: Record<string, Work> = {
-  "polkamarkets": {
-    id: "polkamarkets",
+  "how-we-raised-715k-ido": {
+    id: "how-we-raised-715k-ido",
     title: "How we raised $715K in an IDO without relying on hype",
     company: "Polkamarkets",
     role: "CMO & Co-Founder",
@@ -30,8 +41,8 @@ export const works: Record<string, Work> = {
     ],
     impact: "Built prediction market protocol from zero. Led token launch strategy and community growth.",
   },
-  "coompass": {
-    id: "coompass",
+  "how-we-achieved-166-mom-ngo-growth": {
+    id: "how-we-achieved-166-mom-ngo-growth",
     title: "How we achieved 166% MoM NGO growth in an ESG marketplace",
     company: "Coompass",
     role: "CMO & Co-Founder",
@@ -43,8 +54,8 @@ export const works: Record<string, Work> = {
     ],
     impact: "ESG marketplace connecting corporations with NGOs. Achieved rapid NGO network expansion.",
   },
-  "polkastarter": {
-    id: "polkastarter",
+  "building-web3-marketing-strategies": {
+    id: "building-web3-marketing-strategies",
     title: "Building Web3 marketing strategies for token launches",
     company: "Polkastarter",
     role: "Web3 Marketing & BD Consultant",
@@ -56,8 +67,8 @@ export const works: Record<string, Work> = {
     ],
     impact: "Strategic marketing and business development for Web3 projects and token launches.",
   },
-  "bepro-network": {
-    id: "bepro-network",
+  "scaling-sales-partnerships-blockchain": {
+    id: "scaling-sales-partnerships-blockchain",
     title: "Scaling sales and partnerships for blockchain infrastructure",
     company: "BEPRO Network",
     role: "Head of Sales & Partnerships",
@@ -69,8 +80,8 @@ export const works: Record<string, Work> = {
     ],
     impact: "Led sales and partnership strategy for blockchain development platform.",
   },
-  "ibc-group": {
-    id: "ibc-group",
+  "driving-growth-web3-blockchain": {
+    id: "driving-growth-web3-blockchain",
     title: "Driving growth for Web3 projects and blockchain initiatives",
     company: "IBC Group",
     role: "Web3 Marketing Growth Manager",
@@ -82,8 +93,8 @@ export const works: Record<string, Work> = {
     ],
     impact: "Driving marketing growth strategies for Web3 projects and blockchain initiatives.",
   },
-  "broadpath": {
-    id: "broadpath",
+  "strategic-partnerships-web3-digital-marketing": {
+    id: "strategic-partnerships-web3-digital-marketing",
     title: "Strategic partnerships in Web3 and digital marketing",
     company: "Broadpath",
     role: "Partner",
