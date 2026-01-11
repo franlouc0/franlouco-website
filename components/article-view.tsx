@@ -434,7 +434,7 @@ export function ArticleView({ article }: ArticleViewProps) {
       </div>
 
       {/* Article Header */}
-      <header className="mb-8">
+      <header className="mb-8 relative">
         <div className="flex flex-col sm:flex-row items-start sm:items-start gap-3 sm:gap-4">
           {/* Title Container - No box, 3/4 width */}
           <div className="flex-[3]">
@@ -455,20 +455,8 @@ export function ArticleView({ article }: ArticleViewProps) {
               </div>
             )}
           </div>
-        </div>
-      </header>
 
-      {/* Article Content */}
-      <div 
-        ref={contentRef}
-        className="prose prose-zinc dark:prose-invert max-w-none flex-1 overflow-y-auto pb-8 relative"
-      >
-        <div className="flex gap-8">
-          <div className="text-[15px] leading-relaxed max-w-4xl flex-1">
-            {formatContent(article.content)}
-          </div>
-
-          {/* Floating Author Info & Table of Contents */}
+          {/* Floating Author Info & Table of Contents - Aligned with header */}
           <div className="hidden lg:block w-48 shrink-0">
             <div className="sticky top-0">
               <div className="rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2.5 shadow-sm dark:border-zinc-700/50 dark:bg-zinc-800/50">
@@ -525,6 +513,16 @@ export function ArticleView({ article }: ArticleViewProps) {
               </div>
             </div>
           </div>
+        </div>
+      </header>
+
+      {/* Article Content */}
+      <div 
+        ref={contentRef}
+        className="prose prose-zinc dark:prose-invert max-w-none flex-1 overflow-y-auto pb-8"
+      >
+        <div className="text-[15px] leading-relaxed max-w-4xl">
+          {formatContent(article.content)}
         </div>
       </div>
     </article>
