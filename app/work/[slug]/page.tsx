@@ -258,12 +258,15 @@ export default function WorkPage({ params }: WorkPageProps) {
             Back
           </Link>
 
-          {/* Title - 3/4 width, left-aligned */}
+          {/* Title and Subtitle - 3/4 width, left-aligned */}
           <div className="absolute inset-0 flex items-center z-20 px-6 lg:px-8">
             <div className="w-3/4">
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight text-left drop-shadow-2xl">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight text-left drop-shadow-2xl mb-2">
                 {work.title}
               </h1>
+              <p className="text-sm sm:text-base lg:text-lg text-white/90 drop-shadow-lg">
+                {work.subtitle}
+              </p>
             </div>
           </div>
 

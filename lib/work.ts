@@ -12,6 +12,7 @@ function createSlug(title: string): string {
 export interface Work {
   id: string;
   title: string; // Engaging title for featured work section
+  subtitle: string; // One short context line
   company: string;
   role: string;
   period: string;
@@ -30,6 +31,7 @@ export const works: Record<string, Work> = {
   "how-we-raised-715k-ido": {
     id: "how-we-raised-715k-ido",
     title: "How we raised $715K in an IDO without relying on hype",
+    subtitle: "Building a prediction market protocol from zero",
     company: "Polkamarkets",
     role: "CMO & Co-Founder",
     period: "2021 - 2023",
@@ -44,6 +46,7 @@ export const works: Record<string, Work> = {
   "how-we-achieved-166-mom-ngo-growth": {
     id: "how-we-achieved-166-mom-ngo-growth",
     title: "How we achieved 166% MoM NGO growth in an ESG marketplace",
+    subtitle: "Connecting corporations with impact organizations",
     company: "Coompass",
     role: "CMO & Co-Founder",
     period: "2023 - Present",
@@ -57,6 +60,7 @@ export const works: Record<string, Work> = {
   "building-web3-marketing-strategies": {
     id: "building-web3-marketing-strategies",
     title: "Building Web3 marketing strategies for token launches",
+    subtitle: "Strategic marketing and business development for Web3 projects",
     company: "Polkastarter",
     role: "Web3 Marketing & BD Consultant",
     period: "2020 - Present",
@@ -70,6 +74,7 @@ export const works: Record<string, Work> = {
   "scaling-sales-partnerships-blockchain": {
     id: "scaling-sales-partnerships-blockchain",
     title: "Scaling sales and partnerships for blockchain infrastructure",
+    subtitle: "Leading sales and partnership strategy for development platform",
     company: "BEPRO Network",
     role: "Head of Sales & Partnerships",
     period: "2020 - 2021",
@@ -83,6 +88,7 @@ export const works: Record<string, Work> = {
   "driving-growth-web3-blockchain": {
     id: "driving-growth-web3-blockchain",
     title: "Driving growth for Web3 projects and blockchain initiatives",
+    subtitle: "Marketing growth strategies for Web3 and blockchain",
     company: "IBC Group",
     role: "Web3 Marketing Growth Manager",
     period: "2025 - Present",
@@ -96,6 +102,7 @@ export const works: Record<string, Work> = {
   "strategic-partnerships-web3-digital-marketing": {
     id: "strategic-partnerships-web3-digital-marketing",
     title: "Strategic partnerships in Web3 and digital marketing",
+    subtitle: "Business development and strategic partnerships",
     company: "Broadpath",
     role: "Partner",
     period: "2025 - Present",
