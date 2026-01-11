@@ -186,22 +186,17 @@ export function ArticleView({ article }: ArticleViewProps) {
       .trim();
   };
 
-  // Extract headers from content
+  // Extract headers from content - only level 2 (##) headers that have the green bar
   const extractHeaders = React.useMemo(() => {
     const lines = article.content.split('\n');
     const headers: Array<{ text: string; level: number; id: string }> = [];
     
     lines.forEach((line) => {
       const trimmedLine = line.trim();
-      if (trimmedLine.startsWith('# ')) {
-        const text = trimmedLine.substring(2);
-        headers.push({ text, level: 1, id: createSlug(text) });
-      } else if (trimmedLine.startsWith('## ')) {
+      // Only include level 2 headers (##) that have the green bar marker
+      if (trimmedLine.startsWith('## ')) {
         const text = trimmedLine.substring(3);
         headers.push({ text, level: 2, id: createSlug(text) });
-      } else if (trimmedLine.startsWith('### ')) {
-        const text = trimmedLine.substring(4);
-        headers.push({ text, level: 3, id: createSlug(text) });
       }
     });
     
