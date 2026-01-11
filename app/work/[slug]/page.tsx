@@ -252,7 +252,7 @@ export default function WorkPage({ params }: WorkPageProps) {
           {/* Back Button - Top Left */}
           <Link
             href="/"
-            className="absolute top-6 left-6 lg:top-8 lg:left-8 z-30 inline-flex items-center gap-2 rounded-md bg-white/90 backdrop-blur-sm px-3 py-2 text-xs text-zinc-900 transition-all hover:bg-white dark:bg-zinc-900/90 dark:text-zinc-50 dark:hover:bg-zinc-900 shadow-lg"
+            className="absolute top-6 left-6 lg:top-8 lg:left-8 z-30 inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/90 backdrop-blur-sm px-3 py-2 text-xs text-zinc-900 transition-all hover:bg-white dark:border-zinc-700/50 dark:bg-zinc-900/90 dark:text-zinc-50 dark:hover:bg-zinc-900 shadow-lg"
           >
             <ArrowLeft className="h-3 w-3" />
             Back
