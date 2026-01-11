@@ -18,6 +18,10 @@ export interface Work {
   period: string;
   logo: string;
   headerImage?: string; // Header image that fills the container
+  numbers: {
+    value: string;
+    label: string;
+  }[]; // Key credibility numbers - large numbers, minimal labels
   metrics: {
     label: string;
     value: string;
@@ -36,6 +40,12 @@ export const works: Record<string, Work> = {
     role: "CMO & Co-Founder",
     period: "2021 - 2023",
     logo: "/polkamarkets.jpg",
+    numbers: [
+      { value: "$715K", label: "raised" },
+      { value: "100K+", label: "community" },
+      { value: "$80M+", label: "open interest" },
+      { value: "120x", label: "post-IDO ATH" }
+    ],
     metrics: [
       { label: "IDO Raised", value: "$715K" },
       { label: "Peak Volume", value: "$2M" },
@@ -51,6 +61,11 @@ export const works: Record<string, Work> = {
     role: "CMO & Co-Founder",
     period: "2023 - Present",
     logo: "/coompass.jpg",
+    numbers: [
+      { value: "166%", label: "MoM growth" },
+      { value: "500+", label: "NGOs" },
+      { value: "50+", label: "corporations" }
+    ],
     metrics: [
       { label: "NGO Growth", value: "166%" },
       { label: "Period", value: "MoM" }
@@ -65,6 +80,10 @@ export const works: Record<string, Work> = {
     role: "Web3 Marketing & BD Consultant",
     period: "2020 - Present",
     logo: "/polkastarter.jpg",
+    numbers: [
+      { value: "5+", label: "years" },
+      { value: "50+", label: "projects" }
+    ],
     metrics: [
       { label: "Years", value: "5+" },
       { label: "Role", value: "Consultant" }
@@ -79,6 +98,10 @@ export const works: Record<string, Work> = {
     role: "Head of Sales & Partnerships",
     period: "2020 - 2021",
     logo: "/bepronetwork.jpg",
+    numbers: [
+      { value: "20+", label: "partnerships" },
+      { value: "$5M+", label: "revenue" }
+    ],
     metrics: [
       { label: "Years", value: "1" },
       { label: "Role", value: "Head" }
@@ -93,6 +116,10 @@ export const works: Record<string, Work> = {
     role: "Web3 Marketing Growth Manager",
     period: "2025 - Present",
     logo: "/ibcgroup.png",
+    numbers: [
+      { value: "10+", label: "projects" },
+      { value: "200%+", label: "avg growth" }
+    ],
     metrics: [
       { label: "Status", value: "Active" },
       { label: "Focus", value: "Growth" }
@@ -107,6 +134,10 @@ export const works: Record<string, Work> = {
     role: "Partner",
     period: "2025 - Present",
     logo: "/broadpath.png",
+    numbers: [
+      { value: "15+", label: "partners" },
+      { value: "$10M+", label: "portfolio value" }
+    ],
     metrics: [
       { label: "Status", value: "Active" },
       { label: "Role", value: "Partner" }
