@@ -257,6 +257,9 @@ export default function WorkPage({ params }: WorkPageProps) {
             priority
           />
           
+          {/* Overlay for text readability - white in light mode, black in dark mode */}
+          <div className="absolute inset-0 bg-white/40 dark:bg-black/60" />
+          
           {/* Centered Title - Modern, Impactful, Big */}
           <div className="absolute inset-0 flex items-center justify-center">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight text-center px-6 drop-shadow-2xl">
