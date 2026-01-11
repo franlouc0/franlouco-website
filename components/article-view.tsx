@@ -470,7 +470,40 @@ export function ArticleView({ article }: ArticleViewProps) {
           </div>
         </div>
 
-        {/* Floating Author Info & Table of Contents - Positioned absolutely to not affect header height */}
+        {/* Mobile Author Info Box - Below tags, no table of contents */}
+        <div className="lg:hidden mt-4">
+          <div className="rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2.5 shadow-sm dark:border-zinc-700/50 dark:bg-zinc-800/50">
+            <div className="flex flex-col gap-1.5">
+              <div className="flex items-center gap-1.5 whitespace-nowrap">
+                <time 
+                  dateTime={article.date}
+                  className="text-xs font-medium text-zinc-600 dark:text-zinc-400"
+                >
+                  {new Date(article.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                  })}
+                </time>
+                <span className="text-xs text-zinc-400 dark:text-zinc-600">•</span>
+                <span className="text-xs font-medium text-zinc-600 dark:text-zinc-400">
+                  {calculateReadingTime(article.content)} min read
+                </span>
+              </div>
+              <div className="flex items-center gap-1.5 whitespace-nowrap">
+                <span className="text-xs font-medium text-zinc-600 dark:text-zinc-400">
+                  {countCharacters(article.content).toLocaleString()} chars
+                </span>
+                <span className="text-xs text-zinc-400 dark:text-zinc-600">•</span>
+                <span className="text-xs font-medium text-zinc-600 dark:text-zinc-400">
+                  {countImages(article.content)} images
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop Floating Author Info & Table of Contents - Positioned absolutely to not affect header height */}
         <div className="hidden lg:block absolute right-0 top-0 w-48">
           <div className="sticky top-0">
             <div className="rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2.5 shadow-sm dark:border-zinc-700/50 dark:bg-zinc-800/50">
@@ -503,7 +536,7 @@ export function ArticleView({ article }: ArticleViewProps) {
                 </div>
               </div>
 
-              {/* Table of Contents */}
+              {/* Table of Contents - Desktop only */}
               {extractHeaders.length > 0 && (
                 <div>
                   <div className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-2 text-right">
