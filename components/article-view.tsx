@@ -398,7 +398,7 @@ export function ArticleView({ article, onBack }: ArticleViewProps) {
                 {article.tags.map((tag, index) => (
                   <span
                     key={index}
-                    className="inline-flex h-4 items-center rounded-md border border-zinc-300 bg-zinc-100 px-1.5 text-[10px] text-zinc-600 dark:border-zinc-700/50 dark:bg-zinc-800/50 dark:text-zinc-400"
+                    className="inline-flex h-5 items-center rounded-md border border-zinc-300 bg-zinc-100 px-2 text-xs text-zinc-600 dark:border-zinc-700/50 dark:bg-zinc-800/50 dark:text-zinc-400"
                   >
                     {tag}
                   </span>
@@ -411,7 +411,7 @@ export function ArticleView({ article, onBack }: ArticleViewProps) {
           <div className="flex-1 flex items-center gap-1.5 rounded-md border border-zinc-300 bg-zinc-100 px-2 py-1.5 sm:px-3 sm:py-2 whitespace-nowrap dark:border-zinc-700/50 dark:bg-zinc-800/50">
             <time 
               dateTime={article.date}
-              className="text-[10px] font-medium text-zinc-600 dark:text-zinc-400"
+              className="text-xs font-medium text-zinc-600 dark:text-zinc-400"
             >
               {new Date(article.date).toLocaleDateString('en-US', {
                 year: 'numeric',
@@ -419,16 +419,16 @@ export function ArticleView({ article, onBack }: ArticleViewProps) {
                 day: 'numeric',
               })}
             </time>
-            <span className="text-[10px] text-zinc-400 dark:text-zinc-600">•</span>
-            <span className="text-[10px] font-medium text-zinc-600 dark:text-zinc-400">
+            <span className="text-xs text-zinc-400 dark:text-zinc-600">•</span>
+            <span className="text-xs font-medium text-zinc-600 dark:text-zinc-400">
               {calculateReadingTime(article.content)} min read
             </span>
-            <span className="text-[10px] text-zinc-400 dark:text-zinc-600">•</span>
-            <span className="text-[10px] font-medium text-zinc-600 dark:text-zinc-400">
+            <span className="text-xs text-zinc-400 dark:text-zinc-600">•</span>
+            <span className="text-xs font-medium text-zinc-600 dark:text-zinc-400">
               {countCharacters(article.content).toLocaleString()} chars
             </span>
-            <span className="text-[10px] text-zinc-400 dark:text-zinc-600">•</span>
-            <span className="text-[10px] font-medium text-zinc-600 dark:text-zinc-400">
+            <span className="text-xs text-zinc-400 dark:text-zinc-600">•</span>
+            <span className="text-xs font-medium text-zinc-600 dark:text-zinc-400">
               {countImages(article.content)} images
             </span>
           </div>
