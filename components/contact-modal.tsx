@@ -468,7 +468,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 : "-translate-y-4 opacity-0"
             }`}
           >
-            <h2 className="text-lg font-bold text-zinc-900 dark:text-zinc-50">
+            <h2 className="text-lg font-bold text-zinc-900 dark:text-zinc-50 underline decoration-green-400 decoration-2">
               Let&apos;s work together
             </h2>
             <button
