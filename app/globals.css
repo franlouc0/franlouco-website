@@ -105,25 +105,24 @@
 
 }
 
-/* Page transition animations */
-.view-transition-grid-content {
-  animation: fadeIn 0.3s ease-out;
+/* View Transitions API for seamless page transitions */
+@view-transition {
+  navigation: auto;
 }
 
-.view-transition-article-content {
-  animation: slideInFromRight 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-@keyframes fadeIn {
+/* Custom slide transitions for grid to article navigation */
+@keyframes slide-out-left {
   from {
-    opacity: 0;
-  }
-  to {
+    transform: translateX(0);
     opacity: 1;
   }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
 }
 
-@keyframes slideInFromRight {
+@keyframes slide-in-right {
   from {
     transform: translateX(100%);
     opacity: 0;
@@ -132,4 +131,13 @@
     transform: translateX(0);
     opacity: 1;
   }
+}
+
+/* Apply custom animations to view transitions */
+::view-transition-old(root) {
+  animation: slide-out-left 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+::view-transition-new(root) {
+  animation: slide-in-right 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
