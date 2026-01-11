@@ -212,8 +212,10 @@ export function ArticleView({ article }: ArticleViewProps) {
   const scrollToHeader = React.useCallback((id: string) => {
     const element = document.getElementById(id);
     if (element && contentRef.current) {
-      // Account for article header (title + tags) + some padding for readability
-      const offset = 240; // Offset from top to account for header and ensure readability
+      // On mobile, use normal scroll (no offset for featured work anchor links)
+      // On desktop, add offset for table of contents to account for header
+      const isMobile = window.innerWidth < 1024;
+      const offset = isMobile ? 0 : 240; // Offset only on desktop
       const elementPosition = element.getBoundingClientRect().top;
       const containerScrollTop = contentRef.current.scrollTop;
       const offsetPosition = containerScrollTop + elementPosition - offset;
