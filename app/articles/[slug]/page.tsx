@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Info, X, ChevronDown } from "lucide-react";
@@ -20,13 +20,7 @@ interface ArticlePageProps {
 export default function ArticlePage({ params }: ArticlePageProps) {
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isInfoOpen, setIsInfoOpen] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
   const article = getArticleById(params.slug);
-
-  useEffect(() => {
-    // Trigger animation on mount - similar to contact modal
-    setTimeout(() => setIsAnimating(true), 50);
-  }, []);
 
   if (!article) {
     notFound();
@@ -250,9 +244,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
       {/* Main Content Area */}
       <div className="relative flex flex-1 flex-col overflow-hidden w-full">
         <section
-          className={`flex-1 overflow-y-auto px-6 pt-10 pb-6 lg:p-8 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-            isAnimating ? "translate-x-0" : "translate-x-full"
-          }`}
+          className="flex-1 overflow-y-auto px-6 pt-10 pb-6 lg:p-8 view-transition-article-content"
           aria-label="Article"
         >
           <ArticleView article={article} />
