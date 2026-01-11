@@ -244,7 +244,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
       {/* Main Content Area */}
       <div className="relative flex flex-1 flex-col overflow-hidden w-full">
         <section
-          className="flex-1 overflow-y-auto px-6 pt-10 pb-6 lg:p-8 view-transition-article-content"
+          className="flex-1 overflow-y-auto px-6 pt-10 pb-6 lg:p-8"
           aria-label="Article"
         >
           <ArticleView article={article} />
