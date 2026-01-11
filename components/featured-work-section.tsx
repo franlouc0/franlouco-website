@@ -151,7 +151,7 @@ export function FeaturedWorkSection({}: FeaturedWorkSectionProps = {}) {
               {readingTime !== null && (
                 <>
                   <Clock className="h-3 w-3 shrink-0" />
-                  <span className="shrink-0">{readingTime}'</span>
+                  <span className="shrink-0">{readingTime}&apos;</span>
                   <span className="text-zinc-400 dark:text-zinc-600 shrink-0">|</span>
                 </>
               )}
