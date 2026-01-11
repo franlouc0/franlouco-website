@@ -562,7 +562,7 @@ export function ArticleView({ article }: ArticleViewProps) {
         </div>
 
         {/* Desktop Floating Author Info & Table of Contents - Positioned absolutely to not affect header height */}
-        <div className="hidden lg:block absolute right-0 top-0 w-48">
+        <div className="hidden lg:block absolute right-0 top-0 w-56">
           <div className="sticky top-0">
             <div className="rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2.5 shadow-sm dark:border-zinc-700/50 dark:bg-zinc-800/50">
               {/* Author/Info Box */}
@@ -605,11 +605,11 @@ export function ArticleView({ article }: ArticleViewProps) {
                       <button
                         key={index}
                         onClick={() => scrollToHeader(header.id)}
-                        className={`text-right text-xs text-zinc-600 hover:text-zinc-900 hover:underline transition-colors dark:text-zinc-400 dark:hover:text-zinc-200 ${
+                        className={`text-right text-xs text-zinc-600 hover:text-zinc-900 hover:underline transition-colors dark:text-zinc-400 dark:hover:text-zinc-200 w-full ${
                           header.level === 1 ? 'font-medium' : header.level === 2 ? 'pr-2' : 'pr-4'
                         }`}
                       >
-                        {header.text}
+                        <span className="block truncate text-right">{header.text}</span>
                       </button>
                     ))}
                   </nav>
