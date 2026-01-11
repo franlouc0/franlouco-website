@@ -314,19 +314,23 @@ export default function WorkPage({ params }: WorkPageProps) {
                 </div>
               </div>
 
-              {/* Metrics - Visual Numbers */}
-              <div className="flex items-center gap-3 mb-3 pb-3 border-b border-zinc-100 dark:border-zinc-800">
-                {work.metrics.map((metric, idx) => (
-                  <div key={idx} className="flex flex-col">
-                    <span className="text-xs font-bold text-green-400 dark:text-green-400">
-                      {metric.value}
-                    </span>
-                    <span className="text-[9px] text-zinc-500 dark:text-zinc-500 uppercase tracking-wide">
-                      {metric.label}
-                    </span>
+              {/* Numbers Block - Key credibility signals */}
+              {work.numbers && work.numbers.length > 0 && (
+                <div className="mb-3 pb-3 border-b border-zinc-100 dark:border-zinc-800">
+                  <div className="grid grid-cols-2 gap-3">
+                    {work.numbers.map((number, idx) => (
+                      <div key={idx} className="flex flex-col">
+                        <span className="text-2xl font-extrabold text-green-400 dark:text-green-400 leading-none">
+                          {number.value}
+                        </span>
+                        <span className="text-[9px] text-zinc-500 dark:text-zinc-500 uppercase tracking-wide mt-1">
+                          {number.label}
+                        </span>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </div>
+              )}
 
               {/* Impact Statement */}
               <p className="text-[10px] leading-relaxed text-zinc-600 dark:text-zinc-400">
