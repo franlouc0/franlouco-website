@@ -261,23 +261,14 @@ export default function WorkPage({ params }: WorkPageProps) {
           <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/50 to-white/80 dark:from-black/80 dark:via-black/50 dark:to-black/80" />
           
           {/* Centered Title - Modern, Impactful, Big */}
-          <div className="absolute inset-0 flex items-center justify-center">
+          <div className="absolute inset-0 flex items-center justify-center z-20">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight text-center px-6 drop-shadow-2xl">
               {work.title}
             </h1>
           </div>
 
-          {/* Back Button - Top Left */}
-          <Link
-            href="/"
-            className="absolute top-6 left-6 lg:top-8 lg:left-8 z-10 inline-flex items-center gap-2 rounded-md bg-white/90 backdrop-blur-sm px-3 py-2 text-xs text-zinc-900 transition-all hover:bg-white dark:bg-zinc-900/90 dark:text-zinc-50 dark:hover:bg-zinc-900 shadow-lg"
-          >
-            <ArrowLeft className="h-3 w-3" />
-            Back
-          </Link>
-
-          {/* Small Info Card - Bottom Right */}
-          <div className="absolute bottom-6 right-6 lg:bottom-8 lg:right-8 z-10" style={{ paddingTop: '20px' }}>
+          {/* Small Info Card - Top Right */}
+          <div className="absolute top-6 right-6 lg:top-8 lg:right-8 z-10">
             <div className="relative rounded-lg border border-white/20 bg-white/90 backdrop-blur-sm p-4 shadow-xl dark:border-zinc-700/50 dark:bg-zinc-900/90 max-w-[280px]">
               {/* Company Logo */}
               <div className="flex items-start gap-3 mb-3">
@@ -324,6 +315,15 @@ export default function WorkPage({ params }: WorkPageProps) {
               </p>
             </div>
           </div>
+
+          {/* Back Button - Top Left */}
+          <Link
+            href="/"
+            className="absolute top-6 left-6 lg:top-8 lg:left-8 z-10 inline-flex items-center gap-2 rounded-md bg-white/90 backdrop-blur-sm px-3 py-2 text-xs text-zinc-900 transition-all hover:bg-white dark:bg-zinc-900/90 dark:text-zinc-50 dark:hover:bg-zinc-900 shadow-lg"
+          >
+            <ArrowLeft className="h-3 w-3" />
+            Back
+          </Link>
         </div>
 
         {/* Content Section Below Header */}
