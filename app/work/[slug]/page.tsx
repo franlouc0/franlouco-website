@@ -316,9 +316,9 @@ export default function WorkPage({ params }: WorkPageProps) {
                 </div>
               )}
 
-              {/* Impact Statement */}
+              {/* Subtitle */}
               <p className="text-[10px] leading-relaxed text-zinc-600 dark:text-zinc-400">
-                {work.impact}
+                {work.subtitle}
               </p>
             </div>
           </div>
