@@ -30,6 +30,7 @@ export default function WorkPage({ params }: WorkPageProps) {
 
   // Share functionality - copy URL to clipboard
   const handleShare = async () => {
+    if (!work) return;
     const url = `${window.location.origin}/work/${work.id}`;
     try {
       await navigator.clipboard.writeText(url);
@@ -283,11 +284,12 @@ export default function WorkPage({ params }: WorkPageProps) {
               Let&apos;s work together
             </button>
 
-            <button
-              onClick={handleShare}
-              className="inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/90 backdrop-blur-sm px-3 py-2 text-xs text-zinc-900 transition-all hover:bg-white dark:border-zinc-700/50 dark:bg-zinc-900/90 dark:text-zinc-50 dark:hover:bg-zinc-900 shadow-lg"
-              aria-label="Copy link to share"
-            >
+            {work && (
+              <button
+                onClick={handleShare}
+                className="inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/90 backdrop-blur-sm px-3 py-2 text-xs text-zinc-900 transition-all hover:bg-white dark:border-zinc-700/50 dark:bg-zinc-900/90 dark:text-zinc-50 dark:hover:bg-zinc-900 shadow-lg"
+                aria-label="Copy link to share"
+              >
               {isShareCopied ? (
                 <>
                   <Check className="h-3 w-3" />
