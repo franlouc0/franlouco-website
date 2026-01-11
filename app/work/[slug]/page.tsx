@@ -309,7 +309,7 @@ export default function WorkPage({ params }: WorkPageProps) {
                   <div className="grid grid-cols-2 gap-3">
                     {work.numbers.map((number, idx) => (
                       <div key={idx} className="flex flex-col">
-                        <span className="text-2xl font-extrabold text-green-400 dark:text-green-400 leading-none">
+                        <span className="text-xs font-bold text-green-400 dark:text-green-400 leading-none">
                           {number.value}
                         </span>
                         <span className="text-[9px] text-zinc-500 dark:text-zinc-500 uppercase tracking-wide mt-1">
@@ -318,6 +318,17 @@ export default function WorkPage({ params }: WorkPageProps) {
                       </div>
                     ))}
                   </div>
+                </div>
+              )}
+
+              {/* Scope Block - What I owned */}
+              {work.scope && work.scope.length > 0 && (
+                <div className="space-y-1">
+                  {work.scope.map((item, idx) => (
+                    <p key={idx} className="text-[10px] text-zinc-600 dark:text-zinc-400">
+                      {item}
+                    </p>
+                  ))}
                 </div>
               )}
             </div>

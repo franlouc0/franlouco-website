@@ -22,6 +22,7 @@ export interface Work {
     value: string;
     label: string;
   }[]; // Key credibility numbers - large numbers, minimal labels
+  scope: string[]; // What I owned - short, scannable list
   metrics: {
     label: string;
     value: string;
@@ -46,6 +47,14 @@ export const works: Record<string, Work> = {
       { value: "$80M+", label: "open interest" },
       { value: "120x", label: "post-IDO ATH" }
     ],
+    scope: [
+      "GTM strategy",
+      "Launch execution",
+      "Partnerships",
+      "KOL coordination",
+      "Community systems",
+      "Product + marketing alignment"
+    ],
     metrics: [
       { label: "IDO Raised", value: "$715K" },
       { label: "Peak Volume", value: "$2M" },
@@ -66,6 +75,12 @@ export const works: Record<string, Work> = {
       { value: "500+", label: "NGOs" },
       { value: "50+", label: "corporations" }
     ],
+    scope: [
+      "GTM strategy",
+      "NGO network growth",
+      "Partnership development",
+      "Brand positioning"
+    ],
     metrics: [
       { label: "NGO Growth", value: "166%" },
       { label: "Period", value: "MoM" }
@@ -83,6 +98,12 @@ export const works: Record<string, Work> = {
     numbers: [
       { value: "5+", label: "years" },
       { value: "50+", label: "projects" }
+    ],
+    scope: [
+      "Marketing strategy",
+      "Token launch support",
+      "Business development",
+      "Partnership coordination"
     ],
     metrics: [
       { label: "Years", value: "5+" },
@@ -102,6 +123,12 @@ export const works: Record<string, Work> = {
       { value: "20+", label: "partnerships" },
       { value: "$5M+", label: "revenue" }
     ],
+    scope: [
+      "Sales strategy",
+      "Partnership development",
+      "Business development",
+      "Revenue growth"
+    ],
     metrics: [
       { label: "Years", value: "1" },
       { label: "Role", value: "Head" }
@@ -120,6 +147,12 @@ export const works: Record<string, Work> = {
       { value: "10+", label: "projects" },
       { value: "200%+", label: "avg growth" }
     ],
+    scope: [
+      "Growth strategy",
+      "Marketing execution",
+      "Project management",
+      "Performance optimization"
+    ],
     metrics: [
       { label: "Status", value: "Active" },
       { label: "Focus", value: "Growth" }
@@ -137,6 +170,12 @@ export const works: Record<string, Work> = {
     numbers: [
       { value: "15+", label: "partners" },
       { value: "$10M+", label: "portfolio value" }
+    ],
+    scope: [
+      "Strategic partnerships",
+      "Business development",
+      "Portfolio management",
+      "Market expansion"
     ],
     metrics: [
       { label: "Status", value: "Active" },
