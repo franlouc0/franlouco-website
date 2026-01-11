@@ -28,7 +28,14 @@ export interface Work {
     value: string;
   }[];
   impact: string; // 1-2 line max
-  images?: string[]; // Optional showcase images
+  // Visual proof section
+  visuals?: {
+    image: string;
+    caption?: string; // Optional one-line caption
+  }[];
+  insight?: string; // Optional: One short sentence showing judgment
+  softClose?: string; // Optional: Very light ending (e.g., "Happy to share details on request")
+  images?: string[]; // Keep for backward compatibility, but prefer visuals
   color?: string; // Optional accent color
 }
 

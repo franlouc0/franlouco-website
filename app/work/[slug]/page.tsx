@@ -340,27 +340,71 @@ export default function WorkPage({ params }: WorkPageProps) {
           </div>
         </div>
 
-        {/* Content Section Below Header */}
+        {/* Content Section Below Header - Visual Proof */}
         <section
           className="flex-1 overflow-y-auto px-6 pt-8 pb-6 lg:p-8"
           aria-label="Work details"
         >
-          {/* Optional: Image Gallery */}
-          {work.images && work.images.length > 0 && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-              {work.images.map((image, idx) => (
-                <div
-                  key={idx}
-                  className="relative aspect-video rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800"
-                >
-                  <Image
-                    src={image}
-                    alt={`${work.company} showcase ${idx + 1}`}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
+          {/* Visual Proof Section - Seamless Gallery */}
+          {work.visuals && work.visuals.length > 0 && (
+            <div className="space-y-6">
+              {work.visuals.map((visual, idx) => (
+                <figure key={idx} className="group">
+                  <div className="relative w-full rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900">
+                    <Image
+                      src={visual.image}
+                      alt={visual.caption || `${work.company} visual ${idx + 1}`}
+                      width={1920}
+                      height={1080}
+                      className="w-full h-auto object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                  {visual.caption && (
+                    <figcaption className="mt-2 text-xs text-zinc-500 dark:text-zinc-500 text-center">
+                      {visual.caption}
+                    </figcaption>
+                  )}
+                </figure>
               ))}
+            </div>
+          )}
+
+          {/* Fallback to old images format for backward compatibility */}
+          {(!work.visuals || work.visuals.length === 0) && work.images && work.images.length > 0 && (
+            <div className="space-y-6">
+              {work.images.map((image, idx) => (
+                <figure key={idx} className="group">
+                  <div className="relative w-full rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900">
+                    <Image
+                      src={image}
+                      alt={`${work.company} showcase ${idx + 1}`}
+                      width={1920}
+                      height={1080}
+                      className="w-full h-auto object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                </figure>
+              ))}
+            </div>
+          )}
+
+          {/* Insight or Decision Block - Optional */}
+          {work.insight && (
+            <div className="mt-12 pt-8 border-t border-zinc-200 dark:border-zinc-800">
+              <p className="text-sm text-zinc-700 dark:text-zinc-300 italic">
+                {work.insight}
+              </p>
+            </div>
+          )}
+
+          {/* Soft Close - Optional */}
+          {work.softClose && (
+            <div className="mt-8 pt-6 border-t border-zinc-200 dark:border-zinc-800">
+              <p className="text-xs text-zinc-500 dark:text-zinc-500 text-center">
+                {work.softClose}
+              </p>
             </div>
           )}
         </section>
