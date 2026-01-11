@@ -187,6 +187,281 @@ This kind of GTM and launch work is what I do.
 That is the work I enjoy. And that is the work I am open to collaborating on.
     `.trim(),
   },
+  "how-i-decide-if-idea-is-worth-building": {
+    id: "how-i-decide-if-idea-is-worth-building",
+    title: "How I decide if an idea is worth building",
+    date: "2025-01-16",
+    author: "Francisco Lourenço",
+    tags: ["Product", "Cross roles", "Judgment", "Builders"],
+    content: `
+I see a lot of smart people burn time on ideas that should have died early.
+
+Not because the ideas were stupid. But because nobody slowed down enough to ask the right questions.
+
+After years working across product, growth, Web3 launches, prediction markets, and mentoring founders, I follow one simple rule:
+
+Kill ideas fast, or commit hard.
+
+This article explains how I decide if an idea deserves two weeks of my life. Or zero.
+
+It is the same process I use when working with founders, teams, or collaborators.
+
+## The mindset that saves time
+
+Most people start with features.
+
+I start with reality.
+
+Three things I assume to be true:
+
+- Nobody owes you attention.
+- Most problems are not painful enough to pay for.
+- Even a "simple" MVP is expensive in time and energy.
+
+So the bar is not "interesting idea".
+
+The bar is "this is worth building now, and I can ship it fast".
+
+## My 10-minute filter
+
+Before I get excited, an idea has to pass this quick check.
+
+### 1) Who is the person?
+
+Not "users".
+
+A real person:
+
+- a founder launching a token
+- a trader who needs speed
+- a product lead under pressure
+- a team that must report or decide
+
+If I cannot name the person, I stop.
+
+### 2) What is the exact moment of pain?
+
+Not "they want better tools".
+
+A moment:
+
+- "I have to decide today and I do not trust my data."
+- "This task wastes two hours every week."
+- "I lose money if I miss this signal."
+- "I cannot prove impact when asked."
+
+If there is no clear moment, it is usually a nice-to-have.
+
+### 3) What do they do today instead?
+
+This is where most ideas fail.
+
+If the answer is:
+
+- Excel
+- Telegram
+- Notion
+- a manual workaround
+- an existing tool they tolerate
+
+Good. That means the job exists.
+
+If the answer is "nothing", I get cautious. Sometimes that means no demand.
+
+### 4) Why now?
+
+There must be a trigger:
+
+- market shift
+- regulation
+- ecosystem growth
+- new tech lowering cost or friction
+- a clear timing window
+
+If there is no "why now", the idea will struggle.
+
+## The scorecard I actually use
+
+After the quick filter, I score the idea on four things. Each from 0 to 5.
+
+If it does not reach at least 14, I pause or kill it.
+
+### 1) Pain and urgency
+
+Is it painful?
+
+Is it frequent?
+
+Does it block action?
+
+Urgency matters more than market size early on.
+
+### 2) Reach and distribution
+
+Can I reach these people?
+
+Do I already know where they hang out?
+
+Can I get early users without paid ads?
+
+A great idea with no distribution path is a side project.
+
+### 3) Clear difference
+
+Not "we are better".
+
+Better how?
+
+- faster
+- simpler
+- fewer steps
+- more reliable
+- less risky
+
+If the difference is vague, it will be ignored or copied.
+
+### 4) Ability to ship in 2 weeks
+
+This one is personal and strict:
+
+- Can I ship a v1 in two weeks max?
+- Can it deliver real value on day one?
+- Can it run without constant babysitting?
+
+If the answer is no, I rethink scope.
+
+## The one-sentence test
+
+Before building anything, I write one sentence:
+
+For [person], who needs [job], this helps them [outcome] by [how].
+
+If that sentence feels forced or generic, the idea is not ready.
+
+This also keeps messaging clean and honest. Good for users. Good for SEO.
+
+## How I test demand without wasting months
+
+I avoid long "validation phases". I prefer fast tests with real cost.
+
+### Test 1. The 15-message test
+
+I reach out to around 15 people who match the persona.
+
+I ask:
+
+- Are you dealing with this right now?
+- How do you solve it today?
+- What would make you switch?
+
+If fewer than five feel strong pain, I pause.
+
+### Test 2. Fake-door landing page
+
+A simple page:
+
+- clear promise
+- three bullets
+- one action: join waitlist or request access
+
+I share it in targeted places. Not everywhere.
+
+Weak conversion means weak message or weak demand.
+
+### Test 3. Concierge MVP
+
+No code. Real outcome.
+
+I manually deliver the result to a few users. This shows:
+
+- what they truly want
+- what they ignore
+- what they might pay for
+
+If people will not commit time or effort here, they will not use the product later.
+
+## Real ideas I killed early
+
+Two examples:
+
+- An AI meal planner
+- An AI-powered ADHD planner
+
+Both were interesting. Both had heavy competition. And honestly, I was exploring more than committing.
+
+That was enough reason to stop.
+
+Killing ideas early is a skill, not a failure.
+
+## One idea I committed to (details withheld)
+
+One project I fully committed to is still in stealth.
+
+What mattered was not the idea itself. It was this:
+
+- clear pain
+- clear user
+- clear distribution path
+- ability to ship fast
+
+That combination is rare. When it appears, I act.
+
+## The switching cost question
+
+This is the most important one:
+
+Why would someone switch from what they use today?
+
+"Better UX" is rarely enough.
+
+Switching happens when you reduce:
+
+- time
+- effort
+- risk
+- uncertainty
+- cost
+
+If you cannot explain the switching trigger, building is premature.
+
+## Red flags I respect
+
+I have learned to listen to these signals:
+
+- The idea needs perfect user behavior
+- The value only exists in future features
+- Nobody owns the problem internally
+- Scope explodes immediately
+- Every conversation adds more features
+
+These are early warnings.
+
+## When I say yes
+
+I greenlight an idea when I can say yes to all of these:
+
+- I can name the person and the painful moment.
+- I can explain why now.
+- I know how to reach users in the first 30 days.
+- I can ship a v1 in two weeks.
+- There is a clear reason to switch.
+- Early users are willing to commit something real. Time, effort, or money.
+
+If one is missing, I do not rush.
+
+## How this reflects how I work
+
+This is how I approach product and growth:
+
+- fast, but not careless
+- experimental, but structured
+- focused on outcomes, not noise
+
+I enjoy working with founders and teams who want to test ideas properly, ship quickly, and learn fast.
+
+Prediction markets are a passion. But I am curious by nature and open to almost any digital experiment if the problem is real.
+    `.trim(),
+  },
 };
 
 export function getArticleById(id: string): Article | undefined {
