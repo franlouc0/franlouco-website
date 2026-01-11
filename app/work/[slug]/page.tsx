@@ -301,7 +301,8 @@ export default function WorkPage({ params }: WorkPageProps) {
                   <span>Share</span>
                 </>
               )}
-            </button>
+              </button>
+            )}
           </div>
 
           {/* Title and Subtitle - 3/4 width, left-aligned */}
