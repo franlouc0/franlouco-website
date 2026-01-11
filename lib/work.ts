@@ -23,7 +23,6 @@ export const works: Record<string, Work> = {
     role: "CMO & Co-Founder",
     period: "2021 - 2023",
     logo: "/polkamarkets.jpg",
-    headerImage: "https://images.unsplash.com/photo-1557683316-973673baf926?w=1920&h=1080&fit=crop&q=80",
     metrics: [
       { label: "IDO Raised", value: "$715K" },
       { label: "Peak Volume", value: "$2M" },
@@ -38,7 +37,6 @@ export const works: Record<string, Work> = {
     role: "CMO & Co-Founder",
     period: "2023 - Present",
     logo: "/coompass.jpg",
-    headerImage: "https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=1920&h=1080&fit=crop&q=80",
     metrics: [
       { label: "NGO Growth", value: "166%" },
       { label: "Period", value: "MoM" }
@@ -52,7 +50,6 @@ export const works: Record<string, Work> = {
     role: "Web3 Marketing & BD Consultant",
     period: "2020 - Present",
     logo: "/polkastarter.jpg",
-    headerImage: "https://images.unsplash.com/photo-1557683311-e804f5e3f0e1?w=1920&h=1080&fit=crop&q=80",
     metrics: [
       { label: "Years", value: "5+" },
       { label: "Role", value: "Consultant" }
@@ -66,7 +63,6 @@ export const works: Record<string, Work> = {
     role: "Head of Sales & Partnerships",
     period: "2020 - 2021",
     logo: "/bepronetwork.jpg",
-    headerImage: "https://images.unsplash.com/photo-1557682257-2f9f37cce5bc?w=1920&h=1080&fit=crop&q=80",
     metrics: [
       { label: "Years", value: "1" },
       { label: "Role", value: "Head" }
@@ -80,7 +76,6 @@ export const works: Record<string, Work> = {
     role: "Web3 Marketing Growth Manager",
     period: "2025 - Present",
     logo: "/ibcgroup.png",
-    headerImage: "https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?w=1920&h=1080&fit=crop&q=80",
     metrics: [
       { label: "Status", value: "Active" },
       { label: "Focus", value: "Growth" }
@@ -94,7 +89,6 @@ export const works: Record<string, Work> = {
     role: "Partner",
     period: "2025 - Present",
     logo: "/broadpath.png",
-    headerImage: "https://images.unsplash.com/photo-1557682257-2f9f37cce5bc?w=1920&h=1080&fit=crop&q=80",
     metrics: [
       { label: "Status", value: "Active" },
       { label: "Role", value: "Partner" }

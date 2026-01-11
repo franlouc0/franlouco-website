@@ -8,7 +8,8 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { ExperienceSection } from "@/components/experience-section";
 import { FeaturedWorkSection } from "@/components/featured-work-section";
 import { ContactModal } from "@/components/contact-modal";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
 import { getWorkById } from "@/lib/work";
 
 interface WorkPageProps {
@@ -21,6 +22,21 @@ export default function WorkPage({ params }: WorkPageProps) {
   const work = getWorkById(params.slug);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isInfoOpen, setIsInfoOpen] = useState(false);
+  const { theme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Determine which image to use based on theme
+  const getHeaderImage = () => {
+    if (!mounted) return "/light-mode-header-image.jpg"; // Default during SSR
+    const currentTheme = resolvedTheme || theme;
+    return currentTheme === "dark" 
+      ? "/dark-mode-header-image.jpg" 
+      : "/light-mode-header-image.jpg";
+  };
 
   if (!work) {
     notFound();
@@ -232,18 +248,14 @@ export default function WorkPage({ params }: WorkPageProps) {
       <div className="relative flex flex-1 flex-col overflow-hidden w-full">
         {/* Header Image with Title Overlay */}
         <div className="relative w-full h-[60vh] min-h-[400px] lg:h-[70vh] overflow-hidden">
-          {/* Header Image - Full width */}
-          {work.headerImage ? (
-            <Image
-              src={work.headerImage}
-              alt={work.company}
-              fill
-              className="object-cover"
-              priority
-            />
-          ) : (
-            <div className="w-full h-full bg-gradient-to-br from-zinc-200 to-zinc-400 dark:from-zinc-800 dark:to-zinc-900" />
-          )}
+          {/* Header Image - Full width, theme-aware */}
+          <Image
+            src={getHeaderImage()}
+            alt={work.company}
+            fill
+            className="object-cover"
+            priority
+          />
           
           {/* Dark overlay for text readability */}
           <div className="absolute inset-0 bg-black/40 dark:bg-black/60" />
