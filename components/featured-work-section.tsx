@@ -141,7 +141,7 @@ export function FeaturedWorkSection({}: FeaturedWorkSectionProps = {}) {
           return slug ? (
             <Link
               key={startIndex + index}
-              href={`/articles/${slug}${isMobile ? '#article-title' : ''}`}
+              href={`/articles/${slug}${isMobile ? '#breadcrumb' : ''}`}
               className="flex items-center gap-1 text-xs text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200 w-full text-left"
             >
               <span className="truncate">{work.title}</span>

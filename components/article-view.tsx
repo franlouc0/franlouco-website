@@ -82,14 +82,14 @@ export function ArticleView({ article }: ArticleViewProps) {
     };
   }, [article]);
 
-  // Scroll to title on mount if hash is present (for mobile anchor links)
+  // Scroll to breadcrumb on mount if hash is present (for mobile anchor links)
   React.useEffect(() => {
-    if (window.location.hash === '#article-title') {
+    if (window.location.hash === '#breadcrumb') {
       // Small delay to ensure DOM is ready
       setTimeout(() => {
-        const titleElement = document.getElementById('article-title');
-        if (titleElement) {
-          titleElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const breadcrumbElement = document.getElementById('breadcrumb');
+        if (breadcrumbElement) {
+          breadcrumbElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       }, 100);
     }
@@ -485,7 +485,7 @@ export function ArticleView({ article }: ArticleViewProps) {
   return (
     <article className="flex flex-col h-full relative">
       {/* Breadcrumb */}
-      <div className="mb-6 pb-4 flex items-center justify-between">
+      <div id="breadcrumb" className="mb-6 pb-4 flex items-center justify-between">
         <Breadcrumb
           items={[
             { label: "Home", href: "/" },
