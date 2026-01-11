@@ -258,12 +258,12 @@ export default function WorkPage({ params }: WorkPageProps) {
           />
           
           {/* Overlay for text readability - stronger on top and bottom, white in light mode, black in dark mode */}
-          <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/30 to-white/60 dark:from-black/80 dark:via-black/50 dark:to-black/80" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/50 to-white/80 dark:from-black/80 dark:via-black/50 dark:to-black/80" />
           
           {/* Centered Title - Modern, Impactful, Big */}
           <div className="absolute inset-0 flex items-center justify-center">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight text-center px-6 drop-shadow-2xl">
-              {work.company}
+              {work.title}
             </h1>
           </div>
 
