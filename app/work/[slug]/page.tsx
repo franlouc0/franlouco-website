@@ -235,9 +235,9 @@ export default function WorkPage({ params }: WorkPageProps) {
 
       {/* Main Content Area - Visual Showcase */}
       <div className="relative flex flex-1 flex-col overflow-hidden w-full">
-        {/* Header Image with Title Overlay */}
+        {/* Header Image with Title and Info Card */}
         <div className="relative w-full h-[45vh] min-h-[300px] lg:h-[50vh] overflow-hidden">
-          {/* Header Image - Full width, theme-aware */}
+          {/* Header Image - Full width */}
           <Image
             src={getHeaderImage()}
             alt={work.company}
@@ -249,70 +249,75 @@ export default function WorkPage({ params }: WorkPageProps) {
           {/* Overlay for text readability - stronger on top and bottom */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/80" />
           
-          {/* Title - Modern, Impactful, Left-aligned */}
-          <div className="absolute inset-0 flex items-center z-20">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight text-left px-6 lg:px-8 drop-shadow-2xl">
-              {work.title}
-            </h1>
-          </div>
-
-          {/* Small Info Card - Top Right */}
-          <div className="absolute top-6 right-6 lg:top-8 lg:right-8 z-10">
-            <div className="relative rounded-lg border border-white/20 bg-white/90 backdrop-blur-sm p-4 shadow-xl dark:border-zinc-700/50 dark:bg-zinc-900/90 max-w-[280px]">
-              {/* Company Logo */}
-              <div className="flex items-start gap-3 mb-3">
-                <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-md border border-zinc-200 dark:border-zinc-800">
-                  <Image
-                    src={work.logo}
-                    alt={work.company}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-baseline gap-2 mb-0.5">
-                    <h3 className="text-xs font-semibold text-zinc-900 dark:text-zinc-50 truncate">
-                      {work.company}
-                    </h3>
-                    <span className="text-[10px] text-zinc-500 dark:text-zinc-500 shrink-0">
-                      {work.period}
-                    </span>
-                  </div>
-                  <p className="text-[10px] text-zinc-600 dark:text-zinc-400">
-                    {work.role}
-                  </p>
-                </div>
-              </div>
-
-              {/* Metrics - Visual Numbers */}
-              <div className="flex items-center gap-3 mb-3 pb-3 border-b border-zinc-100 dark:border-zinc-800">
-                {work.metrics.map((metric, idx) => (
-                  <div key={idx} className="flex flex-col">
-                    <span className="text-xs font-bold text-green-400 dark:text-green-400">
-                      {metric.value}
-                    </span>
-                    <span className="text-[9px] text-zinc-500 dark:text-zinc-500 uppercase tracking-wide">
-                      {metric.label}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Impact Statement */}
-              <p className="text-[10px] leading-relaxed text-zinc-600 dark:text-zinc-400">
-                {work.impact}
-              </p>
-            </div>
-          </div>
-
           {/* Back Button - Top Left */}
           <Link
             href="/"
-            className="absolute top-6 left-6 lg:top-8 lg:left-8 z-10 inline-flex items-center gap-2 rounded-md bg-white/90 backdrop-blur-sm px-3 py-2 text-xs text-zinc-900 transition-all hover:bg-white dark:bg-zinc-900/90 dark:text-zinc-50 dark:hover:bg-zinc-900 shadow-lg"
+            className="absolute top-6 left-6 lg:top-8 lg:left-8 z-30 inline-flex items-center gap-2 rounded-md bg-white/90 backdrop-blur-sm px-3 py-2 text-xs text-zinc-900 transition-all hover:bg-white dark:bg-zinc-900/90 dark:text-zinc-50 dark:hover:bg-zinc-900 shadow-lg"
           >
             <ArrowLeft className="h-3 w-3" />
             Back
           </Link>
+
+          {/* Content Container - Title (3/4) and Info Card (1/4) */}
+          <div className="absolute inset-0 flex items-center z-20 px-6 lg:px-8">
+            <div className="flex w-full items-center gap-6">
+              {/* Title - 3/4 width */}
+              <div className="flex-[3]">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight text-left drop-shadow-2xl">
+                  {work.title}
+                </h1>
+              </div>
+
+              {/* Info Card - 1/4 width */}
+              <div className="flex-1 flex justify-end">
+                <div className="relative rounded-lg border border-white/20 bg-white/90 backdrop-blur-sm p-4 shadow-xl dark:border-zinc-700/50 dark:bg-zinc-900/90 w-full max-w-[280px]">
+                  {/* Company Logo */}
+                  <div className="flex items-start gap-3 mb-3">
+                    <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-md border border-zinc-200 dark:border-zinc-800">
+                      <Image
+                        src={work.logo}
+                        alt={work.company}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-baseline gap-2 mb-0.5">
+                        <h3 className="text-xs font-semibold text-zinc-900 dark:text-zinc-50 truncate">
+                          {work.company}
+                        </h3>
+                        <span className="text-[10px] text-zinc-500 dark:text-zinc-500 shrink-0">
+                          {work.period}
+                        </span>
+                      </div>
+                      <p className="text-[10px] text-zinc-600 dark:text-zinc-400">
+                        {work.role}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Metrics - Visual Numbers */}
+                  <div className="flex items-center gap-3 mb-3 pb-3 border-b border-zinc-100 dark:border-zinc-800">
+                    {work.metrics.map((metric, idx) => (
+                      <div key={idx} className="flex flex-col">
+                        <span className="text-xs font-bold text-green-400 dark:text-green-400">
+                          {metric.value}
+                        </span>
+                        <span className="text-[9px] text-zinc-500 dark:text-zinc-500 uppercase tracking-wide">
+                          {metric.label}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Impact Statement */}
+                  <p className="text-[10px] leading-relaxed text-zinc-600 dark:text-zinc-400">
+                    {work.impact}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Content Section Below Header */}
