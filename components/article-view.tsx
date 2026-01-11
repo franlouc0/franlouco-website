@@ -500,7 +500,7 @@ export function ArticleView({ article, onBack }: ArticleViewProps) {
             <div className="hidden lg:block w-48 shrink-0">
               <div className="sticky top-0">
                 <div className="rounded-md border border-zinc-300 bg-zinc-100 px-3 py-2.5 shadow-sm dark:border-zinc-700/50 dark:bg-zinc-800/50">
-                  <div className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-2">
+                  <div className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-2 text-right">
                     Contents
                   </div>
                   <nav className="flex flex-col gap-1 max-h-[calc(100vh-8rem)] overflow-y-auto">
@@ -508,8 +508,8 @@ export function ArticleView({ article, onBack }: ArticleViewProps) {
                       <button
                         key={index}
                         onClick={() => scrollToHeader(header.id)}
-                        className={`text-left text-xs text-zinc-600 hover:text-zinc-900 hover:underline transition-colors dark:text-zinc-400 dark:hover:text-zinc-200 ${
-                          header.level === 1 ? 'font-medium' : header.level === 2 ? 'pl-2' : 'pl-4'
+                        className={`text-right text-xs text-zinc-600 hover:text-zinc-900 hover:underline transition-colors dark:text-zinc-400 dark:hover:text-zinc-200 ${
+                          header.level === 1 ? 'font-medium' : header.level === 2 ? 'pr-2' : 'pr-4'
                         }`}
                       >
                         {header.text}
