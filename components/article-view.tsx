@@ -450,7 +450,7 @@ export function ArticleView({ article }: ArticleViewProps) {
       <header className="mb-8 relative">
         <div className="flex flex-col sm:flex-row items-start sm:items-start gap-3 sm:gap-4">
           {/* Title Container - No box, 3/4 width */}
-          <div className="flex-[3]">
+          <div className="flex-[3] lg:pr-52">
             <h1 id="article-title" className="text-2xl font-extrabold text-zinc-900 dark:text-zinc-50 sm:text-3xl">
               {article.title}
             </h1>
