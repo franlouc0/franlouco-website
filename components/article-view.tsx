@@ -213,7 +213,7 @@ export function ArticleView({ article }: ArticleViewProps) {
     const element = document.getElementById(id);
     if (element && contentRef.current) {
       // Account for article header (title + tags) + some padding for readability
-      const offset = 180; // Offset from top to account for header and ensure readability
+      const offset = 240; // Offset from top to account for header and ensure readability
       const elementPosition = element.getBoundingClientRect().top;
       const containerScrollTop = contentRef.current.scrollTop;
       const offsetPosition = containerScrollTop + elementPosition - offset;
