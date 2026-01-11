@@ -532,7 +532,7 @@ export function ArticleView({ article }: ArticleViewProps) {
       {/* Article Content */}
       <div 
         ref={contentRef}
-        className="prose prose-zinc dark:prose-invert max-w-none flex-1 overflow-y-auto pb-8"
+        className="prose prose-zinc dark:prose-invert max-w-none flex-1 overflow-y-auto pb-8 lg:pr-52"
       >
         <div className="text-[15px] leading-relaxed max-w-4xl">
           {formatContent(article.content)}
