@@ -4,6 +4,8 @@ import * as React from "react";
 import { Article } from "@/lib/articles";
 import { Breadcrumb } from "./breadcrumb";
 import { Share2 } from "lucide-react";
+import { SITE_URL, AUTHOR_NAME, AUTHOR_EMAIL } from "@/lib/constants";
+import { calculateReadingTime } from "@/lib/article-utils";
 
 interface ArticleViewProps {
   article: Article;
@@ -13,6 +15,51 @@ export function ArticleView({ article }: ArticleViewProps) {
   const [copied, setCopied] = React.useState(false);
   const [scrollProgress, setScrollProgress] = React.useState(0);
   const contentRef = React.useRef<HTMLDivElement>(null);
+
+  // Inject Article JSON-LD schema for LLM SEO
+  React.useEffect(() => {
+    const articleJsonLd = {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: article.title,
+      author: {
+        "@type": "Person",
+        name: AUTHOR_NAME,
+        email: AUTHOR_EMAIL,
+        url: SITE_URL,
+      },
+      datePublished: article.date,
+      dateModified: article.date,
+      description: article.content.substring(0, 200).replace(/\n/g, ' ').trim() + '...',
+      keywords: article.tags.join(', '),
+      url: `${SITE_URL}/articles/${article.id}`,
+      publisher: {
+        "@type": "Person",
+        name: AUTHOR_NAME,
+      },
+    };
+
+    // Remove existing article schema if present
+    const existingScript = document.querySelector('script[type="application/ld+json"][data-article-schema]');
+    if (existingScript) {
+      existingScript.remove();
+    }
+
+    // Create and inject new script
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.setAttribute('data-article-schema', 'true');
+    script.text = JSON.stringify(articleJsonLd);
+    document.head.appendChild(script);
+
+    return () => {
+      // Cleanup on unmount
+      const scriptToRemove = document.querySelector('script[type="application/ld+json"][data-article-schema]');
+      if (scriptToRemove) {
+        scriptToRemove.remove();
+      }
+    };
+  }, [article]);
 
   // Scroll to title on mount if hash is present (for mobile anchor links)
   React.useEffect(() => {
@@ -85,12 +132,6 @@ export function ArticleView({ article }: ArticleViewProps) {
     }
   };
 
-  // Helper function to calculate reading time (average 200 words per minute)
-  const calculateReadingTime = (content: string): number => {
-    const words = content.trim().split(/\s+/).length;
-    const readingTime = Math.ceil(words / 200); // 200 words per minute
-    return Math.max(1, readingTime); // At least 1 minute
-  };
 
   // Helper function to count characters (excluding markdown syntax)
   const countCharacters = (content: string): number => {

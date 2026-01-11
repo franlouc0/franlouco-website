@@ -2,13 +2,12 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { SITE_URL, SITE_NAME, AUTHOR_NAME, AUTHOR_EMAIL, DEFAULT_LOCALE } from "@/lib/constants";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const siteUrl = "https://franlou.co";
-
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Francisco Lourenço | Product, Growth, AI & Web3 Expert",
     template: "%s | Francisco Lourenço",
@@ -36,9 +35,9 @@ export const metadata: Metadata = {
     "Marketing Consultant",
     "Portugal",
   ],
-  authors: [{ name: "Francisco Lourenço", url: siteUrl }],
-  creator: "Francisco Lourenço",
-  publisher: "Francisco Lourenço",
+  authors: [{ name: AUTHOR_NAME, url: SITE_URL }],
+  creator: AUTHOR_NAME,
+  publisher: AUTHOR_NAME,
   formatDetection: {
     email: false,
     address: false,
@@ -57,15 +56,15 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
   openGraph: {
     type: "website",
-    locale: "en_US",
-    url: siteUrl,
-    siteName: "Francisco Lourenço",
+    locale: DEFAULT_LOCALE,
+    url: SITE_URL,
+    siteName: SITE_NAME,
     title: "Francisco Lourenço | Product, Growth, AI & Web3 Expert",
     description:
       "Product and Growth expert specializing in AI, Software, and Web3. CMO & Co-Founder at Coompass. 10+ years of experience in digital marketing, IDO launches, token sales, and community building.",
     images: [
       {
-        url: `${siteUrl}/opengraph-image.png`,
+        url: `${SITE_URL}/opengraph-image.png`,
         width: 1200,
         height: 630,
         alt: "Francisco Lourenço - Product, Growth, AI & Web3 Expert",
@@ -77,7 +76,7 @@ export const metadata: Metadata = {
     title: "Francisco Lourenço | Product, Growth, AI & Web3 Expert",
     description:
       "Product and Growth expert specializing in AI, Software, and Web3. CMO & Co-Founder at Coompass. 10+ years of experience.",
-    images: [`${siteUrl}/opengraph-image.png`],
+    images: [`${SITE_URL}/opengraph-image.png`],
   },
   robots: {
     index: true,
@@ -91,7 +90,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: siteUrl,
+    canonical: SITE_URL,
   },
   category: "Professional Portfolio",
 };
@@ -114,15 +113,15 @@ const jsonLd = {
   jobTitle: "Product & Growth Expert | CMO & Co-Founder",
   description:
     "Product and Growth expert specializing in AI, Software, and Web3. CMO & Co-Founder at Coompass.",
-  url: siteUrl,
+  url: SITE_URL,
   image: {
     "@type": "ImageObject",
-    url: `${siteUrl}/opengraph-image.png`,
+    url: `${SITE_URL}/opengraph-image.png`,
     width: 1200,
     height: 630,
     caption: "Francisco Lourenço - Product, Growth, AI & Web3 Expert",
   },
-  email: "hello@franlou.co",
+  email: AUTHOR_EMAIL,
   sameAs: [
     "https://www.linkedin.com/in/franlouco/",
     "https://github.com/franlouc0",
