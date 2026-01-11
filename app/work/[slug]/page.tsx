@@ -258,31 +258,15 @@ export default function WorkPage({ params }: WorkPageProps) {
             Back
           </Link>
 
-          {/* Title, Subtitle, and Numbers - 3/4 width, left-aligned */}
+          {/* Title and Subtitle - 3/4 width, left-aligned */}
           <div className="absolute inset-0 flex items-center z-20 px-6 lg:px-8">
             <div className="w-3/4">
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight text-left drop-shadow-2xl mb-2">
                 {work.title}
               </h1>
-              <p className="text-sm sm:text-base lg:text-lg text-white/90 drop-shadow-lg mb-6">
+              <p className="text-sm sm:text-base lg:text-lg text-white/90 drop-shadow-lg">
                 {work.subtitle}
               </p>
-              
-              {/* Numbers Block - Key credibility signals */}
-              {work.numbers && work.numbers.length > 0 && (
-                <div className="flex flex-wrap items-baseline gap-6 lg:gap-8">
-                  {work.numbers.map((number, idx) => (
-                    <div key={idx} className="flex flex-col">
-                      <span className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white drop-shadow-2xl leading-none">
-                        {number.value}
-                      </span>
-                      <span className="text-xs sm:text-sm text-white/80 uppercase tracking-wider mt-1">
-                        {number.label}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              )}
             </div>
           </div>
 
