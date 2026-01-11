@@ -98,9 +98,9 @@ export const works: Record<string, Work> = {
         image: "/work/strategic-investors.jpeg"
       },
       {
+        description: "Led the creation of the “What is Polkamarkets?” explainer video as a core educational asset. Owned the process end to end, from concept and scriptwriting to visual direction and voice-over tone, keeping the message clear and accessible.<br /><br />Coordinated a five-person creative and production team at Hypercube, and handled rollout communications to ensure strong community and new user reach.",
         video: "https://www.youtube.com/watch?v=8L5oZd0Yup4",
-        videoTitle: "What is Polkamarkets? Explainer Video",
-        videoTooltip: "The \"What is Polkamarkets?\" explainer video was developed from scratch as a core educational asset for the project.<br /><br />I drove the concept from early ideation to final delivery. This included writing and refining the script, defining the visual direction, and setting the voice over tone to clearly explain the product without overcomplicating it.<br /><br />Working with the agency Hypercube, I coordinated a five-person team across creative and production, ensuring tight alignment with product and messaging.<br /><br />I also managed the rollout communications so the video landed clearly with the community and new users."
+        imageLeft: true, // Video on left, text on right
       },
       {
         cards: [

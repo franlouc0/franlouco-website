@@ -9,7 +9,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { ExperienceSection } from "@/components/experience-section";
 import { FeaturedWorkSection } from "@/components/featured-work-section";
 import { ContactModal } from "@/components/contact-modal";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { getWorkById } from "@/lib/work";
 
 interface WorkPageProps {
@@ -26,8 +26,6 @@ interface VideoSectionProps {
 }
 
 function VideoSection({ video, title, tooltip, company }: VideoSectionProps) {
-  const [isTooltipOpen, setIsTooltipOpen] = useState(false);
-
   // Extract YouTube video ID
   const getVideoId = (url: string): string => {
     if (url.includes('youtube.com/watch?v=')) {
@@ -50,9 +48,7 @@ function VideoSection({ video, title, tooltip, company }: VideoSectionProps) {
           </h3>
           {tooltip && (
             <div className="group relative inline-block">
-              <button
-                type="button"
-                onClick={() => setIsTooltipOpen(!isTooltipOpen)}
+              <div
                 className="lg:cursor-help"
                 aria-label="More information about this video"
               >
@@ -60,41 +56,14 @@ function VideoSection({ video, title, tooltip, company }: VideoSectionProps) {
                   className="h-3.5 w-3.5 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300"
                   aria-hidden="true"
                 />
-              </button>
+              </div>
               
-              {/* Desktop tooltip - hover only */}
+              {/* Tooltip - hover only */}
               <div
                 className="pointer-events-none absolute left-1/2 top-full z-50 mt-2 hidden w-80 -translate-x-1/2 rounded-lg border border-zinc-200 bg-white p-3 text-[12px] leading-relaxed text-zinc-600 opacity-0 shadow-lg transition-opacity group-hover:pointer-events-auto group-hover:opacity-100 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-400 lg:block"
                 role="tooltip"
                 dangerouslySetInnerHTML={{ __html: tooltip }}
               />
-
-              {/* Mobile modal - click to open, centered */}
-              {isTooltipOpen && (
-                <>
-                  <div
-                    className="fixed inset-0 z-40 bg-black/50 lg:hidden"
-                    onClick={() => setIsTooltipOpen(false)}
-                    aria-hidden="true"
-                  />
-                  <div
-                    className="fixed left-1/2 top-1/2 z-50 w-[calc(100%-2rem)] max-w-sm -translate-x-1/2 -translate-y-1/2 rounded-lg border border-zinc-200 bg-white p-4 text-[12px] leading-relaxed text-zinc-600 shadow-lg dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-400 lg:hidden"
-                    role="dialog"
-                    aria-modal="true"
-                    aria-label="More information about this video"
-                  >
-                    <button
-                      type="button"
-                      onClick={() => setIsTooltipOpen(false)}
-                      className="absolute right-2 top-2 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300"
-                      aria-label="Close"
-                    >
-                      <X className="h-4 w-4" />
-                    </button>
-                    <div dangerouslySetInnerHTML={{ __html: tooltip }} />
-                  </div>
-                </>
-              )}
             </div>
           )}
         </div>
@@ -117,11 +86,45 @@ export default function WorkPage({ params }: WorkPageProps) {
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isInfoOpen, setIsInfoOpen] = useState(false);
   const [isShareCopied, setIsShareCopied] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const scrollContainerRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
 
   // Always use dark mode header image
   const getHeaderImage = () => {
     return "/dark-mode-header-image.jpg";
   };
+
+  // Scroll tracking for header animation
+  useEffect(() => {
+    const scrollContainer = scrollContainerRef.current;
+    if (!scrollContainer || typeof window === 'undefined') return;
+
+    const handleScroll = () => {
+      const scrollTop = scrollContainer.scrollTop;
+      // Use initial header height as reference (45vh or 50vh on desktop)
+      const isDesktop = window.innerWidth >= 1024;
+      const initialHeaderHeight = isDesktop 
+        ? window.innerHeight * 0.5 
+        : window.innerHeight * 0.45;
+      // Calculate progress: 0 (at top) to 1 (scrolled past header)
+      const progress = Math.min(scrollTop / initialHeaderHeight, 1);
+      setScrollProgress(progress);
+    };
+
+    const handleResize = () => {
+      handleScroll();
+    };
+
+    scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleResize, { passive: true });
+    handleScroll(); // Initial check
+    
+    return () => {
+      scrollContainer.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   // Share functionality - copy URL to clipboard
   const handleShare = async () => {
@@ -345,7 +348,23 @@ export default function WorkPage({ params }: WorkPageProps) {
       {/* Main Content Area - Visual Showcase */}
       <div className="relative flex flex-1 flex-col overflow-hidden w-full">
         {/* Header Image with Title and Info Card */}
-        <div className="relative w-full h-[45vh] min-h-[300px] lg:h-[50vh] overflow-hidden">
+        <div 
+          ref={headerRef}
+          className="relative w-full overflow-hidden"
+          style={{
+            height: typeof window !== 'undefined' && window.innerWidth >= 1024
+              ? scrollProgress < 1 
+                ? `${50 * (1 - scrollProgress * 0.5)}vh` 
+                : '25vh'
+              : scrollProgress < 1 
+                ? `${45 * (1 - scrollProgress * 0.5)}vh` 
+                : '22.5vh',
+            minHeight: scrollProgress < 1 
+              ? `${300 * (1 - scrollProgress * 0.5)}px` 
+              : '150px',
+            transition: 'height 0.1s ease-out, min-height 0.1s ease-out',
+          }}
+        >
           {/* Header Image - Full width */}
           <Image
             src={getHeaderImage()}
@@ -390,12 +409,49 @@ export default function WorkPage({ params }: WorkPageProps) {
           </div>
 
           {/* Title and Subtitle - 3/4 width, left-aligned */}
-          <div className="absolute inset-0 flex items-center z-20 px-6 lg:px-8">
+          <div 
+            className="absolute inset-0 flex z-20 px-6 lg:px-8"
+            style={{
+              alignItems: scrollProgress > 0.3 ? 'flex-start' : 'center',
+              paddingTop: scrollProgress > 0.3 
+                ? `${5 + scrollProgress * 1}rem` 
+                : '7rem',
+              transition: 'align-items 0.1s ease-out, padding-top 0.1s ease-out',
+            }}
+          >
             <div className="w-3/4">
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight text-left drop-shadow-2xl mb-2">
+              <h1 
+                className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight text-left drop-shadow-2xl mb-2"
+                style={{
+                  fontSize: typeof window !== 'undefined'
+                    ? (() => {
+                        const isDesktop = window.innerWidth >= 1024;
+                        const isTablet = window.innerWidth >= 640;
+                        const baseSize = isDesktop ? 3 : isTablet ? 2.25 : 1.875; // rem
+                        const scale = 1 - scrollProgress * 0.4;
+                        return `${baseSize * scale}rem`;
+                      })()
+                    : undefined,
+                  transition: 'font-size 0.1s ease-out',
+                }}
+              >
                 {work.title}
               </h1>
-              <p className="text-sm sm:text-base lg:text-lg text-white/90 drop-shadow-lg">
+              <p 
+                className="text-sm sm:text-base lg:text-lg text-white/90 drop-shadow-lg"
+                style={{
+                  fontSize: typeof window !== 'undefined'
+                    ? (() => {
+                        const isDesktop = window.innerWidth >= 1024;
+                        const isTablet = window.innerWidth >= 640;
+                        const baseSize = isDesktop ? 1.125 : isTablet ? 1 : 0.875; // rem
+                        const scale = 1 - scrollProgress * 0.25;
+                        return `${baseSize * scale}rem`;
+                      })()
+                    : undefined,
+                  transition: 'font-size 0.1s ease-out',
+                }}
+              >
                 {work.subtitle}
               </p>
             </div>
@@ -403,9 +459,19 @@ export default function WorkPage({ params }: WorkPageProps) {
 
           {/* Info Card - Top Right */}
           <div className="absolute top-6 right-6 lg:top-8 lg:right-8 z-10">
-            <div className="relative rounded-lg border border-white/20 bg-white/90 backdrop-blur-sm p-4 shadow-xl dark:border-zinc-700/50 dark:bg-zinc-900/90 max-w-[280px]">
+            <div 
+              className="relative rounded-lg border border-white/20 bg-white/90 backdrop-blur-sm shadow-xl dark:border-zinc-700/50 dark:bg-zinc-900/90 max-w-[280px] transition-all duration-300 ease-out"
+              style={{
+                padding: '1rem',
+              }}
+            >
               {/* Company Logo */}
-              <div className="flex items-start gap-3 mb-3">
+              <div 
+                className="flex items-start gap-3 transition-all duration-300 ease-out"
+                style={{
+                  marginBottom: scrollProgress > 0.5 ? 0 : '12px',
+                }}
+              >
                 <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-md border border-zinc-200 dark:border-zinc-800">
                   <Image
                     src={work.logo}
@@ -431,12 +497,26 @@ export default function WorkPage({ params }: WorkPageProps) {
 
               {/* Divider above numbers */}
               {work.numbers && work.numbers.length > 0 && (
-                <div className="mb-3 border-b border-zinc-100 dark:border-zinc-800" />
+                <div 
+                  className="border-b border-zinc-100 dark:border-zinc-800 transition-all duration-300 ease-out overflow-hidden"
+                  style={{
+                    opacity: scrollProgress > 0.5 ? 0 : 1,
+                    maxHeight: scrollProgress > 0.5 ? 0 : '12px',
+                    marginBottom: scrollProgress > 0.5 ? 0 : '12px',
+                  }}
+                />
               )}
 
               {/* Numbers Block - Key credibility signals */}
               {work.numbers && work.numbers.length > 0 && (
-                <div className="mb-3">
+                <div 
+                  className="transition-all duration-300 ease-out overflow-hidden"
+                  style={{
+                    opacity: scrollProgress > 0.5 ? 0 : 1,
+                    maxHeight: scrollProgress > 0.5 ? 0 : '200px',
+                    marginBottom: scrollProgress > 0.5 ? 0 : '12px',
+                  }}
+                >
                   <div className="grid grid-cols-2 gap-3">
                     {work.numbers.map((number, idx) => (
                       <div key={idx} className="flex flex-col">
@@ -454,12 +534,25 @@ export default function WorkPage({ params }: WorkPageProps) {
 
               {/* Divider between numbers and scope */}
               {work.scope && work.scope.length > 0 && (
-                <div className="mb-3 border-b border-zinc-100 dark:border-zinc-800" />
+                <div 
+                  className="border-b border-zinc-100 dark:border-zinc-800 transition-all duration-300 ease-out overflow-hidden"
+                  style={{
+                    opacity: scrollProgress > 0.3 ? 0 : 1,
+                    maxHeight: scrollProgress > 0.3 ? 0 : '12px',
+                    marginBottom: scrollProgress > 0.3 ? 0 : '12px',
+                  }}
+                />
               )}
 
               {/* Scope Block - What I owned */}
               {work.scope && work.scope.length > 0 && (
-                <div className="space-y-1">
+                <div 
+                  className="space-y-1 transition-all duration-300 ease-out overflow-hidden"
+                  style={{
+                    opacity: scrollProgress > 0.3 ? 0 : 1,
+                    maxHeight: scrollProgress > 0.3 ? 0 : '200px',
+                  }}
+                >
                   {work.scope.map((item, idx) => (
                     <p key={idx} className="text-[10px] text-zinc-600 dark:text-zinc-400">
                       {item}
@@ -473,7 +566,14 @@ export default function WorkPage({ params }: WorkPageProps) {
 
         {/* Content Section Below Header - Visual Proof */}
         <section
-          className="flex-1 overflow-y-auto px-6 pt-8 pb-6 lg:p-8"
+          ref={scrollContainerRef}
+          className="flex-1 overflow-y-auto px-6 pb-6 lg:p-8"
+          style={{
+            paddingTop: scrollProgress > 0 
+              ? `${2 + scrollProgress * 1}rem` 
+              : '2rem',
+            transition: 'padding-top 0.1s ease-out',
+          }}
           aria-label="Work details"
         >
           {/* Visual Proof Section - Seamless Gallery */}
