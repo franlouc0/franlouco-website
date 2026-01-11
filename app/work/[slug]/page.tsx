@@ -321,6 +321,11 @@ export default function WorkPage({ params }: WorkPageProps) {
                 </div>
               )}
 
+              {/* Divider between numbers and scope */}
+              {work.scope && work.scope.length > 0 && (
+                <div className="mb-3 border-b border-zinc-100 dark:border-zinc-800" />
+              )}
+
               {/* Scope Block - What I owned */}
               {work.scope && work.scope.length > 0 && (
                 <div className="space-y-1">
