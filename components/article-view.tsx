@@ -102,6 +102,53 @@ export function ArticleView({ article, onBack }: ArticleViewProps) {
     return matches ? matches.length : 0;
   };
 
+  // Helper function to create slug from text
+  const createSlug = (text: string): string => {
+    return text
+      .toLowerCase()
+      .replace(/[^\w\s-]/g, '') // Remove special characters
+      .replace(/\s+/g, '-') // Replace spaces with hyphens
+      .replace(/-+/g, '-') // Replace multiple hyphens with single
+      .trim();
+  };
+
+  // Extract headers from content
+  const extractHeaders = React.useMemo(() => {
+    const lines = article.content.split('\n');
+    const headers: Array<{ text: string; level: number; id: string }> = [];
+    
+    lines.forEach((line) => {
+      const trimmedLine = line.trim();
+      if (trimmedLine.startsWith('# ')) {
+        const text = trimmedLine.substring(2);
+        headers.push({ text, level: 1, id: createSlug(text) });
+      } else if (trimmedLine.startsWith('## ')) {
+        const text = trimmedLine.substring(3);
+        headers.push({ text, level: 2, id: createSlug(text) });
+      } else if (trimmedLine.startsWith('### ')) {
+        const text = trimmedLine.substring(4);
+        headers.push({ text, level: 3, id: createSlug(text) });
+      }
+    });
+    
+    return headers;
+  }, [article.content]);
+
+  // Scroll to element by ID
+  const scrollToHeader = React.useCallback((id: string) => {
+    const element = document.getElementById(id);
+    if (element && contentRef.current) {
+      const offset = 20; // Offset from top
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + contentRef.current.scrollTop - offset;
+      
+      contentRef.current.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  }, []);
+
   // Helper function to highlight metrics and numbers (e.g., $715K, 100K+, 120x, $80M+)
   const highlightMetrics = (text: string): React.ReactNode[] => {
     if (!text) return [text];
@@ -167,7 +214,8 @@ export function ArticleView({ article, onBack }: ArticleViewProps) {
         }
         const h1Text = trimmedLine.substring(2);
         const processedH1Text = highlightMetrics(h1Text);
-        elements.push(<h1 key={index} className="text-2xl font-bold text-zinc-900 dark:text-zinc-50 mt-8 mb-4 first:mt-0">{processedH1Text}</h1>);
+        const h1Id = createSlug(h1Text);
+        elements.push(<h1 key={index} id={h1Id} className="text-2xl font-bold text-zinc-900 dark:text-zinc-50 mt-8 mb-4 first:mt-0">{processedH1Text}</h1>);
         return;
       }
       if (trimmedLine.startsWith('## ')) {
@@ -182,10 +230,11 @@ export function ArticleView({ article, onBack }: ArticleViewProps) {
         // H2 with green accent line
         const headerText = trimmedLine.substring(3);
         const processedHeaderText = highlightMetrics(headerText);
+        const h2Id = createSlug(headerText);
         elements.push(
           <div key={`h2-wrapper-${index}`} className="relative mt-8 mb-4 group">
             <div className="absolute left-0 top-0 bottom-0 w-1 bg-green-400 rounded-full opacity-80 group-hover:opacity-100 transition-opacity" />
-            <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50 pl-4">
+            <h2 id={h2Id} className="text-xl font-semibold text-zinc-900 dark:text-zinc-50 pl-4">
               {processedHeaderText}
             </h2>
           </div>
@@ -203,7 +252,8 @@ export function ArticleView({ article, onBack }: ArticleViewProps) {
         }
         const h3Text = trimmedLine.substring(4);
         const processedH3Text = highlightMetrics(h3Text);
-        elements.push(<h3 key={index} className="text-lg font-semibold text-zinc-900 dark:text-zinc-50 mt-4 mb-2">{processedH3Text}</h3>);
+        const h3Id = createSlug(h3Text);
+        elements.push(<h3 key={index} id={h3Id} className="text-lg font-semibold text-zinc-900 dark:text-zinc-50 mt-4 mb-2">{processedH3Text}</h3>);
         return;
       }
 
@@ -386,7 +436,7 @@ export function ArticleView({ article, onBack }: ArticleViewProps) {
 
       {/* Article Header */}
       <header className="mb-8">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
+        <div className="flex flex-col sm:flex-row items-start sm:items-start gap-3 sm:gap-4">
           {/* Title Container - No box, 3/4 width */}
           <div className="flex-[3]">
             <h1 className="text-2xl font-extrabold text-zinc-900 dark:text-zinc-50 sm:text-3xl">
@@ -407,30 +457,55 @@ export function ArticleView({ article, onBack }: ArticleViewProps) {
             )}
           </div>
           
-          {/* Date, Reading Time, Characters & Images Container - Grey badge style, 1/4 width */}
-          <div className="flex-1 flex items-center gap-1.5 rounded-md border border-zinc-300 bg-zinc-100 px-2 py-1.5 sm:px-3 sm:py-2 whitespace-nowrap dark:border-zinc-700/50 dark:bg-zinc-800/50">
-            <time 
-              dateTime={article.date}
-              className="text-xs font-medium text-zinc-600 dark:text-zinc-400"
-            >
-              {new Date(article.date).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric',
-              })}
-            </time>
-            <span className="text-xs text-zinc-400 dark:text-zinc-600">•</span>
-            <span className="text-xs font-medium text-zinc-600 dark:text-zinc-400">
-              {calculateReadingTime(article.content)} min read
-            </span>
-            <span className="text-xs text-zinc-400 dark:text-zinc-600">•</span>
-            <span className="text-xs font-medium text-zinc-600 dark:text-zinc-400">
-              {countCharacters(article.content).toLocaleString()} chars
-            </span>
-            <span className="text-xs text-zinc-400 dark:text-zinc-600">•</span>
-            <span className="text-xs font-medium text-zinc-600 dark:text-zinc-400">
-              {countImages(article.content)} images
-            </span>
+          {/* Date, Reading Time, Characters & Images Container + Table of Contents */}
+          <div className="flex-1 flex flex-col gap-3 rounded-md border border-zinc-300 bg-zinc-100 px-2 py-1.5 sm:px-3 sm:py-2 dark:border-zinc-700/50 dark:bg-zinc-800/50">
+            {/* Metadata Row */}
+            <div className="flex items-center gap-1.5 whitespace-nowrap">
+              <time 
+                dateTime={article.date}
+                className="text-xs font-medium text-zinc-600 dark:text-zinc-400"
+              >
+                {new Date(article.date).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'short',
+                  day: 'numeric',
+                })}
+              </time>
+              <span className="text-xs text-zinc-400 dark:text-zinc-600">•</span>
+              <span className="text-xs font-medium text-zinc-600 dark:text-zinc-400">
+                {calculateReadingTime(article.content)} min read
+              </span>
+              <span className="text-xs text-zinc-400 dark:text-zinc-600">•</span>
+              <span className="text-xs font-medium text-zinc-600 dark:text-zinc-400">
+                {countCharacters(article.content).toLocaleString()} chars
+              </span>
+              <span className="text-xs text-zinc-400 dark:text-zinc-600">•</span>
+              <span className="text-xs font-medium text-zinc-600 dark:text-zinc-400">
+                {countImages(article.content)} images
+              </span>
+            </div>
+
+            {/* Table of Contents */}
+            {extractHeaders.length > 0 && (
+              <div className="border-t border-zinc-300 dark:border-zinc-700 pt-2">
+                <div className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">
+                  Contents
+                </div>
+                <nav className="flex flex-col gap-1">
+                  {extractHeaders.map((header, index) => (
+                    <button
+                      key={index}
+                      onClick={() => scrollToHeader(header.id)}
+                      className={`text-left text-xs text-zinc-600 hover:text-zinc-900 hover:underline transition-colors dark:text-zinc-400 dark:hover:text-zinc-200 ${
+                        header.level === 1 ? 'font-medium' : header.level === 2 ? 'pl-2' : 'pl-4'
+                      }`}
+                    >
+                      {header.text}
+                    </button>
+                  ))}
+                </nav>
+              </div>
+            )}
           </div>
         </div>
       </header>
