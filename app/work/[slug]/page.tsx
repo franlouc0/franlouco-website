@@ -298,9 +298,14 @@ export default function WorkPage({ params }: WorkPageProps) {
                 </div>
               </div>
 
+              {/* Divider above numbers */}
+              {work.numbers && work.numbers.length > 0 && (
+                <div className="mb-3 border-b border-zinc-100 dark:border-zinc-800" />
+              )}
+
               {/* Numbers Block - Key credibility signals */}
               {work.numbers && work.numbers.length > 0 && (
-                <div className="mb-3 pb-3 border-b border-zinc-100 dark:border-zinc-800">
+                <div className="mb-3">
                   <div className="grid grid-cols-2 gap-3">
                     {work.numbers.map((number, idx) => (
                       <div key={idx} className="flex flex-col">
@@ -315,11 +320,6 @@ export default function WorkPage({ params }: WorkPageProps) {
                   </div>
                 </div>
               )}
-
-              {/* Subtitle */}
-              <p className="text-[10px] leading-relaxed text-zinc-600 dark:text-zinc-400">
-                {work.subtitle}
-              </p>
             </div>
           </div>
         </div>

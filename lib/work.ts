@@ -35,7 +35,7 @@ export const works: Record<string, Work> = {
   "how-we-raised-715k-ido": {
     id: "how-we-raised-715k-ido",
     title: "How we raised $715K in an IDO without relying on hype",
-    subtitle: "Building a prediction market protocol from zero",
+    subtitle: "Building a prediction market protocol from zero to $80M+ open interest in 48 hours",
     company: "Polkamarkets",
     role: "CMO & Co-Founder",
     period: "2021 - 2023",
