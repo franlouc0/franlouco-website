@@ -525,7 +525,7 @@ export default function WorkPage({ params }: WorkPageProps) {
                         </>
                       )}
                     </div>
-                  ) : visual.description ? (
+                  ) : visual.description && visual.image ? (
                     <div className="flex flex-col lg:flex-row gap-6 items-center">
                       {visual.imageLeft ? (
                         <>
