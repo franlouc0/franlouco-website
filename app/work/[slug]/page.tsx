@@ -3,7 +3,7 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Info, X } from "lucide-react";
+import { ArrowLeft, Info, X, Share2, Check } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { ExperienceSection } from "@/components/experience-section";
 import { FeaturedWorkSection } from "@/components/featured-work-section";
@@ -21,10 +21,23 @@ export default function WorkPage({ params }: WorkPageProps) {
   const work = getWorkById(params.slug);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isInfoOpen, setIsInfoOpen] = useState(false);
+  const [isShareCopied, setIsShareCopied] = useState(false);
 
   // Always use dark mode header image
   const getHeaderImage = () => {
     return "/dark-mode-header-image.jpg";
+  };
+
+  // Share functionality - copy URL to clipboard
+  const handleShare = async () => {
+    const url = `${window.location.origin}/work/${work.id}`;
+    try {
+      await navigator.clipboard.writeText(url);
+      setIsShareCopied(true);
+      setTimeout(() => setIsShareCopied(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy URL:", err);
+    }
   };
 
   if (!work) {
@@ -249,14 +262,45 @@ export default function WorkPage({ params }: WorkPageProps) {
           {/* Overlay for text readability - stronger on top and bottom */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/80" />
           
-          {/* Back Button - Top Left */}
-          <Link
-            href="/"
-            className="absolute top-6 left-6 lg:top-8 lg:left-8 z-30 inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/90 backdrop-blur-sm px-3 py-2 text-xs text-zinc-900 transition-all hover:bg-white dark:border-zinc-700/50 dark:bg-zinc-900/90 dark:text-zinc-50 dark:hover:bg-zinc-900 shadow-lg"
-          >
-            <ArrowLeft className="h-3 w-3" />
-            Back
-          </Link>
+          {/* Action Buttons - Top Left */}
+          <div className="absolute top-6 left-6 lg:top-8 lg:left-8 z-30 flex items-center gap-2">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/90 backdrop-blur-sm px-3 py-2 text-xs text-zinc-900 transition-all hover:bg-white dark:border-zinc-700/50 dark:bg-zinc-900/90 dark:text-zinc-50 dark:hover:bg-zinc-900 shadow-lg"
+            >
+              <ArrowLeft className="h-3 w-3" />
+              Back
+            </Link>
+            
+            <button
+              onClick={() => setIsContactOpen(true)}
+              className="inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/90 backdrop-blur-sm px-3 py-2 text-xs text-zinc-900 transition-all hover:bg-white dark:border-zinc-700/50 dark:bg-zinc-900/90 dark:text-zinc-50 dark:hover:bg-zinc-900 shadow-lg"
+            >
+              <span className="relative flex h-2 w-2" aria-hidden="true">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-zinc-900 opacity-75"></span>
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-zinc-900"></span>
+              </span>
+              Let&apos;s work together
+            </button>
+
+            <button
+              onClick={handleShare}
+              className="inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/90 backdrop-blur-sm px-3 py-2 text-xs text-zinc-900 transition-all hover:bg-white dark:border-zinc-700/50 dark:bg-zinc-900/90 dark:text-zinc-50 dark:hover:bg-zinc-900 shadow-lg"
+              aria-label="Copy link to share"
+            >
+              {isShareCopied ? (
+                <>
+                  <Check className="h-3 w-3" />
+                  <span>Copied</span>
+                </>
+              ) : (
+                <>
+                  <Share2 className="h-3 w-3" />
+                  <span>Share</span>
+                </>
+              )}
+            </button>
+          </div>
 
           {/* Title and Subtitle - 3/4 width, left-aligned */}
           <div className="absolute inset-0 flex items-center z-20 px-6 lg:px-8">
