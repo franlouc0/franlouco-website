@@ -258,64 +258,61 @@ export default function WorkPage({ params }: WorkPageProps) {
             Back
           </Link>
 
-          {/* Content Container - Title (3/4) and Info Card (1/4) */}
+          {/* Title - 3/4 width, left-aligned */}
           <div className="absolute inset-0 flex items-center z-20 px-6 lg:px-8">
-            <div className="flex w-full items-center gap-6">
-              {/* Title - 3/4 width */}
-              <div className="flex-[3]">
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight text-left drop-shadow-2xl">
-                  {work.title}
-                </h1>
-              </div>
+            <div className="w-3/4">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight text-left drop-shadow-2xl">
+                {work.title}
+              </h1>
+            </div>
+          </div>
 
-              {/* Info Card - 1/4 width */}
-              <div className="flex-1 flex justify-end">
-                <div className="relative rounded-lg border border-white/20 bg-white/90 backdrop-blur-sm p-4 shadow-xl dark:border-zinc-700/50 dark:bg-zinc-900/90 w-full max-w-[280px]">
-                  {/* Company Logo */}
-                  <div className="flex items-start gap-3 mb-3">
-                    <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-md border border-zinc-200 dark:border-zinc-800">
-                      <Image
-                        src={work.logo}
-                        alt={work.company}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-baseline gap-2 mb-0.5">
-                        <h3 className="text-xs font-semibold text-zinc-900 dark:text-zinc-50 truncate">
-                          {work.company}
-                        </h3>
-                        <span className="text-[10px] text-zinc-500 dark:text-zinc-500 shrink-0">
-                          {work.period}
-                        </span>
-                      </div>
-                      <p className="text-[10px] text-zinc-600 dark:text-zinc-400">
-                        {work.role}
-                      </p>
-                    </div>
+          {/* Info Card - Top Right */}
+          <div className="absolute top-6 right-6 lg:top-8 lg:right-8 z-10">
+            <div className="relative rounded-lg border border-white/20 bg-white/90 backdrop-blur-sm p-4 shadow-xl dark:border-zinc-700/50 dark:bg-zinc-900/90 max-w-[280px]">
+              {/* Company Logo */}
+              <div className="flex items-start gap-3 mb-3">
+                <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-md border border-zinc-200 dark:border-zinc-800">
+                  <Image
+                    src={work.logo}
+                    alt={work.company}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-baseline gap-2 mb-0.5">
+                    <h3 className="text-xs font-semibold text-zinc-900 dark:text-zinc-50 truncate">
+                      {work.company}
+                    </h3>
+                    <span className="text-[10px] text-zinc-500 dark:text-zinc-500 shrink-0">
+                      {work.period}
+                    </span>
                   </div>
-
-                  {/* Metrics - Visual Numbers */}
-                  <div className="flex items-center gap-3 mb-3 pb-3 border-b border-zinc-100 dark:border-zinc-800">
-                    {work.metrics.map((metric, idx) => (
-                      <div key={idx} className="flex flex-col">
-                        <span className="text-xs font-bold text-green-400 dark:text-green-400">
-                          {metric.value}
-                        </span>
-                        <span className="text-[9px] text-zinc-500 dark:text-zinc-500 uppercase tracking-wide">
-                          {metric.label}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Impact Statement */}
-                  <p className="text-[10px] leading-relaxed text-zinc-600 dark:text-zinc-400">
-                    {work.impact}
+                  <p className="text-[10px] text-zinc-600 dark:text-zinc-400">
+                    {work.role}
                   </p>
                 </div>
               </div>
+
+              {/* Metrics - Visual Numbers */}
+              <div className="flex items-center gap-3 mb-3 pb-3 border-b border-zinc-100 dark:border-zinc-800">
+                {work.metrics.map((metric, idx) => (
+                  <div key={idx} className="flex flex-col">
+                    <span className="text-xs font-bold text-green-400 dark:text-green-400">
+                      {metric.value}
+                    </span>
+                    <span className="text-[9px] text-zinc-500 dark:text-zinc-500 uppercase tracking-wide">
+                      {metric.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Impact Statement */}
+              <p className="text-[10px] leading-relaxed text-zinc-600 dark:text-zinc-400">
+                {work.impact}
+              </p>
             </div>
           </div>
         </div>
