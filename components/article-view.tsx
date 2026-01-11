@@ -212,12 +212,14 @@ export function ArticleView({ article }: ArticleViewProps) {
   const scrollToHeader = React.useCallback((id: string) => {
     const element = document.getElementById(id);
     if (element && contentRef.current) {
-      const offset = 20; // Offset from top
+      // Account for article header (title + tags) + some padding
+      const offset = 120; // Offset from top to account for header
       const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + contentRef.current.scrollTop - offset;
+      const containerScrollTop = contentRef.current.scrollTop;
+      const offsetPosition = containerScrollTop + elementPosition - offset;
       
       contentRef.current.scrollTo({
-        top: offsetPosition,
+        top: Math.max(0, offsetPosition), // Ensure we don't scroll to negative position
         behavior: 'smooth'
       });
     }
