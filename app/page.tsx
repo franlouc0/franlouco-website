@@ -109,6 +109,7 @@ export default function Home() {
             
             {/* Mobile button - top right, aligned with title */}
             <button
+              type="button"
               onClick={() => setIsContactOpen(true)}
               className="pointer-events-auto flex h-10 items-center gap-2 rounded-md border border-green-400 bg-green-400 px-4 text-xs font-semibold text-zinc-900 transition-all hover:border-green-500 hover:bg-green-500 dark:border-green-400 dark:bg-green-400 dark:text-zinc-900 dark:hover:border-green-500 dark:hover:bg-green-500 lg:hidden shrink-0"
               aria-label="Open contact form to work together"
@@ -268,13 +269,14 @@ export default function Home() {
           >
             |
           </span>
-          <a
-            href="mailto:hello@franlou.co"
+          <button
+            type="button"
+            onClick={() => setIsContactOpen(true)}
             className="text-[10px] text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
-            aria-label="Email Francisco Lourenço"
+            aria-label="Open contact form"
           >
-            Email
-          </a>
+            Contact
+          </button>
           <div className="ml-auto">
             <ThemeToggle />
           </div>
@@ -333,6 +335,7 @@ export default function Home() {
         {/* Fixed CTA Button - positioned inside main padding area, desktop only */}
           <div className="pointer-events-none absolute inset-x-6 bottom-6 hidden justify-center lg:flex lg:inset-x-8 lg:bottom-8">
           <button
+            type="button"
             onClick={() => setIsContactOpen(true)}
             className="pointer-events-auto flex h-12 items-center gap-2 rounded-md border border-green-400 bg-green-400 px-6 text-sm font-semibold text-zinc-900 transition-all hover:border-green-500 hover:bg-green-500 dark:border-green-400 dark:bg-green-400 dark:text-zinc-900 dark:hover:border-green-500 dark:hover:bg-green-500"
             aria-label="Open contact form to work together"
@@ -384,13 +387,14 @@ export default function Home() {
         >
           |
         </span>
-        <a
-          href="mailto:hello@franlou.co"
+        <button
+          type="button"
+          onClick={() => setIsContactOpen(true)}
           className="text-[10px] text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
-          aria-label="Email Francisco Lourenço"
+          aria-label="Open contact form"
         >
-          Email
-        </a>
+          Contact
+        </button>
         <div className="ml-auto">
           <ThemeToggle />
         </div>

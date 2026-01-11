@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Info, X, Share2, Check } from "lucide-react";
+import { CheckCircle } from "@phosphor-icons/react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { ExperienceSection } from "@/components/experience-section";
 import { FeaturedWorkSection } from "@/components/featured-work-section";
@@ -15,6 +16,100 @@ interface WorkPageProps {
   params: {
     slug: string;
   };
+}
+
+interface VideoSectionProps {
+  video: string;
+  title?: string;
+  tooltip?: string;
+  company: string;
+}
+
+function VideoSection({ video, title, tooltip, company }: VideoSectionProps) {
+  const [isTooltipOpen, setIsTooltipOpen] = useState(false);
+
+  // Extract YouTube video ID
+  const getVideoId = (url: string): string => {
+    if (url.includes('youtube.com/watch?v=')) {
+      return url.split('v=')[1]?.split('&')[0] || '';
+    }
+    if (url.includes('youtu.be/')) {
+      return url.split('youtu.be/')[1]?.split('?')[0] || '';
+    }
+    return '';
+  };
+
+  const videoId = getVideoId(video);
+
+  return (
+    <div className="w-full">
+      {title && (
+        <div className="mb-4 flex items-center gap-2">
+          <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
+            {title}
+          </h3>
+          {tooltip && (
+            <div className="group relative inline-block">
+              <button
+                type="button"
+                onClick={() => setIsTooltipOpen(!isTooltipOpen)}
+                className="lg:cursor-help"
+                aria-label="More information about this video"
+              >
+                <Info
+                  className="h-3.5 w-3.5 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300"
+                  aria-hidden="true"
+                />
+              </button>
+              
+              {/* Desktop tooltip - hover only */}
+              <div
+                className="pointer-events-none absolute left-1/2 top-full z-50 mt-2 hidden w-80 -translate-x-1/2 rounded-lg border border-zinc-200 bg-white p-3 text-[12px] leading-relaxed text-zinc-600 opacity-0 shadow-lg transition-opacity group-hover:pointer-events-auto group-hover:opacity-100 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-400 lg:block"
+                role="tooltip"
+                dangerouslySetInnerHTML={{ __html: tooltip }}
+              />
+
+              {/* Mobile modal - click to open, centered */}
+              {isTooltipOpen && (
+                <>
+                  <div
+                    className="fixed inset-0 z-40 bg-black/50 lg:hidden"
+                    onClick={() => setIsTooltipOpen(false)}
+                    aria-hidden="true"
+                  />
+                  <div
+                    className="fixed left-1/2 top-1/2 z-50 w-[calc(100%-2rem)] max-w-sm -translate-x-1/2 -translate-y-1/2 rounded-lg border border-zinc-200 bg-white p-4 text-[12px] leading-relaxed text-zinc-600 shadow-lg dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-400 lg:hidden"
+                    role="dialog"
+                    aria-modal="true"
+                    aria-label="More information about this video"
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setIsTooltipOpen(false)}
+                      className="absolute right-2 top-2 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300"
+                      aria-label="Close"
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                    <div dangerouslySetInnerHTML={{ __html: tooltip }} />
+                  </div>
+                </>
+              )}
+            </div>
+          )}
+        </div>
+      )}
+      <div className="relative w-full overflow-hidden rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900" style={{ paddingBottom: '56.25%' }}>
+        <iframe
+          className="absolute left-0 top-0 h-full w-full"
+          src={`https://www.youtube.com/embed/${videoId}`}
+          title={title || `${company} video`}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      </div>
+    </div>
+  );
 }
 
 export default function WorkPage({ params }: WorkPageProps) {
@@ -234,13 +329,13 @@ export default function WorkPage({ params }: WorkPageProps) {
           >
             |
           </span>
-          <a
-            href="mailto:hello@franlou.co"
+          <button
+            onClick={() => setIsContactOpen(true)}
             className="text-[10px] text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
-            aria-label="Email Francisco Lourenço"
+            aria-label="Open contact form"
           >
-            Email
-          </a>
+            Contact
+          </button>
           <div className="ml-auto">
             <ThemeToggle />
           </div>
@@ -272,17 +367,6 @@ export default function WorkPage({ params }: WorkPageProps) {
               <ArrowLeft className="h-3 w-3" />
               Back
             </Link>
-            
-            <button
-              onClick={() => setIsContactOpen(true)}
-              className="inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/90 backdrop-blur-sm px-3 py-2 text-xs text-zinc-900 transition-all hover:bg-white dark:border-zinc-700/50 dark:bg-zinc-900/90 dark:text-zinc-50 dark:hover:bg-zinc-900 shadow-lg"
-            >
-              <span className="relative flex h-2 w-2" aria-hidden="true">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-zinc-900 opacity-75"></span>
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-zinc-900"></span>
-              </span>
-              Let&apos;s work together
-            </button>
 
             {work && (
               <button
@@ -396,23 +480,182 @@ export default function WorkPage({ params }: WorkPageProps) {
           {work.visuals && work.visuals.length > 0 && (
             <div className="space-y-6">
               {work.visuals.map((visual, idx) => (
-                <figure key={idx} className="group">
-                  <div className="relative w-full rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900">
-                    <Image
-                      src={visual.image}
-                      alt={visual.caption || `${work.company} visual ${idx + 1}`}
-                      width={1920}
-                      height={1080}
-                      className="w-full h-auto object-contain"
-                      loading="lazy"
+                <div key={idx} className="group">
+                  {visual.description && visual.video && !visual.image ? (
+                    <div className="flex flex-col lg:flex-row gap-6 items-center">
+                      {visual.imageLeft ? (
+                        <>
+                          <div className="flex-1 lg:w-1/2">
+                            <div className="relative w-full overflow-hidden rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900" style={{ paddingBottom: '56.25%' }}>
+                              <iframe
+                                className="absolute left-0 top-0 h-full w-full"
+                                src={`https://www.youtube.com/embed/${visual.video.includes('youtube.com/watch?v=') ? visual.video.split('v=')[1]?.split('&')[0] : visual.video.includes('youtu.be/') ? visual.video.split('youtu.be/')[1]?.split('?')[0] : ''}`}
+                                title={`${work.company} video ${idx + 1}`}
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                              />
+                            </div>
+                          </div>
+                          <div className="flex-1 lg:w-1/2">
+                            <p 
+                              className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300"
+                              dangerouslySetInnerHTML={{ __html: visual.description }}
+                            />
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div className="flex-1 lg:w-1/2">
+                            <p 
+                              className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300"
+                              dangerouslySetInnerHTML={{ __html: visual.description }}
+                            />
+                          </div>
+                          <div className="flex-1 lg:w-1/2">
+                            <div className="relative w-full overflow-hidden rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900" style={{ paddingBottom: '56.25%' }}>
+                              <iframe
+                                className="absolute left-0 top-0 h-full w-full"
+                                src={`https://www.youtube.com/embed/${visual.video.includes('youtube.com/watch?v=') ? visual.video.split('v=')[1]?.split('&')[0] : visual.video.includes('youtu.be/') ? visual.video.split('youtu.be/')[1]?.split('?')[0] : ''}`}
+                                title={`${work.company} video ${idx + 1}`}
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                              />
+                            </div>
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  ) : visual.description ? (
+                    <div className="flex flex-col lg:flex-row gap-6 items-center">
+                      {visual.imageLeft ? (
+                        <>
+                          <figure className="flex-1 lg:w-1/2">
+                            <div className="relative w-full rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900">
+                              <Image
+                                src={visual.image}
+                                alt={visual.caption || `${work.company} visual ${idx + 1}`}
+                                width={1920}
+                                height={1080}
+                                className="w-full h-auto object-contain"
+                                loading="lazy"
+                              />
+                            </div>
+                            {visual.caption && (
+                              <figcaption className="mt-2 text-xs text-zinc-500 dark:text-zinc-500 text-center">
+                                {visual.caption}
+                              </figcaption>
+                            )}
+                          </figure>
+                          <div className="flex-1 lg:w-1/2">
+                            <p 
+                              className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300"
+                              dangerouslySetInnerHTML={{ __html: visual.description }}
+                            />
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div className="flex-1 lg:w-1/2">
+                            <p 
+                              className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300"
+                              dangerouslySetInnerHTML={{ __html: visual.description }}
+                            />
+                          </div>
+                          <figure className="flex-1 lg:w-1/2">
+                            <div className="relative w-full rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900">
+                              <Image
+                                src={visual.image}
+                                alt={visual.caption || `${work.company} visual ${idx + 1}`}
+                                width={1920}
+                                height={1080}
+                                className="w-full h-auto object-contain"
+                                loading="lazy"
+                              />
+                            </div>
+                            {visual.caption && (
+                              <figcaption className="mt-2 text-xs text-zinc-500 dark:text-zinc-500 text-center">
+                                {visual.caption}
+                              </figcaption>
+                            )}
+                          </figure>
+                        </>
+                      )}
+                    </div>
+                  ) : visual.video ? (
+                    <VideoSection
+                      video={visual.video}
+                      title={visual.videoTitle}
+                      tooltip={visual.videoTooltip}
+                      company={work.company}
                     />
-                  </div>
-                  {visual.caption && (
-                    <figcaption className="mt-2 text-xs text-zinc-500 dark:text-zinc-500 text-center">
-                      {visual.caption}
-                    </figcaption>
-                  )}
-                </figure>
+                  ) : visual.cards && visual.cards.length > 0 ? (
+                    <div className="relative w-full py-8">
+                      {/* Progress line */}
+                      <div className="absolute top-12 left-0 right-0 h-0.5 bg-green-400/30 hidden sm:block" />
+                      
+                      {/* Cards/Timeline items */}
+                      <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 sm:gap-4">
+                        {visual.cards.map((cardText, cardIdx) => (
+                          <div
+                            key={cardIdx}
+                            className="relative flex flex-col items-center text-center"
+                          >
+                            {/* Checkmark circle */}
+                            <div className="relative z-10 flex h-8 w-8 items-center justify-center">
+                              <CheckCircle weight="fill" className="h-8 w-8 text-green-400" />
+                            </div>
+                            
+                            {/* Text below */}
+                            <p 
+                              className="mt-4 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300"
+                              dangerouslySetInnerHTML={{ __html: cardText }}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ) : visual.images && visual.images.length > 0 ? (
+                    <figure>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {visual.images.map((img, imgIdx) => (
+                          <div key={imgIdx} className="relative w-full rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900">
+                            <Image
+                              src={img}
+                              alt={`${work.company} visual ${idx + 1} - ${imgIdx + 1}`}
+                              width={1920}
+                              height={1080}
+                              className="w-full h-auto object-contain"
+                              loading="lazy"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                      {visual.caption && (
+                        <figcaption className="mt-2 text-xs text-zinc-500 dark:text-zinc-500 text-center">
+                          {visual.caption}
+                        </figcaption>
+                      )}
+                    </figure>
+                  ) : visual.image ? (
+                    <figure>
+                      <div className="relative w-full rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900">
+                        <Image
+                          src={visual.image}
+                          alt={visual.caption || `${work.company} visual ${idx + 1}`}
+                          width={1920}
+                          height={1080}
+                          className="w-full h-auto object-contain"
+                          loading="lazy"
+                        />
+                      </div>
+                      {visual.caption && (
+                        <figcaption className="mt-2 text-xs text-zinc-500 dark:text-zinc-500 text-center">
+                          {visual.caption}
+                        </figcaption>
+                      )}
+                    </figure>
+                  ) : null}
+                </div>
               ))}
             </div>
           )}

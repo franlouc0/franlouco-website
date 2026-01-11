@@ -28,14 +28,35 @@ export interface Work {
     value: string;
   }[];
   impact: string; // 1-2 line max
-  // Visual proof section
+  // Content section - supports mixed content (images and text) for masonry grid
+  content?: Array<
+    | {
+        type: "image";
+        image: string;
+        caption?: string; // Optional one-line caption
+        span?: "row-span-1" | "row-span-2"; // Optional row span for masonry
+      }
+    | {
+        type: "text";
+        content: string; // Paragraph text
+        span?: "row-span-1" | "row-span-2"; // Optional row span
+      }
+  >;
+  // Visual proof section - backward compatibility
   visuals?: {
-    image: string;
+    image?: string; // Single image (use images array for multiple)
+    images?: string[]; // Multiple images to display side by side
     caption?: string; // Optional one-line caption
+    description?: string; // Optional text description before the image
+    imageLeft?: boolean; // If true, image on left, text on right. If false or undefined, text on left, image on right
+    video?: string; // YouTube video URL
+    videoTitle?: string; // Title for the video section
+    videoTooltip?: string; // Tooltip text for the info icon
+    cards?: string[]; // Array of card content text for 4-card grid
   }[];
   insight?: string; // Optional: One short sentence showing judgment
   softClose?: string; // Optional: Very light ending (e.g., "Happy to share details on request")
-  images?: string[]; // Keep for backward compatibility, but prefer visuals
+  images?: string[]; // Keep for backward compatibility, but prefer visuals or content
   color?: string; // Optional accent color
 }
 
@@ -68,6 +89,44 @@ export const works: Record<string, Work> = {
       { label: "Timeframe", value: "48h" }
     ],
     impact: "Built prediction market protocol from zero. Led token launch strategy and community growth.",
+    visuals: [
+      {
+        image: "/work/polkamarkets-community-growth.png"
+      },
+      {
+        description: '<span class="underline decoration-green-400 decoration-2">Co-led and executed a $625K strategic investment round</span> with Moonrock Capital, Morningstar Ventures, NGC Ventures, and Astronaut Capital, covering investor outreach, positioning, and closing.',
+        image: "/work/strategic-investors.jpeg"
+      },
+      {
+        video: "https://www.youtube.com/watch?v=8L5oZd0Yup4",
+        videoTitle: "What is Polkamarkets? Explainer Video",
+        videoTooltip: "The \"What is Polkamarkets?\" explainer video was developed from scratch as a core educational asset for the project.<br /><br />I drove the concept from early ideation to final delivery. This included writing and refining the script, defining the visual direction, and setting the voice over tone to clearly explain the product without overcomplicating it.<br /><br />Working with the agency Hypercube, I coordinated a five-person team across creative and production, ensuring tight alignment with product and messaging.<br /><br />I also managed the rollout communications so the video landed clearly with the community and new users."
+      },
+      {
+        cards: [
+          "Launched the interest form while coordinating VCs, angels, KOLs, community, and MVP development, resulting in <span class=\"underline decoration-green-400 decoration-2\">10,000+ participants</span> and <span class=\"underline decoration-green-400 decoration-2\">$80M+ in pledged open interest</span>.",
+          "Managed investor and community communications, including <span class=\"underline decoration-green-400 decoration-2\">incentives for whitelisted addresses and early supporters</span>.",
+          "<span class=\"underline decoration-green-400 decoration-2\">Released a simulated, gamified prediction markets</span> experience to educate users ahead of launch.",
+          "Scaled the community to <span class=\"underline decoration-green-400 decoration-2\">100,000+ members</span> across Telegram and Twitter."
+        ]
+      },
+      {
+        images: ["/work/open-interest.png", "/work/community-members.png"],
+      },
+      {
+        description: "Following a successful community build (<span class=\"underline decoration-green-400 decoration-2\">100K+ members</span>) and IDO on Polkastarter (<span class=\"underline decoration-green-400 decoration-2\">120x post-IDO ATH</span>), Polkamarkets launched its MVP testnet.<br /><br />I supported coordination across product, development, and communications, helping <span class=\"underline decoration-green-400 decoration-2\">deliver the first live version</span> of the gamified prediction markets platform and managing the community rollout.",
+        video: "https://www.youtube.com/watch?v=Qlg4ldiu6VY",
+        imageLeft: false, // Text on left, video on right
+      },
+      {
+        description: "Co-led <span class=\"underline decoration-green-400 decoration-2\">Polkamarkets' multi-chain rollout</span>, coordinating partnerships, product, and development.<br /><br />Supported deployments across <span class=\"underline decoration-green-400 decoration-2\">Ethereum environments, Polygon, Moonriver, and Moonbeam</span>, while handling partner alignment and community communications to enable early cross-chain growth and scalability.",
+        image: "/work/deployed-chains.png",
+        imageLeft: true, // Image on left, text on right
+      },
+      {
+        image: "/work/polkamarkets-ido-announcement.png"
+      }
+    ],
   },
   "how-we-achieved-166-mom-ngo-growth": {
     id: "how-we-achieved-166-mom-ngo-growth",
