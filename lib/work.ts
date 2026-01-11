@@ -91,10 +91,7 @@ export const works: Record<string, Work> = {
     impact: "Built prediction market protocol from zero. Led token launch strategy and community growth.",
     visuals: [
       {
-        image: "/work/app-animated-gif.gif"
-      },
-      {
-        images: ["/work/market-page.png", "/work/market-page2.png"]
+        images: ["/work/app-animated-gif.gif", "/work/market-page2.png"]
       },
       {
         description: '<span class="underline decoration-green-400 decoration-2">Co-led and executed a $625K strategic investment round</span> with Moonrock Capital, Morningstar Ventures, NGC Ventures, and Astronaut Capital, covering investor outreach, positioning, and closing.',
@@ -130,7 +127,7 @@ export const works: Record<string, Work> = {
         images: ["/work/private-beta-whitelist-addresses.png", "/work/visual-portfolio-user-forecast.png", "/work/visual-portfolio-user-forecast2.png"]
       },
       {
-        image: "/work/app-animated-gif2.gif"
+        images: ["/work/app-animated-gif2.gif", "/work/market-page.png"]
       }
     ],
   },
