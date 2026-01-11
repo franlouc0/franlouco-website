@@ -296,42 +296,42 @@ export default function Home() {
 
       {/* Main Content Area */}
       <div className="relative flex flex-1 flex-col overflow-hidden w-full">
-        <section
-          className="flex-1 overflow-y-auto px-6 pt-10 pb-6 lg:p-8"
-          aria-label="Projects gallery"
-        >
-          {/* Projects Gallery - Masonry Grid */}
-          <div className="grid auto-rows-[200px] grid-cols-1 gap-4 pb-20 sm:grid-cols-2 lg:grid-cols-3 lg:pb-24">
-            {projects.map((project) => (
-              <article
-                key={project.id}
-                className={`group relative overflow-hidden rounded-lg bg-zinc-200 dark:bg-zinc-800 ${project.span}`}
-              >
-                <Image
-                  src={project.image}
-                  alt={`${project.title} - ${project.description}`}
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <h3 className="text-sm font-semibold text-white">
-                      {project.title}
-                    </h3>
-                    <p className="mt-1 text-xs text-white/80">
-                      {project.description}
-                    </p>
+          <section
+            className="flex-1 overflow-y-auto px-6 pt-10 pb-6 lg:p-8"
+            aria-label="Projects gallery"
+          >
+            {/* Projects Gallery - Masonry Grid */}
+            <div className="grid auto-rows-[200px] grid-cols-1 gap-4 pb-20 sm:grid-cols-2 lg:grid-cols-3 lg:pb-24">
+              {projects.map((project) => (
+                <article
+                  key={project.id}
+                  className={`group relative overflow-hidden rounded-lg bg-zinc-200 dark:bg-zinc-800 ${project.span}`}
+                >
+                  <Image
+                    src={project.image}
+                    alt={`${project.title} - ${project.description}`}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <div className="absolute bottom-0 left-0 right-0 p-4">
+                      <h3 className="text-sm font-semibold text-white">
+                        {project.title}
+                      </h3>
+                      <p className="mt-1 text-xs text-white/80">
+                        {project.description}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
+                </article>
+              ))}
+            </div>
+          </section>
 
         {/* Fixed CTA Button - positioned inside main padding area, desktop only */}
-        <div className="pointer-events-none absolute inset-x-6 bottom-6 hidden justify-center lg:flex lg:inset-x-8 lg:bottom-8">
+          <div className="pointer-events-none absolute inset-x-6 bottom-6 hidden justify-center lg:flex lg:inset-x-8 lg:bottom-8">
           <button
             onClick={() => setIsContactOpen(true)}
             className="pointer-events-auto flex h-12 items-center gap-2 rounded-md border border-green-400 bg-green-400 px-6 text-sm font-semibold text-zinc-900 transition-all hover:border-green-500 hover:bg-green-500 dark:border-green-400 dark:bg-green-400 dark:text-zinc-900 dark:hover:border-green-500 dark:hover:bg-green-500"

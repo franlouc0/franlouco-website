@@ -8,8 +8,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { ExperienceSection } from "@/components/experience-section";
 import { FeaturedWorkSection } from "@/components/featured-work-section";
 import { ContactModal } from "@/components/contact-modal";
-import { useState, useEffect } from "react";
-import { useTheme } from "next-themes";
+import { useState } from "react";
 import { getWorkById } from "@/lib/work";
 
 interface WorkPageProps {
@@ -22,20 +21,10 @@ export default function WorkPage({ params }: WorkPageProps) {
   const work = getWorkById(params.slug);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isInfoOpen, setIsInfoOpen] = useState(false);
-  const { theme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // Determine which image to use based on theme
+  // Always use dark mode header image
   const getHeaderImage = () => {
-    if (!mounted) return "/light-mode-header-image.jpg"; // Default during SSR
-    const currentTheme = resolvedTheme || theme;
-    return currentTheme === "dark" 
-      ? "/dark-mode-header-image.jpg" 
-      : "/light-mode-header-image.jpg";
+    return "/dark-mode-header-image.jpg";
   };
 
   if (!work) {
@@ -257,8 +246,8 @@ export default function WorkPage({ params }: WorkPageProps) {
             priority
           />
           
-          {/* Overlay for text readability - stronger on top and bottom, white in light mode, black in dark mode */}
-          <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/50 to-white/80 dark:from-black/80 dark:via-black/50 dark:to-black/80" />
+          {/* Overlay for text readability - stronger on top and bottom */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/80" />
           
           {/* Title - Modern, Impactful, Left-aligned */}
           <div className="absolute inset-0 flex items-center z-20">
