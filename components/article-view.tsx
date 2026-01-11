@@ -18,6 +18,18 @@ export function ArticleView({ article }: ArticleViewProps) {
 
   // Inject Article JSON-LD schema for LLM SEO
   React.useEffect(() => {
+    // Generate a clean description for the article
+    const cleanContent = article.content
+      .replace(/\n+/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+    
+    const wordCount = cleanContent.split(/\s+/).length;
+    const readingTime = calculateReadingTime(article.content);
+    
+    // Extract a good description (first 300 chars of clean content)
+    const description = cleanContent.substring(0, 300).replace(/\s+\S*$/, '') + '...';
+    
     const articleJsonLd = {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -30,13 +42,22 @@ export function ArticleView({ article }: ArticleViewProps) {
       },
       datePublished: article.date,
       dateModified: article.date,
-      description: article.content.substring(0, 200).replace(/\n/g, ' ').trim() + '...',
+      description: description,
       keywords: article.tags.join(', '),
       url: `${SITE_URL}/articles/${article.id}`,
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": `${SITE_URL}/articles/${article.id}`,
+      },
       publisher: {
         "@type": "Person",
         name: AUTHOR_NAME,
+        url: SITE_URL,
       },
+      articleSection: article.tags.join(', '),
+      wordCount: wordCount,
+      timeRequired: `PT${readingTime}M`,
+      inLanguage: "en-US",
     };
 
     // Remove existing article schema if present
