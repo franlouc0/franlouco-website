@@ -2,95 +2,24 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { ChevronUp, ChevronDown, Clock } from "lucide-react";
-import { getArticleIdByTitle, getArticleById } from "@/lib/articles";
-import { calculateReadingTime } from "@/lib/article-utils";
-
-interface FeaturedWork {
-  title: string;
-  url: string;
-}
+import { ChevronUp, ChevronDown } from "lucide-react";
+import { getAllWorkIds, getWorkById } from "@/lib/work";
 
 interface FeaturedWorkSectionProps {}
-
-const featuredWorks: FeaturedWork[] = [
-  {
-    title: "How we raised $715K in an IDO without relying on hype",
-    url: "#",
-  },
-  {
-    title: "How I decide if an idea is worth building",
-    url: "#",
-  },
-  {
-    title: "When Web3 makes sense, and when it does not",
-    url: "#",
-  },
-  {
-    title: "How we achieved 166% MoM NGO growth in an ESG marketplace",
-    url: "#",
-  },
-  {
-    title: "From mentor to advisor. How trust is built",
-    url: "#",
-  },
-  {
-    title: "Building GTM when your product is still evolving",
-    url: "#",
-  },
-  // Existing articles below (not redundant with new ones above)
-  {
-    title: "How We Scaled Our IDO to $2M in 48 Hours",
-    url: "#",
-  },
-  {
-    title: "Building in Public: Lessons from Web3",
-    url: "#",
-  },
-  {
-    title: "The Future of Decentralized Marketing",
-    url: "#",
-  },
-  {
-    title: "Web3 Community Growth Strategies",
-    url: "#",
-  },
-  {
-    title: "Token Launch Playbook: A Complete Guide",
-    url: "#",
-  },
-  {
-    title: "From Zero to DAO: Building Decentralized Teams",
-    url: "#",
-  },
-  {
-    title: "NFT Marketing in 2025: What Actually Works",
-    url: "#",
-  },
-];
 
 const ITEMS_PER_PAGE = 7;
 
 export function FeaturedWorkSection({}: FeaturedWorkSectionProps = {}) {
   const [startIndex, setStartIndex] = React.useState(0);
-  const [isMobile, setIsMobile] = React.useState(false);
+  const workIds = React.useMemo(() => getAllWorkIds(), []);
 
-  React.useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1024);
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  const visibleWorks = featuredWorks.slice(
+  const visibleWorks = workIds.slice(
     startIndex,
     startIndex + ITEMS_PER_PAGE
   );
 
   const canGoUp = startIndex > 0;
-  const canGoDown = startIndex + ITEMS_PER_PAGE < featuredWorks.length;
+  const canGoDown = startIndex + ITEMS_PER_PAGE < workIds.length;
 
   const handleUp = () => {
     if (canGoUp) {
@@ -101,7 +30,7 @@ export function FeaturedWorkSection({}: FeaturedWorkSectionProps = {}) {
   const handleDown = () => {
     if (canGoDown) {
       setStartIndex((prev) =>
-        Math.min(featuredWorks.length - ITEMS_PER_PAGE, prev + 1)
+        Math.min(workIds.length - ITEMS_PER_PAGE, prev + 1)
       );
     }
   };
@@ -114,7 +43,7 @@ export function FeaturedWorkSection({}: FeaturedWorkSectionProps = {}) {
             Featured Work
           </h2>
           <span className="inline-flex h-4 items-center rounded-md border border-zinc-300 bg-zinc-100 px-1.5 text-[10px] text-zinc-600 dark:border-zinc-700/50 dark:bg-zinc-800/50 dark:text-zinc-400">
-            {featuredWorks.length}
+            {workIds.length}
           </span>
         </div>
         <div className="flex items-center gap-1">
@@ -137,34 +66,19 @@ export function FeaturedWorkSection({}: FeaturedWorkSectionProps = {}) {
         </div>
       </div>
       <div className="space-y-2">
-        {visibleWorks.map((work, index) => {
-          const slug = getArticleIdByTitle(work.title);
-          const article = slug ? getArticleById(slug) : null;
-          const readingTime = article ? calculateReadingTime(article.content) : null;
+        {visibleWorks.map((workId, index) => {
+          const work = getWorkById(workId);
+          if (!work) return null;
           
-          return slug ? (
+          return (
             <Link
               key={startIndex + index}
-              href={`/articles/${slug}${isMobile ? '#breadcrumb' : ''}`}
+              href={`/work/${work.id}`}
               className="flex items-center gap-1 text-xs text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200 w-full text-left"
             >
-              {readingTime !== null && (
-                <>
-                  <Clock className="h-3 w-3 shrink-0" />
-                  <span className="shrink-0">{readingTime}&apos;</span>
-                  <span className="text-zinc-400 dark:text-zinc-600 shrink-0">|</span>
-                </>
-              )}
-              <span className="truncate">{work.title}</span>
+              <span className="truncate">{work.company}</span>
               <span className="shrink-0">→</span>
             </Link>
-          ) : (
-            <span
-              key={startIndex + index}
-              className="flex items-center gap-1 text-xs text-zinc-400 dark:text-zinc-600 w-full"
-            >
-              <span className="truncate">{work.title}</span>
-            </span>
           );
         })}
       </div>

@@ -25,12 +25,13 @@ export default function Template({ children }: { children: React.ReactNode }) {
     // Only animate if pathname actually changed
     if (previousPathname.current !== pathname) {
       // Detect navigation direction
-      const isNavigatingBack = pathname === "/" && previousPathname.current?.startsWith("/articles");
-      const isNavigatingForward = previousPathname.current === "/" && pathname?.startsWith("/articles");
+      const isNavigatingBack = pathname === "/" && (previousPathname.current?.startsWith("/articles") || previousPathname.current?.startsWith("/work"));
+      const isNavigatingForward = previousPathname.current === "/" && (pathname?.startsWith("/articles") || pathname?.startsWith("/work"));
       const isNavigatingBetweenArticles = previousPathname.current?.startsWith("/articles") && pathname?.startsWith("/articles");
+      const isNavigatingBetweenWork = previousPathname.current?.startsWith("/work") && pathname?.startsWith("/work");
       
-      if (isNavigatingBetweenArticles) {
-        // No transition when navigating between articles - instant update
+      if (isNavigatingBetweenArticles || isNavigatingBetweenWork) {
+        // No transition when navigating between articles or work pages - instant update
         setDisplayChildren(children);
         setIsAnimating(true);
         setIsSlidingOut(false);
