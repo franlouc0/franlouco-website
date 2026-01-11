@@ -72,6 +72,16 @@ const ITEMS_PER_PAGE = 7;
 
 export function FeaturedWorkSection({}: FeaturedWorkSectionProps = {}) {
   const [startIndex, setStartIndex] = React.useState(0);
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const visibleWorks = featuredWorks.slice(
     startIndex,
@@ -131,7 +141,7 @@ export function FeaturedWorkSection({}: FeaturedWorkSectionProps = {}) {
           return slug ? (
             <Link
               key={startIndex + index}
-              href={`/articles/${slug}`}
+              href={`/articles/${slug}${isMobile ? '#article-title' : ''}`}
               className="flex items-center gap-1 text-xs text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200 w-full text-left"
             >
               <span className="truncate">{work.title}</span>

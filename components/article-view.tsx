@@ -14,6 +14,19 @@ export function ArticleView({ article }: ArticleViewProps) {
   const [scrollProgress, setScrollProgress] = React.useState(0);
   const contentRef = React.useRef<HTMLDivElement>(null);
 
+  // Scroll to title on mount if hash is present (for mobile anchor links)
+  React.useEffect(() => {
+    if (window.location.hash === '#article-title') {
+      // Small delay to ensure DOM is ready
+      setTimeout(() => {
+        const titleElement = document.getElementById('article-title');
+        if (titleElement) {
+          titleElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+  }, []);
+
   // Reading progress tracking
   React.useEffect(() => {
     const handleScroll = () => {
@@ -438,7 +451,7 @@ export function ArticleView({ article }: ArticleViewProps) {
         <div className="flex flex-col sm:flex-row items-start sm:items-start gap-3 sm:gap-4">
           {/* Title Container - No box, 3/4 width */}
           <div className="flex-[3]">
-            <h1 className="text-2xl font-extrabold text-zinc-900 dark:text-zinc-50 sm:text-3xl">
+            <h1 id="article-title" className="text-2xl font-extrabold text-zinc-900 dark:text-zinc-50 sm:text-3xl">
               {article.title}
             </h1>
             {/* Tags - Below title */}
