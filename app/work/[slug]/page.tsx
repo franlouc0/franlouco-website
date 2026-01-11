@@ -276,8 +276,8 @@ export default function WorkPage({ params }: WorkPageProps) {
             Back
           </Link>
 
-          {/* Small Info Card - Bottom */}
-          <div className="absolute bottom-6 left-6 right-6 lg:bottom-8 lg:left-8 lg:right-8 z-10">
+          {/* Small Info Card - Bottom Right */}
+          <div className="absolute bottom-6 right-6 lg:bottom-8 lg:right-8 z-10" style={{ paddingTop: '20px' }}>
             <div className="relative rounded-lg border border-white/20 bg-white/90 backdrop-blur-sm p-4 shadow-xl dark:border-zinc-700/50 dark:bg-zinc-900/90 max-w-[280px]">
               {/* Company Logo */}
               <div className="flex items-start gap-3 mb-3">
