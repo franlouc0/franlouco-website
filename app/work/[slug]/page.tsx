@@ -247,7 +247,7 @@ export default function WorkPage({ params }: WorkPageProps) {
       {/* Main Content Area - Visual Showcase */}
       <div className="relative flex flex-1 flex-col overflow-hidden w-full">
         {/* Header Image with Title Overlay */}
-        <div className="relative w-full h-[60vh] min-h-[400px] lg:h-[70vh] overflow-hidden">
+        <div className="relative w-full h-[45vh] min-h-[300px] lg:h-[50vh] overflow-hidden">
           {/* Header Image - Full width, theme-aware */}
           <Image
             src={getHeaderImage()}
@@ -257,8 +257,8 @@ export default function WorkPage({ params }: WorkPageProps) {
             priority
           />
           
-          {/* Overlay for text readability - white in light mode, black in dark mode */}
-          <div className="absolute inset-0 bg-white/40 dark:bg-black/60" />
+          {/* Overlay for text readability - stronger on top and bottom, white in light mode, black in dark mode */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/30 to-white/60 dark:from-black/80 dark:via-black/50 dark:to-black/80" />
           
           {/* Centered Title - Modern, Impactful, Big */}
           <div className="absolute inset-0 flex items-center justify-center">
