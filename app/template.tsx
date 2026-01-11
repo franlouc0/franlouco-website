@@ -8,7 +8,18 @@ export default function Template({ children }: { children: React.ReactNode }) {
   const [isAnimating, setIsAnimating] = useState(true);
   const [isSlidingOut, setIsSlidingOut] = useState(false);
   const [displayChildren, setDisplayChildren] = useState(children);
+  const [isMobile, setIsMobile] = useState(false);
   const previousPathname = useRef(pathname);
+
+  // Detect mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     // Only animate if pathname actually changed
@@ -18,7 +29,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
       const isNavigatingForward = previousPathname.current === "/" && pathname?.startsWith("/articles");
       
       if (isNavigatingBack) {
-        // Slide out to the right when going back to home
+        // Slide out when going back to home
         setIsSlidingOut(true);
         setIsAnimating(false);
         
@@ -32,18 +43,30 @@ export default function Template({ children }: { children: React.ReactNode }) {
         }, 700); // Full 700ms duration like contact modal
 
         return () => clearTimeout(timer);
-      } else {
-        // Fade transition for forward navigation
+      } else if (isNavigatingForward) {
+        // Slide in for forward navigation (fade on desktop, slide from bottom on mobile)
         setIsSlidingOut(false);
         setIsAnimating(false);
         
-        // Wait for full fade-out animation (700ms), then update children and fade in
+        // Wait for full exit animation (700ms), then update children and slide in
         const timer = setTimeout(() => {
           setDisplayChildren(children);
           // Small delay before starting entrance animation, like contact modal
           setTimeout(() => setIsAnimating(true), 50);
           previousPathname.current = pathname;
         }, 700); // Full 700ms duration like contact modal
+
+        return () => clearTimeout(timer);
+      } else {
+        // Other navigation - use fade
+        setIsSlidingOut(false);
+        setIsAnimating(false);
+        
+        const timer = setTimeout(() => {
+          setDisplayChildren(children);
+          setTimeout(() => setIsAnimating(true), 50);
+          previousPathname.current = pathname;
+        }, 700);
 
         return () => clearTimeout(timer);
       }
@@ -56,15 +79,22 @@ export default function Template({ children }: { children: React.ReactNode }) {
     }
   }, [pathname, children]);
 
+  // Determine transform classes based on mobile and direction
+  const getTransformClasses = () => {
+    if (isAnimating) {
+      return "opacity-100 translate-x-0 translate-y-0";
+    } else if (isSlidingOut) {
+      // Slide out: right on desktop, down (top to bottom) on mobile
+      return isMobile ? "opacity-0 translate-y-full" : "opacity-0 translate-x-full";
+    } else {
+      // Starting position: center on desktop, below on mobile (for forward navigation)
+      return isMobile ? "opacity-0 translate-y-full" : "opacity-0 translate-x-0";
+    }
+  };
+
   return (
     <div
-      className={`transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-        isAnimating 
-          ? "opacity-100 translate-x-0" 
-          : isSlidingOut 
-            ? "opacity-0 translate-x-full" 
-            : "opacity-0 translate-x-0"
-      }`}
+      className={`transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${getTransformClasses()}`}
     >
       {displayChildren}
     </div>
