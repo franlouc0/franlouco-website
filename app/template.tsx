@@ -27,8 +27,15 @@ export default function Template({ children }: { children: React.ReactNode }) {
       // Detect navigation direction
       const isNavigatingBack = pathname === "/" && previousPathname.current?.startsWith("/articles");
       const isNavigatingForward = previousPathname.current === "/" && pathname?.startsWith("/articles");
+      const isNavigatingBetweenArticles = previousPathname.current?.startsWith("/articles") && pathname?.startsWith("/articles");
       
-      if (isNavigatingBack) {
+      if (isNavigatingBetweenArticles) {
+        // No transition when navigating between articles - instant update
+        setDisplayChildren(children);
+        setIsAnimating(true);
+        setIsSlidingOut(false);
+        previousPathname.current = pathname;
+      } else if (isNavigatingBack) {
         // Slide out when going back to home
         setIsSlidingOut(true);
         setIsAnimating(false);
