@@ -139,12 +139,22 @@ export function FeaturedWorkSection({}: FeaturedWorkSectionProps = {}) {
       <div className="space-y-2">
         {visibleWorks.map((work, index) => {
           const slug = getArticleIdByTitle(work.title);
+          const article = slug ? getArticleById(slug) : null;
+          const readingTime = article ? calculateReadingTime(article.content) : null;
+          
           return slug ? (
             <Link
               key={startIndex + index}
               href={`/articles/${slug}${isMobile ? '#breadcrumb' : ''}`}
               className="flex items-center gap-1 text-xs text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200 w-full text-left"
             >
+              {readingTime !== null && (
+                <>
+                  <Clock className="h-3 w-3 shrink-0" />
+                  <span className="shrink-0">{readingTime}'</span>
+                  <span className="text-zinc-400 dark:text-zinc-600 shrink-0">|</span>
+                </>
+              )}
               <span className="truncate">{work.title}</span>
               <span className="shrink-0">→</span>
             </Link>
