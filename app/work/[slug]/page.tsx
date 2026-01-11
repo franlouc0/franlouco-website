@@ -98,6 +98,7 @@ export default function WorkPage({ params }: WorkPageProps) {
   // Scroll tracking for header animation
   useEffect(() => {
     const scrollContainer = scrollContainerRef.current;
+    const header = headerRef.current;
     if (!scrollContainer || typeof window === 'undefined') return;
 
     const handleScroll = () => {
@@ -116,13 +117,30 @@ export default function WorkPage({ params }: WorkPageProps) {
       handleScroll();
     };
 
+    // Forward wheel events from header to scroll container
+    const handleWheel = (e: WheelEvent) => {
+      if (header && scrollContainer) {
+        e.preventDefault();
+        scrollContainer.scrollBy({
+          top: e.deltaY,
+          behavior: 'auto'
+        });
+      }
+    };
+
     scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('resize', handleResize, { passive: true });
+    if (header) {
+      header.addEventListener('wheel', handleWheel, { passive: false });
+    }
     handleScroll(); // Initial check
     
     return () => {
       scrollContainer.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleResize);
+      if (header) {
+        header.removeEventListener('wheel', handleWheel);
+      }
     };
   }, []);
 
