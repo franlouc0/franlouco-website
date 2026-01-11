@@ -716,7 +716,7 @@ export default function WorkPage({ params }: WorkPageProps) {
                     </div>
                   ) : visual.images && visual.images.length > 0 ? (
                     <figure>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className={`grid grid-cols-1 sm:grid-cols-2 ${visual.images.length >= 3 ? 'lg:grid-cols-3' : ''} gap-4`}>
                         {visual.images.map((img, imgIdx) => (
                           <div key={imgIdx} className="relative w-full rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900">
                             <Image
