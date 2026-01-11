@@ -7,10 +7,9 @@ import { Share2 } from "lucide-react";
 
 interface ArticleViewProps {
   article: Article;
-  onBack: () => void;
 }
 
-export function ArticleView({ article, onBack }: ArticleViewProps) {
+export function ArticleView({ article }: ArticleViewProps) {
   const [copied, setCopied] = React.useState(false);
   const [scrollProgress, setScrollProgress] = React.useState(0);
   const contentRef = React.useRef<HTMLDivElement>(null);
@@ -410,7 +409,7 @@ export function ArticleView({ article, onBack }: ArticleViewProps) {
       <div className="mb-6 pb-4 flex items-center justify-between">
         <Breadcrumb
           items={[
-            { label: "Home", onClick: onBack },
+            { label: "Home", href: "/" },
             { label: article.title },
           ]}
         />
