@@ -13,10 +13,11 @@ import { ContactModal } from "@/components/contact-modal";
 const projects = [
   { 
     id: 1, 
-    title: "AI Platform", 
-    description: "Machine learning solutions", 
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80", 
-    span: "row-span-2" 
+    title: "How we raised $715K in an IDO without relying on hype", 
+    description: "Building a prediction market protocol from zero to $80M+ open interest in 48 hours", 
+    image: "/grid/grid-polkamarkets.png", 
+    span: "row-span-2",
+    href: "/work/how-we-raised-715k-ido"
   },
   { 
     id: 2, 
@@ -304,31 +305,42 @@ export default function Home() {
           >
             {/* Projects Gallery - Masonry Grid */}
             <div className="grid auto-rows-[200px] grid-cols-1 gap-4 pb-20 sm:grid-cols-2 lg:grid-cols-3 lg:pb-24">
-              {projects.map((project) => (
-                <article
-                  key={project.id}
-                  className={`group relative overflow-hidden rounded-lg bg-zinc-200 dark:bg-zinc-800 ${project.span}`}
-                >
-                  <Image
-                    src={project.image}
-                    alt={`${project.title} - ${project.description}`}
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    <div className="absolute bottom-0 left-0 right-0 p-4">
-                      <h3 className="text-sm font-semibold text-white">
-                        {project.title}
-                      </h3>
-                      <p className="mt-1 text-xs text-white/80">
-                        {project.description}
-                      </p>
+              {projects.map((project) => {
+                const articleContent = (
+                  <article
+                    className={`group relative overflow-hidden rounded-lg bg-zinc-200 dark:bg-zinc-800 ${project.span} ${project.href ? 'cursor-pointer' : ''}`}
+                  >
+                    <Image
+                      src={project.image}
+                      alt={`${project.title} - ${project.description}`}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                      <div className="absolute bottom-0 left-0 right-0 p-4">
+                        <h3 className="text-sm font-semibold text-white">
+                          {project.title}
+                        </h3>
+                        <p className="mt-1 text-xs text-white/80">
+                          {project.description}
+                        </p>
+                      </div>
                     </div>
+                  </article>
+                );
+
+                return project.href ? (
+                  <Link key={project.id} href={project.href} className="block h-full">
+                    {articleContent}
+                  </Link>
+                ) : (
+                  <div key={project.id} className="h-full">
+                    {articleContent}
                   </div>
-                </article>
-              ))}
+                );
+              })}
             </div>
           </section>
 
