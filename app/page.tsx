@@ -23,56 +23,56 @@ const projects = [
     id: 2, 
     title: "Mobile App", 
     description: "iOS & Android experience", 
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80", 
+    image: "https://images.unsplash.com/photo-1557683311-eac922347aa1?auto=format&fit=crop&w=800&q=80", 
     span: "row-span-1" 
   },
   { 
     id: 3, 
     title: "Web3 Platform", 
     description: "Blockchain integration", 
-    image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=800&q=80", 
+    image: "https://images.unsplash.com/photo-1557682250-33bd709cbe85?auto=format&fit=crop&w=800&q=80", 
     span: "row-span-1" 
   },
   { 
     id: 4, 
     title: "SaaS Dashboard", 
     description: "Analytics & insights", 
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80", 
+    image: "https://images.unsplash.com/photo-1557683311-eac922347aa1?auto=format&fit=crop&w=800&q=80", 
     span: "row-span-2" 
   },
   { 
     id: 5, 
     title: "E-commerce", 
     description: "Digital marketplace", 
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80", 
+    image: "https://images.unsplash.com/photo-1557683311-eac922347aa1?auto=format&fit=crop&w=800&q=80", 
     span: "row-span-1" 
   },
   { 
     id: 6, 
     title: "Design System", 
     description: "Component library", 
-    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=800&q=80", 
+    image: "https://images.unsplash.com/photo-1557682250-33bd709cbe85?auto=format&fit=crop&w=800&q=80", 
     span: "row-span-1" 
   },
   { 
     id: 7, 
     title: "Space Tech", 
     description: "Aerospace innovation", 
-    image: "https://images.unsplash.com/photo-1446776877081-d282a0f896e2?auto=format&fit=crop&w=800&q=80", 
+    image: "https://images.unsplash.com/photo-1557683311-eac922347aa1?auto=format&fit=crop&w=800&q=80", 
     span: "row-span-2" 
   },
   { 
     id: 8, 
     title: "Fintech App", 
     description: "Financial services", 
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80", 
+    image: "https://images.unsplash.com/photo-1557683311-eac922347aa1?auto=format&fit=crop&w=800&q=80", 
     span: "row-span-1" 
   },
   { 
     id: 9, 
     title: "IoT Platform", 
     description: "Connected devices", 
-    image: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&w=800&q=80", 
+    image: "https://images.unsplash.com/photo-1557682250-33bd709cbe85?auto=format&fit=crop&w=800&q=80", 
     span: "row-span-1" 
   },
 ];
@@ -321,12 +321,12 @@ export default function Home() {
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         loading="lazy"
                       />
-                      <div className="absolute top-3 right-3 z-10">
-                        <span className="inline-flex items-center rounded-md border border-green-400 bg-green-400 px-2 py-1 text-[10px] font-semibold text-zinc-900 dark:border-green-400 dark:bg-green-400 dark:text-zinc-900">
-                          Featured Work
-                        </span>
-                      </div>
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                        <div className="absolute top-3 right-3 z-10">
+                          <span className="inline-flex items-center rounded-md border border-green-400 bg-green-400 px-2 py-1 text-[10px] font-semibold text-zinc-900 dark:border-green-400 dark:bg-green-400 dark:text-zinc-900">
+                            Featured Work
+                          </span>
+                        </div>
                         <div className="absolute bottom-0 left-0 right-0 p-4">
                           <h3 className="text-sm font-semibold text-white">
                             {project.title}
@@ -350,6 +350,11 @@ export default function Home() {
                         loading="lazy"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                        <div className="absolute top-3 right-3 z-10">
+                          <span className="inline-flex items-center rounded-md border border-zinc-300 bg-zinc-100 px-2 py-1 text-[10px] font-medium text-zinc-600 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400">
+                            Soon
+                          </span>
+                        </div>
                         <div className="absolute bottom-0 left-0 right-0 p-4">
                           <h3 className="text-sm font-semibold text-white">
                             {project.title}
