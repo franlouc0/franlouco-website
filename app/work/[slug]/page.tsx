@@ -732,6 +732,55 @@ export default function WorkPage({ params }: WorkPageProps) {
                         ))}
                       </div>
                     </div>
+                  ) : visual.partnerships && visual.partnerships.length > 0 ? (
+                    <div className="w-full py-8 overflow-hidden">
+                      <div className="flex animate-marquee gap-6">
+                        {/* First set */}
+                        {visual.partnerships.map((partner, partnerIdx) => (
+                          <div
+                            key={partnerIdx}
+                            className="flex-shrink-0 w-64 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6"
+                          >
+                            <div className="relative h-12 w-full mb-4">
+                              <Image
+                                src={partner.logo}
+                                alt={partner.name}
+                                fill
+                                className="object-contain object-left"
+                              />
+                            </div>
+                            <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50 mb-2">
+                              {partner.name}
+                            </h4>
+                            <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                              {partner.description}
+                            </p>
+                          </div>
+                        ))}
+                        {/* Duplicate set for seamless loop */}
+                        {visual.partnerships.map((partner, partnerIdx) => (
+                          <div
+                            key={`duplicate-${partnerIdx}`}
+                            className="flex-shrink-0 w-64 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6"
+                          >
+                            <div className="relative h-12 w-full mb-4">
+                              <Image
+                                src={partner.logo}
+                                alt={partner.name}
+                                fill
+                                className="object-contain object-left"
+                              />
+                            </div>
+                            <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50 mb-2">
+                              {partner.name}
+                            </h4>
+                            <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                              {partner.description}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   ) : visual.images && visual.images.length > 0 ? (
                     <figure>
                       <div className={`grid grid-cols-1 sm:grid-cols-2 ${visual.images.length >= 3 ? 'lg:grid-cols-3' : ''} gap-4`}>

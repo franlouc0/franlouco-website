@@ -53,6 +53,11 @@ export interface Work {
     videoTitle?: string; // Title for the video section
     videoTooltip?: string; // Tooltip text for the info icon
     cards?: string[]; // Array of card content text for 4-card grid
+    partnerships?: Array<{
+      logo: string;
+      name: string;
+      description: string;
+    }>; // Array of partnership cards for marquee section
   }[];
   insight?: string; // Optional: One short sentence showing judgment
   softClose?: string; // Optional: Very light ending (e.g., "Happy to share details on request")
@@ -122,6 +127,85 @@ export const works: Record<string, Work> = {
         description: "Co-led <span class=\"underline decoration-green-400 decoration-2\">Polkamarkets' multi-chain rollout</span>, coordinating partnerships, product, and development.<br /><br />Supported deployments across <span class=\"underline decoration-green-400 decoration-2\">Ethereum environments, Polygon, Moonriver, and Moonbeam</span>, while handling partner alignment and community communications to enable early cross-chain growth and scalability.",
         image: "/work/deployed-chains.png",
         imageLeft: true, // Image on left, text on right
+      },
+      {
+        partnerships: [
+          {
+            logo: "/partnerships/bepro-network.png",
+            name: "BEPRO Network",
+            description: "Backend tech and code for on-chain prediction markets"
+          },
+          {
+            logo: "/partnerships/orion-protocol.png",
+            name: "Orion Protocol",
+            description: "Provides decentralised liquidity provisioning for prediction markets"
+          },
+          {
+            logo: "/partnerships/bridge-mutual.png",
+            name: "Bridge Mutual",
+            description: "Liquidity aggregation and risk management for prediction markets"
+          },
+          {
+            logo: "/partnerships/polygon.png",
+            name: "Polygon",
+            description: "Reduces transaction costs and speeds up trade confirmations"
+          },
+          {
+            logo: "/partnerships/shyft-network.png",
+            name: "Shyft Network",
+            description: "Adds opt-in compliance tools for regulatory readiness and optional compliance features"
+          },
+          {
+            logo: "/partnerships/exeedme.png",
+            name: "Exeedme",
+            description: "Helps us curate and gamify our Esports prediction markets experience"
+          },
+          {
+            logo: "/partnerships/elrond.png",
+            name: "Elrond",
+            description: "To expand prediction markets onto Elrond’s blockchain network"
+          },
+          {
+            logo: "/partnerships/moonbeam.png",
+            name: "Moonbeam Network",
+            description: "Bringing prediction markets from Ethereum-style chains into the Polkadot ecosystem"
+          },
+          {
+            logo: "/partnerships/dafi-protocol.png",
+            name: "DAFI Protocol",
+            description: "Use synthetic tokens to reward long-term users and incentivise participation"
+          },
+          {
+            logo: "/partnerships/kleros.png",
+            name: "Kleros",
+            description: "To bring on-chain dispute resolution systems to our prediction markets"
+          },
+          {
+            logo: "/partnerships/dotmoovs.png",
+            name: "Dotmoovs",
+            description: "To predict outcomes of mobile peer-to-peer sports and competitive events"
+          },
+          {
+            logo: "/partnerships/meter.png",
+            name: "Meter",
+            description: "To securely bridge POLK tokens from Ethereum Network into Moonriver and Moonbeam"
+          },
+          {
+            logo: "/partnerships/transak.png",
+            name: "Transak",
+            description: "To add a fiat-to-crypto payment gateway in a compliant way"
+          },
+          {
+            logo: "/partnerships/subquery.png",
+            name: "SubQuery",
+            description: "To enable a reliable data aggregator for protocol analytics"
+          },
+          {
+            logo: "/partnerships/uniswap.png",
+            name: "Uniswap",
+            description: "POLK rewards program launches for Uniswap liquidity providers"
+          },
+        ]
       },
       {
         images: ["/work/private-beta-whitelist-addresses.png", "/work/visual-portfolio-user-forecast.png", "/work/visual-portfolio-user-forecast2.png"]
