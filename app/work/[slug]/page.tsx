@@ -741,8 +741,8 @@ export default function WorkPage({ params }: WorkPageProps) {
                             key={partnerIdx}
                             className="flex-shrink-0 w-64 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6"
                           >
-                            <div className="relative h-10 w-full mb-4">
-                              <div className="relative h-full w-full bg-white rounded-lg p-2">
+                            <div className="relative h-12 w-full mb-4">
+                              <div className="relative h-full w-full bg-white rounded-lg p-3">
                                 <Image
                                   src={partner.logo}
                                   alt={partner.name}
@@ -765,8 +765,8 @@ export default function WorkPage({ params }: WorkPageProps) {
                             key={`duplicate-${partnerIdx}`}
                             className="flex-shrink-0 w-64 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6"
                           >
-                            <div className="relative h-10 w-full mb-4">
-                              <div className="relative h-full w-full bg-white rounded-lg p-2">
+                            <div className="relative h-12 w-full mb-4">
+                              <div className="relative h-full w-full bg-white rounded-lg p-3">
                                 <Image
                                   src={partner.logo}
                                   alt={partner.name}
