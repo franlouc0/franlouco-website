@@ -742,12 +742,14 @@ export default function WorkPage({ params }: WorkPageProps) {
                             className="flex-shrink-0 w-64 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6"
                           >
                             <div className="relative h-12 w-full mb-4">
-                              <Image
-                                src={partner.logo}
-                                alt={partner.name}
-                                fill
-                                className="object-contain object-left"
-                              />
+                              <div className="relative h-full w-full bg-white rounded-lg p-2">
+                                <Image
+                                  src={partner.logo}
+                                  alt={partner.name}
+                                  fill
+                                  className="object-contain object-left rounded-lg"
+                                />
+                              </div>
                             </div>
                             <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50 mb-2">
                               {partner.name}
@@ -764,12 +766,14 @@ export default function WorkPage({ params }: WorkPageProps) {
                             className="flex-shrink-0 w-64 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6"
                           >
                             <div className="relative h-12 w-full mb-4">
-                              <Image
-                                src={partner.logo}
-                                alt={partner.name}
-                                fill
-                                className="object-contain object-left"
-                              />
+                              <div className="relative h-full w-full bg-white rounded-lg p-2">
+                                <Image
+                                  src={partner.logo}
+                                  alt={partner.name}
+                                  fill
+                                  className="object-contain object-left rounded-lg"
+                                />
+                              </div>
                             </div>
                             <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50 mb-2">
                               {partner.name}
