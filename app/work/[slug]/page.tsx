@@ -747,7 +747,7 @@ export default function WorkPage({ params }: WorkPageProps) {
                                   src={partner.logo}
                                   alt={partner.name}
                                   fill
-                                  className="object-contain object-left rounded-lg"
+                                  className="object-contain object-center rounded-lg"
                                 />
                               </div>
                             </div>
@@ -771,7 +771,7 @@ export default function WorkPage({ params }: WorkPageProps) {
                                   src={partner.logo}
                                   alt={partner.name}
                                   fill
-                                  className="object-contain object-left rounded-lg"
+                                  className="object-contain object-center rounded-lg"
                                 />
                               </div>
                             </div>
