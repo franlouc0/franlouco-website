@@ -224,21 +224,44 @@ export const works: Record<string, Work> = {
     period: "2023 - Present",
     logo: "/coompass.jpg",
     numbers: [
-      { value: "166%", label: "MoM growth" },
-      { value: "500+", label: "NGOs" },
-      { value: "50+", label: "corporations" }
+      { value: "150+", label: "NGOs onboarded" },
+      { value: "10+", label: "corporate & university partners" },
+      { value: "70+", label: "active volunteering missions" },
+      { value: "100+", label: "active volunteers" }
     ],
     scope: [
-      "GTM strategy",
-      "NGO network growth",
-      "Partnership development",
-      "Brand positioning"
+      "GTM strategy & positioning",
+      "Product and adoption alignment",
+      "Narrative iteration & pitching",
+      "NGO and partner onboarding",
+      "Corporate & university pilots",
+      "Market entry strategy (Portugal)"
     ],
     metrics: [
       { label: "NGO Growth", value: "166%" },
       { label: "Period", value: "MoM" }
     ],
     impact: "ESG marketplace connecting corporations with NGOs. Achieved rapid NGO network expansion.",
+    visuals: [
+      {
+        images: ["/work/landing1.png", "/work/landing2.png", "/work/landing3.png"],
+        caption: "Early concept and positioning when exploring a Web3-first approach"
+      },
+      {
+        images: ["/work/coompass-platform-ui.png"],
+        caption: "Coompass platform connecting companies, NGOs, and people"
+      },
+      {
+        images: ["/work/coompass-marketplace.png"],
+        caption: "Marketplace with live and active volunteering opportunities"
+      },
+      {
+        images: ["/work/coompass-dashboards.png"],
+        caption: "Real-time dashboards tracking participation and impact"
+      }
+    ],
+    insight: "Removed blockchain to reduce friction and accelerate adoption in a non-technical, highly bureaucratic market.",
+    softClose: "Happy to share more context on the journey and decisions."
   },
   "building-web3-marketing-strategies": {
     id: "building-web3-marketing-strategies",

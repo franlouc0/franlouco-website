@@ -308,7 +308,7 @@ export default function Home() {
               {projects.map((project) => (
                 project.href ? (
                   <Link 
-                    key={project.id} 
+                  key={project.id}
                     href={project.href}
                     className={`block ${project.span}`}
                   >
@@ -341,30 +341,30 @@ export default function Home() {
                 ) : (
                   <div key={project.id} className={project.span}>
                     <article className="group relative h-full w-full overflow-hidden rounded-lg bg-zinc-200 dark:bg-zinc-800">
-                      <Image
-                        src={project.image}
-                        alt={`${project.title} - ${project.description}`}
-                        fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <Image
+                    src={project.image}
+                    alt={`${project.title} - ${project.description}`}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                         <div className="absolute top-3 right-3 z-10">
                           <span className="inline-flex items-center rounded-md border border-zinc-300 bg-zinc-100 px-2 py-1 text-[10px] font-medium text-zinc-600 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400">
                             Soon
                           </span>
                         </div>
-                        <div className="absolute bottom-0 left-0 right-0 p-4">
-                          <h3 className="text-sm font-semibold text-white">
-                            {project.title}
-                          </h3>
-                          <p className="mt-1 text-xs text-white/80">
-                            {project.description}
-                          </p>
-                        </div>
-                      </div>
-                    </article>
+                    <div className="absolute bottom-0 left-0 right-0 p-4">
+                      <h3 className="text-sm font-semibold text-white">
+                        {project.title}
+                      </h3>
+                      <p className="mt-1 text-xs text-white/80">
+                        {project.description}
+                      </p>
+                    </div>
+                  </div>
+                </article>
                   </div>
                 )
               ))}

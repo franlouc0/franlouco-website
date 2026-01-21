@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SITE_URL, SITE_NAME, AUTHOR_NAME, AUTHOR_EMAIL, DEFAULT_LOCALE } from "@/lib/constants";
@@ -214,6 +215,19 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
+        {/* Google tag (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-VSBRK1TQDG"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-VSBRK1TQDG');
+          `}
+        </Script>
         {/* JSON-LD Structured Data - Person schema only (removed ProfessionalService to avoid LocalBusiness detection) */}
         <script
           type="application/ld+json"
