@@ -58,12 +58,6 @@ export interface Work {
       name: string;
       description: string;
     }>; // Array of partnership cards for marquee section
-    kpis?: {
-      nonprofits: string;
-      nonprofitsLabel: string;
-      missions: string;
-      missionsLabel: string;
-    }; // KPI numbers and labels for 3-column layout (2 images + KPIs)
   }[];
   insight?: string; // Optional: One short sentence showing judgment
   softClose?: string; // Optional: Very light ending (e.g., "Happy to share details on request")
@@ -267,14 +261,14 @@ export const works: Record<string, Work> = {
         ]
       },
       {
-        images: ["/work/nonprofits-marketplace.png", "/work/volunteering-missions-marketplace.png"],
-        caption: "Marketplace with live and active volunteering opportunities",
-        kpis: {
-          nonprofits: "150+",
-          nonprofitsLabel: "more than 150 nonprofits onboarded",
-          missions: "80+",
-          missionsLabel: "corporate volunteering missions and opportunities (remote and on-site)"
-        }
+        description: "Scaled the marketplace supply side by building a network of <span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">150+</span> <span class=\"text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed\">nonprofits onboarded</span> across Portugal.<br /><br />Each organization brings unique missions and causes, creating a diverse ecosystem of volunteering opportunities. The platform connects these nonprofits with corporate partners and volunteers, enabling real-time matching and activation.",
+        image: "/work/nonprofits-marketplace.png",
+        imageLeft: true // Image on left, text on right
+      },
+      {
+        description: "Enabled <span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">80+</span> <span class=\"text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed\">corporate volunteering missions and opportunities</span>, available both remotely and on-site.<br /><br />These missions range from skills-based volunteering to hands-on community work, allowing companies to engage their teams in meaningful impact activities that align with their ESG goals and employee interests.",
+        image: "/work/volunteering-missions-marketplace.png",
+        imageLeft: false // Text on left, image on right
       },
       {
         images: ["/work/coompass-dashboards.png"],
