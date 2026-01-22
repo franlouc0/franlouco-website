@@ -35,10 +35,11 @@ const projects = [
   },
   { 
     id: 4, 
-    title: "SaaS Dashboard", 
-    description: "Analytics & insights", 
-    image: "https://images.unsplash.com/photo-1557683311-eac922347aa1?auto=format&fit=crop&w=800&q=80", 
-    span: "row-span-2" 
+    title: "How we achieved 166% MoM NGO growth in an ESG marketplace", 
+    description: "Connecting corporations with impact organizations in 6 months", 
+    image: "/grid/grid-coompass.jpg", 
+    span: "row-span-2",
+    href: "/work/how-we-achieved-166-mom-ngo-growth" 
   },
   { 
     id: 5, 
@@ -322,6 +323,38 @@ export default function Home() {
                         loading="lazy"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                        {/* Polkamarkets tag - top-left, only for project id 1 */}
+                        {project.id === 1 && (
+                          <div className="absolute top-3 left-3 z-10">
+                            <span className="inline-flex items-center gap-1.5 rounded-md border border-white/20 bg-white/90 backdrop-blur-sm px-2 py-1 text-[10px] font-semibold text-zinc-900 shadow-lg dark:border-zinc-700/50 dark:bg-zinc-900/90 dark:text-zinc-50">
+                              <Image
+                                src="/polkamarkets.jpg"
+                                alt="Polkamarkets"
+                                width={17}
+                                height={17}
+                                className="rounded object-cover shrink-0"
+                                style={{ width: '17px', height: '17px' }}
+                              />
+                              Polkamarkets
+                            </span>
+                          </div>
+                        )}
+                        {/* Coompass tag - top-left, only for project id 4 */}
+                        {project.id === 4 && (
+                          <div className="absolute top-3 left-3 z-10">
+                            <span className="inline-flex items-center gap-1.5 rounded-md border border-white/20 bg-white/90 backdrop-blur-sm px-2 py-1 text-[10px] font-semibold text-zinc-900 shadow-lg dark:border-zinc-700/50 dark:bg-zinc-900/90 dark:text-zinc-50">
+                              <Image
+                                src="/coompass.jpg"
+                                alt="Coompass"
+                                width={17}
+                                height={17}
+                                className="rounded object-cover shrink-0"
+                                style={{ width: '17px', height: '17px' }}
+                              />
+                              Coompass
+                            </span>
+                          </div>
+                        )}
                         <div className="absolute top-3 right-3 z-10">
                           <span className="inline-flex items-center rounded-md border border-green-400 bg-green-400 px-2 py-1 text-[10px] font-semibold text-zinc-900 dark:border-green-400 dark:bg-green-400 dark:text-zinc-900">
                             Featured Work

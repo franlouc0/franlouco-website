@@ -218,7 +218,7 @@ export const works: Record<string, Work> = {
   "how-we-achieved-166-mom-ngo-growth": {
     id: "how-we-achieved-166-mom-ngo-growth",
     title: "How we achieved 166% MoM NGO growth in an ESG marketplace",
-    subtitle: "Connecting corporations with impact organizations",
+    subtitle: "Connecting corporations with impact organizations in 6 months",
     company: "Coompass",
     role: "CMO & Co-Founder",
     period: "2023 - Present",
