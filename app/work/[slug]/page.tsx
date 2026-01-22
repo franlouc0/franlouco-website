@@ -786,20 +786,59 @@ export default function WorkPage({ params }: WorkPageProps) {
                     </div>
                   ) : visual.images && visual.images.length > 0 ? (
                     <figure>
-                      <div className={`grid grid-cols-1 sm:grid-cols-2 ${visual.images.length >= 3 ? 'lg:grid-cols-3' : ''} gap-4`}>
-                        {visual.images.map((img, imgIdx) => (
-                          <div key={imgIdx} className="relative w-full rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900">
-                            <Image
-                              src={img}
-                              alt={`${work.company} visual ${idx + 1} - ${imgIdx + 1}`}
-                              width={1920}
-                              height={1080}
-                              className="w-full h-auto object-contain"
-                              loading="lazy"
-                            />
+                      {visual.kpis ? (
+                        // 3-column layout: 2 images + KPIs
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                          {/* First two columns: Images - same style as "Early concept" section */}
+                          {visual.images.slice(0, 2).map((img, imgIdx) => (
+                            <div key={imgIdx} className="relative w-full rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900">
+                              <Image
+                                src={img}
+                                alt={`${work.company} visual ${idx + 1} - ${imgIdx + 1}`}
+                                width={1920}
+                                height={1080}
+                                className="w-full h-auto object-contain"
+                                loading="lazy"
+                              />
+                            </div>
+                          ))}
+                          {/* Third column: Simple KPI info */}
+                          <div className="flex flex-col justify-center gap-6">
+                            <div className="flex flex-col">
+                              <span className="text-2xl font-bold text-green-400 dark:text-green-400 leading-none">
+                                {visual.kpis.nonprofits}
+                              </span>
+                              <span className="text-sm text-zinc-700 dark:text-zinc-300 mt-2 leading-relaxed">
+                                {visual.kpis.nonprofitsLabel}
+                              </span>
+                            </div>
+                            <div className="flex flex-col">
+                              <span className="text-2xl font-bold text-green-400 dark:text-green-400 leading-none">
+                                {visual.kpis.missions}
+                              </span>
+                              <span className="text-sm text-zinc-700 dark:text-zinc-300 mt-2 leading-relaxed">
+                                {visual.kpis.missionsLabel}
+                              </span>
+                            </div>
                           </div>
-                        ))}
-                      </div>
+                        </div>
+                      ) : (
+                        // Default grid layout for images without KPIs
+                        <div className={`grid grid-cols-1 sm:grid-cols-2 ${visual.images.length >= 3 ? 'lg:grid-cols-3' : ''} gap-4`}>
+                          {visual.images.map((img, imgIdx) => (
+                            <div key={imgIdx} className="relative w-full rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900">
+                              <Image
+                                src={img}
+                                alt={`${work.company} visual ${idx + 1} - ${imgIdx + 1}`}
+                                width={1920}
+                                height={1080}
+                                className="w-full h-auto object-contain"
+                                loading="lazy"
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      )}
                       {visual.caption && (
                         <figcaption className="mt-2 text-xs text-zinc-500 dark:text-zinc-500 text-center">
                           {visual.caption}

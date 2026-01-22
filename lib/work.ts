@@ -58,6 +58,12 @@ export interface Work {
       name: string;
       description: string;
     }>; // Array of partnership cards for marquee section
+    kpis?: {
+      nonprofits: string;
+      nonprofitsLabel: string;
+      missions: string;
+      missionsLabel: string;
+    }; // KPI numbers and labels for 3-column layout (2 images + KPIs)
   }[];
   insight?: string; // Optional: One short sentence showing judgment
   softClose?: string; // Optional: Very light ending (e.g., "Happy to share details on request")
@@ -261,8 +267,14 @@ export const works: Record<string, Work> = {
         ]
       },
       {
-        images: ["/work/coompass-marketplace.png"],
-        caption: "Marketplace with live and active volunteering opportunities"
+        images: ["/work/nonprofits-marketplace.png", "/work/volunteering-missions-marketplace.png"],
+        caption: "Marketplace with live and active volunteering opportunities",
+        kpis: {
+          nonprofits: "150+",
+          nonprofitsLabel: "more than 150 nonprofits onboarded",
+          missions: "80+",
+          missionsLabel: "corporate volunteering missions and opportunities (remote and on-site)"
+        }
       },
       {
         images: ["/work/coompass-dashboards.png"],
