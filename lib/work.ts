@@ -248,8 +248,17 @@ export const works: Record<string, Work> = {
         caption: "Early concept and positioning when exploring a Web3-first approach"
       },
       {
-        images: ["/work/coompass-platform-ui.png"],
-        caption: "Coompass platform connecting companies, NGOs, and people"
+        description: "Early concept <span class=\"underline decoration-green-400 decoration-2\">focused on a mission marketplace connecting companies and NGOs</span>, with built-in recognition and verifiable ESG contributions.<br /><br />This phase helped <span class=\"underline decoration-green-400 decoration-2\">validate demand and reveal adoption friction</span>, which later shaped the platform pivot.",
+        image: "/work/early-concept.png",
+        imageLeft: true // Image on left, text on right
+      },
+      {
+        cards: [
+          "Built the GTM and adoption strategy, designed around participation and proximity. Achieved <span class=\"underline decoration-green-400 decoration-2\">166% MoM NGO growth</span> and <span class=\"underline decoration-green-400 decoration-2\">178% MoM mission activation</span> by focusing on real usage.",
+          "<span class=\"underline decoration-green-400 decoration-2\">Created onboarding narratives</span> that helped NGOs and companies understand participation, <span class=\"underline decoration-green-400 decoration-2\">reducing friction and increasing engagement</span>.",
+          "Scaled the marketplace by onboarding <span class=\"underline decoration-green-400 decoration-2\">150+ NGOs</span> and <span class=\"underline decoration-green-400 decoration-2\">10 corporate and university partners</span>, ensuring live, relevant opportunities.",
+          "Acted as <span class=\"underline decoration-green-400 decoration-2\">the bridge between teams</span>, maintaining clarity and trust while reinforcing feedback loops for continuous activation."
+        ]
       },
       {
         images: ["/work/coompass-marketplace.png"],
