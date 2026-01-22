@@ -67,7 +67,7 @@ export const metadata: Metadata = {
       {
         url: `${SITE_URL}/opengraph-image.png`,
         width: 1200,
-        height: 630,
+        height: 800,
         alt: "Francisco Lourenço - Product, Growth, AI & Web3 Expert",
       },
     ],
@@ -119,7 +119,7 @@ const jsonLd = {
     "@type": "ImageObject",
     url: `${SITE_URL}/opengraph-image.png`,
     width: 1200,
-    height: 630,
+    height: 800,
     caption: "Francisco Lourenço - Product, Growth, AI & Web3 Expert",
   },
   email: AUTHOR_EMAIL,
