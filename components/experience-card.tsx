@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Image from "next/image";
-import { SuitcaseSimple } from "@phosphor-icons/react";
+import { Briefcase } from "lucide-react";
 
 interface ExperienceCardProps {
   role: string;
@@ -38,9 +38,8 @@ export const ExperienceCard = React.memo(function ExperienceCard({
             {emoji}
           </span>
         ) : (
-          <SuitcaseSimple
+          <Briefcase
             size={14}
-            weight="regular"
             className="text-zinc-500 dark:text-zinc-400"
             aria-label={`${company} - ${role}`}
           />

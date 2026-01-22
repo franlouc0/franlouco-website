@@ -3,8 +3,7 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Info, X, Share2, Check } from "lucide-react";
-import { CheckCircle } from "@phosphor-icons/react";
+import { ArrowLeft, Info, X, Share2, Check, CheckCircle2 } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { ExperienceSection } from "@/components/experience-section";
 import { FeaturedWorkSection } from "@/components/featured-work-section";
@@ -720,7 +719,7 @@ export default function WorkPage({ params }: WorkPageProps) {
                           >
                             {/* Checkmark circle */}
                             <div className="relative z-10 flex h-8 w-8 items-center justify-center">
-                              <CheckCircle weight="fill" className="h-8 w-8 text-green-400" />
+                              <CheckCircle2 className="h-8 w-8 text-green-400 fill-green-400" />
                             </div>
                             
                             {/* Text below */}

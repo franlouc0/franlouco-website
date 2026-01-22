@@ -716,21 +716,9 @@ export function getArticleById(id: string): Article | undefined {
   return articles[id];
 }
 
-export function getArticleIdByTitle(title: string): string | undefined {
-  const entry = Object.entries(articles).find(([_, article]) => article.title === title);
-  return entry ? entry[0] : undefined;
-}
-
 /**
  * Get all article IDs (slugs)
  */
 export function getAllArticleIds(): string[] {
   return Object.keys(articles);
-}
-
-/**
- * Get all articles
- */
-export function getAllArticles(): Article[] {
-  return Object.values(articles);
 }

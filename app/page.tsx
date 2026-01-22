@@ -15,7 +15,7 @@ const projects = [
     id: 1, 
     title: "How we raised $715K in an IDO without relying on hype", 
     description: "Building a prediction market protocol from zero to $80M+ open interest in 48 hours", 
-    image: "/grid/grid-polkamarkets.png", 
+    image: "/grid/grid-polkamarkets3.png", 
     span: "row-span-2",
     href: "/work/how-we-raised-715k-ido"
   },
@@ -402,7 +402,7 @@ export default function Home() {
         >
           GitHub
           <span className="absolute -top-0.5 left-[calc(100%-1px)] text-[8px] font-bold text-green-400 leading-none">
-            6
+            8
           </span>
         </Link>
         <span
