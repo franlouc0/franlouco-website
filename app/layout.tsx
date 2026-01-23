@@ -65,7 +65,7 @@ export const metadata: Metadata = {
       "Product and Growth expert specializing in AI, Software, and Web3. CMO & Co-Founder at Coompass. 10+ years of experience in digital marketing, IDO launches, token sales, and community building.",
     images: [
       {
-        url: `${SITE_URL}/opengraph-image.png`,
+        url: `${SITE_URL}/opengraph-image2.png`,
         width: 1200,
         height: 800,
         alt: "Francisco Lourenço - Product, Growth, AI & Web3 Expert",
@@ -77,7 +77,7 @@ export const metadata: Metadata = {
     title: "Francisco Lourenço | Product, Growth, AI & Web3 Expert",
     description:
       "Product and Growth expert specializing in AI, Software, and Web3. CMO & Co-Founder at Coompass. 10+ years of experience.",
-    images: [`${SITE_URL}/opengraph-image.png`],
+    images: [`${SITE_URL}/opengraph-image2.png`],
   },
   robots: {
     index: true,
@@ -117,7 +117,7 @@ const jsonLd = {
   url: SITE_URL,
   image: {
     "@type": "ImageObject",
-    url: `${SITE_URL}/opengraph-image.png`,
+    url: `${SITE_URL}/opengraph-image2.png`,
     width: 1200,
     height: 800,
     caption: "Francisco Lourenço - Product, Growth, AI & Web3 Expert",
