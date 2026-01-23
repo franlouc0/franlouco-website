@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next'
 import { SITE_URL } from '@/lib/constants'
 import { getAllArticleIds, getArticleById } from '@/lib/articles'
+import { getAllWorkIds } from '@/lib/work'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_URL
@@ -17,6 +18,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   })
 
+  // Get all work pages for sitemap
+  const workIds = getAllWorkIds()
+  const workEntries = workIds.map((id) => ({
+    url: `${baseUrl}/work/${id}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.9,
+  }))
+
   return [
     {
       url: baseUrl,
@@ -24,6 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 1,
     },
+    ...workEntries,
     ...articleEntries,
   ]
 }

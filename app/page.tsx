@@ -37,7 +37,7 @@ const projects = [
     id: 4, 
     title: "How we achieved 166% MoM NGO growth in an ESG marketplace", 
     description: "Connecting corporations with impact organizations in 6 months", 
-    image: "/grid/grid-coompass.jpg", 
+    image: "/grid/grid-coompass.png", 
     span: "row-span-2",
     href: "/work/how-we-achieved-166-mom-ngo-growth" 
   },
