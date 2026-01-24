@@ -3,7 +3,7 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Info, X, Share2, Check, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, Info, X, Share2, Check, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { ExperienceSection } from "@/components/experience-section";
 import { FeaturedWorkSection } from "@/components/featured-work-section";
@@ -596,9 +596,140 @@ export default function WorkPage({ params }: WorkPageProps) {
           {/* Visual Proof Section - Seamless Gallery */}
           {work.visuals && work.visuals.length > 0 && (
             <div className="space-y-6">
-              {work.visuals.map((visual, idx) => (
+              {work.visuals.map((visual, idx) => {
+                // Slider component for description + images array
+                const DashboardSlider = ({ images, captions, description, imageLeft }: { images: string[], captions?: string[], description: string, imageLeft?: boolean }) => {
+                  const [currentIndex, setCurrentIndex] = useState(0);
+                  
+                  const goToSlide = (index: number) => {
+                    setCurrentIndex(index);
+                  };
+                  
+                  return (
+                    <div className="flex flex-col lg:flex-row gap-6 items-center">
+                      {imageLeft ? (
+                        <>
+                          <div className="flex-1 lg:w-1/2">
+                            <div className="relative w-full">
+                              <div className="relative w-full rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900">
+                                {images.map((image, idx) => (
+                                  <div
+                                    key={idx}
+                                    className={`transition-opacity duration-500 ease-in-out ${
+                                      idx === currentIndex ? 'opacity-100 relative z-10' : 'opacity-0 absolute inset-0 z-0 pointer-events-none'
+                                    }`}
+                                  >
+                                    <Image
+                                      src={image}
+                                      alt={captions?.[idx] || `${work.company} dashboard ${idx + 1}`}
+                                      width={1920}
+                                      height={1080}
+                                      className="w-full h-auto object-contain"
+                                      loading={idx === 0 ? "lazy" : "lazy"}
+                                    />
+                                  </div>
+                                ))}
+                              </div>
+                              {images.length > 1 && (
+                                <div className="flex justify-center gap-2 mt-4">
+                                  {images.map((_, slideIdx) => (
+                                    <button
+                                      key={slideIdx}
+                                      onClick={() => goToSlide(slideIdx)}
+                                      className={`h-2 rounded-full transition-all duration-300 ${
+                                        slideIdx === currentIndex
+                                          ? 'w-8 bg-green-400'
+                                          : 'w-2 bg-zinc-300 dark:bg-zinc-700 hover:bg-zinc-400 dark:hover:bg-zinc-600'
+                                      }`}
+                                      aria-label={`Go to slide ${slideIdx + 1}`}
+                                    />
+                                  ))}
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                          <div className="flex-1 lg:w-1/2">
+                            <p 
+                              className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300 mb-4"
+                              dangerouslySetInnerHTML={{ __html: description }}
+                            />
+                            {captions && captions[currentIndex] && (
+                              <p 
+                                className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 transition-opacity duration-500"
+                                dangerouslySetInnerHTML={{ __html: captions[currentIndex] }}
+                              />
+                            )}
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div className="flex-1 lg:w-1/2">
+                            <p 
+                              className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300 mb-4"
+                              dangerouslySetInnerHTML={{ __html: description }}
+                            />
+                            {captions && captions[currentIndex] && (
+                              <p 
+                                className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 transition-opacity duration-500"
+                                dangerouslySetInnerHTML={{ __html: captions[currentIndex] }}
+                              />
+                            )}
+                          </div>
+                          <div className="flex-1 lg:w-1/2">
+                            <div className="relative w-full">
+                              <div className="relative w-full rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900">
+                                {images.map((image, idx) => (
+                                  <div
+                                    key={idx}
+                                    className={`transition-opacity duration-500 ease-in-out ${
+                                      idx === currentIndex ? 'opacity-100 relative z-10' : 'opacity-0 absolute inset-0 z-0 pointer-events-none'
+                                    }`}
+                                  >
+                                    <Image
+                                      src={image}
+                                      alt={captions?.[idx] || `${work.company} dashboard ${idx + 1}`}
+                                      width={1920}
+                                      height={1080}
+                                      className="w-full h-auto object-contain"
+                                      loading={idx === 0 ? "lazy" : "lazy"}
+                                    />
+                                  </div>
+                                ))}
+                              </div>
+                              {images.length > 1 && (
+                                <div className="flex justify-center gap-2 mt-4">
+                                  {images.map((_, slideIdx) => (
+                                    <button
+                                      key={slideIdx}
+                                      onClick={() => goToSlide(slideIdx)}
+                                      className={`h-2 rounded-full transition-all duration-300 ${
+                                        slideIdx === currentIndex
+                                          ? 'w-8 bg-green-400'
+                                          : 'w-2 bg-zinc-300 dark:bg-zinc-700 hover:bg-zinc-400 dark:hover:bg-zinc-600'
+                                      }`}
+                                      aria-label={`Go to slide ${slideIdx + 1}`}
+                                    />
+                                  ))}
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  );
+                };
+                
+                return (
                 <div key={idx} className="group">
-                  {visual.description && visual.video && !visual.image ? (
+                  {visual.description && visual.images && visual.images.length > 0 ? (
+                    <DashboardSlider
+                      images={visual.images}
+                      captions={visual.imageCaptions}
+                      description={visual.description}
+                      imageLeft={visual.imageLeft}
+                    />
+                  ) : visual.description && visual.video && !visual.image ? (
                     <div className="flex flex-col lg:flex-row gap-6 items-center">
                       {visual.imageLeft ? (
                         <>
@@ -826,7 +957,8 @@ export default function WorkPage({ params }: WorkPageProps) {
                     </figure>
                   ) : null}
                 </div>
-              ))}
+                );
+              })}
             </div>
           )}
 

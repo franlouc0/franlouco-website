@@ -57,10 +57,11 @@ const projects = [
   },
   { 
     id: 7, 
-    title: "Space Tech", 
-    description: "Aerospace innovation", 
-    image: "https://images.unsplash.com/photo-1557683311-eac922347aa1?auto=format&fit=crop&w=800&q=80", 
-    span: "row-span-2" 
+    title: "Scaling protocol adoption through partnerships, not hype", 
+    description: "Growing clients and ecosystem usage by shifting from gambling tooling to a developer-first Web3 protocol", 
+    image: "/grid/grid-bepronetwork.png", 
+    span: "row-span-2",
+    href: "/work/scaling-sales-partnerships-blockchain"
   },
   { 
     id: 8, 
@@ -352,6 +353,22 @@ export default function Home() {
                                 style={{ width: '17px', height: '17px' }}
                               />
                               Coompass
+                            </span>
+                          </div>
+                        )}
+                        {/* BEPRO Network tag - top-left, only for project id 7 */}
+                        {project.id === 7 && (
+                          <div className="absolute top-3 left-3 z-10">
+                            <span className="inline-flex items-center gap-1.5 rounded-md border border-white/20 bg-white/90 backdrop-blur-sm px-2 py-1 text-[10px] font-semibold text-zinc-900 shadow-lg dark:border-zinc-700/50 dark:bg-zinc-900/90 dark:text-zinc-50">
+                              <Image
+                                src="/bepronetwork.jpg"
+                                alt="BEPRO Network"
+                                width={17}
+                                height={17}
+                                className="rounded object-cover shrink-0"
+                                style={{ width: '17px', height: '17px' }}
+                              />
+                              BEPRO Network
                             </span>
                           </div>
                         )}

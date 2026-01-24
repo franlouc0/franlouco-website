@@ -70,7 +70,12 @@ export function FeaturedWorkSection({}: FeaturedWorkSectionProps = {}) {
           const work = getWorkById(workId);
           if (!work) return null;
           
-          const isActive = workId === "how-we-raised-715k-ido";
+          const featuredWorkIds = [
+            "how-we-raised-715k-ido", // ID 1 - Polkamarkets
+            "how-we-achieved-166-mom-ngo-growth", // ID 4 - Coompass
+            "scaling-sales-partnerships-blockchain" // ID 7 - BEPRO Network
+          ];
+          const isActive = featuredWorkIds.includes(workId);
           
           if (isActive) {
             return (

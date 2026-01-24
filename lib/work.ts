@@ -46,6 +46,7 @@ export interface Work {
   visuals?: {
     image?: string; // Single image (use images array for multiple)
     images?: string[]; // Multiple images to display side by side
+    imageCaptions?: string[]; // Optional captions for each image in the images array (matches order)
     caption?: string; // Optional one-line caption
     description?: string; // Optional text description before the image
     imageLeft?: boolean; // If true, image on left, text on right. If false or undefined, text on left, image on right
@@ -261,18 +262,28 @@ export const works: Record<string, Work> = {
         ]
       },
       {
-        description: "Scaled the marketplace supply side by building a network of <span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">150+</span> <span class=\"text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed\">nonprofits onboarded</span> across Portugal.<br /><br />Each organization brings unique missions and causes, creating a diverse ecosystem of volunteering opportunities. The platform connects these nonprofits with corporate partners and volunteers, enabling real-time matching and activation.",
+        description: "Scaled the marketplace supply side by building a network of <span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">150+</span> <span class=\"text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed\"><span class=\"underline decoration-green-400 decoration-2\">nonprofits onboarded</span> across Portugal</span>.<br /><br />Each organization brings unique missions and causes, creating a diverse ecosystem of volunteering opportunities. The platform connects these nonprofits with corporate partners and volunteers, <span class=\"underline decoration-green-400 decoration-2\">enabling real-time matching and activation</span>.",
         image: "/work/nonprofits-marketplace.png",
         imageLeft: true // Image on left, text on right
       },
       {
-        description: "Enabled <span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">80+</span> <span class=\"text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed\">corporate volunteering missions and opportunities</span>, available both remotely and on-site.<br /><br />These missions range from skills-based volunteering to hands-on community work, allowing companies to engage their teams in meaningful impact activities that align with their ESG goals and employee interests.",
+        description: "Enabled <span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">80+</span> <span class=\"text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed\"><span class=\"underline decoration-green-400 decoration-2\">corporate volunteering missions and opportunities</span>, available both remotely and on-site</span>.<br /><br />These missions range from <span class=\"underline decoration-green-400 decoration-2\">skills-based volunteering to hands-on community work</span>, allowing companies to engage their teams in meaningful impact activities that align with their ESG goals and employee interests.",
         image: "/work/volunteering-missions-marketplace.png",
         imageLeft: false // Text on left, image on right
       },
       {
-        images: ["/work/coompass-dashboards.png"],
-        caption: "Real-time dashboards tracking participation and impact"
+        description: "Built <span class=\"underline decoration-green-400 decoration-2\">real-time dashboards tracking participation and impact</span> to provide companies, nonprofits, and volunteers with visibility into their ESG activities and volunteer engagement.",
+        images: [
+          "/work/company-dashboard.png",
+          "/work/nonprofit-dashboard.png",
+          "/work/volunteer-dashboard.png"
+        ],
+        imageCaptions: [
+          "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Company dashboard:</span> Track active volunteers, volunteer hours, mission completion rates, and partnership metrics for corporate ESG reporting",
+          "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Nonprofit dashboard:</span> Manage engaged users, worked hours, missions, and member engagement",
+          "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Volunteer dashboard:</span> Personal view of volunteer activity, karma progress, and mission participation"
+        ],
+        imageLeft: true // Images on left, text on right
       }
     ],
     insight: "Removed blockchain to reduce friction and accelerate adoption in a non-technical, highly bureaucratic market.",
@@ -304,21 +315,25 @@ export const works: Record<string, Work> = {
   },
   "scaling-sales-partnerships-blockchain": {
     id: "scaling-sales-partnerships-blockchain",
-    title: "Scaling sales and partnerships for blockchain infrastructure",
-    subtitle: "Leading sales and partnership strategy for development platform",
-    company: "BEPRO Network",
+    title: "Scaling protocol adoption through partnerships, not hype",
+    subtitle: "Growing clients and ecosystem usage by shifting from gambling tooling to a developer-first Web3 protocol",
+    company: "BEPRO Network (formerly BetProtocol)",
     role: "Head of Sales & Partnerships",
-    period: "2020 - 2021",
+    period: "2020 – 2021",
     logo: "/bepronetwork.jpg",
     numbers: [
-      { value: "20+", label: "partnerships" },
-      { value: "$5M+", label: "revenue" }
+      { value: "10+", label: "clients live and active" },
+      { value: "10+", label: "partnerships across DeFi, gaming, and tooling" },
+      { value: "4 months", label: "to double ecosystem traction" },
+      { value: "3 → 10", label: "clients through direct, consultative sales" }
     ],
     scope: [
-      "Sales strategy",
-      "Partnership development",
-      "Business development",
-      "Revenue growth"
+      "Sales strategy and execution",
+      "Ecosystem partnerships",
+      "Protocol adoption narratives",
+      "Education-first positioning",
+      "Builder and operator relationships",
+      "Feedback loop between market and product"
     ],
     metrics: [
       { label: "Years", value: "1" },
