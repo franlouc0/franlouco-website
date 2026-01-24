@@ -56,8 +56,8 @@ export interface Work {
     cards?: string[]; // Array of card content text for 4-card grid
     partnerships?: Array<{
       logo: string;
-      name: string;
-      description: string;
+      name?: string;
+      description?: string;
     }>; // Array of partnership cards for marquee section
   }[];
   insight?: string; // Optional: One short sentence showing judgment
@@ -265,6 +265,70 @@ export const works: Record<string, Work> = {
         description: "Scaled the marketplace supply side by building a network of <span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">150+</span> <span class=\"text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed\"><span class=\"underline decoration-green-400 decoration-2\">nonprofits onboarded</span> across Portugal</span>.<br /><br />Each organization brings unique missions and causes, creating a diverse ecosystem of volunteering opportunities. The platform connects these nonprofits with corporate partners and volunteers, <span class=\"underline decoration-green-400 decoration-2\">enabling real-time matching and activation</span>.",
         image: "/work/nonprofits-marketplace.png",
         imageLeft: true // Image on left, text on right
+      },
+      {
+        partnerships: [
+          {
+            logo: "/partnerships/convida.png"
+          },
+          {
+            logo: "/partnerships/casa.png"
+          },
+          {
+            logo: "/partnerships/fundacaogil.png"
+          },
+          {
+            logo: "/partnerships/associacaosalvador.png"
+          },
+          {
+            logo: "/partnerships/grace.png"
+          },
+          {
+            logo: "/partnerships/grupobrisa.png"
+          },
+          {
+            logo: "/partnerships/givingtuesday.png"
+          },
+          {
+            logo: "/partnerships/cruzvermelha.png"
+          },
+          {
+            logo: "/partnerships/coracoescomcoroa.png"
+          },
+          {
+            logo: "/partnerships/pedalarsemidade.png"
+          },
+          {
+            logo: "/partnerships/vpa.png"
+          },
+          {
+            logo: "/partnerships/impactrip.png"
+          },
+          {
+            logo: "/partnerships/pistamagica.png"
+          },
+          {
+            logo: "/partnerships/cpr.png"
+          },
+          {
+            logo: "/partnerships/driveimpact.png"
+          },
+          {
+            logo: "/partnerships/55mais.png"
+          },
+          {
+            logo: "/partnerships/ucpd.png"
+          },
+          {
+            logo: "/partnerships/apadrinhaoliveira.png"
+          },
+          {
+            logo: "/partnerships/alberguesporto.png"
+          },
+          {
+            logo: "/partnerships/espacot.png"
+          },
+        ]
       },
       {
         description: "Enabled <span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">80+</span> <span class=\"text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed\"><span class=\"underline decoration-green-400 decoration-2\">corporate volunteering missions and opportunities</span>, available both remotely and on-site</span>.<br /><br />These missions range from <span class=\"underline decoration-green-400 decoration-2\">skills-based volunteering to hands-on community work</span>, allowing companies to engage their teams in meaningful impact activities that align with their ESG goals and employee interests.",

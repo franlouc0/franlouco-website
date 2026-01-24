@@ -864,53 +864,61 @@ export default function WorkPage({ params }: WorkPageProps) {
                     </div>
                   ) : visual.partnerships && visual.partnerships.length > 0 ? (
                     <div className="w-full py-8 overflow-hidden">
-                      <div className="flex animate-marquee gap-6">
+                      <div className="flex animate-marquee gap-6" style={{ width: 'max-content' }}>
                         {/* First set */}
                         {visual.partnerships.map((partner, partnerIdx) => (
                           <div
                             key={partnerIdx}
-                            className="flex-shrink-0 w-64 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6"
+                            className="flex-shrink-0 w-64 rounded-lg border border-zinc-200 dark:border-zinc-800 p-6 flex items-center justify-center"
                           >
-                            <div className="relative h-12 w-full mb-4">
-                              <div className="relative h-full w-full bg-white rounded-lg p-3">
+                            <div className="relative h-12 w-full">
+                              <div className="relative h-full w-full rounded-lg p-3">
                                 <Image
                                   src={partner.logo}
-                                  alt={partner.name}
+                                  alt={partner.name || `Partner ${partnerIdx + 1}`}
                                   fill
                                   className="object-contain object-center rounded-lg"
                                 />
                               </div>
                             </div>
-                            <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50 mb-2">
-                              {partner.name}
-                            </h4>
-                            <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                              {partner.description}
-                            </p>
+                            {partner.name && (
+                              <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50 mb-2">
+                                {partner.name}
+                              </h4>
+                            )}
+                            {partner.description && (
+                              <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                                {partner.description}
+                              </p>
+                            )}
                           </div>
                         ))}
                         {/* Duplicate set for seamless loop */}
                         {visual.partnerships.map((partner, partnerIdx) => (
                           <div
                             key={`duplicate-${partnerIdx}`}
-                            className="flex-shrink-0 w-64 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6"
+                            className="flex-shrink-0 w-64 rounded-lg border border-zinc-200 dark:border-zinc-800 p-6 flex items-center justify-center"
                           >
-                            <div className="relative h-12 w-full mb-4">
-                              <div className="relative h-full w-full bg-white rounded-lg p-3">
+                            <div className="relative h-12 w-full">
+                              <div className="relative h-full w-full rounded-lg p-3">
                                 <Image
                                   src={partner.logo}
-                                  alt={partner.name}
+                                  alt={partner.name || `Partner ${partnerIdx + 1}`}
                                   fill
                                   className="object-contain object-center rounded-lg"
                                 />
                               </div>
                             </div>
-                            <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50 mb-2">
-                              {partner.name}
-                            </h4>
-                            <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                              {partner.description}
-                            </p>
+                            {partner.name && (
+                              <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50 mb-2">
+                                {partner.name}
+                              </h4>
+                            )}
+                            {partner.description && (
+                              <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                                {partner.description}
+                              </p>
+                            )}
                           </div>
                         ))}
                       </div>
