@@ -360,8 +360,6 @@ export const works: Record<string, Work> = {
         imageLeft: true // Image on left, text on right
       }
     ],
-    insight: "Removed blockchain to reduce friction and accelerate adoption in a non-technical, highly bureaucratic market.",
-    softClose: "Happy to share more context on the journey and decisions."
   },
   "building-web3-marketing-strategies": {
     id: "building-web3-marketing-strategies",
@@ -414,6 +412,29 @@ export const works: Record<string, Work> = {
       { label: "Role", value: "Head" }
     ],
     impact: "Led sales and partnership strategy for blockchain development platform.",
+    visuals: [
+      {
+        description: "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Early positioning.</span> From gambling tooling to protocol.<br /><br />BEPRO started as BetProtocol, white-label infra for gambling and esports. Within months it was clear long-term value sat in shared infrastructure for developers and operators, not white-label casinos.<br /><br />The product reframed from \"launch your betting app\" to \"build Web3 products faster using open tooling and on-chain incentives.\"",
+        image: "/work/bepro-early-positioning.png",
+        imageLeft: false
+      },
+      {
+        description: "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Sales motion and growth.</span><br /><br />Direct, consultative sales with builders and operators: understand constraints, map BEPRO primitives to use cases, educate on integration and shipping.<br /><br />Grew from 3 clients and 3 partnerships to 10+ of each in four months. Real-world feedback fed back into product.",
+        image: "/work/bepro-sales-growth.png",
+        imageLeft: true
+      },
+      {
+        description: "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Protocol and developer marketplace.</span><br /><br />BEPRO became a protocol and task marketplace: teams post tasks, fund work with crypto, and the community curates and validates.<br /><br />Incentives aligned between builders, token holders, and usage. Partnerships were tied to actual usage, not announcements.",
+        image: "/work/bepro-marketplace.png",
+        imageLeft: true
+      },
+      {
+        description: "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Ecosystem partnerships.</span><br /><br />Focus on liquidity and activity, data and tooling integrations, and real operators deploying and transacting. Collaborations across DeFi, gaming, developer tooling, and infra.<br /><br />Goal: relevance and throughput, not logo collection.",
+        image: "/work/bepro-partnerships.png",
+        imageLeft: false
+      }
+    ],
+    insight: "Education-first sales created more durable adoption than announcement-driven partnerships.",
   },
   "driving-growth-web3-blockchain": {
     id: "driving-growth-web3-blockchain",
