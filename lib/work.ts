@@ -348,6 +348,16 @@ export const works: Record<string, Work> = {
           "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Volunteer dashboard:</span> Personal view of volunteer activity, karma progress, and mission participation"
         ],
         imageLeft: true // Images on left, text on right
+      },
+      {
+        description: "The <span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">impact certificate</span> gives organizations a verifiable snapshot of their ESG activity.<br /><br />It aggregates real participation data. Volunteers, hours, missions, supported SDGs, and geographic reach. All generated directly from platform usage.<br /><br />This removed manual reporting and made impact easy to communicate and share.",
+        image: "/work/impact-certificate.jpg",
+        imageLeft: false // Text on left, image on right
+      },
+      {
+        description: "The <span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">impact resume</span> captures individual contributions in one place.<br /><br />It shows missions completed, skills applied, organizations supported, SDGs impacted, and time invested. Built from real activity, not self-reporting.<br /><br />This helped make impact visible at a personal level and encouraged repeat participation.",
+        image: "/work/social-impact-resume.png",
+        imageLeft: true // Image on left, text on right
       }
     ],
     insight: "Removed blockchain to reduce friction and accelerate adoption in a non-technical, highly bureaucratic market.",
