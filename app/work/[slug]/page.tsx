@@ -598,7 +598,7 @@ export default function WorkPage({ params }: WorkPageProps) {
             <div className="space-y-6">
               {work.visuals.map((visual, idx) => {
                 // Slider component for description + images array
-                const DashboardSlider = ({ images, captions, description, imageLeft }: { images: string[], captions?: string[], description: string, imageLeft?: boolean }) => {
+                const DashboardSlider = ({ images, captions, description, imageLeft }: { images: string[], captions?: string[], description?: string, imageLeft?: boolean }) => {
                   const [currentIndex, setCurrentIndex] = useState(0);
                   
                   const goToSlide = (index: number) => {
@@ -649,10 +649,12 @@ export default function WorkPage({ params }: WorkPageProps) {
                             </div>
                           </div>
                           <div className="flex-1 lg:w-1/2">
-                            <p 
-                              className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300 mb-4"
-                              dangerouslySetInnerHTML={{ __html: description }}
-                            />
+                            {description && (
+                              <p 
+                                className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300 mb-4"
+                                dangerouslySetInnerHTML={{ __html: description }}
+                              />
+                            )}
                             {captions && captions[currentIndex] && (
                               <p 
                                 className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 transition-opacity duration-500"
@@ -664,10 +666,12 @@ export default function WorkPage({ params }: WorkPageProps) {
                       ) : (
                         <>
                           <div className="flex-1 lg:w-1/2">
-                            <p 
-                              className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300 mb-4"
-                              dangerouslySetInnerHTML={{ __html: description }}
-                            />
+                            {description && (
+                              <p 
+                                className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300 mb-4"
+                                dangerouslySetInnerHTML={{ __html: description }}
+                              />
+                            )}
                             {captions && captions[currentIndex] && (
                               <p 
                                 className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 transition-opacity duration-500"
@@ -722,7 +726,7 @@ export default function WorkPage({ params }: WorkPageProps) {
                 
                 return (
                 <div key={idx} className="group">
-                  {visual.description && visual.images && visual.images.length > 0 ? (
+                  {(visual.description || visual.imageCaptions) && visual.images && visual.images.length > 0 ? (
                     <DashboardSlider
                       images={visual.images}
                       captions={visual.imageCaptions}

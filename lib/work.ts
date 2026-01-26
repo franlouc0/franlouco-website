@@ -418,6 +418,23 @@ export const works: Record<string, Work> = {
         caption: "Making complex online gaming products as easy to launch as modern websites and eCommerce. A fully white-label esports and casino platform, ready to deploy without engineering overhead. Production-ready games driving real volume, real users, and real revenue from day one."
       },
       {
+        images: [
+          "/work/betprotocol-casino.png",
+          "/work/betprotocol-esports.png",
+          "/work/betprotocol-esports2.png",
+          "/work/betprotocol-sports.png",
+          "/work/betprotocol-social-casino.png"
+        ],
+        imageCaptions: [
+          "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Casino:</span> BetProtocol let operators launch a full casino experience instantly, with proven games like Dice, Roulette, Coin Flip, Baccarat, and Slots. No custom development required. Just configure, brand, and go live.",
+          "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Esports:</span> The platform enabled esports betting across major titles like CS:GO, DOTA 2, and League of Legends. Operators could tap into a market growing at double-digit rates year over year, with native support for esports audiences.",
+          "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Esports:</span> BetProtocol bundled odds, live data, streams, and betting flows into a single system. No third-party dependencies. A simple, end-to-end esports betting experience, ready to use from day one.",
+          "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Sports:</span> The product also supported traditional sports betting, with features like live chat, gamification, bonuses, and access to top leagues. A planned Stadium feature would let fans interact in real time during live events.",
+          "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Social Casino:</span> For teams that wanted engagement without real-money betting, BetProtocol supported social casino setups. Users played with virtual currency, while operators monetized through ads and in-game purchases. Key points: • No gaming license required • No real-money wagering • Built for community growth and monetization"
+        ],
+        imageLeft: true // Images on left, text on right
+      },
+      {
         description: "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Early positioning.</span> From gambling tooling to protocol.<br /><br />BEPRO started as BetProtocol, white-label infra for gambling and esports. Within months it was clear long-term value sat in shared infrastructure for developers and operators, not white-label casinos.<br /><br />The product reframed from \"launch your betting app\" to \"build Web3 products faster using open tooling and on-chain incentives.\"",
         image: "/work/bepro-early-positioning.png",
         imageLeft: false
