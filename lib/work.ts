@@ -424,6 +424,40 @@ export const works: Record<string, Work> = {
         imageLeft: true
       },
       {
+        partnerships: [
+          {
+            logo: "/partnerships/chainlink.png",
+            name: "Chainlink",
+            description: "Decentralized oracle network providing reliable real-world data feeds for on-chain applications"
+          },
+          {
+            logo: "/partnerships/elrond.png",
+            name: "Elrond",
+            description: "High-performance blockchain network enabling fast and low-cost transactions for Web3 products"
+          },
+          {
+            logo: "/partnerships/band-protocol.png",
+            name: "Band Protocol",
+            description: "Decentralized oracle platform connecting real-world data to smart contracts and dApps"
+          },
+          {
+            logo: "/partnerships/ankr.png",
+            name: "Ankr",
+            description: "Web3 infrastructure provider offering blockchain APIs and developer tools for faster deployment"
+          },
+          {
+            logo: "/partnerships/nexo.png",
+            name: "Nexo",
+            description: "Crypto lending and DeFi platform providing liquidity and financial services integration"
+          },
+          {
+            logo: "/partnerships/polygon.png",
+            name: "Polygon",
+            description: "Layer 2 scaling solution reducing transaction costs and improving throughput for Ethereum-based applications"
+          },
+        ]
+      },
+      {
         description: "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Protocol and developer marketplace.</span><br /><br />BEPRO became a protocol and task marketplace: teams post tasks, fund work with crypto, and the community curates and validates.<br /><br />Incentives aligned between builders, token holders, and usage. Partnerships were tied to actual usage, not announcements.",
         image: "/work/bepro-marketplace.png",
         imageLeft: true
