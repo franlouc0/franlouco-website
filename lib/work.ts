@@ -389,15 +389,15 @@ export const works: Record<string, Work> = {
     id: "scaling-sales-partnerships-blockchain",
     title: "Scaling protocol adoption through partnerships, not hype",
     subtitle: "Growing clients and ecosystem usage by shifting from gambling tooling to a developer-first Web3 protocol",
-    company: "BEPRO Network (formerly BetProtocol)",
+    company: "BEPRO Network",
     role: "Head of Sales & Partnerships",
     period: "2020 – 2021",
     logo: "/bepronetwork.jpg",
     numbers: [
-      { value: "10+", label: "clients live and active" },
-      { value: "10+", label: "partnerships across DeFi, gaming, and tooling" },
-      { value: "4 months", label: "to double ecosystem traction" },
-      { value: "3 → 10", label: "clients through direct, consultative sales" }
+      { value: "6+", label: "clients live and active" },
+      { value: "6+", label: "partnerships across DeFi, gaming, and tooling" },
+      { value: "3 months", label: "to double ecosystem traction" },
+      { value: "2 → 6+", label: "clients through direct, consultative sales" }
     ],
     scope: [
       "Sales strategy and execution",
@@ -414,13 +414,17 @@ export const works: Record<string, Work> = {
     impact: "Led sales and partnership strategy for blockchain development platform.",
     visuals: [
       {
+        images: ["/work/betprotocol-vision.png", "/work/betprotocol-product.png", "/work/betprotocol-betting-apps.png"],
+        caption: "Making complex online gaming products as easy to launch as modern websites and eCommerce. A fully white-label esports and casino platform, ready to deploy without engineering overhead. Production-ready games driving real volume, real users, and real revenue from day one."
+      },
+      {
         description: "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Early positioning.</span> From gambling tooling to protocol.<br /><br />BEPRO started as BetProtocol, white-label infra for gambling and esports. Within months it was clear long-term value sat in shared infrastructure for developers and operators, not white-label casinos.<br /><br />The product reframed from \"launch your betting app\" to \"build Web3 products faster using open tooling and on-chain incentives.\"",
         image: "/work/bepro-early-positioning.png",
         imageLeft: false
       },
       {
-        description: "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Sales motion and growth.</span><br /><br />Direct, consultative sales with builders and operators: understand constraints, map BEPRO primitives to use cases, educate on integration and shipping.<br /><br />Grew from 3 clients and 3 partnerships to 10+ of each in four months. Real-world feedback fed back into product.",
-        image: "/work/bepro-sales-growth.png",
+        description: "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Sales motion and growth.</span><br /><br /><span class=\"underline decoration-green-400 decoration-2\">Direct, consultative sales with builders and operators</span>: understand constraints, map BetProtocol primitives to use cases, educate on integration and shipping.<br /><br />Grew from 2 clients and 3 partnerships to <span class=\"underline decoration-green-400 decoration-2\">10+ aggregated clients and partnerships in three months</span>. Real-world feedback fed back into product.",
+        image: "/work/clients-worldwide.png",
         imageLeft: true
       },
       {
@@ -428,34 +432,33 @@ export const works: Record<string, Work> = {
           {
             logo: "/partnerships/chainlink.png",
             name: "Chainlink",
-            description: "Decentralized oracle network providing reliable real-world data feeds for on-chain applications"
           },
           {
             logo: "/partnerships/elrond.png",
             name: "Elrond",
-            description: "High-performance blockchain network enabling fast and low-cost transactions for Web3 products"
           },
           {
             logo: "/partnerships/band-protocol.png",
             name: "Band Protocol",
-            description: "Decentralized oracle platform connecting real-world data to smart contracts and dApps"
           },
           {
             logo: "/partnerships/ankr.png",
             name: "Ankr",
-            description: "Web3 infrastructure provider offering blockchain APIs and developer tools for faster deployment"
           },
           {
             logo: "/partnerships/nexo.png",
             name: "Nexo",
-            description: "Crypto lending and DeFi platform providing liquidity and financial services integration"
           },
           {
             logo: "/partnerships/polygon.png",
             name: "Polygon",
-            description: "Layer 2 scaling solution reducing transaction costs and improving throughput for Ethereum-based applications"
           },
         ]
+      },
+      {
+        description: "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Early positioning.</span> From gambling tooling to protocol.<br /><br />BEPRO started as BetProtocol, white-label infra for gambling and esports. Within months it was clear long-term value sat in shared infrastructure for developers and operators, not white-label casinos.<br /><br />The product reframed from \"launch your betting app\" to \"build Web3 products faster using open tooling and on-chain incentives.\"",
+        image: "/work/bepro-early-positioning.png",
+        imageLeft: false
       },
       {
         description: "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Protocol and developer marketplace.</span><br /><br />BEPRO became a protocol and task marketplace: teams post tasks, fund work with crypto, and the community curates and validates.<br /><br />Incentives aligned between builders, token holders, and usage. Partnerships were tied to actual usage, not announcements.",
