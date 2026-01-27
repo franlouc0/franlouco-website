@@ -21,16 +21,16 @@ const projects = [
   },
   { 
     id: 2, 
-    title: "Mobile App", 
-    description: "iOS & Android experience", 
-    image: "https://images.unsplash.com/photo-1557683311-eac922347aa1?auto=format&fit=crop&w=800&q=80", 
+    title: "Grumpy Frogz", 
+    description: "A personal NFT collection built in 2022 as a Midjourney prompt experiment", 
+    image: "/grid/grid-grumpy-frogz.png", 
     span: "row-span-1" 
   },
   { 
     id: 3, 
-    title: "Web3 Platform", 
-    description: "Blockchain integration", 
-    image: "https://images.unsplash.com/photo-1557682250-33bd709cbe85?auto=format&fit=crop&w=800&q=80", 
+    title: "Apex Legends Manager Simulator", 
+    description: "Experience the thrill of Apex Legends esports from the coach's seat", 
+    image: "/grid/grid-apex-legends.png", 
     span: "row-span-1" 
   },
   { 
