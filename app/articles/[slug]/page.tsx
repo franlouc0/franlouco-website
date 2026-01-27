@@ -56,6 +56,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
             
             {/* Mobile button - top right, aligned with title */}
             <button
+              type="button"
               onClick={() => setIsContactOpen(true)}
               className="pointer-events-auto flex h-10 items-center gap-2 rounded-md border border-green-400 bg-green-400 px-4 text-xs font-semibold text-zinc-900 transition-all hover:border-green-500 hover:bg-green-500 dark:border-green-400 dark:bg-green-400 dark:text-zinc-900 dark:hover:border-green-500 dark:hover:bg-green-500 lg:hidden shrink-0"
               aria-label="Open contact form to work together"

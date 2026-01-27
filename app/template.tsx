@@ -102,7 +102,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
 
   return (
     <div
-      className={`transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${getTransformClasses()}`}
+      className={`transition-all duration-700 ease-page ${getTransformClasses()}`}
     >
       {displayChildren}
     </div>

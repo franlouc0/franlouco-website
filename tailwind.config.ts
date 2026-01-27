@@ -55,6 +55,9 @@ const config: Config = {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
+  		},
+  		transitionTimingFunction: {
+  			'page': 'cubic-bezier(0.16, 1, 0.3, 1)',
   		}
   	}
   },

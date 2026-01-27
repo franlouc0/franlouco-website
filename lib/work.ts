@@ -218,6 +218,7 @@ export const works: Record<string, Work> = {
         images: ["/work/app-animated-gif2.gif", "/work/market-page.png"]
       }
     ],
+    insight: "Led GTM and IDO execution at Polkamarkets: $715K raised, 100K+ community, $80M+ open interest. Clarity, speed, and systems over hype.",
   },
   "how-we-achieved-166-mom-ngo-growth": {
     id: "how-we-achieved-166-mom-ngo-growth",
@@ -363,6 +364,7 @@ export const works: Record<string, Work> = {
         imageLeft: true // Image on left, text on right
       }
     ],
+    insight: "Drove GTM and adoption at Coompass: 166% MoM NGO growth, 150+ nonprofits, 10+ partners. Built dashboards, impact certificate, and impact resume to make ESG participation visible and verifiable.",
   },
   "building-web3-marketing-strategies": {
     id: "building-web3-marketing-strategies",
@@ -390,7 +392,7 @@ export const works: Record<string, Work> = {
   },
   "scaling-sales-partnerships-blockchain": {
     id: "scaling-sales-partnerships-blockchain",
-    title: "Scaling protocol adoption through partnerships, not hype",
+    title: "Scaling protocol adoption through partnerships",
     subtitle: "Growing clients and ecosystem usage by shifting from gambling tooling to a developer-first Web3 protocol",
     company: "BEPRO Network",
     role: "Head of Sales & Partnerships",
@@ -512,19 +514,19 @@ export const works: Record<string, Work> = {
         imageLeft: false
       },
       {
-        images: ["/work/bepro-dap2.png", "/work/bepro-dap3.png",]
-      },
-      {
-        images: ["/work/bepro-dap4.png", "/work/bepro-dap5.png", "/work/bepro-dap6.png"]
+        images: ["/work/bepro-dap2.png", "/work/bepro-dap3.png"]
       },
       {
         description: "Through partnerships and adoption-focused sales at BEPRO Network, I supported the pivot toward a developer-first protocol, which ultimately led to its integration and acquisition by TAIKAI.",
         image: "/work/bepro-taikai.png",
         imageLeft: true,
         link: { url: "https://layerxlab.medium.com/taikai-x-bepro-the-future-of-the-developer-economy-6caff5985b72", label: "TAIKAI × BEPRO — The future of the developer economy" }
-      }
+      },
+      {
+        images: ["/work/bepro-dap4.png", "/work/bepro-dap5.png", "/work/bepro-dap6.png"]
+      },
     ],
-    insight: "Education-first sales created more durable adoption than announcement-driven partnerships.",
+    insight: "Led sales and partnerships at BEPRO Network: 6+ clients, 6+ partnerships, 3 months to double traction. Supported the pivot from gambling tooling to a developer-first protocol and its integration with TAIKAI.",
   },
   "driving-growth-web3-blockchain": {
     id: "driving-growth-web3-blockchain",

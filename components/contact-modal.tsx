@@ -452,7 +452,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
       {/* Modal */}
       <div
-        className={`fixed inset-y-0 right-0 z-50 w-full max-w-md bg-white shadow-2xl transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] dark:bg-zinc-900 sm:max-w-lg ${
+        className={`fixed inset-y-0 right-0 z-50 w-full max-w-md bg-white shadow-2xl transition-transform duration-700 ease-page dark:bg-zinc-900 sm:max-w-lg ${
           isAnimating ? "translate-x-0" : "translate-x-full"
         }`}
       >

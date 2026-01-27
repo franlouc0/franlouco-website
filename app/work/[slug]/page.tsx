@@ -3,13 +3,14 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Info, X, Share2, Check, CheckCircle2, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
+import { ArrowLeft, Info, X, Share2, Check, CheckCircle2, ExternalLink } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { ExperienceSection } from "@/components/experience-section";
 import { FeaturedWorkSection } from "@/components/featured-work-section";
 import { ContactModal } from "@/components/contact-modal";
 import { useState, useEffect, useRef } from "react";
 import { getWorkById } from "@/lib/work";
+import { getYouTubeVideoId } from "@/lib/utils";
 
 interface WorkPageProps {
   params: {
@@ -25,18 +26,7 @@ interface VideoSectionProps {
 }
 
 function VideoSection({ video, title, tooltip, company }: VideoSectionProps) {
-  // Extract YouTube video ID
-  const getVideoId = (url: string): string => {
-    if (url.includes('youtube.com/watch?v=')) {
-      return url.split('v=')[1]?.split('&')[0] || '';
-    }
-    if (url.includes('youtu.be/')) {
-      return url.split('youtu.be/')[1]?.split('?')[0] || '';
-    }
-    return '';
-  };
-
-  const videoId = getVideoId(video);
+  const videoId = getYouTubeVideoId(video);
 
   return (
     <div className="w-full">
@@ -190,6 +180,7 @@ export default function WorkPage({ params }: WorkPageProps) {
             
             {/* Mobile button - top right, aligned with title */}
             <button
+              type="button"
               onClick={() => setIsContactOpen(true)}
               className="pointer-events-auto flex h-10 items-center gap-2 rounded-md border border-green-400 bg-green-400 px-4 text-xs font-semibold text-zinc-900 transition-all hover:border-green-500 hover:bg-green-500 dark:border-green-400 dark:bg-green-400 dark:text-zinc-900 dark:hover:border-green-500 dark:hover:bg-green-500 lg:hidden shrink-0"
               aria-label="Open contact form to work together"
@@ -350,6 +341,7 @@ export default function WorkPage({ params }: WorkPageProps) {
             |
           </span>
           <button
+            type="button"
             onClick={() => setIsContactOpen(true)}
             className="text-[10px] text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
             aria-label="Open contact form"
@@ -405,11 +397,12 @@ export default function WorkPage({ params }: WorkPageProps) {
             </Link>
 
             {work && (
-              <button
-                onClick={handleShare}
-                className="inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/90 backdrop-blur-sm px-3 py-2 text-xs text-zinc-900 transition-all hover:bg-white dark:border-zinc-700/50 dark:bg-zinc-900/90 dark:text-zinc-50 dark:hover:bg-zinc-900 shadow-lg"
-                aria-label="Copy link to share"
-              >
+          <button
+            type="button"
+            onClick={handleShare}
+            className="inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/90 backdrop-blur-sm px-3 py-2 text-xs text-zinc-900 transition-all hover:bg-white dark:border-zinc-700/50 dark:bg-zinc-900/90 dark:text-zinc-50 dark:hover:bg-zinc-900 shadow-lg"
+            aria-label="Copy link to share"
+          >
               {isShareCopied ? (
                 <>
                   <Check className="h-3 w-3" />
@@ -635,6 +628,7 @@ export default function WorkPage({ params }: WorkPageProps) {
                                   {images.map((_, slideIdx) => (
                                     <button
                                       key={slideIdx}
+                                      type="button"
                                       onClick={() => goToSlide(slideIdx)}
                                       className={`h-2 rounded-full transition-all duration-300 ${
                                         slideIdx === currentIndex
@@ -705,6 +699,7 @@ export default function WorkPage({ params }: WorkPageProps) {
                                   {images.map((_, slideIdx) => (
                                     <button
                                       key={slideIdx}
+                                      type="button"
                                       onClick={() => goToSlide(slideIdx)}
                                       className={`h-2 rounded-full transition-all duration-300 ${
                                         slideIdx === currentIndex
@@ -741,7 +736,7 @@ export default function WorkPage({ params }: WorkPageProps) {
                             <div className="relative w-full overflow-hidden rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900" style={{ paddingBottom: '56.25%' }}>
                               <iframe
                                 className="absolute left-0 top-0 h-full w-full"
-                                src={`https://www.youtube.com/embed/${visual.video.includes('youtube.com/watch?v=') ? visual.video.split('v=')[1]?.split('&')[0] : visual.video.includes('youtu.be/') ? visual.video.split('youtu.be/')[1]?.split('?')[0] : ''}`}
+                                src={`https://www.youtube.com/embed/${getYouTubeVideoId(visual.video)}`}
                                 title={`${work.company} video ${idx + 1}`}
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen
@@ -767,7 +762,7 @@ export default function WorkPage({ params }: WorkPageProps) {
                             <div className="relative w-full overflow-hidden rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900" style={{ paddingBottom: '56.25%' }}>
                               <iframe
                                 className="absolute left-0 top-0 h-full w-full"
-                                src={`https://www.youtube.com/embed/${visual.video.includes('youtube.com/watch?v=') ? visual.video.split('v=')[1]?.split('&')[0] : visual.video.includes('youtu.be/') ? visual.video.split('youtu.be/')[1]?.split('?')[0] : ''}`}
+                                src={`https://www.youtube.com/embed/${getYouTubeVideoId(visual.video)}`}
                                 title={`${work.company} video ${idx + 1}`}
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen
@@ -860,16 +855,7 @@ export default function WorkPage({ params }: WorkPageProps) {
                   ) : visual.videos && visual.videos.length > 0 ? (
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                       {visual.videos.map((videoUrl, videoIdx) => {
-                        const getVideoId = (url: string): string => {
-                          if (url.includes('youtube.com/watch?v=')) {
-                            return url.split('v=')[1]?.split('&')[0] || '';
-                          }
-                          if (url.includes('youtu.be/')) {
-                            return url.split('youtu.be/')[1]?.split('?')[0] || '';
-                          }
-                          return '';
-                        };
-                        const videoId = getVideoId(videoUrl);
+                        const videoId = getYouTubeVideoId(videoUrl);
                         return (
                           <div key={videoIdx} className="flex flex-col">
                             <div className="relative w-full overflow-hidden rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900" style={{ paddingBottom: '56.25%' }}>
@@ -1047,12 +1033,28 @@ export default function WorkPage({ params }: WorkPageProps) {
             </div>
           )}
 
-          {/* Insight or Decision Block - Optional */}
+          {/* Insight / Summary + CTA - Optional */}
           {work.insight && (
-            <div className="mt-12 pt-8 border-t border-zinc-200 dark:border-zinc-800">
-              <p className="text-sm text-zinc-700 dark:text-zinc-300 italic">
-                {work.insight}
-              </p>
+            <div className="mt-12 pt-8 border-t border-zinc-200 dark:border-zinc-800 flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-8">
+              <div className="min-w-0 lg:w-4/5">
+                <p className="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
+                  {work.insight}
+                </p>
+              </div>
+              <div className="shrink-0 lg:w-1/5 flex justify-start lg:justify-end">
+                <button
+                  type="button"
+                  onClick={() => setIsContactOpen(true)}
+                  className="inline-flex h-12 items-center gap-2 rounded-md border border-green-400 bg-green-400 px-6 text-sm font-semibold text-zinc-900 transition-all hover:border-green-500 hover:bg-green-500 dark:border-green-400 dark:bg-green-400 dark:text-zinc-900 dark:hover:border-green-500 dark:hover:bg-green-500"
+                  aria-label="Open contact form to work together"
+                >
+                  <span className="relative flex h-2.5 w-2.5" aria-hidden="true">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-zinc-900 opacity-75" />
+                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-zinc-900" />
+                  </span>
+                  Let&apos;s work together
+                </button>
+              </div>
             </div>
           )}
 

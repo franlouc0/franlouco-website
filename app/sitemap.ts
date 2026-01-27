@@ -6,8 +6,8 @@ import { getAllWorkIds } from '@/lib/work'
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_URL
   
-  // Get all articles for sitemap
-  const articleIds = getAllArticleIds()
+  // Get all articles for sitemap (sorted for stable output)
+  const articleIds = getAllArticleIds().sort()
   const articleEntries = articleIds.map((id) => {
     const article = getArticleById(id)
     return {
@@ -18,8 +18,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   })
 
-  // Get all work pages for sitemap
-  const workIds = getAllWorkIds()
+  // Get all work pages for sitemap (sorted for stable output)
+  const workIds = getAllWorkIds().sort()
   const workEntries = workIds.map((id) => ({
     url: `${baseUrl}/work/${id}`,
     lastModified: new Date(),
