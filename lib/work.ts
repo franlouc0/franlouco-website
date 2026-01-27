@@ -51,6 +51,8 @@ export interface Work {
     description?: string; // Optional text description before the image
     imageLeft?: boolean; // If true, image on left, text on right. If false or undefined, text on left, image on right
     video?: string; // YouTube video URL
+    videos?: string[]; // Multiple YouTube video URLs for two-column layout
+    videoCaptions?: string[]; // Optional captions for each video in the videos array (matches order)
     videoTitle?: string; // Title for the video section
     videoTooltip?: string; // Tooltip text for the info icon
     cards?: string[]; // Array of card content text for 4-card grid
@@ -59,6 +61,7 @@ export interface Work {
       name?: string;
       description?: string;
     }>; // Array of partnership cards for marquee section
+    link?: { url: string; label?: string }; // Optional external link with icon (e.g. article, announcement)
   }[];
   insight?: string; // Optional: One short sentence showing judgment
   softClose?: string; // Optional: Very light ending (e.g., "Happy to share details on request")
@@ -435,11 +438,6 @@ export const works: Record<string, Work> = {
         imageLeft: true // Images on left, text on right
       },
       {
-        description: "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Early positioning.</span> From gambling tooling to protocol.<br /><br />BEPRO started as BetProtocol, white-label infra for gambling and esports. Within months it was clear long-term value sat in shared infrastructure for developers and operators, not white-label casinos.<br /><br />The product reframed from \"launch your betting app\" to \"build Web3 products faster using open tooling and on-chain incentives.\"",
-        image: "/work/bepro-early-positioning.png",
-        imageLeft: false
-      },
-      {
         description: "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Sales motion and growth.</span><br /><br /><span class=\"underline decoration-green-400 decoration-2\">Direct, consultative sales with builders and operators</span>: understand constraints, map BetProtocol primitives to use cases, educate on integration and shipping.<br /><br />Grew from 2 clients and 3 partnerships to <span class=\"underline decoration-green-400 decoration-2\">10+ aggregated clients and partnerships in three months</span>. Real-world feedback fed back into product.",
         image: "/work/clients-worldwide.png",
         imageLeft: true
@@ -470,12 +468,38 @@ export const works: Record<string, Work> = {
             logo: "/partnerships/polygon.png",
             name: "Polygon",
           },
+          {
+            logo: "/partnerships/utrust.png",
+            name: "UTrust",
+          },
+          {
+            logo: "/partnerships/exeedme.png",
+            name: "Exeedme",
+          },
+          {
+            logo: "/partnerships/royale-finance.png",
+            name: "Royale Finance",
+          },
+          {
+            logo: "/partnerships/ngrave.png",
+            name: "Ngrave",
+          },
         ]
       },
       {
-        description: "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Early positioning.</span> From gambling tooling to protocol.<br /><br />BEPRO started as BetProtocol, white-label infra for gambling and esports. Within months it was clear long-term value sat in shared infrastructure for developers and operators, not white-label casinos.<br /><br />The product reframed from \"launch your betting app\" to \"build Web3 products faster using open tooling and on-chain incentives.\"",
-        image: "/work/bepro-early-positioning.png",
+        description: "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Early positioning.</span> From gambling tooling to protocol.<br /><br />The pivot was critical: long-term value sat in shared infra for developers and operators, not white-label casinos. We reframed from \"launch your betting app\" to \"build Web3 products faster using open tooling and on-chain incentives.\"<br /><br />I led branding, product positioning, GTM strategy, and narrative so the pivot landed clearly.",
+        video: "https://www.youtube.com/watch?v=GSWn31WF_ao",
         imageLeft: false
+      },
+      {
+        videos: [
+          "https://www.youtube.com/watch?v=kcqyp63x38A",
+          "https://www.youtube.com/watch?v=PxVkA1WBP0E"
+        ],
+        videoCaptions: [
+          "Pivot explainer: BEPRO as Code-as-a-Service for DeFi, gaming, prediction markets. I led messaging, positioning, and content strategy.",
+          "EVM milestone and Code-as-a-Service launch. I crafted the narrative and messaging so the pivot landed clearly."
+        ]
       },
       {
         description: "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Protocol and developer marketplace.</span><br /><br />BEPRO became a protocol and task marketplace: teams post tasks, fund work with crypto, and the community curates and validates.<br /><br />Incentives aligned between builders, token holders, and usage. Partnerships were tied to actual usage, not announcements.",
@@ -486,6 +510,12 @@ export const works: Record<string, Work> = {
         description: "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Ecosystem partnerships.</span><br /><br />Focus on liquidity and activity, data and tooling integrations, and real operators deploying and transacting. Collaborations across DeFi, gaming, developer tooling, and infra.<br /><br />Goal: relevance and throughput, not logo collection.",
         image: "/work/bepro-partnerships.png",
         imageLeft: false
+      },
+      {
+        description: "Through partnerships and adoption-focused sales at BEPRO Network, I supported the pivot toward a developer-first protocol, which ultimately led to its integration and acquisition by TAIKAI.",
+        image: "/work/bepro-taikai.png",
+        imageLeft: true,
+        link: { url: "https://layerxlab.medium.com/taikai-x-bepro-the-future-of-the-developer-economy-6caff5985b72", label: "TAIKAI × BEPRO — The future of the developer economy" }
       }
     ],
     insight: "Education-first sales created more durable adoption than announcement-driven partnerships.",

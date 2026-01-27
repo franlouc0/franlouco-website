@@ -3,7 +3,7 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Info, X, Share2, Check, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, Info, X, Share2, Check, CheckCircle2, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { ExperienceSection } from "@/components/experience-section";
 import { FeaturedWorkSection } from "@/components/featured-work-section";
@@ -803,6 +803,18 @@ export default function WorkPage({ params }: WorkPageProps) {
                               className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300"
                               dangerouslySetInnerHTML={{ __html: visual.description }}
                             />
+                            {visual.link && (
+                              <a
+                                href={visual.link.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 mt-3 text-sm font-medium text-green-400 dark:text-green-400 hover:underline"
+                                aria-label={visual.link.label || "Open link"}
+                              >
+                                <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
+                                {visual.link.label || "Read more"}
+                              </a>
+                            )}
                           </div>
                         </>
                       ) : (
@@ -812,6 +824,18 @@ export default function WorkPage({ params }: WorkPageProps) {
                               className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300"
                               dangerouslySetInnerHTML={{ __html: visual.description }}
                             />
+                            {visual.link && (
+                              <a
+                                href={visual.link.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 mt-3 text-sm font-medium text-green-400 dark:text-green-400 hover:underline"
+                                aria-label={visual.link.label || "Open link"}
+                              >
+                                <ExternalLink className="h-4 w-4 shrink-0" aria-hidden />
+                                {visual.link.label || "Read more"}
+                              </a>
+                            )}
                           </div>
                           <figure className="flex-1 lg:w-1/2">
                             <div className="relative w-full rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900">
@@ -832,6 +856,39 @@ export default function WorkPage({ params }: WorkPageProps) {
                           </figure>
                         </>
                       )}
+                    </div>
+                  ) : visual.videos && visual.videos.length > 0 ? (
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                      {visual.videos.map((videoUrl, videoIdx) => {
+                        const getVideoId = (url: string): string => {
+                          if (url.includes('youtube.com/watch?v=')) {
+                            return url.split('v=')[1]?.split('&')[0] || '';
+                          }
+                          if (url.includes('youtu.be/')) {
+                            return url.split('youtu.be/')[1]?.split('?')[0] || '';
+                          }
+                          return '';
+                        };
+                        const videoId = getVideoId(videoUrl);
+                        return (
+                          <div key={videoIdx} className="flex flex-col">
+                            <div className="relative w-full overflow-hidden rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900" style={{ paddingBottom: '56.25%' }}>
+                              <iframe
+                                className="absolute left-0 top-0 h-full w-full"
+                                src={`https://www.youtube.com/embed/${videoId}`}
+                                title={`${work.company} video ${videoIdx + 1}`}
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                              />
+                            </div>
+                            {visual.videoCaptions && visual.videoCaptions[videoIdx] && (
+                              <p className="mt-2 text-xs text-zinc-500 dark:text-zinc-500 text-center">
+                                {visual.videoCaptions[videoIdx]}
+                              </p>
+                            )}
+                          </div>
+                        );
+                      })}
                     </div>
                   ) : visual.video ? (
                     <VideoSection
