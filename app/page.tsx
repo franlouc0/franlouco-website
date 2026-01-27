@@ -43,9 +43,9 @@ const projects = [
   },
   { 
     id: 5, 
-    title: "E-commerce", 
-    description: "Digital marketplace", 
-    image: "https://images.unsplash.com/photo-1557683311-eac922347aa1?auto=format&fit=crop&w=800&q=80", 
+    title: "The Useless Directory", 
+    description: "A digital marketplace for useless products. Pay cents. Get a pixel. Expect nothing.", 
+    image: "/grid/grid-useless.png", 
     span: "row-span-1" 
   },
   { 
