@@ -435,7 +435,7 @@ export const works: Record<string, Work> = {
           "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Sports:</span> The product also supported traditional sports betting, with features like live chat, gamification, bonuses, and access to top leagues. A planned Stadium feature would let fans interact in real time during live events.",
           "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Social Casino:</span> For teams that wanted engagement without real-money betting, BetProtocol supported social casino setups. Users played with virtual currency, while operators monetized through ads and in-game purchases. Key points: • No gaming license required • No real-money wagering • Built for community growth and monetization"
         ],
-        imageLeft: true // Images on left, text on right
+        imageLeft: false // Images on right, captions on left
       },
       {
         description: "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Sales motion and growth.</span><br /><br /><span class=\"underline decoration-green-400 decoration-2\">Direct, consultative sales with builders and operators</span>: understand constraints, map BetProtocol primitives to use cases, educate on integration and shipping.<br /><br />Grew from 2 clients and 3 partnerships to <span class=\"underline decoration-green-400 decoration-2\">10+ aggregated clients and partnerships in three months</span>. Real-world feedback fed back into product.",
@@ -503,13 +503,19 @@ export const works: Record<string, Work> = {
       },
       {
         description: "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Protocol and developer marketplace.</span><br /><br />BEPRO became a protocol and task marketplace: teams post tasks, fund work with crypto, and the community curates and validates.<br /><br />Incentives aligned between builders, token holders, and usage. Partnerships were tied to actual usage, not announcements.",
-        image: "/work/bepro-marketplace.png",
+        image: "/work/bepro-showcase.gif",
         imageLeft: true
       },
       {
-        description: "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Ecosystem partnerships.</span><br /><br />Focus on liquidity and activity, data and tooling integrations, and real operators deploying and transacting. Collaborations across DeFi, gaming, developer tooling, and infra.<br /><br />Goal: relevance and throughput, not logo collection.",
-        image: "/work/bepro-partnerships.png",
+        description: "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Autonomous protocol for decentralized development.</span><br /><br />BEPRO Network pivots to connecting developers with software work through on-chain bounties, letting teams post tasks with token rewards, builders complete and get paid, and community curators help settle disputes — all without centralized intermediaries, fostering an open, autonomous development ecosystem.",
+        image: "/work/bepro-dap.png",
         imageLeft: false
+      },
+      {
+        images: ["/work/bepro-dap2.png", "/work/bepro-dap3.png",]
+      },
+      {
+        images: ["/work/bepro-dap4.png", "/work/bepro-dap5.png", "/work/bepro-dap6.png"]
       },
       {
         description: "Through partnerships and adoption-focused sales at BEPRO Network, I supported the pivot toward a developer-first protocol, which ultimately led to its integration and acquisition by TAIKAI.",
