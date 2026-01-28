@@ -13,6 +13,16 @@ export function FeaturedWorkSection({}: FeaturedWorkSectionProps = {}) {
   const [startIndex, setStartIndex] = React.useState(0);
   const workIds = React.useMemo(() => getAllWorkIds(), []);
 
+  const handleWorkLinkClick = React.useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+      if (typeof window === "undefined" || window.innerWidth >= 1024) return;
+      e.preventDefault();
+      // On mobile: full page navigation (no transition) - treat as new page
+      window.location.href = href + "?scroll=1";
+    },
+    []
+  );
+
   const visibleWorks = workIds.slice(
     startIndex,
     startIndex + ITEMS_PER_PAGE
@@ -78,14 +88,16 @@ export function FeaturedWorkSection({}: FeaturedWorkSectionProps = {}) {
           const isActive = featuredWorkIds.includes(workId);
           
           if (isActive) {
+            const href = `/work/${work.id}`;
             return (
               <Link
-            key={startIndex + index}
-                href={`/work/${work.id}`}
-            className="flex items-center gap-1 text-xs text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200 w-full text-left"
-          >
-            <span className="truncate">{work.title}</span>
-            <span className="shrink-0">→</span>
+                key={startIndex + index}
+                href={href}
+                onClick={(e) => handleWorkLinkClick(e, href)}
+                className="flex items-center gap-1 text-xs text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200 w-full text-left"
+              >
+                <span className="truncate">{work.title}</span>
+                <span className="shrink-0">→</span>
               </Link>
             );
           }

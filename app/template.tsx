@@ -55,14 +55,13 @@ export default function Template({ children }: { children: React.ReactNode }) {
         // Slide in for forward navigation (fade on desktop, slide from bottom on mobile)
         setIsSlidingOut(false);
         setIsAnimating(false);
-        
-        // Wait for full exit animation (700ms), then update children and slide in
+        const duration = typeof window !== "undefined" && window.innerWidth < 1024 ? 900 : 700;
+        // Wait for scroll/transition, then update children and slide in
         const timer = setTimeout(() => {
           setDisplayChildren(children);
-          // Small delay before starting entrance animation, like contact modal
           setTimeout(() => setIsAnimating(true), 50);
           previousPathname.current = pathname;
-        }, 700); // Full 700ms duration like contact modal
+        }, duration);
 
         return () => clearTimeout(timer);
       } else {
@@ -100,9 +99,11 @@ export default function Template({ children }: { children: React.ReactNode }) {
     }
   };
 
+  const transitionDuration = isMobile ? 900 : 700;
   return (
     <div
-      className={`transition-all duration-700 ease-page ${getTransformClasses()}`}
+      className={`transition-all ease-page ${getTransformClasses()}`}
+      style={{ transitionDuration: `${transitionDuration}ms` }}
     >
       {displayChildren}
     </div>

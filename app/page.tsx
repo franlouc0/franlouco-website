@@ -286,8 +286,8 @@ export default function Home() {
         </nav>
       </aside>
 
-      {/* Mobile Scroll Indicator - between experience and grid */}
-      <div className="flex justify-center mt-2 mb-0 lg:hidden">
+      {/* Mobile Scroll Indicator - between experience and grid (scroll target for Featured Work links) */}
+      <div id="scroll-to-view-work" className="flex justify-center mt-2 mb-0 lg:hidden">
         <div className="flex flex-col items-center gap-2">
           <ChevronDown 
             className="h-6 w-6 text-green-400 animate-bounce" 

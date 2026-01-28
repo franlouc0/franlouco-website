@@ -9,7 +9,7 @@ import { ExperienceSection } from "@/components/experience-section";
 import { FeaturedWorkSection } from "@/components/featured-work-section";
 import { ContactModal } from "@/components/contact-modal";
 import { useState, useEffect, useRef } from "react";
-import { getWorkById } from "@/lib/work";
+import { getWorkById, type Work } from "@/lib/work";
 import { getYouTubeVideoId } from "@/lib/utils";
 
 interface WorkPageProps {
@@ -66,6 +66,150 @@ function VideoSection({ video, title, tooltip, company }: VideoSectionProps) {
           allowFullScreen
         />
       </div>
+    </div>
+  );
+}
+
+interface WorkInfoCardProps {
+  work: Work;
+  scrollProgress: number;
+  variant: "desktop" | "mobile";
+}
+
+function WorkInfoCard({ work, scrollProgress, variant }: WorkInfoCardProps) {
+  const isCompact = variant === "desktop" && scrollProgress > 0.3;
+  const hideNumbers = variant === "desktop" && scrollProgress > 0.5;
+  const isMobile = variant === "mobile";
+
+  return (
+    <div
+      className={
+        isMobile
+          ? "rounded-lg border border-zinc-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/90 w-full"
+          : "relative rounded-lg border border-white/20 bg-white/90 backdrop-blur-sm shadow-xl dark:border-zinc-700/50 dark:bg-zinc-900/90 max-w-[280px] transition-all duration-300 ease-out"
+      }
+      style={isMobile ? undefined : { padding: "1rem" }}
+    >
+      {/* Company Logo */}
+      <div
+        className="flex items-start gap-3 transition-all duration-300 ease-out"
+        style={{
+          marginBottom: hideNumbers ? 0 : "12px",
+        }}
+      >
+        <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-md border border-zinc-200 dark:border-zinc-800">
+          <Image
+            src={work.logo}
+            alt={work.company}
+            fill
+            className="object-cover"
+          />
+        </div>
+        <div className="flex-1 min-w-0">
+          <div className="flex items-baseline gap-2 mb-0.5">
+            <h3 className="text-xs font-semibold text-zinc-900 dark:text-zinc-50 truncate">
+              {work.company}
+            </h3>
+            <span
+              className={
+                isMobile
+                  ? "text-xs text-zinc-500 dark:text-zinc-500 shrink-0"
+                  : "text-[10px] text-zinc-500 dark:text-zinc-500 shrink-0"
+              }
+            >
+              {work.period}
+            </span>
+          </div>
+          <p
+            className={
+              isMobile
+                ? "text-xs text-zinc-600 dark:text-zinc-400"
+                : "text-[10px] text-zinc-600 dark:text-zinc-400"
+            }
+          >
+            {work.role}
+          </p>
+        </div>
+      </div>
+
+      {/* Divider above numbers */}
+      {work.numbers && work.numbers.length > 0 && (
+        <div
+          className="border-b border-zinc-100 dark:border-zinc-800 transition-all duration-300 ease-out overflow-hidden"
+          style={{
+            opacity: hideNumbers ? 0 : 1,
+            maxHeight: hideNumbers ? 0 : "12px",
+            marginBottom: hideNumbers ? 0 : "12px",
+          }}
+        />
+      )}
+
+      {/* Numbers Block */}
+      {work.numbers && work.numbers.length > 0 && (
+        <div
+          className="transition-all duration-300 ease-out overflow-hidden"
+          style={{
+            opacity: hideNumbers ? 0 : 1,
+            maxHeight: hideNumbers ? 0 : "200px",
+            marginBottom: hideNumbers ? 0 : "12px",
+          }}
+        >
+          <div className="grid grid-cols-2 gap-3">
+            {work.numbers.map((number, idx) => (
+              <div key={idx} className="flex flex-col">
+                <span className="text-xs font-bold text-green-400 dark:text-green-400 leading-none">
+                  {number.value}
+                </span>
+                <span
+                  className={
+                    isMobile
+                      ? "text-[10px] text-zinc-500 dark:text-zinc-500 uppercase tracking-wide mt-1"
+                      : "text-[9px] text-zinc-500 dark:text-zinc-500 uppercase tracking-wide mt-1"
+                  }
+                >
+                  {number.label}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Divider between numbers and scope */}
+      {work.scope && work.scope.length > 0 && (
+        <div
+          className="border-b border-zinc-100 dark:border-zinc-800 transition-all duration-300 ease-out overflow-hidden"
+          style={{
+            opacity: isCompact ? 0 : 1,
+            maxHeight: isCompact ? 0 : "12px",
+            marginBottom: isCompact ? 0 : "12px",
+          }}
+        />
+      )}
+
+      {/* Scope Block */}
+      {work.scope && work.scope.length > 0 && (
+        <div
+          className="space-y-1 transition-all duration-300 ease-out overflow-hidden"
+          style={{
+            opacity: isCompact ? 0 : 1,
+            maxHeight: isCompact ? 0 : "200px",
+          }}
+        >
+          {work.scope.map((item, idx) => (
+            <p
+              key={idx}
+              className={
+                isMobile
+                  ? "text-xs text-zinc-600 dark:text-zinc-400"
+                  : "text-[10px] text-zinc-600 dark:text-zinc-400"
+              }
+            >
+              {item}
+            </p>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -133,6 +277,26 @@ export default function WorkPage({ params }: WorkPageProps) {
     };
   }, []);
 
+  // On mobile, when coming from Featured Work link: scroll to work title after page loads
+  useEffect(() => {
+    if (typeof window === "undefined" || window.innerWidth >= 1024) return;
+    const params = typeof window !== "undefined" ? new URLSearchParams(window.location.search) : null;
+    const shouldScroll = params?.get("scroll") === "1";
+    if (!shouldScroll) return;
+    // Remove query param from URL
+    window.history.replaceState({}, "", window.location.pathname);
+    // Wait for page to render and layout to settle, then scroll to work content
+    const timer = setTimeout(() => {
+      const el = document.getElementById("work-main-content");
+      if (!el) return;
+      requestAnimationFrame(() => {
+        const y = el.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      });
+    }, 400);
+    return () => clearTimeout(timer);
+  }, [work?.id]);
+
   // Share functionality - copy URL to clipboard
   const handleShare = async () => {
     if (!work) return;
@@ -152,9 +316,9 @@ export default function WorkPage({ params }: WorkPageProps) {
 
   return (
     <main className="flex flex-col h-auto min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-950 dark:text-zinc-50 lg:flex-row lg:h-screen lg:overflow-hidden">
-      {/* Sidebar - Same as homepage */}
+      {/* Sidebar - Hidden on mobile, visible on desktop */}
       <aside
-        className="flex w-full flex-col p-6 pb-0 dark:border-zinc-800 lg:w-80 lg:border-r lg:p-8 lg:pb-8"
+        className="hidden lg:flex w-full flex-col p-6 pb-0 dark:border-zinc-800 lg:w-80 lg:border-r lg:p-8 lg:pb-8"
         aria-label="Profile and experience"
       >
         {/* Profile section */}
@@ -354,8 +518,8 @@ export default function WorkPage({ params }: WorkPageProps) {
         </nav>
       </aside>
 
-      {/* Main Content Area - Visual Showcase */}
-      <div className="relative flex flex-1 flex-col overflow-hidden w-full">
+      {/* Main Content Area - Visual Showcase (scroll target when coming from Featured Work on mobile) */}
+      <div id="work-main-content" className="relative flex flex-1 flex-col overflow-hidden w-full">
         {/* Header Image with Title and Info Card */}
         <div 
           ref={headerRef}
@@ -467,110 +631,9 @@ export default function WorkPage({ params }: WorkPageProps) {
             </div>
           </div>
 
-          {/* Info Card - Top Right */}
-          <div className="absolute top-6 right-6 lg:top-8 lg:right-8 z-10">
-            <div 
-              className="relative rounded-lg border border-white/20 bg-white/90 backdrop-blur-sm shadow-xl dark:border-zinc-700/50 dark:bg-zinc-900/90 max-w-[280px] transition-all duration-300 ease-out"
-              style={{
-                padding: '1rem',
-              }}
-            >
-              {/* Company Logo */}
-              <div 
-                className="flex items-start gap-3 transition-all duration-300 ease-out"
-                style={{
-                  marginBottom: scrollProgress > 0.5 ? 0 : '12px',
-                }}
-              >
-                <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-md border border-zinc-200 dark:border-zinc-800">
-                  <Image
-                    src={work.logo}
-                    alt={work.company}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-baseline gap-2 mb-0.5">
-                    <h3 className="text-xs font-semibold text-zinc-900 dark:text-zinc-50 truncate">
-                      {work.company}
-                    </h3>
-                    <span className="text-[10px] text-zinc-500 dark:text-zinc-500 shrink-0">
-                      {work.period}
-                    </span>
-                  </div>
-                  <p className="text-[10px] text-zinc-600 dark:text-zinc-400">
-                    {work.role}
-                  </p>
-                </div>
-              </div>
-
-              {/* Divider above numbers */}
-              {work.numbers && work.numbers.length > 0 && (
-                <div 
-                  className="border-b border-zinc-100 dark:border-zinc-800 transition-all duration-300 ease-out overflow-hidden"
-                  style={{
-                    opacity: scrollProgress > 0.5 ? 0 : 1,
-                    maxHeight: scrollProgress > 0.5 ? 0 : '12px',
-                    marginBottom: scrollProgress > 0.5 ? 0 : '12px',
-                  }}
-                />
-              )}
-
-              {/* Numbers Block - Key credibility signals */}
-              {work.numbers && work.numbers.length > 0 && (
-                <div 
-                  className="transition-all duration-300 ease-out overflow-hidden"
-                  style={{
-                    opacity: scrollProgress > 0.5 ? 0 : 1,
-                    maxHeight: scrollProgress > 0.5 ? 0 : '200px',
-                    marginBottom: scrollProgress > 0.5 ? 0 : '12px',
-                  }}
-                >
-                  <div className="grid grid-cols-2 gap-3">
-                    {work.numbers.map((number, idx) => (
-                      <div key={idx} className="flex flex-col">
-                        <span className="text-xs font-bold text-green-400 dark:text-green-400 leading-none">
-                          {number.value}
-                        </span>
-                        <span className="text-[9px] text-zinc-500 dark:text-zinc-500 uppercase tracking-wide mt-1">
-                          {number.label}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Divider between numbers and scope */}
-              {work.scope && work.scope.length > 0 && (
-                <div 
-                  className="border-b border-zinc-100 dark:border-zinc-800 transition-all duration-300 ease-out overflow-hidden"
-                  style={{
-                    opacity: scrollProgress > 0.3 ? 0 : 1,
-                    maxHeight: scrollProgress > 0.3 ? 0 : '12px',
-                    marginBottom: scrollProgress > 0.3 ? 0 : '12px',
-                  }}
-                />
-              )}
-
-              {/* Scope Block - What I owned */}
-              {work.scope && work.scope.length > 0 && (
-                <div 
-                  className="space-y-1 transition-all duration-300 ease-out overflow-hidden"
-                  style={{
-                    opacity: scrollProgress > 0.3 ? 0 : 1,
-                    maxHeight: scrollProgress > 0.3 ? 0 : '200px',
-                  }}
-                >
-                  {work.scope.map((item, idx) => (
-                    <p key={idx} className="text-[10px] text-zinc-600 dark:text-zinc-400">
-                      {item}
-                    </p>
-                  ))}
-                </div>
-              )}
-            </div>
+          {/* Info Card - Desktop only, top right */}
+          <div className="absolute top-6 right-6 lg:top-8 lg:right-8 z-10 hidden lg:block">
+            <WorkInfoCard work={work} scrollProgress={scrollProgress} variant="desktop" />
           </div>
         </div>
 
@@ -586,6 +649,10 @@ export default function WorkPage({ params }: WorkPageProps) {
           }}
           aria-label="Work details"
         >
+          {/* Info Card - Mobile only, below header */}
+          <div className="lg:hidden mb-6">
+            <WorkInfoCard work={work} scrollProgress={0} variant="mobile" />
+          </div>
           {/* Visual Proof Section - Seamless Gallery */}
           {work.visuals && work.visuals.length > 0 && (
             <div className="space-y-6">
