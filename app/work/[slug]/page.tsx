@@ -309,7 +309,7 @@ export default function WorkPage({ params }: WorkPageProps) {
         >
           <Link
             href="https://github.com/franlouc0"
-            className="relative inline-block text-[10px] text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
+            className="relative inline-block text-xs text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Francisco Lourenço on GitHub"
@@ -327,7 +327,7 @@ export default function WorkPage({ params }: WorkPageProps) {
           </span>
           <Link
             href="https://www.linkedin.com/in/franlouco/"
-            className="text-[10px] text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
+            className="text-xs text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Francisco Lourenço on LinkedIn"
@@ -343,7 +343,7 @@ export default function WorkPage({ params }: WorkPageProps) {
           <button
             type="button"
             onClick={() => setIsContactOpen(true)}
-            className="text-[10px] text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
+            className="text-xs text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
             aria-label="Open contact form"
           >
             Contact
@@ -1076,7 +1076,7 @@ export default function WorkPage({ params }: WorkPageProps) {
       >
         <Link
           href="https://github.com/franlouc0"
-          className="relative inline-block text-[10px] text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
+          className="relative inline-block text-xs text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Francisco Lourenço on GitHub"
@@ -1094,7 +1094,7 @@ export default function WorkPage({ params }: WorkPageProps) {
         </span>
         <Link
           href="https://www.linkedin.com/in/franlouco/"
-          className="text-[10px] text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
+          className="text-xs text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Francisco Lourenço on LinkedIn"
@@ -1109,7 +1109,7 @@ export default function WorkPage({ params }: WorkPageProps) {
         </span>
         <a
           href="mailto:hello@franlou.co"
-          className="text-[10px] text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
+          className="text-xs text-zinc-600 transition-colors hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-200"
           aria-label="Email Francisco Lourenço"
         >
           Email
