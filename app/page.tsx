@@ -50,9 +50,9 @@ const projects = [
   },
   { 
     id: 6, 
-    title: "Design System", 
-    description: "Component library", 
-    image: "https://images.unsplash.com/photo-1557682250-33bd709cbe85?auto=format&fit=crop&w=800&q=80", 
+    title: "Super Muscles Card Collection", 
+    description: "An AI-powered card project by my son Afonso", 
+    image: "/grid/grid-super-muscles.png", 
     span: "row-span-1" 
   },
   { 
