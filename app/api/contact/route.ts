@@ -5,6 +5,8 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 const CONTACT_EMAIL = process.env.CONTACT_EMAIL ?? "francisco.guerra.lourenco@gmail.com";
 const FROM_EMAIL = process.env.RESEND_FROM_EMAIL ?? "onboarding@resend.dev";
+const FROM_NAME = process.env.RESEND_FROM_NAME ?? "Francisco Lourenço";
+const SUBJECT_PREFIX = process.env.CONTACT_SUBJECT_PREFIX ?? "[franlou.co] Contact from";
 
 export async function POST(request: Request) {
   if (!process.env.RESEND_API_KEY) {
@@ -42,10 +44,12 @@ export async function POST(request: Request) {
     <pre>${escapeHtml(message)}</pre>
   `;
 
+  const from = FROM_NAME ? `"${FROM_NAME.replace(/"/g, '\\"')}" <${FROM_EMAIL}>` : FROM_EMAIL;
+
   const { data, error } = await resend.emails.send({
-    from: FROM_EMAIL,
+    from,
     to: CONTACT_EMAIL,
-    subject: `Contact from website: ${escapeHtml(name)}`,
+    subject: `${SUBJECT_PREFIX}: ${escapeHtml(name)}`,
     html,
   });
 
