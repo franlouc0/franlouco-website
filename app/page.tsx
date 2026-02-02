@@ -27,19 +27,27 @@ const projects = [
     span: "row-span-1" 
   },
   { 
-    id: 3, 
-    title: "Apex Legends Manager Simulator", 
-    description: "Experience the thrill of Apex Legends esports from the coach's seat", 
-    image: "/grid/grid-apex-legends.png", 
-    span: "row-span-1" 
-  },
-  { 
     id: 4, 
     title: "How we achieved 166% MoM NGO growth in an ESG marketplace", 
     description: "Connecting corporations with impact organizations in 6 months", 
     image: "/grid/grid-coompass.png", 
     span: "row-span-2",
     href: "/work/how-we-achieved-166-mom-ngo-growth" 
+  },
+  { 
+    id: 7, 
+    title: "Scaling protocol adoption through partnerships, not hype", 
+    description: "Growing clients and ecosystem usage by shifting from gambling tooling to a developer-first Web3 protocol", 
+    image: "/grid/grid-bepronetwork.png", 
+    span: "row-span-2",
+    href: "/work/scaling-sales-partnerships-blockchain"
+  },
+  { 
+    id: 3, 
+    title: "Apex Legends Manager Simulator", 
+    description: "Experience the thrill of Apex Legends esports from the coach's seat", 
+    image: "/grid/grid-apex-legends.png", 
+    span: "row-span-1" 
   },
   { 
     id: 5, 
@@ -54,14 +62,6 @@ const projects = [
     description: "An AI-powered card project by my son Afonso", 
     image: "/grid/grid-super-muscles.png", 
     span: "row-span-1" 
-  },
-  { 
-    id: 7, 
-    title: "Scaling protocol adoption through partnerships, not hype", 
-    description: "Growing clients and ecosystem usage by shifting from gambling tooling to a developer-first Web3 protocol", 
-    image: "/grid/grid-bepronetwork.png", 
-    span: "row-span-2",
-    href: "/work/scaling-sales-partnerships-blockchain"
   },
   { 
     id: 8, 
