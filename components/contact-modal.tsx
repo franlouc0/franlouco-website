@@ -384,6 +384,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const [shouldRender, setShouldRender] = React.useState(false);
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [submitStatus, setSubmitStatus] = React.useState<"idle" | "success" | "error">("idle");
+  const [submittedName, setSubmittedName] = React.useState("");
   const [formData, setFormData] = React.useState({
     inquiryType: [] as string[],
     name: "",
@@ -419,6 +420,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
         setSubmitStatus("error");
         return;
       }
+      setSubmittedName(formData.name.trim());
       setSubmitStatus("success");
       setFormData({ inquiryType: [], name: "", email: "", message: "" });
       setTimeout(() => {
@@ -451,6 +453,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
           message: "",
         });
         setSubmitStatus("idle");
+        setSubmittedName("");
       }, 700); // Match this to transition duration
       return () => clearTimeout(timer);
     }
@@ -618,9 +621,14 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
               {/* Success / Error message */}
               {submitStatus === "success" && (
-                <p className="text-xs font-medium text-green-600 dark:text-green-400">
-                  Message sent. Thanks for reaching out!
-                </p>
+                <div className="space-y-1 text-xs font-medium text-green-600 dark:text-green-400">
+                  <p>
+                    Thanks{submittedName ? `, ${submittedName}` : ""}! Your message was sent.
+                  </p>
+                  <p className="text-zinc-600 dark:text-zinc-400 font-normal">
+                    I usually reply within 24–48 hours.
+                  </p>
+                </div>
               )}
               {submitStatus === "error" && (
                 <p className="text-xs font-medium text-red-600 dark:text-red-400">
