@@ -382,6 +382,8 @@ function MultiselectDropdown({
 export function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const [isAnimating, setIsAnimating] = React.useState(false);
   const [shouldRender, setShouldRender] = React.useState(false);
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [submitStatus, setSubmitStatus] = React.useState<"idle" | "success" | "error">("idle");
   const [formData, setFormData] = React.useState({
     inquiryType: [] as string[],
     name: "",
@@ -394,18 +396,39 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    setSubmitStatus("idle");
   };
 
   const handleMultiselectChange = (name: string, value: string[]) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
+    setSubmitStatus("idle");
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here (e.g., send email, API call, etc.)
-    console.log("Form submitted:", formData);
-    // You can add your email sending logic here
-    onClose();
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setSubmitStatus("error");
+        return;
+      }
+      setSubmitStatus("success");
+      setFormData({ inquiryType: [], name: "", email: "", message: "" });
+      setTimeout(() => {
+        onClose();
+      }, 1500);
+    } catch {
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   React.useEffect(() => {
@@ -420,13 +443,14 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
       const timer = setTimeout(() => {
         setShouldRender(false);
         document.body.style.overflow = "unset";
-        // Reset form data when modal closes
+        // Reset form data and status when modal closes
         setFormData({
           inquiryType: [],
           name: "",
           email: "",
           message: "",
         });
+        setSubmitStatus("idle");
       }, 700); // Match this to transition duration
       return () => clearTimeout(timer);
     }
@@ -592,18 +616,32 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 />
               </div>
 
+              {/* Success / Error message */}
+              {submitStatus === "success" && (
+                <p className="text-xs font-medium text-green-600 dark:text-green-400">
+                  Message sent. Thanks for reaching out!
+                </p>
+              )}
+              {submitStatus === "error" && (
+                <p className="text-xs font-medium text-red-600 dark:text-red-400">
+                  Something went wrong. Please try again or email directly.
+                </p>
+              )}
+
               {/* Submit Button */}
               <div className="flex gap-2 pt-2">
                 <button
                   type="submit"
-                  className="flex h-9 flex-1 items-center justify-center rounded-md border border-zinc-300 bg-zinc-100 px-4 text-xs font-medium transition-colors hover:bg-zinc-200 dark:border-zinc-700/50 dark:bg-zinc-800/50 dark:hover:bg-zinc-700/50"
+                  disabled={isSubmitting}
+                  className="flex h-9 flex-1 items-center justify-center rounded-md border border-zinc-300 bg-zinc-100 px-4 text-xs font-medium transition-colors hover:bg-zinc-200 disabled:opacity-60 disabled:cursor-not-allowed dark:border-zinc-700/50 dark:bg-zinc-800/50 dark:hover:bg-zinc-700/50"
                 >
-                  Send Email
+                  {isSubmitting ? "Sending..." : "Send Email"}
                 </button>
                 <button
                   type="button"
                   onClick={onClose}
-                  className="flex h-9 items-center justify-center rounded-md border border-zinc-300 bg-zinc-100 px-4 text-xs font-medium transition-colors hover:bg-zinc-200 dark:border-zinc-700/50 dark:bg-zinc-800/50 dark:hover:bg-zinc-700/50"
+                  disabled={isSubmitting}
+                  className="flex h-9 items-center justify-center rounded-md border border-zinc-300 bg-zinc-100 px-4 text-xs font-medium transition-colors hover:bg-zinc-200 disabled:opacity-60 dark:border-zinc-700/50 dark:bg-zinc-800/50 dark:hover:bg-zinc-700/50"
                 >
                   Cancel
                 </button>
