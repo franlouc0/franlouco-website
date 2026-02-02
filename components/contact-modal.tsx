@@ -425,7 +425,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
       setFormData({ inquiryType: [], name: "", email: "", message: "" });
       setTimeout(() => {
         onClose();
-      }, 1500);
+      }, 5000);
     } catch {
       setSubmitStatus("error");
     } finally {
