@@ -45,10 +45,12 @@ export async function POST(request: Request) {
   `;
 
   const from = FROM_NAME ? `"${FROM_NAME.replace(/"/g, '\\"')}" <${FROM_EMAIL}>` : FROM_EMAIL;
+  const replyTo = `"${name.trim().replace(/"/g, '\\"')}" <${email.trim()}>`;
 
   const { data, error } = await resend.emails.send({
     from,
     to: CONTACT_EMAIL,
+    replyTo,
     subject: `${SUBJECT_PREFIX}: ${escapeHtml(name)}`,
     html,
   });
