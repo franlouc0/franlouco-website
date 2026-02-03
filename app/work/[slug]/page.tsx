@@ -474,7 +474,7 @@ export default function WorkPage({ params }: WorkPageProps) {
 
         {/* Navigation Links - Desktop only */}
         <nav
-          className="hidden mt-auto items-center gap-2 border-t border-zinc-200 pt-6 dark:border-zinc-800 lg:flex"
+          className="hidden mt-auto items-center gap-2 border-t border-zinc-200 pt-8 mt-6 dark:border-zinc-800 lg:flex"
           aria-label="Social links and navigation"
         >
           <Link
