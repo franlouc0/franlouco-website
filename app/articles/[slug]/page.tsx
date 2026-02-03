@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Info, X, ChevronDown } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { ExperienceSection } from "@/components/experience-section";
+import { FeaturedArticlesSection } from "@/components/featured-articles-section";
 import { FeaturedWorkSection } from "@/components/featured-work-section";
 import { ContactModal } from "@/components/contact-modal";
 import { ArticleView } from "@/components/article-view";
@@ -173,6 +174,9 @@ export default function ArticlePage({ params }: ArticlePageProps) {
 
           {/* Featured Work */}
           <FeaturedWorkSection />
+
+          {/* Featured Articles */}
+          <FeaturedArticlesSection />
 
           {/* Experience & Achievements */}
           <ExperienceSection />

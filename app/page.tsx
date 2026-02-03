@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Info, X, ChevronDown } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { ExperienceSection } from "@/components/experience-section";
+import { FeaturedArticlesSection } from "@/components/featured-articles-section";
 import { FeaturedWorkSection } from "@/components/featured-work-section";
 import { ContactModal } from "@/components/contact-modal";
 
@@ -229,6 +230,9 @@ export default function Home() {
 
           {/* Featured Work */}
           <FeaturedWorkSection />
+
+          {/* Featured Articles */}
+          <FeaturedArticlesSection />
 
           {/* Experience & Achievements */}
           <ExperienceSection />

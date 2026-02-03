@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ArrowLeft, Info, X, Share2, Check, CheckCircle2, ExternalLink } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { ExperienceSection } from "@/components/experience-section";
+import { FeaturedArticlesSection } from "@/components/featured-articles-section";
 import { FeaturedWorkSection } from "@/components/featured-work-section";
 import { ContactModal } from "@/components/contact-modal";
 import { useState, useEffect, useRef } from "react";
@@ -461,6 +462,9 @@ export default function WorkPage({ params }: WorkPageProps) {
 
           {/* Featured Work */}
           <FeaturedWorkSection />
+
+          {/* Featured Articles */}
+          <FeaturedArticlesSection />
 
           {/* Experience & Achievements */}
           <ExperienceSection />
