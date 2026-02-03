@@ -116,4 +116,27 @@
     animation: marquee 90s linear infinite;
   }
 
+  /* Minimal sidebar scrollbar - right side, thin */
+  .sidebar-scroll {
+    scrollbar-width: thin;
+    scrollbar-gutter: stable;
+    scrollbar-color: rgb(161 161 170) transparent;
+  }
+  .dark .sidebar-scroll {
+    scrollbar-color: rgb(82 82 91) transparent;
+  }
+  .sidebar-scroll::-webkit-scrollbar {
+    width: 2px;
+  }
+  .sidebar-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .sidebar-scroll::-webkit-scrollbar-thumb {
+    background-color: rgb(161 161 170);
+    border-radius: 1px;
+  }
+  .dark .sidebar-scroll::-webkit-scrollbar-thumb {
+    background-color: rgb(82 82 91);
+  }
+
 }

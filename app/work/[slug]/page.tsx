@@ -319,9 +319,10 @@ export default function WorkPage({ params }: WorkPageProps) {
     <main className="flex flex-col h-auto min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-950 dark:text-zinc-50 lg:flex-row lg:h-screen lg:overflow-hidden">
       {/* Sidebar - Hidden on mobile, visible on desktop */}
       <aside
-        className="hidden lg:flex w-full flex-col p-6 pb-0 dark:border-zinc-800 lg:w-80 lg:border-r lg:p-8 lg:pb-8"
+        className="hidden lg:flex w-full flex-col p-6 pb-0 dark:border-zinc-800 lg:w-80 lg:min-h-0 lg:border-r lg:p-8 lg:pb-8"
         aria-label="Profile and experience"
       >
+        <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden sidebar-scroll lg:pr-3 lg:-mr-5">
         {/* Profile section */}
         <header className="mb-8">
           <div className="flex items-center justify-between gap-4 mb-8">
@@ -469,6 +470,7 @@ export default function WorkPage({ params }: WorkPageProps) {
           {/* Experience & Achievements */}
           <ExperienceSection />
         </header>
+        </div>
 
         {/* Navigation Links - Desktop only */}
         <nav
