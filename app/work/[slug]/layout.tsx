@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SITE_URL, AUTHOR_NAME } from "@/lib/constants";
+import { getWorkOgImage } from "@/lib/og-images";
 import { getWorkById, getAllWorkIds } from "@/lib/work";
 
 interface WorkLayoutProps {
@@ -23,6 +24,7 @@ export async function generateMetadata({
   const description =
     work.subtitle ||
     `${work.company} — ${work.role} (${work.period}). ${work.impact}`;
+  const ogImage = getWorkOgImage(work.id);
 
   return {
     title,
@@ -36,7 +38,7 @@ export async function generateMetadata({
       siteName: "Francisco Lourenço",
       images: [
         {
-          url: `${SITE_URL}/opengraph-image2.png`,
+          url: ogImage,
           width: 1200,
           height: 800,
           alt: `${work.company} — ${work.title}`,
@@ -47,6 +49,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: `${title} | Francisco Lourenço`,
       description,
+      images: [ogImage],
     },
     alternates: {
       canonical: `${SITE_URL}/work/${work.id}`,

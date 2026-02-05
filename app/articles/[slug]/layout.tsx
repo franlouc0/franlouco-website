@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { SITE_URL, AUTHOR_NAME } from "@/lib/constants";
 import { getArticleById, getAllArticleIds } from "@/lib/articles";
 import { generateArticleDescription } from "@/lib/article-utils";
-
-const OG_IMAGE = `${SITE_URL}/opengraph-image2.png`;
+import { getArticleOgImage } from "@/lib/og-images";
 
 interface ArticleLayoutProps {
   params: {
@@ -28,6 +27,7 @@ export async function generateMetadata({
   }
 
   const description = generateArticleDescription(article.content, article.title);
+  const ogImage = getArticleOgImage(article.id);
 
   return {
     title: article.title,
@@ -43,14 +43,14 @@ export async function generateMetadata({
       tags: article.tags,
       url: `${SITE_URL}/articles/${article.id}`,
       images: [
-        { url: OG_IMAGE, width: 1200, height: 800, alt: article.title },
+        { url: ogImage, width: 1200, height: 800, alt: article.title },
       ],
     },
     twitter: {
       card: "summary_large_image",
       title: article.title,
       description,
-      images: [OG_IMAGE],
+      images: [ogImage],
     },
     alternates: {
       canonical: `${SITE_URL}/articles/${article.id}`,
