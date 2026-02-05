@@ -22,9 +22,9 @@ const projects = [
   },
   { 
     id: 2, 
-    title: "Grumpy Frogz", 
-    description: "A personal NFT collection built in 2022 as a Midjourney prompt experiment", 
-    image: "/grid/grid-grumpy-frogz.png", 
+    title: "Fintech App", 
+    description: "Financial services", 
+    image: "https://images.unsplash.com/photo-1557683311-eac922347aa1?auto=format&fit=crop&w=800&q=80", 
     span: "row-span-1" 
   },
   { 
@@ -66,9 +66,9 @@ const projects = [
   },
   { 
     id: 8, 
-    title: "Fintech App", 
-    description: "Financial services", 
-    image: "https://images.unsplash.com/photo-1557683311-eac922347aa1?auto=format&fit=crop&w=800&q=80", 
+    title: "Grumpy Frogz", 
+    description: "A personal NFT collection built in 2022 as a Midjourney prompt experiment", 
+    image: "/grid/grid-grumpy-frogz.png", 
     span: "row-span-1" 
   },
   { 

@@ -710,6 +710,42 @@ When it does not, walk away.
 That judgment is what I bring to the table.
     `.trim(),
   },
+  "imagining-ai-powered-fundraising-nonprofits": {
+    id: "imagining-ai-powered-fundraising-nonprofits",
+    title: "Imagining AI-powered fundraising products for nonprofits",
+    date: "2025-01-27",
+    author: "Francisco Lourenço",
+    tags: ["AI", "Social impact", "Nonprofits", "Fundraising", "Design", "Product"],
+    content: `
+Over the last few weeks I have been using AI as a creative tool, not only to generate visuals, but to explore how design, branding, and storytelling can serve real social impact. The result is built around one question: **what if everyday objects could become a sustainable fundraising engine for humanitarian causes?**
+
+I used AI to reimagine simple things: a mug, a flashlight, a backpack, a notebook. Each one rethought with care, strong materials, and a visual language inspired by the values of the Portuguese Red Cross. Not as luxury for show. As objects people would actually want to own and use.
+
+## Why start with objects?
+
+People give when it means something to them and they stay connected when the cause has a place in their life. A product that sits in your daily routine does both. The bottle you take to work can fund emergency response; the blanket on the couch can support disaster relief; the notebook in your bag can tie into community programs. Small objects, real use, and a constant, gentle reminder. That is how one-time donations turn into ongoing support.
+
+## What changed when I used AI to explore the idea
+
+I could move from a blank page to a coherent set of product concepts in minutes instead of weeks. Visual branding and collection feel became possible without heavy production costs. I could test story-driven design tied to real missions before committing to physical production. This is not about replacing designers. It is about lowering the barrier to test ideas that can later become real, and with the right partners, these concepts could move from digital to physical.
+
+## A fundraising model that can scale
+
+Imagine a Portuguese Red Cross product line: emergency-ready everyday tools, thoughtfully designed household items, travel gear tied to humanitarian action, limited collections linked to specific causes. Each product would create awareness, generate recurring support, build a real connection to the brand, and tell a clear story of impact. The same idea works locally in Portugal and wherever humanitarian aid is needed.
+
+## Beyond donations: building community
+
+This approach does not only raise money. It turns supporters into ambassadors. It brings younger audiences closer to social causes. It uses a modern design language that stays relevant. Most of all, it makes helping feel part of daily life. People do not just give; they participate.
+
+## Why I built this
+
+I work at the intersection of technology, branding, and social impact. This project is my way of showing that AI can prototype meaningful ideas quickly, that creativity can support humanitarian work, and that design can be a force for good, not only for marketing. These visuals are not final products. They are conversation starters, and proof that new fundraising paths are possible.
+
+## The bigger idea
+
+If a handful of AI-generated concepts can open this many possibilities, imagine what focused teams, real materials, and real production could achieve. The same model could support NGOs, disaster relief, community projects, and education initiatives. Design, technology, and purpose can go much further together.
+    `.trim(),
+  },
 };
 
 export function getArticleById(id: string): Article | undefined {

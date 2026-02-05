@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import { Article } from "@/lib/articles";
 import { Breadcrumb } from "./breadcrumb";
 import { Share2 } from "lucide-react";
@@ -9,9 +10,11 @@ import { calculateReadingTime } from "@/lib/article-utils";
 
 interface ArticleViewProps {
   article: Article;
+  /** When false, only render article body (no breadcrumb, header, or TOC). Used when page has work-like hero + info card. */
+  showHeader?: boolean;
 }
 
-export function ArticleView({ article }: ArticleViewProps) {
+export function ArticleView({ article, showHeader = true }: ArticleViewProps) {
   const [copied, setCopied] = React.useState(false);
   const [scrollProgress, setScrollProgress] = React.useState(0);
   const contentRef = React.useRef<HTMLDivElement>(null);
@@ -300,6 +303,121 @@ export function ArticleView({ article }: ArticleViewProps) {
           );
           listItems = [];
         }
+        // Three-image grids for Red Cross article (same layout as work page)
+        if (article.id === "imagining-ai-powered-fundraising-nonprofits") {
+          if (trimmedLine === "## Why start with objects?") {
+            const articleImages = [
+              "/articles/redcross-assets1.png",
+              "/articles/redcross-assets2.png",
+              "/articles/redcross-assets3.png",
+            ];
+            elements.push(
+              <figure key={`img-grid-${index}`} className="mt-8 mb-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {articleImages.map((src, imgIdx) => (
+                    <div
+                      key={imgIdx}
+                      className="relative w-full rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900"
+                    >
+                      <Image
+                        src={src}
+                        alt={`Red Cross product concept ${imgIdx + 1}`}
+                        width={1920}
+                        height={1080}
+                        className="w-full h-auto object-contain"
+                        loading="lazy"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </figure>
+            );
+          }
+          if (trimmedLine === "## What changed when I used AI to explore the idea") {
+            const articleImages = [
+              "/articles/redcross-assets7.png",
+              "/articles/redcross-assets9.png",
+              "/articles/redcross-assets10.png",
+            ];
+            elements.push(
+              <figure key={`img-grid-ai-${index}`} className="mt-8 mb-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {articleImages.map((src, imgIdx) => (
+                    <div
+                      key={imgIdx}
+                      className="relative w-full rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900"
+                    >
+                      <Image
+                        src={src}
+                        alt={`Red Cross product concept ${imgIdx + 1}`}
+                        width={1920}
+                        height={1080}
+                        className="w-full h-auto object-contain"
+                        loading="lazy"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </figure>
+            );
+          }
+          if (trimmedLine === "## Beyond donations: building community") {
+            const articleImages = [
+              "/articles/redcross-assets4.png",
+              "/articles/redcross-assets6.png",
+            ];
+            elements.push(
+              <figure key={`img-grid-community-${index}`} className="mt-8 mb-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {articleImages.map((src, imgIdx) => (
+                    <div
+                      key={imgIdx}
+                      className="relative w-full rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900"
+                    >
+                      <Image
+                        src={src}
+                        alt={`Red Cross product concept ${imgIdx + 1}`}
+                        width={1920}
+                        height={1080}
+                        className="w-full h-auto object-contain"
+                        loading="lazy"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </figure>
+            );
+          }
+          if (trimmedLine === "## The bigger idea") {
+            const articleImages = [
+              "/articles/redcross-assets4.png",
+              "/articles/redcross-assets8.png",
+              "/articles/redcross-assets11.png",
+              "/articles/redcross-assets13.png",
+            ];
+            elements.push(
+              <figure key={`img-grid-bigger-${index}`} className="mt-8 mb-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {articleImages.map((src, imgIdx) => (
+                    <div
+                      key={imgIdx}
+                      className="relative w-full rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900"
+                    >
+                      <Image
+                        src={src}
+                        alt={`Red Cross product concept ${imgIdx + 1}`}
+                        width={1920}
+                        height={1080}
+                        className="w-full h-auto object-contain"
+                        loading="lazy"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </figure>
+            );
+          }
+        }
         // H2 with green accent line
         const headerText = trimmedLine.substring(3);
         const processedHeaderText = highlightMetrics(headerText);
@@ -476,6 +594,14 @@ export function ArticleView({ article }: ArticleViewProps) {
 
     return elements;
   };
+
+  if (!showHeader) {
+    return (
+      <div className="text-[15px] leading-relaxed max-w-4xl pb-8">
+        {formatContent(article.content)}
+      </div>
+    );
+  }
 
   return (
     <article className="flex flex-col h-full relative">
