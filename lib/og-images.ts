@@ -14,12 +14,31 @@ const ARTICLE_GRID_IMAGES: Record<string, string> = {
   "imagining-ai-powered-fundraising-nonprofits": "/grid/grid-redcross.png",
 };
 
+/** Base URL for dynamic OG image (grid + logo overlay). */
+export const OG_WORK_IMAGE_URL = (slug: string) => `${SITE_URL}/og/work/${slug}`;
+export const OG_ARTICLE_IMAGE_URL = (slug: string) =>
+  `${SITE_URL}/og/articles/${slug}`;
+
 export function getWorkOgImage(workId: string): string {
-  const path = WORK_GRID_IMAGES[workId];
-  return path ? `${SITE_URL}${path}` : DEFAULT_OG_IMAGE;
+  return WORK_GRID_IMAGES[workId]
+    ? OG_WORK_IMAGE_URL(workId)
+    : DEFAULT_OG_IMAGE;
 }
 
 export function getArticleOgImage(articleId: string): string {
+  return ARTICLE_GRID_IMAGES[articleId]
+    ? OG_ARTICLE_IMAGE_URL(articleId)
+    : DEFAULT_OG_IMAGE;
+}
+
+/** Server-only: get grid path for work (for dynamic OG generation). */
+export function getWorkGridPath(workId: string): string | null {
+  const path = WORK_GRID_IMAGES[workId];
+  return path ?? null;
+}
+
+/** Server-only: get grid path for article (for dynamic OG generation). */
+export function getArticleGridPath(articleId: string): string | null {
   const path = ARTICLE_GRID_IMAGES[articleId];
-  return path ? `${SITE_URL}${path}` : DEFAULT_OG_IMAGE;
+  return path ?? null;
 }
