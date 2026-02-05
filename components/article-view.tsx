@@ -390,7 +390,7 @@ export function ArticleView({ article, showHeader = true }: ArticleViewProps) {
           }
           if (trimmedLine === "## The bigger idea") {
             const articleImages = [
-              "/articles/redcross-assets4.png",
+              "/articles/redcross-assets5.png",
               "/articles/redcross-assets8.png",
               "/articles/redcross-assets11.png",
               "/articles/redcross-assets13.png",
