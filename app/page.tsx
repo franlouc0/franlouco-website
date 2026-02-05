@@ -22,10 +22,11 @@ const projects = [
   },
   { 
     id: 2, 
-    title: "Fintech App", 
-    description: "Financial services", 
-    image: "https://images.unsplash.com/photo-1557683311-eac922347aa1?auto=format&fit=crop&w=800&q=80", 
-    span: "row-span-1" 
+    title: "Imagining AI-powered fundraising products for nonprofits", 
+    description: "Exploring how everyday objects can become a sustainable fundraising engine for humanitarian causes", 
+    image: "/grid/grid-redcross.png", 
+    span: "row-span-1",
+    href: "/articles/imagining-ai-powered-fundraising-nonprofits"
   },
   { 
     id: 4, 
@@ -380,9 +381,15 @@ export default function Home() {
                           </div>
                         )}
                         <div className="absolute top-3 right-3 z-10">
-                          <span className="inline-flex items-center rounded-md border border-green-400 bg-green-400 px-2 py-1 text-[10px] font-semibold text-zinc-900 dark:border-green-400 dark:bg-green-400 dark:text-zinc-900">
-                            Featured Work
-                          </span>
+                          {project.id === 2 ? (
+                            <span className="inline-flex items-center rounded-md border border-violet-400 bg-violet-400 px-2 py-1 text-[10px] font-semibold text-white dark:border-violet-400 dark:bg-violet-400 dark:text-white">
+                              Featured Article
+                            </span>
+                          ) : (
+                            <span className="inline-flex items-center rounded-md border border-green-400 bg-green-400 px-2 py-1 text-[10px] font-semibold text-zinc-900 dark:border-green-400 dark:bg-green-400 dark:text-zinc-900">
+                              Featured Work
+                            </span>
+                          )}
                         </div>
                         <div className="absolute bottom-0 left-0 right-0 p-4">
                           <h3 className="text-sm font-semibold text-white">
