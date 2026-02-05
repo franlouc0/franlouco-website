@@ -1,13 +1,19 @@
 import type { Metadata } from "next";
 import { SITE_URL, AUTHOR_NAME } from "@/lib/constants";
-import { getArticleById } from "@/lib/articles";
+import { getArticleById, getAllArticleIds } from "@/lib/articles";
 import { generateArticleDescription } from "@/lib/article-utils";
+
+const OG_IMAGE = `${SITE_URL}/opengraph-image2.png`;
 
 interface ArticleLayoutProps {
   params: {
     slug: string;
   };
   children: React.ReactNode;
+}
+
+export function generateStaticParams() {
+  return getAllArticleIds().sort().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -36,11 +42,15 @@ export async function generateMetadata({
       authors: [AUTHOR_NAME],
       tags: article.tags,
       url: `${SITE_URL}/articles/${article.id}`,
+      images: [
+        { url: OG_IMAGE, width: 1200, height: 800, alt: article.title },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: article.title,
       description,
+      images: [OG_IMAGE],
     },
     alternates: {
       canonical: `${SITE_URL}/articles/${article.id}`,

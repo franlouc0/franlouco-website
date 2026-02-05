@@ -6,7 +6,8 @@ import { Article } from "@/lib/articles";
 import { Breadcrumb } from "./breadcrumb";
 import { Share2 } from "lucide-react";
 import { SITE_URL, AUTHOR_NAME, AUTHOR_EMAIL } from "@/lib/constants";
-import { calculateReadingTime } from "@/lib/article-utils";
+import { createSlug } from "@/lib/utils";
+import { calculateReadingTime, generateArticleDescription } from "@/lib/article-utils";
 
 interface ArticleViewProps {
   article: Article;
@@ -21,18 +22,10 @@ export function ArticleView({ article, showHeader = true }: ArticleViewProps) {
 
   // Inject Article JSON-LD schema for LLM SEO
   React.useEffect(() => {
-    // Generate a clean description for the article
-    const cleanContent = article.content
-      .replace(/\n+/g, ' ')
-      .replace(/\s+/g, ' ')
-      .trim();
-    
-    const wordCount = cleanContent.split(/\s+/).length;
+    const wordCount = article.content.trim().split(/\s+/).length;
     const readingTime = calculateReadingTime(article.content);
-    
-    // Extract a good description (first 300 chars of clean content)
-    const description = cleanContent.substring(0, 300).replace(/\s+\S*$/, '') + '...';
-    
+    const description = generateArticleDescription(article.content, article.title);
+
     const articleJsonLd = {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -179,16 +172,6 @@ export function ArticleView({ article, showHeader = true }: ArticleViewProps) {
     return matches ? matches.length : 0;
   };
 
-  // Helper function to create slug from text
-  const createSlug = (text: string): string => {
-    return text
-      .toLowerCase()
-      .replace(/[^\w\s-]/g, '') // Remove special characters
-      .replace(/\s+/g, '-') // Replace spaces with hyphens
-      .replace(/-+/g, '-') // Replace multiple hyphens with single
-      .trim();
-  };
-
   // Extract headers from content - only level 2 (##) headers that have the green bar
   const extractHeaders = React.useMemo(() => {
     const lines = article.content.split('\n');
@@ -267,6 +250,38 @@ export function ArticleView({ article, showHeader = true }: ArticleViewProps) {
     return <>{parts}</>;
   };
 
+  const renderArticleImageGrid = (
+    images: string[],
+    cols: 2 | 3,
+    key: string
+  ): React.ReactNode => (
+    <figure key={key} className="mt-8 mb-6">
+      <div
+        className={
+          cols === 3
+            ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+            : "grid grid-cols-1 sm:grid-cols-2 gap-4"
+        }
+      >
+        {images.map((src, imgIdx) => (
+          <div
+            key={imgIdx}
+            className="relative w-full rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900"
+          >
+            <Image
+              src={src}
+              alt={`Red Cross product concept ${imgIdx + 1}`}
+              width={1920}
+              height={1080}
+              className="w-full h-auto object-contain"
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
+    </figure>
+  );
+
   // Simple markdown-like content parser (basic implementation)
   // You might want to use a proper markdown library like 'react-markdown' in the future
   const formatContent = (content: string) => {
@@ -303,118 +318,58 @@ export function ArticleView({ article, showHeader = true }: ArticleViewProps) {
           );
           listItems = [];
         }
-        // Three-image grids for Red Cross article (same layout as work page)
+        // Image grids for Red Cross article (same layout as work page)
         if (article.id === "imagining-ai-powered-fundraising-nonprofits") {
           if (trimmedLine === "## Why start with objects?") {
-            const articleImages = [
-              "/articles/redcross-assets1.png",
-              "/articles/redcross-assets2.png",
-              "/articles/redcross-assets3.png",
-            ];
             elements.push(
-              <figure key={`img-grid-${index}`} className="mt-8 mb-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {articleImages.map((src, imgIdx) => (
-                    <div
-                      key={imgIdx}
-                      className="relative w-full rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900"
-                    >
-                      <Image
-                        src={src}
-                        alt={`Red Cross product concept ${imgIdx + 1}`}
-                        width={1920}
-                        height={1080}
-                        className="w-full h-auto object-contain"
-                        loading="lazy"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </figure>
+              renderArticleImageGrid(
+                [
+                  "/articles/redcross-assets1.png",
+                  "/articles/redcross-assets2.png",
+                  "/articles/redcross-assets3.png",
+                ],
+                3,
+                `img-grid-${index}`
+              )
             );
           }
           if (trimmedLine === "## What changed when I used AI to explore the idea") {
-            const articleImages = [
-              "/articles/redcross-assets7.png",
-              "/articles/redcross-assets9.png",
-              "/articles/redcross-assets10.png",
-            ];
             elements.push(
-              <figure key={`img-grid-ai-${index}`} className="mt-8 mb-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {articleImages.map((src, imgIdx) => (
-                    <div
-                      key={imgIdx}
-                      className="relative w-full rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900"
-                    >
-                      <Image
-                        src={src}
-                        alt={`Red Cross product concept ${imgIdx + 1}`}
-                        width={1920}
-                        height={1080}
-                        className="w-full h-auto object-contain"
-                        loading="lazy"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </figure>
+              renderArticleImageGrid(
+                [
+                  "/articles/redcross-assets7.png",
+                  "/articles/redcross-assets9.png",
+                  "/articles/redcross-assets10.png",
+                ],
+                3,
+                `img-grid-ai-${index}`
+              )
             );
           }
           if (trimmedLine === "## Beyond donations: building community") {
-            const articleImages = [
-              "/articles/redcross-assets4.png",
-              "/articles/redcross-assets6.png",
-            ];
             elements.push(
-              <figure key={`img-grid-community-${index}`} className="mt-8 mb-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {articleImages.map((src, imgIdx) => (
-                    <div
-                      key={imgIdx}
-                      className="relative w-full rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900"
-                    >
-                      <Image
-                        src={src}
-                        alt={`Red Cross product concept ${imgIdx + 1}`}
-                        width={1920}
-                        height={1080}
-                        className="w-full h-auto object-contain"
-                        loading="lazy"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </figure>
+              renderArticleImageGrid(
+                [
+                  "/articles/redcross-assets4.png",
+                  "/articles/redcross-assets6.png",
+                ],
+                2,
+                `img-grid-community-${index}`
+              )
             );
           }
           if (trimmedLine === "## The bigger idea") {
-            const articleImages = [
-              "/articles/redcross-assets5.png",
-              "/articles/redcross-assets8.png",
-              "/articles/redcross-assets11.png",
-              "/articles/redcross-assets13.png",
-            ];
             elements.push(
-              <figure key={`img-grid-bigger-${index}`} className="mt-8 mb-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {articleImages.map((src, imgIdx) => (
-                    <div
-                      key={imgIdx}
-                      className="relative w-full rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900"
-                    >
-                      <Image
-                        src={src}
-                        alt={`Red Cross product concept ${imgIdx + 1}`}
-                        width={1920}
-                        height={1080}
-                        className="w-full h-auto object-contain"
-                        loading="lazy"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </figure>
+              renderArticleImageGrid(
+                [
+                  "/articles/redcross-assets5.png",
+                  "/articles/redcross-assets8.png",
+                  "/articles/redcross-assets11.png",
+                  "/articles/redcross-assets13.png",
+                ],
+                2,
+                `img-grid-bigger-${index}`
+              )
             );
           }
         }

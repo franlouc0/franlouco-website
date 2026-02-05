@@ -5,6 +5,17 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
+/** Create URL-friendly slug from text (headings, titles). */
+export function createSlug(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\$/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .trim();
+}
+
 /** Extract YouTube video ID from watch or short URL. */
 export function getYouTubeVideoId(url: string): string {
   if (url.includes("youtube.com/watch?v=")) {

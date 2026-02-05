@@ -1,14 +1,3 @@
-// Helper function to create URL-friendly slug from title
-function createSlug(title: string): string {
-  return title
-    .toLowerCase()
-    .replace(/[^\w\s-]/g, '') // Remove special characters
-    .replace(/\$/g, '') // Remove dollar signs
-    .replace(/\s+/g, '-') // Replace spaces with hyphens
-    .replace(/-+/g, '-') // Replace multiple hyphens with single
-    .trim();
-}
-
 export interface Work {
   id: string;
   title: string; // Engaging title for featured work section
