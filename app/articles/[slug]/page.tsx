@@ -486,15 +486,6 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           }}
           aria-label="Article content"
         >
-          {/* Reading progress bar */}
-          <div className="h-0.5 bg-zinc-200 dark:bg-zinc-800 mb-6 -mt-2">
-            <div
-              className="h-full bg-green-400 transition-all duration-150 ease-out"
-              style={{
-                width: `${Math.min(scrollProgress * 100, 100)}%`,
-              }}
-            />
-          </div>
           {/* Info Card - Mobile only, below hero */}
           <div className="lg:hidden mb-6">
             <ArticleInfoCard article={article} variant="mobile" />
@@ -502,7 +493,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           <ArticleView article={article} showHeader={false} />
 
           {/* Summary / CTA - same as featured work pages */}
-          <div className="mt-12 pt-8 border-t border-zinc-200 dark:border-zinc-800 flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-8 max-w-4xl">
+          <div className="mt-12 pt-8 border-t border-zinc-200 dark:border-zinc-800 flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-8">
             <div className="min-w-0 lg:w-4/5">
               <p className="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
                 If you&apos;d like to explore how design, technology, and purpose can work together - or turn ideas like these into reality - I&apos;d be happy to connect.

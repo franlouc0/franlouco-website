@@ -597,7 +597,7 @@ export function ArticleView({ article, showHeader = true }: ArticleViewProps) {
 
   if (!showHeader) {
     return (
-      <div className="text-[15px] leading-relaxed max-w-4xl pb-8">
+      <div className="text-[15px] leading-relaxed pb-8 w-full">
         {formatContent(article.content)}
       </div>
     );
