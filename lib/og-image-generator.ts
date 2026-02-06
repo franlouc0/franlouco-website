@@ -65,6 +65,6 @@ export async function generateOgImageWithLogo(
 
   return sharp(baseResized)
     .composite([{ input: logoResized, left, top }])
-    .png()
+    .jpeg({ quality: 82 })
     .toBuffer();
 }

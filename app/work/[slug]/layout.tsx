@@ -21,9 +21,13 @@ export async function generateMetadata({
   }
 
   const title = work.title;
-  const description =
+  const rawDescription =
     work.subtitle ||
     `${work.company} — ${work.role} (${work.period}). ${work.impact}`;
+  const description =
+    rawDescription.length > 160
+      ? rawDescription.slice(0, 157).trim() + "..."
+      : rawDescription;
   const ogImage = getWorkOgImage(work.id);
 
   return {

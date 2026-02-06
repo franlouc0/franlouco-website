@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     template: "%s | Francisco Lourenço",
   },
   description:
-    "Francisco Lourenço - Product and Growth expert specializing in AI, Software, and Web3. CMO & Co-Founder at Coompass. 10+ years of experience in digital marketing, IDO launches, token sales, and community building. Building and shipping ideas at the intersection of product, growth, and tech.",
+    "Product & Growth expert. CMO & Co-Founder at Coompass. 10+ years in digital marketing, IDO launches, token sales, community building. Product, growth & tech.",
   keywords: [
     "Francisco Lourenço",
     "Product Manager",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: "Francisco Lourenço | Product, Growth, AI & Web3 Expert",
     description:
-      "Product and Growth expert specializing in AI, Software, and Web3. CMO & Co-Founder at Coompass. 10+ years of experience in digital marketing, IDO launches, token sales, and community building.",
+      "Product & Growth expert. CMO & Co-Founder at Coompass. 10+ years in digital marketing, IDO launches, token sales, community building. Product, growth & tech.",
     images: [
       {
         url: `${SITE_URL}/opengraph-image2.png`,
@@ -77,7 +77,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Francisco Lourenço | Product, Growth, AI & Web3 Expert",
     description:
-      "Product and Growth expert specializing in AI, Software, and Web3. CMO & Co-Founder at Coompass. 10+ years of experience.",
+      "Product & Growth expert. CMO & Co-Founder at Coompass. 10+ years in digital marketing, IDO launches, token sales, community building.",
     images: [`${SITE_URL}/opengraph-image2.png`],
   },
   robots: {

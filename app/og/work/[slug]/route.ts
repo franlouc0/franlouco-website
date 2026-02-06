@@ -15,7 +15,7 @@ export async function GET(
     const buffer = await generateOgImageWithLogo(gridPath);
     return new NextResponse(new Uint8Array(buffer), {
       headers: {
-        "Content-Type": "image/png",
+        "Content-Type": "image/jpeg",
         "Cache-Control": "public, max-age=86400, s-maxage=86400",
       },
     });

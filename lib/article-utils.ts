@@ -9,9 +9,16 @@ export function calculateReadingTime(content: string): number {
   return Math.max(1, readingTime); // At least 1 minute
 }
 
+const OG_DESCRIPTION_MAX_LENGTH = 160;
+
+function truncateForOg(text: string): string {
+  if (text.length <= OG_DESCRIPTION_MAX_LENGTH) return text;
+  return text.slice(0, OG_DESCRIPTION_MAX_LENGTH - 3).trim() + "...";
+}
+
 /**
- * Generate article description from content
- * Extracts first paragraph or creates a summary
+ * Generate article description from content (≤160 chars for OG).
+ * Extracts first paragraph or creates a summary.
  */
 export function generateArticleDescription(content: string, title: string): string {
   // Try to extract first meaningful paragraph (at least 50 chars)
@@ -27,7 +34,7 @@ export function generateArticleDescription(content: string, title: string): stri
         .replace(/\*([^*]+)\*/g, '$1')
         .trim();
       if (clean.length > 100 && clean.length < 300) {
-        return clean;
+        return truncateForOg(clean);
       }
     }
   }
@@ -35,7 +42,7 @@ export function generateArticleDescription(content: string, title: string): stri
   // Fallback: create description from title and first sentence
   const firstSentence = content.split(/[.!?]/)[0]?.trim() || '';
   if (firstSentence.length > 50) {
-    return `${firstSentence.substring(0, 200)}...`;
+    return truncateForOg(firstSentence.length > 200 ? `${firstSentence.substring(0, 200)}...` : firstSentence);
   }
   
   // Last resort: generic description
