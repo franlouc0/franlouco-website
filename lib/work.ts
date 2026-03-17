@@ -611,7 +611,6 @@ export const works: Record<string, Work> = {
     ],
     insight:
       "Super Muscles is a father-son creative collaboration, a product experiment combining AI + play + collectible design.",
-    softClose: "Next pack idea? Keep imagining."
   },
   "driving-growth-web3-blockchain": {
     id: "driving-growth-web3-blockchain",
