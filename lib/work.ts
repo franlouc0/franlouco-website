@@ -519,8 +519,8 @@ export const works: Record<string, Work> = {
   },
   "super-muscles-card-collection": {
     id: "super-muscles-card-collection",
-    title: "Super Muscles Card Collection",
-    subtitle: "An AI-powered card project by my son Afonso",
+    title: "Super Muscles: Cards From a Kid's Imagination",
+    subtitle: "A father-son AI card experiment by Afonso",
     company: "Super Muscles",
     role: "Father-Son Creative Collaboration",
     period: "2024 - Present",
