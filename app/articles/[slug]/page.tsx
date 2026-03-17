@@ -332,7 +332,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           >
             GitHub
             <span className="absolute -top-0.5 left-[calc(100%-1px)] text-[8px] font-bold text-green-400 leading-none">
-              8
+              19
             </span>
           </Link>
           <span
@@ -531,7 +531,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
         >
           GitHub
           <span className="absolute -top-0.5 left-[calc(100%-1px)] text-[8px] font-bold text-green-400 leading-none">
-            6
+            19
           </span>
         </Link>
         <span
