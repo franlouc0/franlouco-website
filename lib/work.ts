@@ -517,6 +517,102 @@ export const works: Record<string, Work> = {
     ],
     insight: "Led sales and partnerships at BEPRO Network: 6+ clients, 6+ partnerships, 3 months to double traction. Supported the pivot from gambling tooling to a developer-first protocol and its integration with TAIKAI.",
   },
+  "super-muscles-card-collection": {
+    id: "super-muscles-card-collection",
+    title: "Super Muscles Card Collection",
+    subtitle: "An AI-powered card project by my son Afonso",
+    company: "Super Muscles",
+    role: "Father-Son Creative Collaboration",
+    period: "2024 - Present",
+    logo: "/grid/grid-super-muscles.png",
+    numbers: [
+      { value: "100+", label: "characters" },
+      { value: "3", label: "stats" },
+      { value: "4", label: "rarity tiers" },
+      { value: "2", label: "creators" }
+    ],
+    scope: [
+      "Card concepting + play testing",
+      "Character exploration with AI tools",
+      "Stats + rarity balancing",
+      "Collectible packs + sharing"
+    ],
+    metrics: [
+      { label: "Stats", value: "Power / Defense / Magic" },
+      { label: "Rarity", value: "Color-coded tiers" },
+      { label: "Goal", value: "Collect + play + share" }
+    ],
+    impact:
+      "A meaningful father-son creative experiment: AI as an amplifier for play, collecting, and imagination.",
+    visuals: [
+      {
+        image: "/grid/grid-super-muscles.png",
+        imageLeft: false,
+        description:
+          "<strong>The Origin Story</strong><br />" +
+          "Afonso loved cartoons, trading cards, and board games long before this had a name.<br />" +
+          "One day at home, he asked a simple question: 'Can I make my own cards?'<br />" +
+          "We started small: character ideas, playful sketches, and a promise to turn the daydream into something we could actually hold."
+      },
+      {
+        image: "/grid/grid-super-muscles.png",
+        imageLeft: true,
+        description:
+          "<strong>The Idea</strong><br />" +
+          "Super Muscles is a physical trading card collection built for collecting, trading, and playing.<br />" +
+          "Muscle-powered characters with funny, exaggerated abilities make the rules feel easy and fun.<br />" +
+          "It blends pop culture inspiration with simple, kid-friendly imagination."
+      },
+      {
+        image: "/grid/grid-super-muscles.png",
+        imageLeft: false,
+        description:
+          "<strong>The Build Process</strong><br />" +
+          "We used AI tools to explore character directions quickly, then kept only what felt right.<br />" +
+          "From there, we iterated like a game: choose, adjust, refine, and lock in the stats and rarity ideas.<br />" +
+          "The goal was not 'perfect'. The goal was a collection that feels warm, proud, and real."
+      },
+      {
+        image: "/grid/grid-super-muscles.png",
+        imageLeft: true,
+        description:
+          "<strong>The System Behind It</strong><br />" +
+          "Every character has Power / Defense / Magic stats, so comparisons stay simple.<br />" +
+          "Rarity tiers are color-coded, so packs feel exciting before you even open them.<br />" +
+          "It is designed for collecting, trading, and remembering."
+      },
+      {
+        image: "/grid/grid-super-muscles.png",
+        imageLeft: false,
+        description:
+          "<strong>Why This Project Matters</strong><br />" +
+          "Creativity over consumption. Kids building, not just playing.<br />" +
+          "AI is not the point. It is the amplifier: it lowers the barrier to trying ideas.<br />" +
+          "The real magic is the collaboration. You show up, Afonso imagines, and together you make something new."
+      },
+      {
+        images: [
+          "/grid/grid-super-muscles.png",
+          "/grid/grid-super-muscles.png",
+          "/grid/grid-super-muscles.png",
+          "/grid/grid-super-muscles.png"
+        ],
+        caption:
+          "Visual showcase (placeholder): card grid, close-ups, and rarity variations. Ready for final mockups."
+      },
+      {
+        cards: [
+          "Kids do not need complex tools to create. They need permission to imagine.",
+          "Constraints spark creativity: 'not perfect yet' still moves the story forward.",
+          "AI can lower the barrier, but taste still comes from people.",
+          "Building together creates memories you can keep."
+        ]
+      }
+    ],
+    insight:
+      "Super Muscles is a father-son creative collaboration, a product experiment combining AI + play + collectible design.",
+    softClose: "Next pack idea? Keep imagining."
+  },
   "driving-growth-web3-blockchain": {
     id: "driving-growth-web3-blockchain",
     title: "Driving growth for Web3 projects and blockchain initiatives",

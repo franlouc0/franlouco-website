@@ -83,7 +83,8 @@ export function FeaturedWorkSection({}: FeaturedWorkSectionProps = {}) {
           const featuredWorkIds = [
             "how-we-raised-715k-ido", // ID 1 - Polkamarkets
             "how-we-achieved-166-mom-ngo-growth", // ID 4 - Coompass
-            "scaling-sales-partnerships-blockchain" // ID 7 - BEPRO Network
+            "scaling-sales-partnerships-blockchain", // ID 7 - BEPRO Network
+            "super-muscles-card-collection" // Father-son creative collaboration
           ];
           const isActive = featuredWorkIds.includes(workId);
           

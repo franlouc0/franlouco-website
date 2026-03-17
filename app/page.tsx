@@ -63,7 +63,8 @@ const projects = [
     title: "Super Muscles Card Collection", 
     description: "An AI-powered card project by my son Afonso", 
     image: "/grid/grid-super-muscles.png", 
-    span: "row-span-1" 
+    span: "row-span-1",
+    href: "/work/super-muscles-card-collection"
   },
   { 
     id: 8, 

@@ -7,6 +7,7 @@ const WORK_GRID_IMAGES: Record<string, string> = {
   "how-we-raised-715k-ido": "/grid/grid-polkamarkets3.png",
   "how-we-achieved-166-mom-ngo-growth": "/grid/grid-coompass.png",
   "scaling-sales-partnerships-blockchain": "/grid/grid-bepronetwork.png",
+  "super-muscles-card-collection": "/grid/grid-super-muscles.png",
 };
 
 /** Grid images used on homepage for featured articles. Used as OG image for article pages. */
