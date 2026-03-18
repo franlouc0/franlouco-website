@@ -61,7 +61,8 @@ const projects = [
   { 
     id: 6, 
     title: "Super Muscles: Cards From a Kid's Imagination", 
-    description: "A father-son AI card experiment", 
+    description:
+      "A father-son card experiment turning imagination into collectible play, powered by AI",
     image: "/grid/grid-super-muscles.png",
     span: "row-span-1",
     href: "/work/super-muscles-card-collection"
