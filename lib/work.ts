@@ -521,7 +521,8 @@ export const works: Record<string, Work> = {
   "super-muscles-card-collection": {
     id: "super-muscles-card-collection",
     title: "Super Muscles: Cards From a Kid's Imagination",
-    subtitle: "A father-son AI card experiment",
+    subtitle:
+      "A father-son card experiment turning imagination into collectible play, powered by AI",
     company: "Super Muscles",
     role: "Father-Son Creative Collaboration",
     period: "2024 - Present",
@@ -550,28 +551,28 @@ export const works: Record<string, Work> = {
         image: "/work/supermuscles-origin-story.jpg",
         imageLeft: false,
         description:
-          "<strong>The Origin Story</strong><br />" +
-          "Our kid loved cartoons, trading cards, and board games long before this had a name.<br />" +
-          "One day at home, our kid asked a simple question: 'Can I make my own cards?'<br />" +
-          "We started small: character ideas, playful sketches, and a promise to turn the daydream into something we could actually hold."
+          "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">The Origin Story:</span><br />" +
+          "Our kid loved <span class=\"underline decoration-green-400 decoration-2\">cartoons</span>, <span class=\"underline decoration-green-400 decoration-2\">trading cards</span>, and <span class=\"underline decoration-green-400 decoration-2\">board games</span> long before this had a name.<br />" +
+          "One day at home, our kid asked a simple question: '<span class=\"underline decoration-green-400 decoration-2\">Can I make my own cards?</span>'<br />" +
+          "We started small: <span class=\"underline decoration-green-400 decoration-2\">character ideas</span>, <span class=\"underline decoration-green-400 decoration-2\">playful sketches</span>, and a promise to turn the daydream into something we could actually hold."
       },
       {
         image: "/work/supermuscles-idea.png",
         imageLeft: true,
         description:
-          "<strong>The Idea</strong><br />" +
-          "Super Muscles is a physical trading card collection built for collecting, trading, and playing.<br />" +
-          "Muscle-powered characters with funny, exaggerated abilities make the rules feel easy and fun.<br />" +
-          "It blends pop culture inspiration with simple, kid-friendly imagination."
+          "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">The Idea:</span><br />" +
+          "Super Muscles is a physical <span class=\"underline decoration-green-400 decoration-2\">trading card</span> collection built for collecting, trading, and playing.<br />" +
+          "<span class=\"underline decoration-green-400 decoration-2\">Muscle-powered characters</span> with funny, exaggerated abilities make the rules feel easy and fun.<br />" +
+          "It blends <span class=\"underline decoration-green-400 decoration-2\">pop culture</span> inspiration with simple, <span class=\"underline decoration-green-400 decoration-2\">kid-friendly imagination</span>."
       },
       {
         image: "/work/supermuscles-build-process.png",
         imageLeft: false,
         description:
-          "<strong>The Build Process</strong><br />" +
-          "We used AI tools to explore character directions quickly, then kept only what felt right.<br />" +
-          "From there, we iterated like a game: choose, adjust, refine, and lock in the stats and rarity ideas.<br />" +
-          "The goal was not 'perfect'. The goal was a collection that feels warm, proud, and real."
+          "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">The Build Process:</span><br />" +
+          "We used <span class=\"underline decoration-green-400 decoration-2\">AI tools</span> to explore character directions quickly, then kept only what felt right.<br />" +
+          "From there, we iterated like a game: choose, adjust, refine, and lock in the <span class=\"underline decoration-green-400 decoration-2\">stats</span> and <span class=\"underline decoration-green-400 decoration-2\">rarity</span> ideas.<br />" +
+          "The goal was not 'perfect'. The goal was a collection that feels <span class=\"underline decoration-green-400 decoration-2\">warm</span>, <span class=\"underline decoration-green-400 decoration-2\">proud</span>, and real."
       },
       {
         partnerships: [
@@ -617,18 +618,18 @@ export const works: Record<string, Work> = {
         image: "/work/supermuscles-how-to-play.png",
         imageLeft: true,
         description:
-          "<strong>The System Behind It</strong><br />" +
-          "Every character has Power / Defense / Magic stats, so comparisons stay simple.<br />" +
-          "Rarity tiers are color-coded, so packs feel exciting before you even open them.<br />" +
-          "It is designed for collecting, trading, and remembering."
+          "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">The System Behind It:</span><br />" +
+          "Every character has <span class=\"underline decoration-green-400 decoration-2\">Power / Defense / Magic</span> stats, so comparisons stay simple.<br />" +
+          "<span class=\"underline decoration-green-400 decoration-2\">Rarity tiers</span> are color-coded, so packs feel exciting before you even open them.<br />" +
+          "It is designed for <span class=\"underline decoration-green-400 decoration-2\">collecting</span>, <span class=\"underline decoration-green-400 decoration-2\">trading</span>, and <span class=\"underline decoration-green-400 decoration-2\">remembering</span>."
       },
       {
         image: "/work/supermuscles-landing.png",
         imageLeft: false,
         description:
-          "<strong>Why This Project Matters</strong><br />" +
-          "Creativity over consumption. Kids building, not just playing.<br />" +
-          "AI is not the point. It is the amplifier: it lowers the barrier to trying ideas.<br />" +
+          "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Why This Project Matters:</span><br />" +
+          "<span class=\"underline decoration-green-400 decoration-2\">Creativity over consumption</span>. Kids building, not just playing.<br />" +
+          "<span class=\"underline decoration-green-400 decoration-2\">AI</span> is not the point. It is the amplifier: it lowers the barrier to trying ideas.<br />" +
           "The real magic is the collaboration. You show up, and the kid imagines. Together you make something new."
       },
       {
