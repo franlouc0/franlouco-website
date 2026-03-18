@@ -565,7 +565,7 @@ export const works: Record<string, Work> = {
           "It blends pop culture inspiration with simple, kid-friendly imagination."
       },
       {
-        image: "/grid/grid-super-muscles.png",
+        image: "/work/supermuscles-build-process.png",
         imageLeft: false,
         description:
           "<strong>The Build Process</strong><br />" +
