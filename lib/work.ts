@@ -552,8 +552,8 @@ export const works: Record<string, Work> = {
         imageLeft: false,
         description:
           "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">The Origin Story:</span><br />" +
-          "Our kid loved <span class=\"underline decoration-green-400 decoration-2\">cartoons</span>, <span class=\"underline decoration-green-400 decoration-2\">trading cards</span>, and <span class=\"underline decoration-green-400 decoration-2\">board games</span> long before this had a name.<br />" +
-          "One day at home, our kid asked a simple question: '<span class=\"underline decoration-green-400 decoration-2\">Can I make my own cards?</span>'<br />" +
+          "My kid loved <span class=\"underline decoration-green-400 decoration-2\">cartoons</span>, <span class=\"underline decoration-green-400 decoration-2\">trading cards</span>, and <span class=\"underline decoration-green-400 decoration-2\">board games</span> long before this had a name.<br /><br />" +
+          "One day at home, he asked a simple question: '<span class=\"underline decoration-green-400 decoration-2\">Can I make my own cards?</span>'<br /><br />" +
           "We started small: <span class=\"underline decoration-green-400 decoration-2\">character ideas</span>, <span class=\"underline decoration-green-400 decoration-2\">playful sketches</span>, and a promise to turn the daydream into something we could actually hold."
       },
       {
@@ -561,8 +561,8 @@ export const works: Record<string, Work> = {
         imageLeft: true,
         description:
           "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">The Idea:</span><br />" +
-          "Super Muscles is a physical <span class=\"underline decoration-green-400 decoration-2\">trading card</span> collection built for collecting, trading, and playing.<br />" +
-          "<span class=\"underline decoration-green-400 decoration-2\">Muscle-powered characters</span> with funny, exaggerated abilities make the rules feel easy and fun.<br />" +
+          "Super Muscles is a physical <span class=\"underline decoration-green-400 decoration-2\">trading card</span> collection built for collecting, trading, and playing.<br /><br />" +
+          "<span class=\"underline decoration-green-400 decoration-2\">Muscle-powered characters</span> with funny, exaggerated abilities make the rules feel easy and fun.<br /><br />" +
           "It blends <span class=\"underline decoration-green-400 decoration-2\">pop culture</span> inspiration with simple, <span class=\"underline decoration-green-400 decoration-2\">kid-friendly imagination</span>."
       },
       {
@@ -570,8 +570,8 @@ export const works: Record<string, Work> = {
         imageLeft: false,
         description:
           "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">The Build Process:</span><br />" +
-          "We used <span class=\"underline decoration-green-400 decoration-2\">AI tools</span> to explore character directions quickly, then kept only what felt right.<br />" +
-          "From there, we iterated like a game: choose, adjust, refine, and lock in the <span class=\"underline decoration-green-400 decoration-2\">stats</span> and <span class=\"underline decoration-green-400 decoration-2\">rarity</span> ideas.<br />" +
+          "We used <span class=\"underline decoration-green-400 decoration-2\">AI tools</span> to explore character directions quickly, then kept only what felt right.<br /><br />" +
+          "From there, we iterated like a game: choose, adjust, refine, and lock in the <span class=\"underline decoration-green-400 decoration-2\">stats</span> and <span class=\"underline decoration-green-400 decoration-2\">rarity</span> ideas.<br /><br />" +
           "The goal was not 'perfect'. The goal was a collection that feels <span class=\"underline decoration-green-400 decoration-2\">warm</span>, <span class=\"underline decoration-green-400 decoration-2\">proud</span>, and real."
       },
       {
@@ -619,8 +619,8 @@ export const works: Record<string, Work> = {
         imageLeft: true,
         description:
           "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">The System Behind It:</span><br />" +
-          "Every character has <span class=\"underline decoration-green-400 decoration-2\">Power / Defense / Magic</span> stats, so comparisons stay simple.<br />" +
-          "<span class=\"underline decoration-green-400 decoration-2\">Rarity tiers</span> are color-coded, so packs feel exciting before you even open them.<br />" +
+          "Every character has <span class=\"underline decoration-green-400 decoration-2\">Power / Defense / Magic</span> stats, so comparisons stay simple.<br /><br />" +
+          "<span class=\"underline decoration-green-400 decoration-2\">Rarity tiers</span> are color-coded, so packs feel exciting before you even open them.<br /><br />" +
           "It is designed for <span class=\"underline decoration-green-400 decoration-2\">collecting</span>, <span class=\"underline decoration-green-400 decoration-2\">trading</span>, and <span class=\"underline decoration-green-400 decoration-2\">remembering</span>."
       },
       {
@@ -628,8 +628,8 @@ export const works: Record<string, Work> = {
         imageLeft: false,
         description:
           "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Why This Project Matters:</span><br />" +
-          "<span class=\"underline decoration-green-400 decoration-2\">Creativity over consumption</span>. Kids building, not just playing.<br />" +
-          "<span class=\"underline decoration-green-400 decoration-2\">AI</span> is not the point. It is the amplifier: it lowers the barrier to trying ideas.<br />" +
+          "<span class=\"underline decoration-green-400 decoration-2\">Creativity over consumption</span>. Kids building, not just playing.<br /><br />" +
+          "<span class=\"underline decoration-green-400 decoration-2\">AI is not the point. It is the amplifier</span>: it lowers the barrier to trying ideas.<br /><br />" +
           "The real magic is the collaboration. You show up, and the kid imagines. Together you make something new."
       },
       {
