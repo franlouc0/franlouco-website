@@ -640,8 +640,7 @@ export const works: Record<string, Work> = {
           "/grid/grid-super-muscles.png",
           "/grid/grid-super-muscles.png"
         ],
-        caption:
-          "Visual showcase (placeholder): card grid, close-ups, and rarity variations. Ready for final mockups."
+        caption: ""
       },
       {
         cards: [
