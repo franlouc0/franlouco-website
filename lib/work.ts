@@ -547,7 +547,7 @@ export const works: Record<string, Work> = {
       "A meaningful father-son creative experiment: AI as an amplifier for play, collecting, and imagination.",
     visuals: [
       {
-        image: "/grid/grid-super-muscles.png",
+        image: "/work/supermuscles-origin-story.jpg",
         imageLeft: false,
         description:
           "<strong>The Origin Story</strong><br />" +
@@ -556,7 +556,7 @@ export const works: Record<string, Work> = {
           "We started small: character ideas, playful sketches, and a promise to turn the daydream into something we could actually hold."
       },
       {
-        image: "/grid/grid-super-muscles.png",
+        image: "/work/supermuscles-idea.png",
         imageLeft: true,
         description:
           "<strong>The Idea</strong><br />" +
@@ -614,7 +614,7 @@ export const works: Record<string, Work> = {
         ]
       },
       {
-        image: "/grid/grid-super-muscles.png",
+        image: "/work/supermuscles-how-to-play.png",
         imageLeft: true,
         description:
           "<strong>The System Behind It</strong><br />" +
@@ -623,7 +623,7 @@ export const works: Record<string, Work> = {
           "It is designed for collecting, trading, and remembering."
       },
       {
-        image: "/grid/grid-super-muscles.png",
+        image: "/work/supermuscles-landing.png",
         imageLeft: false,
         description:
           "<strong>Why This Project Matters</strong><br />" +
