@@ -61,8 +61,8 @@ const projects = [
   { 
     id: 6, 
     title: "Super Muscles: Cards From a Kid's Imagination", 
-    description: "A father-son AI card experiment by Afonso", 
-    image: "/grid/grid-super-muscles.png", 
+    description: "A father-son AI card experiment", 
+    image: "/grid/grid-super-muscles.png",
     span: "row-span-1",
     href: "/work/super-muscles-card-collection"
   },
@@ -378,6 +378,22 @@ export default function Home() {
                                 style={{ width: '17px', height: '17px' }}
                               />
                               BEPRO Network
+                            </span>
+                          </div>
+                        )}
+                        {/* Super Muscles tag - top-left, only for project id 6 */}
+                        {project.id === 6 && (
+                          <div className="absolute top-3 left-3 z-10">
+                            <span className="inline-flex items-center gap-1.5 rounded-md border border-white/20 bg-white/90 backdrop-blur-sm px-2 py-1 text-[10px] font-semibold text-zinc-900 shadow-lg dark:border-zinc-700/50 dark:bg-zinc-900/90 dark:text-zinc-50">
+                              <Image
+                                src="/supermuscles.png"
+                                alt="Super Muscles"
+                                width={17}
+                                height={17}
+                                className="rounded object-cover shrink-0"
+                                style={{ width: '17px', height: '17px' }}
+                              />
+                              Super Muscles
                             </span>
                           </div>
                         )}

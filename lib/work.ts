@@ -46,7 +46,8 @@ export interface Work {
     videoTooltip?: string; // Tooltip text for the info icon
     cards?: string[]; // Array of card content text for 4-card grid
     partnerships?: Array<{
-      logo: string;
+      logo?: string;
+      logoText?: string;
       name?: string;
       description?: string;
     }>; // Array of partnership cards for marquee section
@@ -520,11 +521,11 @@ export const works: Record<string, Work> = {
   "super-muscles-card-collection": {
     id: "super-muscles-card-collection",
     title: "Super Muscles: Cards From a Kid's Imagination",
-    subtitle: "A father-son AI card experiment by Afonso",
+    subtitle: "A father-son AI card experiment",
     company: "Super Muscles",
     role: "Father-Son Creative Collaboration",
     period: "2024 - Present",
-    logo: "/grid/grid-super-muscles.png",
+    logo: "/supermuscles.png",
     numbers: [
       { value: "100+", label: "characters" },
       { value: "3", label: "stats" },
@@ -550,8 +551,8 @@ export const works: Record<string, Work> = {
         imageLeft: false,
         description:
           "<strong>The Origin Story</strong><br />" +
-          "Afonso loved cartoons, trading cards, and board games long before this had a name.<br />" +
-          "One day at home, he asked a simple question: 'Can I make my own cards?'<br />" +
+          "Our kid loved cartoons, trading cards, and board games long before this had a name.<br />" +
+          "One day at home, our kid asked a simple question: 'Can I make my own cards?'<br />" +
           "We started small: character ideas, playful sketches, and a promise to turn the daydream into something we could actually hold."
       },
       {
@@ -573,6 +574,46 @@ export const works: Record<string, Work> = {
           "The goal was not 'perfect'. The goal was a collection that feels warm, proud, and real."
       },
       {
+        partnerships: [
+          {
+            name: "Midjourney",
+            logo: "/partnerships/midjourney.png",
+            logoText: "Midjourney",
+            description: "Creative image exploration & style directions"
+          },
+          {
+            name: "ChatGPT",
+            logo: "/partnerships/chatgpt.png",
+            logoText: "ChatGPT",
+            description: "Story prompts, character naming, and rule ideas"
+          },
+          {
+            name: "Gemini NanoBanana",
+            logo: "/partnerships/gemini-nanobanana.png",
+            logoText: "Gemini NanoBanana",
+            description: "Alternate takes & quick iteration for concepts"
+          },
+          {
+            name: "Claude",
+            logo: "/partnerships/claude.png",
+            logoText: "Claude",
+            description: "Tighter summaries & character backstory refinement"
+          },
+          {
+            name: "Lovable",
+            logo: "/partnerships/lovable.png",
+            logoText: "Lovable",
+            description: "Experimenting with small product ideas and layouts"
+          },
+          {
+            name: "Bolt.dev",
+            logo: "/partnerships/bolt.png",
+            logoText: "Bolt.dev",
+            description: "Prototyping tooling to turn concepts into assets"
+          }
+        ]
+      },
+      {
         image: "/grid/grid-super-muscles.png",
         imageLeft: true,
         description:
@@ -588,7 +629,7 @@ export const works: Record<string, Work> = {
           "<strong>Why This Project Matters</strong><br />" +
           "Creativity over consumption. Kids building, not just playing.<br />" +
           "AI is not the point. It is the amplifier: it lowers the barrier to trying ideas.<br />" +
-          "The real magic is the collaboration. You show up, Afonso imagines, and together you make something new."
+          "The real magic is the collaboration. You show up, and the kid imagines. Together you make something new."
       },
       {
         images: [

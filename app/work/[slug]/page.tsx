@@ -995,12 +995,20 @@ export default function WorkPage({ params }: WorkPageProps) {
                             >
                               <div className={`relative h-12 w-full ${hasDescription ? 'mb-4' : ''}`}>
                                 <div className="relative h-full w-full rounded-lg p-3">
-                                  <Image
-                                    src={partner.logo}
-                                    alt={partner.name || `Partner ${partnerIdx + 1}`}
-                                    fill
-                                    className="object-contain object-center rounded-lg"
-                                  />
+                                  {partner.logo ? (
+                                    <Image
+                                      src={partner.logo}
+                                      alt={partner.name || `Partner ${partnerIdx + 1}`}
+                                      fill
+                                      className="object-contain object-center rounded-lg"
+                                    />
+                                  ) : (
+                                    <div className="h-full w-full flex items-center justify-center rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 px-2">
+                                      <span className="text-[11px] font-semibold text-zinc-900 dark:text-zinc-50 text-center leading-tight">
+                                        {partner.logoText || partner.name || `Tool ${partnerIdx + 1}`}
+                                      </span>
+                                    </div>
+                                  )}
                                 </div>
                               </div>
                               {hasDescription && (
@@ -1021,12 +1029,20 @@ export default function WorkPage({ params }: WorkPageProps) {
                             >
                               <div className={`relative h-12 w-full ${hasDescription ? 'mb-4' : ''}`}>
                                 <div className="relative h-full w-full rounded-lg p-3">
-                                  <Image
-                                    src={partner.logo}
-                                    alt={partner.name || `Partner ${partnerIdx + 1}`}
-                                    fill
-                                    className="object-contain object-center rounded-lg"
-                                  />
+                                  {partner.logo ? (
+                                    <Image
+                                      src={partner.logo}
+                                      alt={partner.name || `Partner ${partnerIdx + 1}`}
+                                      fill
+                                      className="object-contain object-center rounded-lg"
+                                    />
+                                  ) : (
+                                    <div className="h-full w-full flex items-center justify-center rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 px-2">
+                                      <span className="text-[11px] font-semibold text-zinc-900 dark:text-zinc-50 text-center leading-tight">
+                                        {partner.logoText || partner.name || `Tool ${partnerIdx + 1}`}
+                                      </span>
+                                    </div>
+                                  )}
                                 </div>
                               </div>
                               {hasDescription && (
