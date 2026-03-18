@@ -634,11 +634,11 @@ export const works: Record<string, Work> = {
       },
       {
         images: [
-          "/grid/grid-super-muscles.png",
-          "/grid/grid-super-muscles.png",
-          "/grid/grid-super-muscles.png",
-          "/grid/grid-super-muscles.png",
-          "/grid/grid-super-muscles.png"
+          "/work/hulk.png",
+          "/work/pikachu.png",
+          "/work/songoku.png",
+          "/work/bowser.png",
+          "/work/sonic.png"
         ],
         caption: ""
       },
