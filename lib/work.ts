@@ -1,0 +1,717 @@
+export interface Work {
+  id: string;
+  title: string; // Engaging title for featured work section
+  subtitle: string; // One short context line
+  company: string;
+  role: string;
+  period: string;
+  logo: string;
+  headerImage?: string; // Header image that fills the container
+  numbers: {
+    value: string;
+    label: string;
+  }[]; // Key credibility numbers - large numbers, minimal labels
+  scope: string[]; // What I owned - short, scannable list
+  metrics: {
+    label: string;
+    value: string;
+  }[];
+  impact: string; // 1-2 line max
+  // Content section - supports mixed content (images and text) for masonry grid
+  content?: Array<
+    | {
+        type: "image";
+        image: string;
+        caption?: string; // Optional one-line caption
+        span?: "row-span-1" | "row-span-2"; // Optional row span for masonry
+      }
+    | {
+        type: "text";
+        content: string; // Paragraph text
+        span?: "row-span-1" | "row-span-2"; // Optional row span
+      }
+  >;
+  // Visual proof section - backward compatibility
+  visuals?: {
+    image?: string; // Single image (use images array for multiple)
+    images?: string[]; // Multiple images to display side by side
+    imageCaptions?: string[]; // Optional captions for each image in the images array (matches order)
+    caption?: string; // Optional one-line caption
+    description?: string; // Optional text description before the image
+    imageLeft?: boolean; // If true, image on left, text on right. If false or undefined, text on left, image on right
+    video?: string; // YouTube video URL
+    videos?: string[]; // Multiple YouTube video URLs for two-column layout
+    videoCaptions?: string[]; // Optional captions for each video in the videos array (matches order)
+    videoTitle?: string; // Title for the video section
+    videoTooltip?: string; // Tooltip text for the info icon
+    cards?: string[]; // Array of card content text for 4-card grid
+    partnerships?: Array<{
+      logo?: string;
+      logoText?: string;
+      name?: string;
+      description?: string;
+    }>; // Array of partnership cards for marquee section
+    link?: { url: string; label?: string }; // Optional external link with icon (e.g. article, announcement)
+  }[];
+  insight?: string; // Optional: One short sentence showing judgment
+  softClose?: string; // Optional: Very light ending (e.g., "Happy to share details on request")
+  images?: string[]; // Keep for backward compatibility, but prefer visuals or content
+  color?: string; // Optional accent color
+}
+
+export const works: Record<string, Work> = {
+  "how-we-raised-715k-ido": {
+    id: "how-we-raised-715k-ido",
+    title: "How we raised $715K in an IDO without relying on hype",
+    subtitle: "Building a prediction market protocol from zero to $80M+ open interest in 48 hours",
+    company: "Polkamarkets",
+    role: "CMO & Co-Founder",
+    period: "2021 - 2023",
+    logo: "/polkamarkets.jpg",
+    numbers: [
+      { value: "$715K", label: "raised" },
+      { value: "100K+", label: "community" },
+      { value: "$80M+", label: "open interest" },
+      { value: "120x", label: "post-IDO ATH" }
+    ],
+    scope: [
+      "GTM strategy",
+      "Launch execution",
+      "Partnerships",
+      "KOL coordination",
+      "Community systems",
+      "Product + marketing alignment"
+    ],
+    metrics: [
+      { label: "IDO Raised", value: "$715K" },
+      { label: "Peak Volume", value: "$2M" },
+      { label: "Timeframe", value: "48h" }
+    ],
+    impact: "Built prediction market protocol from zero. Led token launch strategy and community growth.",
+    visuals: [
+      {
+        images: ["/work/app-animated-gif.gif", "/work/market-page2.png"]
+      },
+      {
+        description: '<span class="underline decoration-green-400 decoration-2">Co-led and executed a $625K strategic investment round</span> with Moonrock Capital, Morningstar Ventures, NGC Ventures, and Astronaut Capital, covering investor outreach, positioning, and closing.',
+        image: "/work/strategic-investors.jpeg"
+      },
+      {
+        description: "Led the creation of the “What is Polkamarkets?” explainer video as a core educational asset. Owned the process end to end, from concept and scriptwriting to visual direction and voice-over tone, keeping the message clear and accessible.<br /><br />Coordinated a five-person creative and production team at Hypercube, and handled rollout communications to ensure strong community and new user reach.",
+        video: "https://www.youtube.com/watch?v=8L5oZd0Yup4",
+        imageLeft: true, // Video on left, text on right
+      },
+      {
+        cards: [
+          "Launched the interest form while coordinating VCs, angels, KOLs, community, and MVP development, resulting in <span class=\"underline decoration-green-400 decoration-2\">10,000+ participants</span> and <span class=\"underline decoration-green-400 decoration-2\">$80M+ in pledged open interest</span>.",
+          "Managed investor and community communications, including <span class=\"underline decoration-green-400 decoration-2\">incentives for whitelisted addresses and early supporters</span>.",
+          "<span class=\"underline decoration-green-400 decoration-2\">Released a simulated, gamified prediction markets</span> experience to educate users ahead of launch.",
+          "Scaled the community to <span class=\"underline decoration-green-400 decoration-2\">100,000+ members</span> across Telegram and Twitter."
+        ]
+      },
+      {
+        images: ["/work/open-interest.png", "/work/community-members.png"],
+      },
+      {
+        description: "Following a successful community build (<span class=\"underline decoration-green-400 decoration-2\">100K+ members</span>) and IDO on Polkastarter (<span class=\"underline decoration-green-400 decoration-2\">120x post-IDO ATH</span>), Polkamarkets launched its MVP testnet.<br /><br />I supported coordination across product, development, and communications, helping <span class=\"underline decoration-green-400 decoration-2\">deliver the first live version</span> of the gamified prediction markets platform and managing the community rollout.",
+        video: "https://www.youtube.com/watch?v=Qlg4ldiu6VY",
+        imageLeft: false, // Text on left, video on right
+      },
+      {
+        description: "Co-led <span class=\"underline decoration-green-400 decoration-2\">Polkamarkets' multi-chain rollout</span>, coordinating partnerships, product, and development.<br /><br />Supported deployments across <span class=\"underline decoration-green-400 decoration-2\">Ethereum environments, Polygon, Moonriver, and Moonbeam</span>, while handling partner alignment and community communications to enable early cross-chain growth and scalability.",
+        image: "/work/deployed-chains.png",
+        imageLeft: true, // Image on left, text on right
+      },
+      {
+        partnerships: [
+          {
+            logo: "/partnerships/bepro-network.png",
+            name: "BEPRO Network",
+            description: "Backend tech and code for on-chain prediction markets"
+          },
+          {
+            logo: "/partnerships/orion-protocol.png",
+            name: "Orion Protocol",
+            description: "Provides decentralised liquidity provisioning for prediction markets"
+          },
+          {
+            logo: "/partnerships/bridge-mutual.png",
+            name: "Bridge Mutual",
+            description: "Liquidity aggregation and risk management for prediction markets"
+          },
+          {
+            logo: "/partnerships/polygon.png",
+            name: "Polygon",
+            description: "Reduces transaction costs and speeds up trade confirmations"
+          },
+          {
+            logo: "/partnerships/shyft-network.png",
+            name: "Shyft Network",
+            description: "Adds opt-in compliance tools for regulatory readiness and optional compliance features"
+          },
+          {
+            logo: "/partnerships/exeedme.png",
+            name: "Exeedme",
+            description: "Helps us curate and gamify our Esports prediction markets experience"
+          },
+          {
+            logo: "/partnerships/elrond.png",
+            name: "Elrond",
+            description: "To expand prediction markets onto Elrond’s blockchain network"
+          },
+          {
+            logo: "/partnerships/moonbeam.png",
+            name: "Moonbeam Network",
+            description: "Bringing prediction markets from Ethereum-style chains into the Polkadot ecosystem"
+          },
+          {
+            logo: "/partnerships/dafi-protocol.png",
+            name: "DAFI Protocol",
+            description: "Use synthetic tokens to reward long-term users and incentivise participation"
+          },
+          {
+            logo: "/partnerships/kleros.png",
+            name: "Kleros",
+            description: "To bring on-chain dispute resolution systems to our prediction markets"
+          },
+          {
+            logo: "/partnerships/dotmoovs.png",
+            name: "Dotmoovs",
+            description: "To predict outcomes of mobile peer-to-peer sports and competitive events"
+          },
+          {
+            logo: "/partnerships/meter.png",
+            name: "Meter",
+            description: "To securely bridge POLK tokens from Ethereum Network into Moonriver and Moonbeam"
+          },
+          {
+            logo: "/partnerships/transak.png",
+            name: "Transak",
+            description: "To add a fiat-to-crypto payment gateway in a compliant way"
+          },
+          {
+            logo: "/partnerships/subquery.png",
+            name: "SubQuery",
+            description: "To enable a reliable data aggregator for protocol analytics"
+          },
+          {
+            logo: "/partnerships/uniswap.png",
+            name: "Uniswap",
+            description: "POLK rewards program launches for Uniswap liquidity providers"
+          },
+        ]
+      },
+      {
+        images: ["/work/private-beta-whitelist-addresses.png", "/work/visual-portfolio-user-forecast.png", "/work/visual-portfolio-user-forecast2.png"]
+      },
+      {
+        images: ["/work/app-animated-gif2.gif", "/work/market-page.png"]
+      }
+    ],
+    insight: "Led GTM and IDO execution at Polkamarkets: $715K raised, 100K+ community, $80M+ open interest. Clarity, speed, and systems over hype.",
+  },
+  "how-we-achieved-166-mom-ngo-growth": {
+    id: "how-we-achieved-166-mom-ngo-growth",
+    title: "How we achieved 166% MoM NGO growth in an ESG marketplace",
+    subtitle: "Connecting corporations with impact organizations in 6 months",
+    company: "Coompass",
+    role: "CMO & Co-Founder",
+    period: "2023 - Present",
+    logo: "/coompass.jpg",
+    numbers: [
+      { value: "150+", label: "NGOs onboarded" },
+      { value: "10+", label: "corporate & university partners" },
+      { value: "70+", label: "active volunteering missions" },
+      { value: "100+", label: "active volunteers" }
+    ],
+    scope: [
+      "GTM strategy & positioning",
+      "Product and adoption alignment",
+      "Narrative iteration & pitching",
+      "NGO and partner onboarding",
+      "Corporate & university pilots",
+      "Market entry strategy (Portugal)"
+    ],
+    metrics: [
+      { label: "NGO Growth", value: "166%" },
+      { label: "Period", value: "MoM" }
+    ],
+    impact: "ESG marketplace connecting corporations with NGOs. Achieved rapid NGO network expansion.",
+    visuals: [
+      {
+        images: ["/work/landing1.png", "/work/landing2.png", "/work/landing3.png"],
+        caption: "Early concept and positioning when exploring a Web3-first approach"
+      },
+      {
+        description: "Early concept <span class=\"underline decoration-green-400 decoration-2\">focused on a mission marketplace connecting companies and NGOs</span>, with built-in recognition and verifiable ESG contributions.<br /><br />This phase helped <span class=\"underline decoration-green-400 decoration-2\">validate demand and reveal adoption friction</span>, which later shaped the platform pivot.",
+        image: "/work/early-concept.png",
+        imageLeft: true // Image on left, text on right
+      },
+      {
+        cards: [
+          "Built the GTM and adoption strategy, designed around participation and proximity. Achieved <span class=\"underline decoration-green-400 decoration-2\">166% MoM NGO growth</span> and <span class=\"underline decoration-green-400 decoration-2\">178% MoM mission activation</span> by focusing on real usage.",
+          "<span class=\"underline decoration-green-400 decoration-2\">Created onboarding narratives</span> that helped NGOs and companies understand participation, <span class=\"underline decoration-green-400 decoration-2\">reducing friction and increasing engagement</span>.",
+          "Scaled the marketplace by onboarding <span class=\"underline decoration-green-400 decoration-2\">150+ NGOs</span> and <span class=\"underline decoration-green-400 decoration-2\">10 corporate and university partners</span>, ensuring live, relevant opportunities.",
+          "Acted as <span class=\"underline decoration-green-400 decoration-2\">the bridge between teams</span>, maintaining clarity and trust while reinforcing feedback loops for continuous activation."
+        ]
+      },
+      {
+        description: "Scaled the marketplace supply side by building a network of <span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">150+</span> <span class=\"text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed\"><span class=\"underline decoration-green-400 decoration-2\">nonprofits onboarded</span> across Portugal</span>.<br /><br />Each organization brings unique missions and causes, creating a diverse ecosystem of volunteering opportunities. The platform connects these nonprofits with corporate partners and volunteers, <span class=\"underline decoration-green-400 decoration-2\">enabling real-time matching and activation</span>.",
+        image: "/work/nonprofits-marketplace.png",
+        imageLeft: true // Image on left, text on right
+      },
+      {
+        partnerships: [
+          {
+            logo: "/partnerships/convida.png"
+          },
+          {
+            logo: "/partnerships/casa.png"
+          },
+          {
+            logo: "/partnerships/fundacaogil.png"
+          },
+          {
+            logo: "/partnerships/associacaosalvador.png"
+          },
+          {
+            logo: "/partnerships/grace.png"
+          },
+          {
+            logo: "/partnerships/grupobrisa.png"
+          },
+          {
+            logo: "/partnerships/givingtuesday.png"
+          },
+          {
+            logo: "/partnerships/cruzvermelha.png"
+          },
+          {
+            logo: "/partnerships/coracoescomcoroa.png"
+          },
+          {
+            logo: "/partnerships/pedalarsemidade.png"
+          },
+          {
+            logo: "/partnerships/vpa.png"
+          },
+          {
+            logo: "/partnerships/impactrip.png"
+          },
+          {
+            logo: "/partnerships/pistamagica.png"
+          },
+          {
+            logo: "/partnerships/cpr.png"
+          },
+          {
+            logo: "/partnerships/driveimpact.png"
+          },
+          {
+            logo: "/partnerships/55mais.png"
+          },
+          {
+            logo: "/partnerships/ucpd.png"
+          },
+          {
+            logo: "/partnerships/apadrinhaoliveira.png"
+          },
+          {
+            logo: "/partnerships/alberguesporto.png"
+          },
+          {
+            logo: "/partnerships/espacot.png"
+          },
+        ]
+      },
+      {
+        description: "Enabled <span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">80+</span> <span class=\"text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed\"><span class=\"underline decoration-green-400 decoration-2\">corporate volunteering missions and opportunities</span>, available both remotely and on-site</span>.<br /><br />These missions range from <span class=\"underline decoration-green-400 decoration-2\">skills-based volunteering to hands-on community work</span>, allowing companies to engage their teams in meaningful impact activities that align with their ESG goals and employee interests.",
+        image: "/work/volunteering-missions-marketplace.png",
+        imageLeft: false // Text on left, image on right
+      },
+      {
+        description: "Built <span class=\"underline decoration-green-400 decoration-2\">real-time dashboards tracking participation and impact</span> to provide companies, nonprofits, and volunteers with visibility into their ESG activities and volunteer engagement.",
+        images: [
+          "/work/company-dashboard.png",
+          "/work/nonprofit-dashboard.png",
+          "/work/volunteer-dashboard.png"
+        ],
+        imageCaptions: [
+          "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Company dashboard:</span> Track active volunteers, volunteer hours, mission completion rates, and partnership metrics for corporate ESG reporting",
+          "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Nonprofit dashboard:</span> Manage engaged users, worked hours, missions, and member engagement",
+          "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Volunteer dashboard:</span> Personal view of volunteer activity, karma progress, and mission participation"
+        ],
+        imageLeft: true // Images on left, text on right
+      },
+      {
+        description: "The <span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">impact certificate</span> gives organizations a verifiable snapshot of their ESG activity.<br /><br />It aggregates real participation data. Volunteers, hours, missions, supported SDGs, and geographic reach. All generated directly from platform usage.<br /><br />This removed manual reporting and made impact easy to communicate and share.",
+        image: "/work/impact-certificate.jpg",
+        imageLeft: false // Text on left, image on right
+      },
+      {
+        description: "The <span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">impact resume</span> captures individual contributions in one place.<br /><br />It shows missions completed, skills applied, organizations supported, SDGs impacted, and time invested. Built from real activity, not self-reporting.<br /><br />This helped make impact visible at a personal level and encouraged repeat participation.",
+        image: "/work/social-impact-resume.png",
+        imageLeft: true // Image on left, text on right
+      }
+    ],
+    insight: "Drove GTM and adoption at Coompass: 166% MoM NGO growth, 150+ nonprofits, 10+ partners. Built dashboards, impact certificate, and impact resume to make ESG participation visible and verifiable.",
+  },
+  "building-web3-marketing-strategies": {
+    id: "building-web3-marketing-strategies",
+    title: "Building Web3 marketing strategies for token launches",
+    subtitle: "Strategic marketing and business development for Web3 projects",
+    company: "Polkastarter",
+    role: "Web3 Marketing & BD Consultant",
+    period: "2020 - Present",
+    logo: "/polkastarter.jpg",
+    numbers: [
+      { value: "5+", label: "years" },
+      { value: "50+", label: "projects" }
+    ],
+    scope: [
+      "Marketing strategy",
+      "Token launch support",
+      "Business development",
+      "Partnership coordination"
+    ],
+    metrics: [
+      { label: "Years", value: "5+" },
+      { label: "Role", value: "Consultant" }
+    ],
+    impact: "Strategic marketing and business development for Web3 projects and token launches.",
+  },
+  "scaling-sales-partnerships-blockchain": {
+    id: "scaling-sales-partnerships-blockchain",
+    title: "Scaling protocol adoption through partnerships",
+    subtitle: "Growing clients and ecosystem usage by shifting from gambling tooling to a developer-first Web3 protocol",
+    company: "BEPRO Network",
+    role: "Head of Sales & Partnerships",
+    period: "2020 – 2021",
+    logo: "/bepronetwork.jpg",
+    numbers: [
+      { value: "6+", label: "clients live and active" },
+      { value: "6+", label: "partnerships across DeFi, gaming, and tooling" },
+      { value: "3 months", label: "to double ecosystem traction" },
+      { value: "2 → 6+", label: "clients through direct, consultative sales" }
+    ],
+    scope: [
+      "Sales strategy and execution",
+      "Ecosystem partnerships",
+      "Protocol adoption narratives",
+      "Education-first positioning",
+      "Builder and operator relationships",
+      "Feedback loop between market and product"
+    ],
+    metrics: [
+      { label: "Years", value: "1" },
+      { label: "Role", value: "Head" }
+    ],
+    impact: "Led sales and partnership strategy for blockchain development platform.",
+    visuals: [
+      {
+        images: ["/work/betprotocol-vision.png", "/work/betprotocol-product.png", "/work/betprotocol-betting-apps.png"],
+        caption: "Making complex online gaming products as easy to launch as modern websites and eCommerce. A fully white-label esports and casino platform, ready to deploy without engineering overhead. Production-ready games driving real volume, real users, and real revenue from day one."
+      },
+      {
+        images: [
+          "/work/betprotocol-casino.png",
+          "/work/betprotocol-esports.png",
+          "/work/betprotocol-esports2.png",
+          "/work/betprotocol-sports.png",
+          "/work/betprotocol-social-casino.png"
+        ],
+        imageCaptions: [
+          "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Casino:</span> BetProtocol let operators launch a full casino experience instantly, with proven games like Dice, Roulette, Coin Flip, Baccarat, and Slots. No custom development required. Just configure, brand, and go live.",
+          "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Esports:</span> The platform enabled esports betting across major titles like CS:GO, DOTA 2, and League of Legends. Operators could tap into a market growing at double-digit rates year over year, with native support for esports audiences.",
+          "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Esports:</span> BetProtocol bundled odds, live data, streams, and betting flows into a single system. No third-party dependencies. A simple, end-to-end esports betting experience, ready to use from day one.",
+          "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Sports:</span> The product also supported traditional sports betting, with features like live chat, gamification, bonuses, and access to top leagues. A planned Stadium feature would let fans interact in real time during live events.",
+          "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Social Casino:</span> For teams that wanted engagement without real-money betting, BetProtocol supported social casino setups. Users played with virtual currency, while operators monetized through ads and in-game purchases. Key points: • No gaming license required • No real-money wagering • Built for community growth and monetization"
+        ],
+        imageLeft: false // Images on right, captions on left
+      },
+      {
+        description: "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Sales motion and growth.</span><br /><br /><span class=\"underline decoration-green-400 decoration-2\">Direct, consultative sales with builders and operators</span>: understand constraints, map BetProtocol primitives to use cases, educate on integration and shipping.<br /><br />Grew from 2 clients and 3 partnerships to <span class=\"underline decoration-green-400 decoration-2\">10+ aggregated clients and partnerships in three months</span>. Real-world feedback fed back into product.",
+        image: "/work/clients-worldwide.png",
+        imageLeft: true
+      },
+      {
+        partnerships: [
+          {
+            logo: "/partnerships/chainlink.png",
+            name: "Chainlink",
+          },
+          {
+            logo: "/partnerships/elrond.png",
+            name: "Elrond",
+          },
+          {
+            logo: "/partnerships/band-protocol.png",
+            name: "Band Protocol",
+          },
+          {
+            logo: "/partnerships/ankr.png",
+            name: "Ankr",
+          },
+          {
+            logo: "/partnerships/nexo.png",
+            name: "Nexo",
+          },
+          {
+            logo: "/partnerships/polygon.png",
+            name: "Polygon",
+          },
+          {
+            logo: "/partnerships/utrust.png",
+            name: "UTrust",
+          },
+          {
+            logo: "/partnerships/exeedme.png",
+            name: "Exeedme",
+          },
+          {
+            logo: "/partnerships/royale-finance.png",
+            name: "Royale Finance",
+          },
+          {
+            logo: "/partnerships/ngrave.png",
+            name: "Ngrave",
+          },
+        ]
+      },
+      {
+        description: "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Early positioning.</span> From gambling tooling to protocol.<br /><br />The pivot was critical: long-term value sat in shared infra for developers and operators, not white-label casinos. We reframed from \"launch your betting app\" to \"build Web3 products faster using open tooling and on-chain incentives.\"<br /><br />I led branding, product positioning, GTM strategy, and narrative so the pivot landed clearly.",
+        video: "https://www.youtube.com/watch?v=GSWn31WF_ao",
+        imageLeft: false
+      },
+      {
+        videos: [
+          "https://www.youtube.com/watch?v=kcqyp63x38A",
+          "https://www.youtube.com/watch?v=PxVkA1WBP0E"
+        ],
+        videoCaptions: [
+          "Pivot explainer: BEPRO as Code-as-a-Service for DeFi, gaming, prediction markets. I led messaging, positioning, and content strategy.",
+          "EVM milestone and Code-as-a-Service launch. I crafted the narrative and messaging so the pivot landed clearly."
+        ]
+      },
+      {
+        description: "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Protocol and developer marketplace.</span><br /><br />BEPRO became a protocol and task marketplace: teams post tasks, fund work with crypto, and the community curates and validates.<br /><br />Incentives aligned between builders, token holders, and usage. Partnerships were tied to actual usage, not announcements.",
+        image: "/work/bepro-showcase.gif",
+        imageLeft: true
+      },
+      {
+        description: "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Autonomous protocol for decentralized development.</span><br /><br />BEPRO Network pivots to connecting developers with software work through on-chain bounties, letting teams post tasks with token rewards, builders complete and get paid, and community curators help settle disputes — all without centralized intermediaries, fostering an open, autonomous development ecosystem.",
+        image: "/work/bepro-dap.png",
+        imageLeft: false
+      },
+      {
+        images: ["/work/bepro-dap2.png", "/work/bepro-dap3.png"]
+      },
+      {
+        description: "Through partnerships and adoption-focused sales at BEPRO Network, I supported the pivot toward a developer-first protocol, which ultimately led to its integration and acquisition by TAIKAI.",
+        image: "/work/bepro-taikai.png",
+        imageLeft: true,
+        link: { url: "https://layerxlab.medium.com/taikai-x-bepro-the-future-of-the-developer-economy-6caff5985b72", label: "TAIKAI × BEPRO — The future of the developer economy" }
+      },
+      {
+        images: ["/work/bepro-dap4.png", "/work/bepro-dap5.png", "/work/bepro-dap6.png"]
+      },
+    ],
+    insight: "Led sales and partnerships at BEPRO Network: 6+ clients, 6+ partnerships, 3 months to double traction. Supported the pivot from gambling tooling to a developer-first protocol and its integration with TAIKAI.",
+  },
+  "super-muscles-card-collection": {
+    id: "super-muscles-card-collection",
+    title: "Super Muscles: Cards From a Kid's Imagination",
+    subtitle:
+      "A father-son card experiment turning imagination into collectible play, powered by AI",
+    company: "Super Muscles",
+    role: "Father-Son Creative Collaboration",
+    period: "2024 - Present",
+    logo: "/supermuscles.png",
+    numbers: [
+      { value: "100+", label: "characters" },
+      { value: "3", label: "stats" },
+      { value: "4", label: "rarity tiers" },
+      { value: "2", label: "creators" }
+    ],
+    scope: [
+      "Card concepting + play testing",
+      "Character exploration with AI tools",
+      "Stats + rarity balancing",
+      "Collectible packs + sharing"
+    ],
+    metrics: [
+      { label: "Stats", value: "Power / Defense / Magic" },
+      { label: "Rarity", value: "Color-coded tiers" },
+      { label: "Goal", value: "Collect + play + share" }
+    ],
+    impact:
+      "A meaningful father-son creative experiment: AI as an amplifier for play, collecting, and imagination.",
+    visuals: [
+      {
+        image: "/work/supermuscles-origin-story.jpg",
+        imageLeft: false,
+        description:
+          "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">The Origin Story:</span><br />" +
+          "My kid loved <span class=\"underline decoration-green-400 decoration-2\">cartoons</span>, <span class=\"underline decoration-green-400 decoration-2\">trading cards</span>, and <span class=\"underline decoration-green-400 decoration-2\">board games</span> long before this had a name.<br /><br />" +
+          "One day at home, he asked a simple question: '<span class=\"underline decoration-green-400 decoration-2\">Can I make my own cards?</span>'<br /><br />" +
+          "We started small: <span class=\"underline decoration-green-400 decoration-2\">character ideas</span>, <span class=\"underline decoration-green-400 decoration-2\">playful sketches</span>, and a promise to turn the daydream into something we could actually hold."
+      },
+      {
+        image: "/work/supermuscles-idea.png",
+        imageLeft: true,
+        description:
+          "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">The Idea:</span><br />" +
+          "Super Muscles is a physical <span class=\"underline decoration-green-400 decoration-2\">trading card</span> collection built for collecting, trading, and playing.<br /><br />" +
+          "<span class=\"underline decoration-green-400 decoration-2\">Muscle-powered characters</span> with funny, exaggerated abilities make the rules feel easy and fun.<br /><br />" +
+          "It blends <span class=\"underline decoration-green-400 decoration-2\">pop culture</span> inspiration with simple, <span class=\"underline decoration-green-400 decoration-2\">kid-friendly imagination</span>."
+      },
+      {
+        image: "/work/supermuscles-build-process.png",
+        imageLeft: false,
+        description:
+          "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">The Build Process:</span><br />" +
+          "We used <span class=\"underline decoration-green-400 decoration-2\">AI tools</span> to explore character directions quickly, then kept only what felt right.<br /><br />" +
+          "From there, we iterated like a game: choose, adjust, refine, and lock in the <span class=\"underline decoration-green-400 decoration-2\">stats</span> and <span class=\"underline decoration-green-400 decoration-2\">rarity</span> ideas.<br /><br />" +
+          "The goal was not 'perfect'. The goal was a collection that feels <span class=\"underline decoration-green-400 decoration-2\">warm</span>, <span class=\"underline decoration-green-400 decoration-2\">proud</span>, and real."
+      },
+      {
+        partnerships: [
+          {
+            name: "Midjourney",
+            logo: "/partnerships/midjourney.png",
+            logoText: "Midjourney",
+            description: "Creative image exploration & style directions"
+          },
+          {
+            name: "ChatGPT",
+            logo: "/partnerships/chatgpt.png",
+            logoText: "ChatGPT",
+            description: "Story prompts, character naming, and rule ideas"
+          },
+          {
+            name: "Gemini NanoBanana",
+            logo: "/partnerships/gemini-nanobanana.png",
+            logoText: "Gemini NanoBanana",
+            description: "Alternate takes & quick iteration for concepts"
+          },
+          {
+            name: "Claude",
+            logo: "/partnerships/claude.png",
+            logoText: "Claude",
+            description: "Tighter summaries & character backstory refinement"
+          },
+          {
+            name: "Lovable",
+            logo: "/partnerships/lovable.png",
+            logoText: "Lovable",
+            description: "Experimenting with small product ideas and layouts"
+          },
+          {
+            name: "Bolt.dev",
+            logo: "/partnerships/bolt.png",
+            logoText: "Bolt.dev",
+            description: "Prototyping tooling to turn concepts into assets"
+          }
+        ]
+      },
+      {
+        image: "/work/supermuscles-how-to-play.png",
+        imageLeft: true,
+        description:
+          "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">The System Behind It:</span><br />" +
+          "Every character has <span class=\"underline decoration-green-400 decoration-2\">Power / Defense / Magic</span> stats, so comparisons stay simple.<br /><br />" +
+          "<span class=\"underline decoration-green-400 decoration-2\">Rarity tiers</span> are color-coded, so packs feel exciting before you even open them.<br /><br />" +
+          "It is designed for <span class=\"underline decoration-green-400 decoration-2\">collecting</span>, <span class=\"underline decoration-green-400 decoration-2\">trading</span>, and <span class=\"underline decoration-green-400 decoration-2\">remembering</span>."
+      },
+      {
+        image: "/work/supermuscles-landing.png",
+        imageLeft: false,
+        description:
+          "<span class=\"text-2xl font-bold text-green-400 dark:text-green-400 leading-none\">Why This Project Matters:</span><br />" +
+          "<span class=\"underline decoration-green-400 decoration-2\">Creativity over consumption</span>. Kids building, not just playing.<br /><br />" +
+          "<span class=\"underline decoration-green-400 decoration-2\">AI is not the point. It is the amplifier</span>: it lowers the barrier to trying ideas.<br /><br />" +
+          "The real magic is the collaboration. You show up, and the kid imagines. Together you make something new."
+      },
+      {
+        images: [
+          "/work/hulk.png",
+          "/work/pikachu.png",
+          "/work/songoku.png",
+          "/work/bowser.png",
+          "/work/sonic.png"
+        ],
+        caption: ""
+      },
+      {
+        cards: [
+          "Kids do not need complex tools to create. They need permission to imagine.",
+          "Constraints spark creativity: 'not perfect yet' still moves the story forward.",
+          "AI can lower the barrier, but taste still comes from people.",
+          "Building together creates memories you can keep."
+        ]
+      }
+    ],
+    insight:
+      "Super Muscles is a father-son creative collaboration, a product experiment combining AI + play + collectible design.",
+  },
+  "driving-growth-web3-blockchain": {
+    id: "driving-growth-web3-blockchain",
+    title: "Driving growth for Web3 projects and blockchain initiatives",
+    subtitle: "Marketing growth strategies for Web3 and blockchain",
+    company: "IBC Group",
+    role: "Web3 Marketing Growth Manager",
+    period: "2025 - Present",
+    logo: "/ibcgroup.png",
+    numbers: [
+      { value: "10+", label: "projects" },
+      { value: "200%+", label: "avg growth" }
+    ],
+    scope: [
+      "Growth strategy",
+      "Marketing execution",
+      "Project management",
+      "Performance optimization"
+    ],
+    metrics: [
+      { label: "Status", value: "Active" },
+      { label: "Focus", value: "Growth" }
+    ],
+    impact: "Driving marketing growth strategies for Web3 projects and blockchain initiatives.",
+  },
+  "strategic-partnerships-web3-digital-marketing": {
+    id: "strategic-partnerships-web3-digital-marketing",
+    title: "Strategic partnerships in Web3 and digital marketing",
+    subtitle: "Business development and strategic partnerships",
+    company: "Broadpath",
+    role: "Partner",
+    period: "2025 - Present",
+    logo: "/broadpath.png",
+    numbers: [
+      { value: "15+", label: "partners" },
+      { value: "$10M+", label: "portfolio value" }
+    ],
+    scope: [
+      "Strategic partnerships",
+      "Business development",
+      "Portfolio management",
+      "Market expansion"
+    ],
+    metrics: [
+      { label: "Status", value: "Active" },
+      { label: "Role", value: "Partner" }
+    ],
+    impact: "Strategic partnership and business development in Web3 and digital marketing.",
+  },
+};
+
+export function getWorkById(id: string): Work | undefined {
+  return works[id];
+}
+
+export function getAllWorkIds(): string[] {
+  return Object.keys(works);
+}
+
+export function getAllWorks(): Work[] {
+  return Object.values(works);
+}
