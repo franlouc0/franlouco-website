@@ -5,9 +5,7 @@ import { generateArticleDescription } from "@/lib/article-utils";
 import { getArticleOgImage } from "@/lib/og-images";
 
 interface ArticleLayoutProps {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }>;
   children: React.ReactNode;
 }
 
@@ -18,7 +16,8 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: ArticleLayoutProps): Promise<Metadata> {
-  const article = getArticleById(params.slug);
+  const { slug } = await params;
+  const article = getArticleById(slug);
 
   if (!article) {
     return {

@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const CONTACT_EMAIL = process.env.CONTACT_EMAIL ?? "francisco.guerra.lourenco@gmail.com";
 const FROM_EMAIL = process.env.RESEND_FROM_EMAIL ?? "onboarding@resend.dev";
 const FROM_NAME = process.env.RESEND_FROM_NAME ?? "Francisco Lourenço";
@@ -49,6 +47,7 @@ export async function POST(request: Request) {
       { status: 500 }
     );
   }
+  const resend = new Resend(process.env.RESEND_API_KEY);
 
   const ip = getClientIp(request);
   if (isRateLimited(ip)) {

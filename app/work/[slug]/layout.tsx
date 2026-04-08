@@ -4,7 +4,7 @@ import { getWorkOgImage } from "@/lib/og-images";
 import { getWorkById, getAllWorkIds } from "@/lib/work";
 
 interface WorkLayoutProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
   children: React.ReactNode;
 }
 
@@ -15,7 +15,8 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: WorkLayoutProps): Promise<Metadata> {
-  const work = getWorkById(params.slug);
+  const { slug } = await params;
+  const work = getWorkById(slug);
   if (!work) {
     return { title: "Work Not Found" };
   }

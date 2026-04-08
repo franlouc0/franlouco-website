@@ -4,9 +4,9 @@ import { generateOgImageWithLogo } from "@/lib/og-image-generator";
 
 export async function GET(
   _request: Request,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
-  const slug = params.slug;
+  const { slug } = await params;
   const gridPath = getArticleGridPath(slug);
   if (!gridPath) {
     return new NextResponse(null, { status: 404 });
