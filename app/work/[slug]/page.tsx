@@ -9,14 +9,14 @@ import { ExperienceSection } from "@/components/experience-section";
 import { FeaturedArticlesSection } from "@/components/featured-articles-section";
 import { FeaturedWorkSection } from "@/components/featured-work-section";
 import { ContactModal } from "@/components/contact-modal";
-import { useState, useEffect, useRef } from "react";
+import { use, useState, useEffect, useRef } from "react";
 import { getWorkById, type Work } from "@/lib/work";
 import { getYouTubeVideoId } from "@/lib/utils";
 
 interface WorkPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 interface VideoSectionProps {
@@ -216,7 +216,8 @@ function WorkInfoCard({ work, scrollProgress, variant }: WorkInfoCardProps) {
 }
 
 export default function WorkPage({ params }: WorkPageProps) {
-  const work = getWorkById(params.slug);
+  const { slug } = use(params);
+  const work = getWorkById(slug);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isInfoOpen, setIsInfoOpen] = useState(false);
   const [isShareCopied, setIsShareCopied] = useState(false);

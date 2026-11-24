@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { use, useState, useEffect, useRef } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -16,9 +16,9 @@ import { calculateReadingTime } from "@/lib/article-utils";
 import type { Article } from "@/lib/articles";
 
 interface ArticlePageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 function ArticleInfoCard({
@@ -99,13 +99,14 @@ function ArticleInfoCard({
 }
 
 export default function ArticlePage({ params }: ArticlePageProps) {
+  const { slug } = use(params);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isInfoOpen, setIsInfoOpen] = useState(false);
   const [isShareCopied, setIsShareCopied] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const scrollContainerRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
-  const article = getArticleById(params.slug);
+  const article = getArticleById(slug);
 
   useEffect(() => {
     const scrollContainer = scrollContainerRef.current;
