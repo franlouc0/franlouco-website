@@ -530,20 +530,25 @@ export default function WorkPage({ params }: WorkPageProps) {
         {/* Header Image with Title and Info Card */}
         <div 
           ref={headerRef}
-          className="relative w-full overflow-hidden"
-          style={{
-            height: typeof window !== 'undefined' && window.innerWidth >= 1024
-              ? scrollProgress < 1 
-                ? `${50 * (1 - scrollProgress * 0.5)}vh` 
-                : '25vh'
-              : scrollProgress < 1 
-                ? `${45 * (1 - scrollProgress * 0.5)}vh` 
-                : '22.5vh',
-            minHeight: scrollProgress < 1 
-              ? `${300 * (1 - scrollProgress * 0.5)}px` 
-              : '150px',
-            transition: 'height 0.1s ease-out, min-height 0.1s ease-out',
-          }}
+          className="relative h-[45vh] min-h-[300px] w-full overflow-hidden transition-[height,min-height] duration-100 ease-out lg:h-[50vh]"
+          style={
+            scrollProgress > 0
+              ? {
+                  height:
+                    window.innerWidth >= 1024
+                      ? scrollProgress < 1
+                        ? `${50 * (1 - scrollProgress * 0.5)}vh`
+                        : "25vh"
+                      : scrollProgress < 1
+                        ? `${45 * (1 - scrollProgress * 0.5)}vh`
+                        : "22.5vh",
+                  minHeight:
+                    scrollProgress < 1
+                      ? `${300 * (1 - scrollProgress * 0.5)}px`
+                      : "150px",
+                }
+              : undefined
+          }
         >
           {/* Header Image - Full width */}
           <Image
@@ -600,38 +605,42 @@ export default function WorkPage({ params }: WorkPageProps) {
               transition: 'align-items 0.1s ease-out, padding-top 0.1s ease-out',
             }}
           >
-            <div className="w-3/4">
+            <div className="w-3/4 min-w-0 lg:w-full lg:max-w-[calc(100%-19.5rem)]">
               <h1 
-                className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight text-left drop-shadow-2xl mb-2"
-                style={{
-                  fontSize: typeof window !== 'undefined'
-                    ? (() => {
-                        const isDesktop = window.innerWidth >= 1024;
-                        const isTablet = window.innerWidth >= 640;
-                        const baseSize = isDesktop ? 3 : isTablet ? 2.25 : 1.875; // rem
-                        const scale = 1 - scrollProgress * 0.4;
-                        return `${baseSize * scale}rem`;
-                      })()
-                    : undefined,
-                  transition: 'font-size 0.1s ease-out',
-                }}
+                className="mb-2 text-left text-3xl font-extrabold tracking-tight text-white drop-shadow-2xl transition-[font-size] duration-100 ease-out sm:text-4xl lg:text-5xl"
+                style={
+                  scrollProgress > 0
+                    ? {
+                        fontSize: `${
+                          (window.innerWidth >= 1024
+                            ? 3
+                            : window.innerWidth >= 640
+                              ? 2.25
+                              : 1.875) *
+                          (1 - scrollProgress * 0.4)
+                        }rem`,
+                      }
+                    : undefined
+                }
               >
                 {work.title}
               </h1>
               <p 
-                className="text-sm sm:text-base lg:text-lg text-white/90 drop-shadow-lg"
-                style={{
-                  fontSize: typeof window !== 'undefined'
-                    ? (() => {
-                        const isDesktop = window.innerWidth >= 1024;
-                        const isTablet = window.innerWidth >= 640;
-                        const baseSize = isDesktop ? 1.125 : isTablet ? 1 : 0.875; // rem
-                        const scale = 1 - scrollProgress * 0.25;
-                        return `${baseSize * scale}rem`;
-                      })()
-                    : undefined,
-                  transition: 'font-size 0.1s ease-out',
-                }}
+                className="text-sm text-white/90 drop-shadow-lg transition-[font-size] duration-100 ease-out sm:text-base lg:text-lg"
+                style={
+                  scrollProgress > 0
+                    ? {
+                        fontSize: `${
+                          (window.innerWidth >= 1024
+                            ? 1.125
+                            : window.innerWidth >= 640
+                              ? 1
+                              : 0.875) *
+                          (1 - scrollProgress * 0.25)
+                        }rem`,
+                      }
+                    : undefined
+                }
               >
                 {work.subtitle}
               </p>
@@ -639,7 +648,7 @@ export default function WorkPage({ params }: WorkPageProps) {
           </div>
 
           {/* Info Card - Desktop only, top right */}
-          <div className="absolute top-6 right-6 lg:top-8 lg:right-8 z-10 hidden lg:block">
+          <div className="absolute top-6 right-6 lg:top-8 lg:right-8 z-30 hidden lg:block">
             <WorkInfoCard work={work} scrollProgress={scrollProgress} variant="desktop" />
           </div>
         </div>

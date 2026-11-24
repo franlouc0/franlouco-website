@@ -376,22 +376,25 @@ export default function ArticlePage({ params }: ArticlePageProps) {
         {/* Hero - same header image as featured work page */}
         <div
           ref={headerRef}
-          className="relative w-full overflow-hidden"
-          style={{
-            height:
-              typeof window !== "undefined" && window.innerWidth >= 1024
-                ? scrollProgress < 1
-                  ? `${50 * (1 - scrollProgress * 0.5)}vh`
-                  : "25vh"
-                : scrollProgress < 1
-                  ? `${45 * (1 - scrollProgress * 0.5)}vh`
-                  : "22.5vh",
-            minHeight:
-              scrollProgress < 1
-                ? `${300 * (1 - scrollProgress * 0.5)}px`
-                : "150px",
-            transition: "height 0.1s ease-out, min-height 0.1s ease-out",
-          }}
+          className="relative h-[45vh] min-h-[300px] w-full overflow-hidden transition-[height,min-height] duration-100 ease-out lg:h-[50vh]"
+          style={
+            scrollProgress > 0
+              ? {
+                  height:
+                    window.innerWidth >= 1024
+                      ? scrollProgress < 1
+                        ? `${50 * (1 - scrollProgress * 0.5)}vh`
+                        : "25vh"
+                      : scrollProgress < 1
+                        ? `${45 * (1 - scrollProgress * 0.5)}vh`
+                        : "22.5vh",
+                  minHeight:
+                    scrollProgress < 1
+                      ? `${300 * (1 - scrollProgress * 0.5)}px`
+                      : "150px",
+                }
+              : undefined
+          }
         >
           <Image
             src="/dark-mode-header-image.jpg"
@@ -444,26 +447,23 @@ export default function ArticlePage({ params }: ArticlePageProps) {
                 "align-items 0.1s ease-out, padding-top 0.1s ease-out",
             }}
           >
-            <div className="w-3/4">
+            <div className="w-3/4 min-w-0 lg:w-full lg:max-w-[calc(100%-16rem)]">
               <h1
-                className="font-extrabold text-white tracking-tight text-left drop-shadow-2xl leading-tight"
-                style={{
-                  fontSize:
-                    typeof window !== "undefined"
-                      ? (() => {
-                          const isDesktop = window.innerWidth >= 1024;
-                          const isTablet = window.innerWidth >= 640;
-                          const baseSize = isDesktop
+                className="text-left text-3xl font-extrabold leading-tight tracking-tight text-white drop-shadow-2xl transition-[font-size] duration-100 ease-out sm:text-4xl lg:text-5xl"
+                style={
+                  scrollProgress > 0
+                    ? {
+                        fontSize: `${
+                          (window.innerWidth >= 1024
                             ? 3
-                            : isTablet
+                            : window.innerWidth >= 640
                               ? 2.25
-                              : 1.875;
-                          const scale = 1 - scrollProgress * 0.4;
-                          return `${baseSize * scale}rem`;
-                        })()
-                      : undefined,
-                  transition: "font-size 0.1s ease-out",
-                }}
+                              : 1.875) *
+                          (1 - scrollProgress * 0.4)
+                        }rem`,
+                      }
+                    : undefined
+                }
               >
                 {article.title}
               </h1>
@@ -471,7 +471,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           </div>
 
           {/* Info Card - Desktop only, top right */}
-          <div className="absolute top-6 right-6 z-10 hidden lg:block lg:top-8 lg:right-8">
+          <div className="absolute top-6 right-6 z-30 hidden lg:block lg:top-8 lg:right-8">
             <ArticleInfoCard article={article} variant="desktop" />
           </div>
         </div>
