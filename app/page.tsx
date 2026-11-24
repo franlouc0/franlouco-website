@@ -324,7 +324,7 @@ export default function Home() {
                     href={project.href}
                     className={`block ${project.span}`}
                   >
-                    <article className="group relative h-full w-full overflow-hidden rounded-lg bg-zinc-200 dark:bg-zinc-800">
+                    <article className="group relative h-full w-full overflow-hidden rounded-lg border border-zinc-200 bg-zinc-200 dark:border-zinc-800 dark:bg-zinc-800">
                       <Image
                         src={project.image}
                         alt={`${project.title} - ${project.description}`}
@@ -333,7 +333,7 @@ export default function Home() {
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         loading="lazy"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent">
                         {/* Polkamarkets tag - top-left, only for project id 1 */}
                         {project.id === 1 && (
                           <div className="absolute top-3 left-3 z-10">
@@ -422,7 +422,7 @@ export default function Home() {
                   </Link>
                 ) : (
                   <div key={project.id} className={project.span}>
-                    <article className="group relative h-full w-full overflow-hidden rounded-lg bg-zinc-200 dark:bg-zinc-800">
+                    <article className="group relative h-full w-full overflow-hidden rounded-lg border border-zinc-200 bg-zinc-200 dark:border-zinc-800 dark:bg-zinc-800">
                   <Image
                     src={project.image}
                     alt={`${project.title} - ${project.description}`}
@@ -431,7 +431,7 @@ export default function Home() {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent">
                         <div className="absolute top-3 right-3 z-10">
                           <span className="inline-flex items-center rounded-md border border-zinc-300 bg-zinc-100 px-2 py-1 text-[10px] font-medium text-zinc-600 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400">
                             Soon
