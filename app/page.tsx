@@ -258,7 +258,7 @@ export default function Home() {
           >
             GitHub
             <span className="absolute -top-0.5 left-[calc(100%-1px)] text-[8px] font-bold text-green-400 leading-none">
-              19
+              28
             </span>
           </Link>
           <span
@@ -484,7 +484,7 @@ export default function Home() {
         >
           GitHub
           <span className="absolute -top-0.5 left-[calc(100%-1px)] text-[8px] font-bold text-green-400 leading-none">
-            19
+            28
           </span>
         </Link>
         <span

@@ -15,14 +15,21 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
-    role: "Web3 Marketing Growth Manager",
-    company: "IBC Group",
-    years: "2025 - Present",
-    logo: "/ibcgroup.png",
+    role: "COO & CMO",
+    company: "Amplear",
+    years: "2026 - Present",
+    logo: "/amplear.jpg",
     isActive: true,
   },
   {
-    role: "CMO & Co-Founder",
+    role: "Advisor",
+    company: "Superstables",
+    years: "2026 - Present",
+    logo: "/superstables.jpg",
+    isActive: true,
+  },
+  {
+    role: "Advisor",
     company: "Coompass",
     years: "2023 - Present",
     logo: "/coompass.jpg",
@@ -36,18 +43,22 @@ const experiences: Experience[] = [
     isActive: true,
   },
   {
+    role: "Web3 Marketing Growth Manager",
+    company: "IBC Group",
+    years: "2025 - 2026",
+    logo: "/ibcgroup.png",
+  },
+  {
     role: "Founding Mentor",
     company: "Builders Camp",
-    years: "2025 - Present",
+    years: "2025 - 2026",
     logo: "/builders.jpeg",
-    isActive: true,
   },
   {
     role: "Advisor",
     company: "Predik",
-    years: "2025 - Present",
+    years: "2025 - 2026",
     logo: "/predik.jpg",
-    isActive: true,
   },
   {
     role: "Web3 Marketing Consultant",

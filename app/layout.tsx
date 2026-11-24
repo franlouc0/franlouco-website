@@ -149,15 +149,23 @@ const jsonLd = {
   hasOccupation: [
     {
       "@type": "Occupation",
-      name: "Web3 Marketing Growth Manager",
+      name: "COO & CMO",
       occupationLocation: {
         "@type": "Organization",
-        name: "IBC Group",
+        name: "Amplear",
       },
     },
     {
       "@type": "Occupation",
-      name: "CMO & Co-Founder",
+      name: "Advisor",
+      occupationLocation: {
+        "@type": "Organization",
+        name: "Superstables",
+      },
+    },
+    {
+      "@type": "Occupation",
+      name: "Advisor",
       occupationLocation: {
         "@type": "Organization",
         name: "Coompass",
@@ -169,22 +177,6 @@ const jsonLd = {
       occupationLocation: {
         "@type": "Organization",
         name: "Broadpath",
-      },
-    },
-    {
-      "@type": "Occupation",
-      name: "Founding Mentor",
-      occupationLocation: {
-        "@type": "Organization",
-        name: "Builders Camp",
-      },
-    },
-    {
-      "@type": "Occupation",
-      name: "Advisor",
-      occupationLocation: {
-        "@type": "Organization",
-        name: "Predik",
       },
     },
   ],
