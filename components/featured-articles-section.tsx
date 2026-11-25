@@ -14,8 +14,11 @@ const PLACEHOLDER_TITLES = [
   "GTM and positioning for early-stage protocols",
 ] as const;
 
-// First item is the real article; rest are placeholders
-const FEATURED_ARTICLE_IDS = ["imagining-ai-powered-fundraising-nonprofits"] as const;
+// Real articles first; remaining titles are placeholders
+const FEATURED_ARTICLE_IDS = [
+  "treat-the-raise-like-a-product-launch",
+  "imagining-ai-powered-fundraising-nonprofits",
+] as const;
 
 const ITEMS: Array<{ slug?: string; title: string }> = [
   ...FEATURED_ARTICLE_IDS.map((slug) => {

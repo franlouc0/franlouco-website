@@ -15,6 +15,15 @@ const nextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
   swcMinify: true,
+  async redirects() {
+    return [
+      {
+        source: "/articles/how-we-raised-715k-ido",
+        destination: "/articles/treat-the-raise-like-a-product-launch",
+        permanent: true,
+      },
+    ];
+  },
 }
 
 module.exports = nextConfig

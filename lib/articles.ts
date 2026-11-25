@@ -8,117 +8,46 @@ export interface Article {
 }
 
 export const articles: Record<string, Article> = {
-  "how-we-raised-715k-ido": {
-    id: "how-we-raised-715k-ido",
-    title: "How we raised $715K in an IDO without relying on hype",
+  "treat-the-raise-like-a-product-launch": {
+    id: "treat-the-raise-like-a-product-launch",
+    title: "Treat the raise like a product launch",
     date: "2024-01-15",
     author: "Francisco Lourenço",
     tags: ["Growth", "Polkamarkets", "Launch Judgement", "Founders", "Web3 Teams"],
     content: `
 In early 2021, crypto launches were loud. A lot of noise. A lot of promises. A lot of shortcuts. At Polkamarkets, we did the opposite.
 
-As CMO and Co-Founder, I led the go-to-market and launch execution of our IDO in February 2021, where we raised $715K, built a 100K+ community in two months, and kicked off a protocol that would later reach a 120x post-IDO ATH.
+As CMO and Co-Founder, I led the go-to-market and launch execution of our Initial Decentralized Offering (IDO) in February 2021, where we raised $715K, built a 100K+ community in two months, and kicked off a protocol that would later reach a 120x post-IDO ATH. We were six people, early, with no reputation, building decentralized prediction markets. Before the public raise we had about $625K from VCs and angels. We launched on Ethereum and later reached Moonbeam, Moonriver, and Polygon.
 
-We did not rely on hype. We relied on clarity, speed, and systems. Here is how it happened.
+We did not rely on hype. We relied on clarity, speed, and systems: incredible UX and UI, a vision for the future of prediction markets, and a clear mission to be number one in the space.
 
-## Quick context
+## The biggest constraint was time
 
-- Company: Polkamarkets
-- Role: CMO & Co-Founder (full-time, from day one)
-- Market: decentralized prediction markets
-- Ecosystem: Ethereum at launch, later Moonbeam, Moonriver, and Polygon
-- Team: 6 people
-- Funding before IDO: ~$625K from VCs and angels
-- Reputation at launch: none
-
-We were early. We were small. And we had to move fast.
-
-## The biggest constraint: time
-
-The hardest part was not money, team size, or even credibility. It was time.
-
-Everything was moving at once:
-
-- product development and testing
-- investor expectations and onboarding
-- community growth and engagement
-- ecosystem narratives and partnerships
-- market momentum and adoption
-
-There was no room for slow decisions. So we made one call early that shaped everything else:
+The hardest part was not money, team size, or even credibility. It was time. Product, investors, community, partnerships, and the market were all moving at once. There was no room for slow decisions, so we made one call early that shaped everything else.
 
 **Treat the IDO like a product launch, not a marketing stunt.**
 
-## The narrative that unlocked attention
+## We aligned with a story that already existed
 
-We did not invent a story. We aligned with one that already existed.
-
-At the time, Vitalik Buterin was publicly pointing to prediction markets as a key primitive for the future of information and coordination.
-
-That was not hype. That was signal, and our job was to:
-
-- translate that idea into something concrete and actionable
-- explain what was live now vs later in a way that was easy to understand and engage with
-- show how Polkamarkets fit into that future in a way that was clear and compelling
+We did not invent a narrative. At the time, Vitalik Buterin was publicly pointing to prediction markets as a key primitive for the future of information and coordination. That was not hype. That was signal. Our job was to make it concrete: what was live now, what would come later, and how Polkamarkets fit.
 
 **If you cannot explain your product in one calm paragraph, you are not ready to raise from the public.**
 
-## What I owned end to end
+## Marketing and product were the same job
 
-As CMO and Co-Founder, my scope was broad and hands-on:
+I owned the launch end to end. Go-to-market, positioning, education, KOLs, partnerships, and community were one scope, not a handoff between departments. That separation kills early launches. You have to move fast and iterate fast.
 
-- go-to-market strategy
-- launch positioning and messaging
-- educational content
-- KOL coordination
-- partnerships (tech, ecosystem, marketing)
-- community growth systems
-- product and marketing alignment
+## Community was the product
 
-There was no separation between "marketing" and "product". That separation kills early launches. You need to be able to move fast and iterate fast.
+Most Web3 communities are loud but shallow. Ours was built with intention. In less than two months we reached more than 100,000 people across Twitter and Telegram, not by spamming, but with a clear welcome, frequent honest updates, and education instead of promotion. Questions were treated as signals, not annoyances. People did not feel sold to. They felt included.
 
-## Community was not a channel. It was the product.
+## The numbers were adoption signals
 
-Most Web3 communities are loud but shallow. We built ours with intention and purpose.
+The launch raised $715K and drew more than $80M in open interest in the first week. Those were not vanity metrics. They were signs that people understood the product well enough to use it.
 
-In less than two months, we grew:
+## Hype was the wrong tool
 
-- 100,000+ users and followers across Twitter and Telegram
-
-Not by spamming. But by:
-
-- clear onboarding and welcome process
-- frequent, honest updates
-- education over promotion
-- treating questions as signals, not annoyances and gatekeeping
-
-People did not feel sold to. They felt included.
-
-## The IDO results
-
-Here is what the launch delivered:
-
-- $715K raised
-  - $625K from VCs and angels
-  - $90K from the community
-- $80M+ in total open interest in the first week
-- $73M market cap
-- $6.3M 24h trading peak
-- Top 10 protocol on Moonbeam & Moonriver
-- 120x post-IDO ATH
-- 10,000+ token holders
-- $50K+ $POLK tokens bonded into the protocol
-
-These were not vanity metrics. They were adoption signals.
-
-## Why hype was not needed
-
-Hype works when you want attention. We wanted conviction. So we focused on:
-
-- explaining the product clearly with 101 education content
-- making participation simple with a straightforward UI and process
-- removing uncertainty with clear communication and transparency
-- answering hard questions early and often
+Hype works when you want attention. We wanted conviction. So we explained the product in plain language, made participation simple, and answered the hard questions early instead of hiding them.
 
 We never avoided questions like:
 
@@ -127,26 +56,13 @@ We never avoided questions like:
 - What are the risks?
 - What happens after the IDO?
 
-Serious people ask serious questions. You want those people to be part of your community.
+Serious people ask serious questions. You want those people in the community.
 
-## The hardest moment
+## The hardest part was keeping track
 
-Honestly?
+The growth was intense. Things were breaking, scaling, and changing daily. There were moments when 24 hours was not enough. What held it together was clear ownership, a few simple processes, and ruthless prioritization. Calm execution beats panic every time.
 
-Keeping track of everything.
-
-The growth was intense. Things were breaking, scaling, and changing daily. There were moments where it felt like 24 hours was not enough.
-
-What helped was structure:
-
-- clear ownership and accountability
-- simple processes and systems
-- ruthless prioritization and executio
-- clear communication and transparency
-
-**Calm execution beats panic every time.**
-
-## What I would do differently today
+## What I would do differently
 
 Looking back, a few improvements stand out:
 
@@ -154,37 +70,13 @@ Looking back, a few improvements stand out:
 - Ship a short "IDO explained in 90 seconds" video earlier.
 - Improve follow-up for users who showed intent but did not convert.
 
-Launches are messy.
+Launches are messy. The goal is not perfection. The goal is control, and the ability to move fast.
 
-The goal is not perfection. The goal is control. The goal is to be able to move fast and iterate fast.
+## A launch is a system
 
-## The real lesson
+This IDO worked because narrative, education, community, and distribution were one system. Not a moment. Not a trend. Not a campaign. That mindset has shaped how I approach product, growth, and launches ever since.
 
-This IDO worked because we treated it as a system:
-
-- narrative alignment
-- education and onboarding
-- community growth and engagement
-- distribution and execution
-- clear communication and transparency
-
-Not a moment. Not a trend. Not a campaign. A system.
-
-That mindset has shaped how I approach product, growth, and launches ever since.
-
-## Why this matters today
-
-If you are building:
-
-- a Web3 protocol
-- a prediction markets product
-- a complex product that needs trust before adoption
-
-This kind of GTM and launch work is what I do.
-
-**Calm strategy. Fast execution. Clear thinking under pressure.**
-
-That is the work I enjoy. And that is the work I am open to collaborating on.
+If you are building a protocol, a prediction market, or any product that needs trust before adoption, this is the work: calm strategy, fast execution, and clear thinking under pressure. That is the work I enjoy, and the work I am open to collaborating on.
     `.trim(),
   },
   "how-i-decide-if-idea-is-worth-building": {
